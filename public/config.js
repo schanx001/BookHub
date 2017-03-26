@@ -11,9 +11,9 @@
     function configuration($routeProvider) {
         $routeProvider
             .when("/main", {
-                templateUrl: 'main/mainPage.html'
-                //controller: 'loginController',
-                //controllerAs: 'model'
+                templateUrl: 'views/main/templates/mainPage.html',
+                controller: 'mainPageController',
+                controllerAs: 'model'
             })
     }
 
