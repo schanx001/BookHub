@@ -10,7 +10,7 @@
 
     function configuration($routeProvider) {
         $routeProvider
-            .when("/main", {
+            .when("/", {
                 templateUrl: 'views/main/templates/mainPage.html',
                 controller: 'mainPageController',
                 controllerAs: 'model'
