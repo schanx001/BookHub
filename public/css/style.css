@@ -19,8 +19,13 @@ body {
     border: 1px solid blue;
 }
 
-.borderimg {
-    -webkit-border-image: url(border.png) 30 round; /* Safari 3.1-5 */
-    -o-border-image: url(border.png) 30 round; /* Opera 11-12.1 */
-    border-image: url(border.png) 30 round;
+/*.borderimg {*/
+    /*-webkit-border-image: url(border.png) 30 round; !* Safari 3.1-5 *!*/
+    /*-o-border-image: url(border.png) 30 round; !* Opera 11-12.1 *!*/
+    /*border-image: url(border.png) 30 round;*/
+/*}*/
+
+.banner{
+    max-width: 100%;
+    height: auto;
 }
