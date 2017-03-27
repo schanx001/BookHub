@@ -15,6 +15,11 @@
                 controller: 'mainPageController',
                 controllerAs: 'model'
             })
+            .when("/register",{
+                templateUrl: 'views/user/template/register.view.client.html',
+                controller: 'registerController',
+                controllerAs: 'model'
+            })
     }
 
 })();
