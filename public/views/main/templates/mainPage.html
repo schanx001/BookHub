@@ -21,7 +21,23 @@
 <div class="container">
     <div class="visible-xs">
         <div class="col-xs-12">
-            Header
+            <div class="col-xs-3"></div>
+            <div class="col-xs-9">
+                <input type="text" name="search" placeholder="Search.." class="search">
+                <div class="dropdown pull-right">
+                    <button onclick="myFunction()" class="dropbtn">
+                        <span class="dropbtn glyphicon glyphicon-menu-hamburger"></span>
+                    </button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a onclick="alert(this.text);">Science Fiction</a>
+                        <a onclick="alert(this.text);">Arts & Photography</a>
+                        <a onclick="alert(this.text);">Biographies</a>
+                        <a onclick="alert(this.text);">Children Books</a>
+                        <a onclick="alert(this.text);">History</a>
+                        <a onclick="alert(this.text);">Literature & Fiction</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-xs-12" style="text-align: center"><strong><p>Books Listing</p></strong></div>
         <div class="col-xs-12" ng-repeat="book in model.books">
