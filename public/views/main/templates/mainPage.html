@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid bg-primary">
-        <a hrref="">
+        <a href="">
             <div class="navbar-text pull-right">
                 Register
             </div>
@@ -15,48 +15,59 @@
         <!--</div>-->
     </div>
 </nav>
-
+<div class="">
+    <img src="../../../images/trial/scenery.jpg" class="banner">
+</div>
 <div class="container">
-    <div class="col-xs-12">
-        <img src="../../../images/trial/scenery.jpg" class="banner">
+    <div class="visible-xs">
+        <div class="col-xs-12">
+            Header
+        </div>
+        <div class="col-xs-12" style="text-align: center"><strong><p>Books Listing</p></strong></div>
+        <div class="col-xs-12" ng-repeat="book in model.books">
+            <div class="col-xs-3" >
+                <div class="">
+                    <img src="../../../images/trial/img1.jpg" class="listing-image">
+                    <br><br>
+                </div>
+            </div>
+            <div class="col-xs-9">
+                <div class="col-xs-12">
+                    <p class="p-word-wrap">{{book.name}}<br>
+                        {{book.author}}</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-xs-12">
+    <div class="col-md-12 hidden-xs">
         <div class="col-xs-3 border">
             <div class="col-xs-12">
+                <strong>Categories:</strong>
                 <form>
-                    <input type="checkbox" name="book-genre" value="Science Fiction">
-                    <input type="checkbox" name="book-genre" value="Novel">
-                    <input type="checkbox" name="book-genre" value="Arts & Photography">
-                    <input type="checkbox" name="book-genre" value="Biographies">
-                    <input type="checkbox" name="book-genre" value="Children Books">
-                    <input type="checkbox" name="book-genre" value="History">
+                    <input type="checkbox" name="book-genre" value="Science Fiction" >Science Fiction<br>
+                    <input type="checkbox" name="book-genre" value="Arts & Photography">Arts & Photography<br>
+                    <input type="checkbox" name="book-genre" value="Biographies">Biographies<br>
+                    <input type="checkbox" name="book-genre" value="Children Books">Children Books<br>
+                    <input type="checkbox" name="book-genre" value="History">History<br>
+                    <input type="checkbox" name="book-genre" value="Literature & Fiction">Literature & Fiction<br>
                 </form>
             </div>
         </div>
         <div class="col-xs-9 border">
-            <div class="col-xs-12">
+            <div class="col-xs-12" style="text-align: center"><strong><p>Books Listing</p></strong></div>
+            <div class="col-xs-12" ng-repeat="book in model.books">
                 <div class="col-xs-3" >
                     <div class="col-xs-12">
                         <img src="../../../images/trial/img1.jpg" width="60px" height="60px">
+                        <br><br>
                     </div>
                 </div>
                 <div class="col-xs-9">
                     <div class="col-xs-12">
-                        <p>Name: ABC<br>
-                            Author: XYZ</p>
+                        <p>{{book.name}}<br>
+                            {{book.author}}</p>
                     </div>
                 </div>
-
-            </div>
-            <div class="col-xs-12">
-                <p>Name: ABC 1 <br>
-                    Author: XYZ 1</p>
-
-            </div>
-            <div class="col-xs-12">
-                <p>Name: ABC 3 <br>
-                    Author: XYZ 3</p>
-
             </div>
         </div>
     </div>

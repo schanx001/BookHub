@@ -1,5 +1,5 @@
 body {
-    padding-top: 60px;
+    padding-top: 52px;
     padding-bottom: 60px;
 
 }
@@ -18,6 +18,14 @@ body {
 .border{
     border: 1px solid blue;
 }
+.listing-image{
+    max-width: 100%;
+    height: auto;
+}
+
+.p-word-wrap{
+    word-wrap: break-word;
+}
 
 /*.borderimg {*/
     /*-webkit-border-image: url(border.png) 30 round; !* Safari 3.1-5 *!*/
@@ -29,3 +37,5 @@ body {
     max-width: 100%;
     height: auto;
 }
+
+
