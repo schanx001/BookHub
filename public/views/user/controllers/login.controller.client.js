@@ -20,7 +20,8 @@
                 promise
                     .success(function (user) {
                         if (user) {
-                            $location.url('/user/' + user._id);
+                            alert("welcome");
+                            //$location.url('/user/' + user._id);
                         } else {
                             vm.error = 'user not found';
                         }

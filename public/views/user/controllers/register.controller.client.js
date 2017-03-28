@@ -3,7 +3,7 @@
  */
 (function(){
     angular
-        .module("WebAppMaker")
+        .module("BookHubMaker")
         .controller("registerController", registerController);
 
     function registerController(UserService,$location) {
@@ -11,7 +11,7 @@
         vm.register = register;
         function register(user) {
             if(user==null)
-            {s
+            {
                 vm.error = "input empty! Please fill username and password";
             }
             else {
@@ -24,7 +24,8 @@
                         UserService
                             .createUser(user)
                             .success(function(user){
-                                $location.url('/profile/' + user._id);
+                                alert("welcome");
+                                //$location.url('/profile/' + user._id);
                             })
                             .error(function () {
                                 vm.error = 'sorry could not register';

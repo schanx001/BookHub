@@ -16,7 +16,7 @@
                 controllerAs: 'model'
             })
             .when("/register",{
-                templateUrl: 'views/user/template/register.view.client.html',
+                templateUrl: 'views/user/templates/register.view.client.html',
                 controller: 'registerController',
                 controllerAs:'model'
             })

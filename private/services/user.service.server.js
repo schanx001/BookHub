@@ -31,6 +31,8 @@ module.exports = function (app, model) {
     }
 
     function createUser(req, res) {
+
+        console.log("Create User called");
         var user = req.body;
         var newUser = {
             username: user.username,
@@ -84,6 +86,7 @@ module.exports = function (app, model) {
     }
 
     function findUser(req, res) {
+        console.log("Find User called");
         var username = req.query['username'];
         var password = req.query['password'];
         if (username && password) {
@@ -94,6 +97,7 @@ module.exports = function (app, model) {
     }
 
     function findUserByUsername(req, res) {
+        console.log("Find by username called");
         var username = req.query.username;
         userModel
             .findUserByUsername(username)

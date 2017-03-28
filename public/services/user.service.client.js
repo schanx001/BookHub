@@ -3,8 +3,8 @@
  */
 (function(){
     angular
-        .module("WebAppMaker")
-        .factory("UserService",UserService);
+        .module("BookHubMaker")
+        .service("UserService",UserService);
     function UserService($http) {
         var api = {
             "createUser":createUser,
@@ -21,6 +21,7 @@
         }
 
         function createUser(user) {
+            alert("in client"+user);
             return $http.post("/api/user", user);
         }
 
