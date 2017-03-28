@@ -29,28 +29,28 @@
                         <span class="dropbtn glyphicon glyphicon-menu-hamburger"></span>
                     </button>
                     <div id="myDropdown" class="dropdown-content">
-                        <a onclick="alert(this.text);">Science Fiction</a>
-                        <a onclick="alert(this.text);">Arts & Photography</a>
-                        <a onclick="alert(this.text);">Biographies</a>
-                        <a onclick="alert(this.text);">Children Books</a>
-                        <a onclick="alert(this.text);">History</a>
-                        <a onclick="alert(this.text);">Literature & Fiction</a>
+                        <a ng-click="model.getBookListingMobile(opt)" ng-repeat="opt in model.genreListings">{{opt}}</a>
+                        <!--<a onclick="alert(this.text);">Arts & Photography</a>-->
+                        <!--<a onclick="alert(this.text);">Biographies</a>-->
+                        <!--<a onclick="alert(this.text);">Children Books</a>-->
+                        <!--<a onclick="alert(this.text);">History</a>-->
+                        <!--<a onclick="alert(this.text);">Literature & Fiction</a>-->
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-xs-12" style="text-align: center"><strong><p>Books Listing</p></strong></div>
-        <div class="col-xs-12" ng-repeat="book in model.books">
+        <div id="div_book_listing_mobile" class="col-xs-12" ng-show="model.books" ng-repeat="book in model.books">
             <div class="col-xs-3" >
                 <div class="">
-                    <img src="../../../images/trial/img1.jpg" class="listing-image">
+                    <img src="{{book.volumeInfo.imageLinks.smallThumbnail}}" class="listing-image">
                     <br><br>
                 </div>
             </div>
             <div class="col-xs-9">
                 <div class="col-xs-12">
-                    <p class="p-word-wrap">{{book.name}}<br>
-                        {{book.author}}</p>
+                    <p class="p-word-wrap">{{book.volumeInfo.title}}<br>
+                        {{book.volumeInfo.authors[0]}}</p>
                 </div>
             </div>
         </div>
@@ -59,29 +59,31 @@
         <div class="col-xs-3 border">
             <div class="col-xs-12">
                 <strong>Categories:</strong>
-                <form>
-                    <input type="checkbox" name="book-genre" value="Science Fiction" >Science Fiction<br>
-                    <input type="checkbox" name="book-genre" value="Arts & Photography">Arts & Photography<br>
-                    <input type="checkbox" name="book-genre" value="Biographies">Biographies<br>
-                    <input type="checkbox" name="book-genre" value="Children Books">Children Books<br>
-                    <input type="checkbox" name="book-genre" value="History">History<br>
-                    <input type="checkbox" name="book-genre" value="Literature & Fiction">Literature & Fiction<br>
-                </form>
+                <select ng-options="option for option in model.genreListings" ng-model="model.genre" ng-change="model.getBookListing()">
+                <!--<select id="book-genre" onchange="model.getBookListing(this.selected);">-->
+                    <!--<option value="Science Fiction">Science Fiction</option>-->
+                    <!--<option value="Arts & Photography">Arts & Photography</option>-->
+                    <!--<option value="Biographies">Biographies</option>-->
+                    <!--<option value="Children Books">Children Books</option>-->
+                    <!--<option value="History">History</option>-->
+                    <!--<option value="Literature & Fiction">Literature & Fiction</option>-->
+                    Science Fiction
+                </select>
             </div>
         </div>
         <div class="col-xs-9 border">
             <div class="col-xs-12" style="text-align: center"><strong><p>Books Listing</p></strong></div>
-            <div class="col-xs-12" ng-repeat="book in model.books">
+            <div id="div_book_listing" class="col-xs-12" ng-show="model.books" ng-repeat="book in model.books">
                 <div class="col-xs-3" >
                     <div class="col-xs-12">
-                        <img src="../../../images/trial/img1.jpg" width="60px" height="60px">
+                        <img src="{{book.volumeInfo.imageLinks.smallThumbnail}}" class="listing-image">
                         <br><br>
                     </div>
                 </div>
                 <div class="col-xs-9">
                     <div class="col-xs-12">
-                        <p>{{book.name}}<br>
-                            {{book.author}}</p>
+                        <p>{{book.volumeInfo.title}}<br>
+                            {{book.volumeInfo.authors[0]}}</p>
                     </div>
                 </div>
             </div>

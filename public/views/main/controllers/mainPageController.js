@@ -1,45 +1,42 @@
 (function () {
     angular
         .module("BookHubMaker")
-        .controller("mainPageController", function () {
+        .controller("mainPageController", function ($http) {
             var vm = this;
-            vm.check = "HELLO";
-            vm.books = [
-                {
-                    name: "Book1 Loooooooooooooooooooooooooooooooooong",
-                    author: "Book1 Author",
-                    description: "adfadsfasdfasdfasfasdfasdfasddsfasd afasdfsdfasdfadfsfsfsafsdfasdf"
-                },
-                {
-                    name: "Book2 Loooooooooooooooooooooooooooooooooong",
-                    author: "Book2 Author",
-                    description: "adfadsfasdfasdfasfasdfasdfasddsfasd afasdfsdfasdfadfsfsfsafsdfasdf"
-                },
-                {
-                    name: "Book3 Loooooooooooooooooooooooooooooooooong",
-                    author: "Book3 Author",
-                    description: "adfadsfasdfasdfasfasdfasdfasddsfasd afasdfsdfasdfadfsfsfsafsdfasdf"
-                },
-                {
-                    name: "Book4 Loooooooooooooooooooooooooooooooooong",
-                    author: "Book4 Author",
-                    description: "adfadsfasdfasdfasfasdfasdfasddsfasd afasdfsdfasdfadfsfsfsafsdfasdf"
-                },
-                {
-                    name: "Book5 Loooooooooooooooooooooooooooooooooong",
-                    author: "Book5 Author",
-                    description: "adfadsfasdfasdfasfasdfasdfasddsfasd afasdfsdfasdfadfsfsfsafsdfasdf"
-                },
-                {
-                    name: "Book6 Loooooooooooooooooooooooooooooooooong",
-                    author: "Book6 Author",
-                    description: "adfadsfasdfasdfasfasdfasdfasddsfasd afasdfsdfasdfadfsfsfsafsdfasdf"
-                },
-                {
-                    name: "Book7 Loooooooooooooooooooooooooooooooooong",
-                    author: "Book7 Author",
-                    description: "adfadsfasdfasdfasfasdfasdfasddsfasd afasdfsdfasdfadfsfsfsafsdfasdf"
+            vm.getBookListing=getBookListing;
+            vm.getBookListingMobile=getBookListingMobile;
+            vm.genreListings=["Science Fiction","Arts & Photography","Horror","Children Books","History","Literature & Fiction"];
+            vm.genre="Science Fiction";
+            getBookListing();
+            function getBookListingMobile(genre) {
+                // console.log("Inside mobile listing "+genre);
+                vm.genre=genre;
+                getBookListing();
+            }
+            function getBookListing() {
+                // console.log("Inside");
+                vm.books=[];
+                var googleAPI = "https://www.googleapis.com/books/v1/volumes?q=subject:"+vm.genre;
+                var gbooks=$http.get(googleAPI);
+                if(document.getElementById("div_book_listing")){
+                    document.getElementById("div_book_listing").innerHTML="";
                 }
-            ];
+                if(document.getElementById("div_book_listing_mobile")){
+                    document.getElementById("div_book_listing_mobile").innerHTML="";
+                }
+                gbooks.then(function(response){
+                    // console.log(response.data);
+                    for( var i=0;i<response.data.items.length;i++){
+                        vm.books.push(response.data.items[i]);
+                    }
+                    // console.log(vm.books);
+                    // console.log(vm.books[0].kind);
+                    // console.log(vm.books[0].volumeInfo.title);
+                },function (response) {
+                    // console.log(response);
+
+                });
+            }
+
         });
 })();
