@@ -1,4 +1,4 @@
-input.form-control {
+div.input-group {
     margin-bottom: 5px;
 }
 
@@ -111,4 +111,8 @@ body {
     width: 80%;
 }
 
+.img-thumbnail{
+    height: 100px;
+    width: 100px;
+}
 /*main page search css ends*/
