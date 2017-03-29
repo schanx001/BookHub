@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("BookHubMaker")
-        .factory("BookSearchService",BookSearchService);
+        .factory("BookService",BookService);
 
-    function BookSearchService($http) {
+    function BookService($http) {
         var api={
             "findBooksByName":findBooksByName
         };
