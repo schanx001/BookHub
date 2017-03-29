@@ -33,18 +33,21 @@
             </select>
         </div>
         <div class="col-xs-9 border">
-            <strong>Books in DB</strong><br>
+            <div class="col-xs-12" style="text-align: center"><strong><p>Books in DB</p></strong></div>
             <div ng-repeat="book in model.books" ng-show="model.books">
                 <div class="col-xs-3" >
-                    <div class="col-xs-12">
-                        <img src="{{book.imageSrc}}" class="listing-image">
+                        <img src="{{book.imageSrc}}" class="listing-image border">
                         <br><br>
-                    </div>
                 </div>
                 <div class="col-xs-9">
                     <div class="col-xs-12">
-                        <p>{{book.title}}<br>
-                            {{book.author}}</p>
+                        <p>Title: {{book.title}}<br>
+                            Author: {{book.author}}<br>
+                            Price: {{book.price}}
+                        </p>
+                    </div>
+                    <div class="col-xs-12">
+                        <button class="btn btn-block btn-success">Request Book</button><br><br>
                     </div>
                 </div>
             </div>
