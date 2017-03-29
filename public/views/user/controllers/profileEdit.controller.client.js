@@ -16,7 +16,10 @@
         function init() {
 
             vm.user = UserService.findUserById(userId)
-                .success(renderUser);
+                .success(renderUser)
+                .error(function () {
+                    $location.url('/login');
+                });
         }
 
         init();

@@ -15,6 +15,20 @@
             class="form-control"
                 placeholder="username"/></div>
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+    <input ng-model="model.user.firstName"
+           type="text"
+           class="form-control"
+           placeholder="first name"></div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+    <input ng-model="model.user.lastName"
+           type="text"
+           class="form-control"
+           placeholder="last name"></div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
         <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
 
         <input ng-model="model.user.password"
@@ -27,6 +41,21 @@
         <input type="password"
            class="form-control"
                placeholder="verify password"/></div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+        <input ng-model="model.user.email"
+               type="email"
+               class="form-control"
+               placeholder="email ID"></div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></div>
+        <input ng-model="model.user.phone"
+               type="text"
+               class="form-control"
+               placeholder="phone number"></div>
+    </div>
     <a class="btn btn-primary btn-block"
        ng-click="model.register(model.user)">Register</a>
     <a class="btn btn-danger btn-block"

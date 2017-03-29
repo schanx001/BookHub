@@ -37,9 +37,10 @@ module.exports = function (app, model) {
         var newUser = {
             username: user.username,
             password: user.password,
-            //email: user.email,
-            firstname: user.firstname,
-            lastname: user.lastname
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phone: user.phone
         };
 
         userModel
