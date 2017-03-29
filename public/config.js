@@ -20,6 +20,11 @@
                 controller: 'registerController',
                 controllerAs:'model'
             })
+            .when("/booksearch", {
+                templateUrl: 'views/bookSearch/templates/bookSearch.view.client.html',
+                controller: 'bookSearchController',
+                controllerAs: 'model'
+            })
             .when("/login", {
                 templateUrl: 'views/user/templates/login.view.client.html',
                 controller: 'loginController',
@@ -30,12 +35,6 @@
                 controller: 'profileController',
                 controllerAs: 'model'
             })
-            .when("/booksearch", {
-                templateUrl: 'views/bookSearch/templates/bookSearch.view.client.html',
-                controller: 'bookSearchController',
-                controllerAs: 'model'
-            })
-
     }
 
 })();
