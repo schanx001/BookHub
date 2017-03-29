@@ -4,7 +4,7 @@
 (function(){
     angular
         .module("BookHubMaker")
-        .service("UserService",UserService);
+        .factory("UserService",UserService);
     function UserService($http) {
         var api = {
             "createUser":createUser,

@@ -21,7 +21,7 @@
                     .success(function (user) {
                         if (user) {
                             alert("welcome");
-                            //$location.url('/user/' + user._id);
+                            $location.url('/user/' + user._id);
                         } else {
                             vm.error = 'user not found';
                         }

@@ -25,7 +25,7 @@
                             .createUser(user)
                             .success(function(user){
                                 alert("welcome");
-                                //$location.url('/profile/' + user._id);
+                                $location.url('/user/' + user._id);
                             })
                             .error(function () {
                                 vm.error = 'sorry could not register';

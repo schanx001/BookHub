@@ -25,6 +25,12 @@
                 controller: 'loginController',
                 controllerAs: 'model'
             })
+            .when("/user/:uid", {
+                templateUrl: 'views/user/templates/profileEdit.view.client.html',
+                controller: 'profileController',
+                controllerAs: 'model'
+            })
+
     }
 
 })();

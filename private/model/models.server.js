@@ -8,7 +8,7 @@ module.exports = function (app) {
 
     var userModel = require("./user/user.model.server.js")();
     var model= {
-        userModel: userModel,
+        userModel: userModel
     };
 
     userModel.setModel(model);
