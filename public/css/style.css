@@ -118,4 +118,9 @@ body {
     height: 100px;
     width: 100px;
 }
+
+.divTransparent{
+    background-color: rgba(0,0,0,0);
+}
+
 /*main page search css ends*/
