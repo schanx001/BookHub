@@ -11,7 +11,7 @@
     function configuration($routeProvider) {
         $routeProvider
             .when("/", {
-                templateUrl: 'views/main/templates/mainPage.html',
+                templateUrl: 'views/main/templates/mainPage.view.client.html',
                 controller: 'mainPageController',
                 controllerAs: 'model'
             })
@@ -28,6 +28,11 @@
             .when("/user/:uid", {
                 templateUrl: 'views/user/templates/profileEdit.view.client.html',
                 controller: 'profileController',
+                controllerAs: 'model'
+            })
+            .when("/booksearch", {
+                templateUrl: 'views/bookSearch/templates/bookSearch.view.client.html',
+                controller: 'bookSearchController',
                 controllerAs: 'model'
             })
 
