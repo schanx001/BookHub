@@ -131,9 +131,28 @@ h1 {
     color: darkslategray;
 }
 
+<<<<<<< HEAD
 img.same-height{
     display: block;
     max-width: 100%;
     height:30em;
 }
 /*main page search css ends*/
+=======
+.navbar-color{
+    background-color: dimgray;
+}
+
+.padding-top{
+    padding-top: 5%;
+}
+
+.text-color{
+    color: white;
+}
+
+.label-color{
+    color: black;
+}
+/*main page search css ends*/
+>>>>>>> refs/remotes/origin/master
