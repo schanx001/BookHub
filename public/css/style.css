@@ -123,4 +123,11 @@ body {
     background-color: rgba(0,0,0,0);
 }
 
+input::-webkit-input-placeholder {
+    color: white !important;
+}
+
+h1 {
+    color: darkslategray;
+}
 /*main page search css ends*/
