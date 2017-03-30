@@ -130,4 +130,20 @@ input::-webkit-input-placeholder {
 h1 {
     color: darkslategray;
 }
+
+.navbar-color{
+    background-color: dimgray;
+}
+
+.padding-top{
+    padding-top: 5%;
+}
+
+.text-color{
+    color: white;
+}
+
+.label-color{
+    color: black;
+}
 /*main page search css ends*/
