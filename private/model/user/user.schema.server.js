@@ -10,7 +10,7 @@ module.exports = function(model) {
         lastName: String,
         email: String,
         phone: String,
-        //websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'websiteModel'}],
+        role: String,
         dateCreated: {type: Date, default: Date.now()}
     }, {collection: 'project.mongo.users'});
 
