@@ -2,7 +2,7 @@
     <div class="container-fluid bg-primary">
 
             <a href="#/register">
-                <div class="navbar-text btn btn-danger pull-right">
+                <div class="navbar-text btn btn-warning pull-right">
 
                 <span class="glyphicon glyphicon-plus-sign"></span> Register
             </div>
@@ -25,7 +25,7 @@
 <div class="">
     <img src="../../../images/trial/scenery.jpg" class="banner">
 </div>
-<div class="container">
+<div class="container-fluid">
     <div class="visible-xs">
         <div class="col-xs-12">
             <div class="col-xs-3"></div>
@@ -62,9 +62,9 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 hidden-xs">
-        <div class="col-xs-3 border">
-            <div class="col-xs-12">
+    <div class="row hidden-xs">
+        <div class="col col-md-3 border">
+            <div class="col-md-12">
                 <strong>Categories:</strong>
                 <select ng-options="option for option in model.genreListings" ng-model="model.genre" ng-change="model.getBookListing()">
                 <!--<select id="book-genre" onchange="model.getBookListing(this.selected);">-->
@@ -78,9 +78,9 @@
                 </select>
             </div>
         </div>
-        <div class="col-xs-9 border">
-            <div class="col-xs-12" style="text-align: center"><strong><p>Books Listing</p></strong></div>
-            <div id="div_book_listing" class="col-xs-12" ng-show="model.books" ng-repeat="book in model.books">
+        <div class="col col-md-9 border">
+            <div class="col-xs-12 label label-danger" style="text-align: center"><strong><h3>Books Listing</h3></strong></div>
+           <!-- <div id="div_book_listing" class="col-xs-12" ng-show="model.books" ng-repeat="book in model.books">
                 <div class="col-xs-3" >
                     <div class="col-xs-12">
                         <img src="{{book.volumeInfo.imageLinks.smallThumbnail}}" class="listing-image">
@@ -93,6 +93,17 @@
                             {{book.volumeInfo.authors[0]}}</p>
                     </div>
                 </div>
+            </div>-->
+            <div class="row container-fluid">
+            <div class="col-sm-6 col-md-4" id="div_book_listing" ng-show="model.books" ng-repeat="book in model.books">
+                <div class="thumbnail">
+                <img class="card-img-top same-height" ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" style="width:100%"/>
+                    <div class="card-block">
+                        <h4 class="card-title">{{book.volumeInfo.title}}</h4>
+                        <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>

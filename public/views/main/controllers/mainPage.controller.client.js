@@ -5,13 +5,18 @@
             var vm = this;
             vm.getBookListing=getBookListing;
             vm.getBookListingMobile=getBookListingMobile;
+            vm.processImage = processImage;
             vm.genreListings=["Science Fiction","Arts & Photography","Horror","Children Books","History","Literature & Fiction"];
-            vm.genre="Science Fiction";
+            vm.genre="Horror";
             getBookListing();
             function getBookListingMobile(genre) {
                 // console.log("Inside mobile listing "+genre);
                 vm.genre=genre;
                 getBookListing();
+            }
+            function processImage(url) {
+                var temp;
+                return url.replace("zoom=1","zoom=0").replace("edge=curl&","");
             }
             function getBookListing() {
                 // console.log("Inside");
