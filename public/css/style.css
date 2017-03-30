@@ -5,8 +5,8 @@ div.input-group {
 body {
     padding-top: 52px;
     padding-bottom: 60px;
-    /*background-image: url("../images/trial/back.jpg");
-    */background-repeat: no-repeat;
+    background-image: url("../images/trial/back.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
     min-height: 680px;
 }
