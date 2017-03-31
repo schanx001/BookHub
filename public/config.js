@@ -21,7 +21,7 @@
                 controllerAs:'model'
             })
             .when("/booksearch", {
-                templateUrl: 'views/book/templates/book.view.client.html',
+                templateUrl: 'views/bookSearch/templates/bookSearch.view.client.html',
                 controller: 'bookSearchController',
                 controllerAs: 'model'
             })

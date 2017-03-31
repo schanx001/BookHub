@@ -11,7 +11,7 @@ module.exports = function(model) {
         email: String,
         phone: String,
         role: String,
-        dateCreated: {type: Date, default: Date.now()}
+        dateCreated: {type: Date, default:Date.now}
     }, {collection: 'project.mongo.users'});
 
     return userSchema;

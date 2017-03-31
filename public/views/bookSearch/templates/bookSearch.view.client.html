@@ -18,6 +18,9 @@
 
 <div class="container-fluid">
     <div class="col-xs-12">
+        <div class="col-xs-12">
+            <input type="number" ng-model="model.bookNumber"><button ng-click="model.addBook()">Add book</button>
+        </div>
         <div class="col-xs-7">
             <input id="id_input_search_book" type="text" class="pull-right">
         </div>
@@ -36,7 +39,7 @@
             <div class="col-xs-12" style="text-align: center"><strong><p>Books in DB</p></strong></div>
             <div ng-repeat="book in model.books" ng-show="model.books">
                 <div class="col-xs-3" >
-                        <img src="{{book.imageSrc}}" class="listing-image border">
+                        <img src="{{book.imgsrc}}" class="listing-image border">
                         <br><br>
                 </div>
                 <div class="col-xs-9">
