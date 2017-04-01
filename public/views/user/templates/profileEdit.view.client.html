@@ -1,8 +1,42 @@
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid navbar-color">
-        <a class="navbar-brand glyphicon glyphicon-ok pull-right" href="#/user/{{model.user._id}}"
-           ng-click="model.updateUser(model.user)"></a>
-        <a class="navbar-brand">Profile</a>
+
+        <a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-user" ></span> Edit Profile
+            </div>
+
+        </a>
+
+        <a href="#/reviews{{model.user._id}}">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-star"></span> My Reviews
+            </div>
+        </a>
+
+
+        <a href="#/alerts/{{model.user._id}}">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-bell"></span> My Alerts
+            </div>
+        </a>
+
+        <a href="#/stats/{{model.user._id}}">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-stats"></span> My Stats
+            </div>
+        </a>
+
+
+
+        <!--<div class="navbar-header">-->
+        <!--<a class="navbar-brand" href="#/user/{{model.user._id}}">Profile</a>-->
+        <!--</div>-->
     </div>
 </nav>
 
@@ -42,5 +76,8 @@
        ng-click="model.deleteUser(model.user._id)">Unregister User</a>
     <a class="btn btn-danger  btn-block"
        href="#/login">Logout</a>
+    <a  ng-click="showDiv=false; model.updateUser(model.user)"class="btn btn-primary  btn-block" ng-show="showDiv"
+       href="#/user/{{model.user._id}}">Update</a>
+
 </div>
 
