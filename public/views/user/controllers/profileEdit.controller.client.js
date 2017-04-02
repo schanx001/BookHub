@@ -14,7 +14,7 @@
         vm.deleteUser = deleteUser;
 
         function init() {
-
+            vm.message="";
             vm.user = UserService.findUserById(userId)
                 .success(renderUser)
                 .error(function () {
@@ -35,7 +35,8 @@
             UserService
                 .updateUser(userId, newUser)
                 .success(function (response) {
-                    vm.message = "user successfully updated"
+
+                    vm.message = "user successfully updated";
                 })
                 .error(function () {
                     vm.error = "unable to update user";

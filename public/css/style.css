@@ -149,7 +149,14 @@ img.same-height{
     color: white;
 }
 
+
+input::-moz-placeholder{
+    color:white;
+    opacity: 1;
+}
 .label-color{
     color: black;
 }
 /*main page search css ends*/
+
+
