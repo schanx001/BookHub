@@ -24,7 +24,7 @@
                         UserService
                             .createUser(user)
                             .success(function(user){
-                                alert("welcome");
+                                //alert("welcome");
                                 $location.url('/user/' + user._id);
                             })
                             .error(function () {
