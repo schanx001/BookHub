@@ -35,6 +35,12 @@
                 controller: 'profileController',
                 controllerAs: 'model'
             })
+
+            .when("/organizer", {
+                templateUrl: 'views/user/templates/organizer.view.client.html',
+                controller: 'organizerController',
+                controllerAs: 'model'
+            })
     }
 
 })();
