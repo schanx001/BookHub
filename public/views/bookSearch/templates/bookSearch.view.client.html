@@ -17,19 +17,37 @@
 </nav>
 
 <div class="container-fluid">
-    <div class="col-xs-12">
+    <div class="col-sm-12 hidden-xs">
         <div class="col-xs-12">
             <input type="number" ng-model="model.bookNumber"><button ng-click="model.addBook()">Add book</button>
         </div>
         <div class="col-xs-7">
-            <input id="id_input_search_book" type="text" class="pull-right">
+            <input ng-model="model.searchText" type="text" class="pull-right">
         </div>
         <div class="col-xs-5">
-            <button class="btn btn-primary">Search Book</button>
+            <button class="btn btn-primary" ng-click="model.searchBook()">Search Book</button>
+        </div>
+    </div>
+    <div class="visible-xs">
+        <div class="col-xs-12">
+            <input type="number" ng-model="model.bookNumber"><button ng-click="model.addBook()">Add book</button>
+        </div>
+        <div class="col-xs-12">
+            <input ng-model="model.searchText" type="text" class="" style="width:160px;">
+            <div class="dropdown pull-right" style="padding-left: 5px; top:2px;">
+                <button onclick="myFunction()" class="dropbtn">
+                    <span class="dropbtn glyphicon glyphicon-menu-hamburger"></span>
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <strong>Sort By:</strong><br>
+                    <a ng-click="model.getSortListingMobile(opt)" ng-repeat="opt in model.sortListings">{{opt}}</a>
+                </div>
+            </div>
+            <button class="pull-right" ng-click="model.searchBook()">Search</button>
         </div>
     </div>
     <br><br>
-    <div class="col-xs-12 border">
+    <div class="col-xs-12 border hidden-xs">
         <div class="col-xs-3 border">
             <strong>Sort By:</strong><br>
             <select ng-options="option for option in model.sortListings" ng-model="model.sortBy" ng-change="model.getSortedListing()">
@@ -37,7 +55,8 @@
         </div>
         <div class="col-xs-9 border">
             <div class="col-xs-12" style="text-align: center"><strong><p>Books in DB</p></strong></div>
-            <div ng-repeat="book in model.books" ng-show="model.books">
+            <div ng-show="model.error">{{model.error}}</div>
+            <div id="div_book_listing" ng-repeat="book in model.books | orderBy:model.sort:model.reverse" ng-show="model.books">
                 <div class="col-xs-3" >
                         <img src="{{book.imgsrc}}" class="listing-image border">
                         <br><br>
@@ -56,6 +75,31 @@
             </div>
         </div>
     </div>
+</div>
+<div class="col-xs-12 border visible-xs">
+
+        <div class="col-xs-12" style="text-align: center">
+            <strong><p>Books in DB</p></strong>
+        </div>
+        <div ng-show="model.error">{{model.error}}</div>
+        <div id="div_book_listing_mobile" ng-repeat="book in model.books | orderBy:model.sort:model.reverse" ng-show="model.books">
+            <div class="col-xs-3" >
+                <img src="{{book.imgsrc}}" class="listing-image border">
+                <br><br>
+            </div>
+            <div class="col-xs-9">
+                <div class="col-xs-12">
+                    <p>Title: {{book.title}}<br>
+                        Author: {{book.author}}<br>
+                        Price: {{book.price}}
+                    </p>
+                </div>
+                <div class="col-xs-12">
+                    <button class="btn btn-block btn-success">Request Book</button><br><br>
+                </div>
+            </div>
+        </div>
+</div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

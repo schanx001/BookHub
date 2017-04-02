@@ -17,12 +17,23 @@ module.exports=function (app,model) {
     }
     
     function findBooks(req,res) {
-       bookModel
-           .findAllAvBooks()
-           .then(function (response) {
-               res.send(response);
-           },function (error) {
-               res.status(404).send();
-           })
+        var bookName=req.query.bookName;
+        if(bookName){
+            bookModel
+                .findBooksByName(bookName)
+                .then(function (response) {
+                    res.send(response);
+                },function (error) {
+                    res.status(404).send();
+                })
+        }else{
+            bookModel
+                .findAllAvBooks()
+                .then(function (response) {
+                    res.send(response);
+                },function (error) {
+                    res.status(404).send();
+                })
+        }
     }
 };

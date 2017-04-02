@@ -9,7 +9,8 @@ module.exports = function(){
         "setModel":setModel,
         "getModel":getModel,
         "createABook":createABook,
-        "findAllAvBooks":findAllAvBooks
+        "findAllAvBooks":findAllAvBooks,
+        "findBooksByName":findBooksByName,
     };
     return api;
 
@@ -30,5 +31,10 @@ module.exports = function(){
 
     function findAllAvBooks() {
         return bookModel.find().sort({"dateCreated":-1});
+    }
+
+    function findBooksByName(bookName) {
+        return bookModel.find({title: { "$regex": bookName, "$options": "i" }},function(err,docs) {
+        });
     }
 };

@@ -20,7 +20,7 @@
         }
 
         function findBooksByName(bookName){
-            return $http.post("/api/book?bookName="+findBooksByName);
+            return $http.get("/api/book?bookName="+bookName);
         }
     }
 
