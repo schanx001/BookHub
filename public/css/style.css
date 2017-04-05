@@ -159,4 +159,17 @@ input::-moz-placeholder{
 }
 /*main page search css ends*/
 
+#delete-glyphicon{
+    color:red;
+}
+
+.btn-white{
+    background-color:white;
+}
+a.btn-white:hover{
+    background-color:red;
+}
+a.btn-white:hover > span#delete-glyphicon{
+    color:white;
+}
 

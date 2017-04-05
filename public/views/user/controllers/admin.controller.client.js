@@ -4,7 +4,7 @@
 (function () {
     angular
         .module("BookHubMaker")
-        .controller("organizerController", organizerController);
-    function organizerController(){
+        .controller("adminController", adminController);
+    function adminController(){
     }
 })();

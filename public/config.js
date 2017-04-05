@@ -41,6 +41,11 @@
                 controller: 'organizerController',
                 controllerAs: 'model'
             })
+            .when("/admin",{
+                templateUrl: 'views/user/templates/admin.view.client.html',
+                controller: 'adminController',
+                comtrollerAs: 'mode'
+            })
     }
 
 })();

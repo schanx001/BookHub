@@ -1,1 +1,204 @@
-]
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid navbar-color">
+
+        <a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-user" ></span> Manage Users
+            </div>
+
+        </a>
+
+        <a href="#/reviews{{model.user._id}}">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-star"></span> Manage Sellers
+            </div>
+        </a>
+
+
+        <a href="#/alerts/{{model.user._id}}">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-bell"></span> Manage Events
+            </div>
+        </a>
+
+        <a href="#/stats/{{model.user._id}}">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-stats"></span> Handle Requests
+            </div>
+        </a>
+        <a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-user" ></span> Manage Books
+            </div>
+
+        </a>
+    </div>
+</nav>
+<div class="container padding-top ">
+    <div class="card hidden-xs">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item active">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>UserName</strong>
+                </div>
+                <div class="col-md-3">
+                    <strong>FirstName</strong>
+                </div>
+                <div class="col-md-3">
+                    <strong>LastName</strong>
+                </div>
+
+                <div class="col-md-2">
+                    <strong>Role</strong>
+                </div>
+                <div class="col-md-1">
+                    <strong>Action</strong>
+                </div>
+            </div>
+            </li>
+            <li class="list-group-item">
+            <div class="row">
+            <div class="col-md-3">
+                <label>Shantanu</label>
+            </div>
+            <div class="col-md-3">
+                <label>Shantanu</label>
+            </div>
+            <div class="col-md-3">
+                <label>Kawlekar</label>
+            </div>
+            <div class="col-md-2">
+                    <label>User</label>
+            </div>
+            <div class="col-md-1">
+                <a href="#" class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+            </div>
+            </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Shantanu</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Shantanu</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Kawlekar</label>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label>Seller</label>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="#" class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    </div>
+    <div class="card visible-xs text-center">
+        <div class="card-block">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6 text-primary">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 text-primary">
+                        <p class="card-text">Shantanu</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="card-text">Shantanu</p>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6 text-primary">
+                            <p class="card-text ">Shantanu</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    <div class="col-xs-6 text-primary">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6 text-primary">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-xs-6 text-primary">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6 text-primary">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    <div class="col-xs-6 text-primary">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p class="card-text">Shantanu</p>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
