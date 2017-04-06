@@ -35,7 +35,11 @@
                 controller: 'profileController',
                 controllerAs: 'model'
             })
-
+            .when("/user/:uid/mystat",{
+                templateUrl:'views/user/templates/stats/mystat.view.client.html',
+                controller:'profileController',
+                controllerAs:'model'
+            })
             .when("/organizer", {
                 templateUrl: 'views/user/templates/organizer.view.client.html',
                 controller: 'organizerController',
