@@ -30,18 +30,23 @@
                 controller: 'loginController',
                 controllerAs: 'model'
             })
-            .when("/user/:uid", {
-                templateUrl: 'views/user/templates/profileEdit.view.client.html',
-                controller: 'profileController',
-                controllerAs: 'model'
-            })
+            // .when("/user/:uid", {
+            //     templateUrl: 'views/user/templates/profileEdit.view.client.html',
+            //     controller: 'profileController',
+            //     controllerAs: 'model'
+            // })
             .when("/user/:uid/myStats",{
                 templateUrl:'views/user/templates/stats/myStats.view.client.html',
                 controller:'profileController',
                 controllerAs:'model'
             })
-            .when("/organizer", {
-                templateUrl: 'views/user/templates/organizer.view.client.html',
+            .when("/organizer/:uid/addEvent", {
+                templateUrl: 'views/user/templates/OrganizerAddEvent.view.client.html',
+                controller: 'organizerController',
+                controllerAs: 'model'
+            })
+            .when("/organizer/:uid/", {
+                templateUrl: 'views/user/templates/organizerProfileEdit.view.client.html',
                 controller: 'organizerController',
                 controllerAs: 'model'
             })
@@ -50,8 +55,13 @@
                 controller: 'adminController',
                 comtrollerAs: 'mode'
             })
-            .when("/seller", {
-                templateUrl: 'views/user/templates/seller.view.client.html',
+            .when("/seller/:uid", {
+                templateUrl: 'views/user/templates/sellerProfileEdit.view.client.html',
+                controller: 'sellerController',
+                controllerAs: 'model'
+            })
+            .when("/seller/:uid/addBook", {
+                templateUrl: 'views/user/templates/sellerAddBook.view.client.html',
                 controller: 'sellerController',
                 controllerAs: 'model'
             })
