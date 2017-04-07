@@ -272,7 +272,7 @@ a.btn-white-edit:hover > span#edit-glyphicon{
     margin: 100px auto;
     position: relative;
     padding: 10px 5px;
-    background: hsla(0,90%,100%,0.4);
+    background: hsla(0,90%,100%,0.9);
     font-size: 20px;
     font-family: 'Lora', serif;
     line-height: 1.5;
