@@ -4,8 +4,8 @@
 (function () {
     angular
         .module("BookHubMaker")
-        .controller("organizerController", organizerController);
-    function organizerController($scope){
+        .controller("sellerController", sellerController);
+    function sellerController($scope){
         var vm=this;
         vm.show=show;
 

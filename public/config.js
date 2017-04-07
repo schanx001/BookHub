@@ -35,8 +35,8 @@
                 controller: 'profileController',
                 controllerAs: 'model'
             })
-            .when("/user/:uid/mystat",{
-                templateUrl:'views/user/templates/stats/mystat.view.client.html',
+            .when("/user/:uid/myStats",{
+                templateUrl:'views/user/templates/stats/myStats.view.client.html',
                 controller:'profileController',
                 controllerAs:'model'
             })
@@ -49,6 +49,11 @@
                 templateUrl: 'views/user/templates/admin.view.client.html',
                 controller: 'adminController',
                 comtrollerAs: 'mode'
+            })
+            .when("/seller", {
+                templateUrl: 'views/user/templates/seller.view.client.html',
+                controller: 'sellerController',
+                controllerAs: 'model'
             })
     }
 

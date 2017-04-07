@@ -17,53 +17,83 @@
         {{model.error}}
     </div>
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user "></span></div>
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
 
         <input  ng-model="model.user.username"
             type="text"
             class="form-control divTransparent text-color"
                 placeholder="user name"/></div>
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user "></span></div>
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
     <input ng-model="model.user.firstName"
            type="text"
            class="form-control divTransparent text-color"
            placeholder="first name"></div>
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-        <div class="input-group-addon divTransparent "><span class="glyphicon glyphicon-user "></span></div>
+        <div class="input-group-addon divTransparent "><span class="glyphicon glyphicon-user text-color"></span></div>
     <input ng-model="model.user.lastName"
            type="text"
            class="form-control divTransparent text-color"
            placeholder="last name"></div>
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-lock "></span></div>
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-lock text-color"></span></div>
 
         <input ng-model="model.user.password"
            type="password"
            class="form-control divTransparent text-color"
                placeholder="password"/></div>
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-lock "></span></div>
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-lock text-color"></span></div>
 
         <input type="password"
            class="form-control divTransparent text-color"
                placeholder="verify password"/></div>
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-envelope "></span></div>
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-envelope text-color"></span></div>
         <input ng-model="model.user.email"
                type="email"
                class="form-control divTransparent text-color"
                placeholder="email ID"></div>
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-earphone "></span></div>
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-earphone text-color"></span></div>
         <input ng-model="model.user.phone"
                type="text"
                class="form-control divTransparent text-color"
                placeholder="phone number"></div>
+
+    <!--<form>-->
+    <!--<div class="input-group ">-->
+        <!--<div class="input-group-addon divTransparent text-color">-->
+            <!--<button type="radio" name="chooseone" ng-model="model.user.type" class="btn-primary" aria-pressed="flase"> Are you a Seller? </button>-->
+
+            <!--<button type="radio" name="chooseone" ng-model="model.user.type" class="btn-primary" aria-pressed="flase"> Are you an Event Organizer? </button>-->
+
+                <!--<button type="radio"  name="chooseone" ng-model="model.user.type" class="btn-primary" aria-pressed="flase"> Other </button>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</form>-->
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
+    <!--<div class="btn-group" >-->
+
+        <label class="btn btn-default divTransparent text-color">
+            <input type="radio" name="chooseone" ng-model="model.user.type" > Seller
+        </label>
+
+        <label class="btn btn-default divTransparent text-color">
+            <input type="radio" name="chooseone"  ng-model="model.user.type"  > Event-Organizer
+        </label>
+        <label class="btn btn-default divTransparent text-color">
+            <input type="radio" name="chooseone" ng-model="model.user.type"> Other
+        </label>
+
+    </div>
+    <!--</div>-->
+
 
     <a class="btn btn-primary btn-block"
        ng-click="model.register(model.user)">Register</a>

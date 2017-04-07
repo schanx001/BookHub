@@ -1,7 +1,12 @@
 /**
  * Created by schanx on 4/1/17.
  */
-/*
-$(function () {
-    $("#ui-datepicker").datepicker();
-});*/
+
+// $(function(){
+//     $('input[type="radio"]').click(function(){
+//         if ($(this).is(':checked'))
+//         {
+//             alert($(this).val());
+//         }
+//     });
+// });

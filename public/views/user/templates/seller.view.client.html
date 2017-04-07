@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid navbar-color">
+        <div>
+            <a class="navbar-brand glyphicon glyphicon-chevron-left" href="#/">
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container padding-top">
+    <!--<div class="text-center">-->
+    <!--<img src="../../../images/icons/book.png" class="img-thumbnail">-->
+    <!--</div>-->
+
+    <h1 class="">Add Book</h1>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-book text-color"></span></div>
+        <input ng-model="event.eventname"
+               class="form-control divTransparent text-color"
+               placeholder="Book name"/>
+    </div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+        <div class="input-group-addon divTransparent "><span class="glyphicon glyphicon-tags text-color"></span></div>
+
+        <input ng-model="event.description"
+                  class="form-control divTransparent text-color"
+                  placeholder="Book genre"></input>
+    </div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
+        <input ng-model="event.date"
+               class="form-control divTransparent text-color"
+               placeholder="Author"
+               class="form-control" />
+    </div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-pushpin text-color"></span></div>
+        <input ng-model="model.event.location"
+               class="form-control divTransparent controls text-color"
+               id="pac-input"
+               placeholder="Shop Address"/>
+        <!--<input  placeholder="Search Box" ng-model="model.event.location">-->
+    </div>
+
+
+    <div>
+
+    <a class="btn btn-success btn-block"
+       ng-click="">Add</a>
+</div>
+
+    <div style="height: 500px;width:1140px" class="padding-top">
+
+        <div id="map"></div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
