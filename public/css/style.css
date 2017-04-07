@@ -172,4 +172,7 @@ a.btn-white:hover{
 a.btn-white:hover > span#delete-glyphicon{
     color:white;
 }
+#edit-glyphicon{
 
+    color:navy;
+}
