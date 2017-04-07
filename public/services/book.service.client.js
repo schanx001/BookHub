@@ -7,12 +7,17 @@
         var api={
             "findAllAvBooks":findAllAvBooks,
             "findBooksByName":findBooksByName,
-            "createBook":createBook
+            "createBook":createBook,
+            "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId
         };
         return api;
 
         function createBook(book) {
             return $http.post("/api/book",book);
+        }
+
+        function findBooksOwnedAndBorrowedByUserId(userId) {
+            return $http.get("/api/book?userId="+userId);
         }
 
         function findAllAvBooks(){

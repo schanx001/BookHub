@@ -7,12 +7,40 @@
         .module("BookHubMaker")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, UserService, $location) {
+    function profileController($routeParams, UserService, BookService, $location) {
         var vm = this;
         var userId = $routeParams['uid'];
+        vm.requestedBooks=[];
+        vm.requestedForBooks=[];
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
+        vm.getBooksRequestedForAndRequested=getBooksRequestedForAndRequested;
 
+        function getBooksRequestedForAndRequested(userId) {
+            BookService
+                .findBooksOwnedAndBorrowedByUserId(userId)
+                .then(function (response) {
+                    console.log(response);
+                    var books=response.data;
+                    var requestedBooks=[];
+                    var requestedForBooks=[];
+                    for (var x in books){
+                        if(books[x].owner===userId && books[x].status==="requested"){
+                            requestedBooks.push(books[x]);
+                        }
+                        if(books[x].currentlyWith===userId && books[x].status==="requested"){
+                            requestedForBooks.push(books[x]);
+                        }
+                    }
+                    // console.log("requestedBooks:"+requestedBooks);
+                    vm.requestedBooks=requestedBooks;
+                    // console.log("requestedForBooks:"+requestedForBooks);
+                    vm.requestedForBooks=requestedForBooks;
+                },function (error) {
+                    console.log("error:"+error);
+                });
+        }
+        
         function init() {
             vm.message="";
             vm.user = UserService.findUserById(userId)
@@ -20,6 +48,7 @@
                 .error(function () {
                     $location.url('/login');
                 });
+            getBooksRequestedForAndRequested(userId);
         }
 
         init();

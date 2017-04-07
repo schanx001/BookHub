@@ -30,9 +30,6 @@
     </div>
     <div class="visible-xs">
         <div class="col-xs-12">
-            <input type="number" ng-model="model.bookNumber"><button ng-click="model.addBook()">Add book</button>
-        </div>
-        <div class="col-xs-12">
             <input ng-model="model.searchText" type="text" class="" style="width:160px;">
             <div class="dropdown pull-right" style="padding-left: 5px; top:2px;">
                 <button onclick="myFunction()" class="dropbtn">
@@ -54,9 +51,9 @@
             </select>
         </div>
         <div class="col-xs-9 border">
-            <div class="col-xs-12" style="text-align: center"><strong><p>Books in DB</p></strong></div>
+            <div class="col-xs-12" style="text-align: center"><strong><p>Requests for Books</p></strong></div>
             <div ng-show="model.error">{{model.error}}</div>
-            <div id="div_book_listing" ng-repeat="book in model.books | orderBy:model.sort:model.reverse" ng-show="model.books">
+            <div id="div_requested_book_listing" ng-repeat="book in model.requestedBooks | orderBy:model.sort:model.reverse" ng-show="model.requestedBooks">
                 <div class="col-xs-3" >
                     <img src="{{book.imgsrc}}" class="listing-image border">
                     <br><br>
@@ -69,7 +66,26 @@
                         </p>
                     </div>
                     <div class="col-xs-12">
-                        <button class="btn btn-block btn-success">Request Book</button><br><br>
+                        <button class="btn btn-block btn-success">Accept Request</button><button class="btn btn-block btn-danger">Reject</button><br><br>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12" style="text-align: center"><strong><p>Books requested by you</p></strong></div>
+            <div ng-show="model.error">{{model.error}}</div>
+            <div id="div_requested_for_book_listing" ng-repeat="book in model.requestedForBooks | orderBy:model.sort:model.reverse" ng-show="model.requestedForBooks">
+                <div class="col-xs-3" >
+                    <img src="{{book.imgsrc}}" class="listing-image border">
+                    <br><br>
+                </div>
+                <div class="col-xs-9">
+                    <div class="col-xs-12">
+                        <p>Title: {{book.title}}<br>
+                            Author: {{book.author}}<br>
+                            Price: {{book.price}}
+                        </p>
+                    </div>
+                    <div class="col-xs-12 bg-success">
+                        Pending...<br><br>
                     </div>
                 </div>
             </div>

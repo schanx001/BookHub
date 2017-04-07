@@ -77,23 +77,27 @@
         function addBook() {
             // alert("book");
             BookService
-                .createBook({title:"book"+vm.bookNumber,
-                author:"author"+vm.bookNumber,
-                price:vm.bookNumber,
-                imgsrc:"link"+vm.bookNumber})
-                .then(function (response) {
-                    console.log("addbook="+response.data);
-                    vm.books=[];
-                    if(document.getElementById("div_book_listing")){
-                        document.getElementById("div_book_listing").innerHTML="";
-                    }
-                    if(document.getElementById("div_book_listing_mobile")){
-                        document.getElementById("div_book_listing_mobile").innerHTML="";
-                    }
-                    getAllAvBooks();
-                },function (error) {
-                    console.log("addbookerror="+error);
-                })
+                .createBook({
+                    owner:"58e409f17cdcab10d06b398d",
+                    title:"book"+vm.bookNumber,
+                    author:"author"+vm.bookNumber,
+                    price:vm.bookNumber,
+                    imgsrc:"link"+vm.bookNumber,
+                    currentlyWith:"58e409f17cdcab10d06b398d",
+                    status:"available"})
+                    .then(function (response) {
+                        // console.log("addbook="+response.data);
+                        vm.books=[];
+                        if(document.getElementById("div_book_listing")){
+                            document.getElementById("div_book_listing").innerHTML="";
+                        }
+                        if(document.getElementById("div_book_listing_mobile")){
+                            document.getElementById("div_book_listing_mobile").innerHTML="";
+                        }
+                        getAllAvBooks();
+                    },function (error) {
+                        console.log("addbookerror="+error);
+                    })
         }
 
     }
