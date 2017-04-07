@@ -1,6 +1,9 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid navbar-color">
+    <div class="row container-fluid navbar-color">
+
+        <div class="col-sm-12 hidden-xs ">
+
 
         <a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">
             <div class="navbar-text pull-right btn navbar-color">
@@ -32,8 +35,53 @@
             </div>
         </a>
 
+        </div>
+
+
+        <div class="dropdown pull-right col-sm-4 visible-xs">
+            <button onclick="myFunction()" class="dropbtn">
+                <span class="dropbtn glyphicon glyphicon-menu-hamburger"></span>
+            </button>
+            <div id="myDropdown" class="dropdown-content">
+                <a ng-click="model.getBookListingMobile(opt)" ng-repeat="opt in model.genreListings">{{opt}}</a>
+            </div>
+
+
+
+            <!--<a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">-->
+                <!--<div class="navbar-text pull-right btn navbar-color">-->
+
+                    <!--<span class="glyphicon glyphicon-user" ></span> Edit Profile-->
+                <!--</div>-->
+
+            <!--</a>-->
+
+            <!--<a href="#/reviews/{{model.user._id}}">-->
+                <!--<div class="navbar-text pull-right btn navbar-color">-->
+
+                    <!--<span class="glyphicon glyphicon-star"></span> My Reviews-->
+                <!--</div>-->
+            <!--</a>-->
+
+
+            <!--<a href="#/alerts/{{model.user._id}}">-->
+                <!--<div class="navbar-text pull-right btn navbar-color">-->
+
+                    <!--<span class="glyphicon glyphicon-bell"></span> My Alerts-->
+                <!--</div>-->
+            <!--</a>-->
+
+            <!--<a href="#/stats/{{model.user._id}}">-->
+                <!--<div class="navbar-text pull-right btn navbar-color">-->
+
+                    <!--<span class="glyphicon glyphicon-stats"></span> My Stats-->
+                <!--</div>-->
+            <!--</a>-->
+
+        </div>
     </div>
 </nav>
+
 
 <div class="container padding-top ">
 
@@ -80,6 +128,8 @@
         <input ng-model="model.user.phone" type="text" class="form-control divTransparent text-color" id="phone-number" value="0000000000">
     </div>
     </div>
+
+
 
 
     <a class="btn btn-danger btn-block"

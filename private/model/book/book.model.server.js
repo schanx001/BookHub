@@ -9,8 +9,10 @@ module.exports = function(){
         "setModel":setModel,
         "getModel":getModel,
         "createABook":createABook,
+        "updateABook":updateABook,
         "findAllAvBooks":findAllAvBooks,
         "findBooksByName":findBooksByName,
+        "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId
     };
     return api;
 
@@ -25,8 +27,12 @@ module.exports = function(){
     }
 
     function createABook(book) {
-        console.log(book);
+        // console.log(book);
         return bookModel.create(book);
+    }
+
+    function updateABook(book) {
+        return bookModel.update({_id:book._id},{$set:book});
     }
 
     function findAllAvBooks() {
@@ -35,6 +41,10 @@ module.exports = function(){
 
     function findBooksByName(bookName) {
         return bookModel.find({title: { "$regex": bookName, "$options": "i" }},function(err,docs) {
+        });
+    }
+    function findBooksOwnedAndBorrowedByUserId(userId) {
+        return bookModel.find({ $or:[ {owner:userId}, {currentlyWith:userId} ]},function (err,docs) {
         });
     }
 };

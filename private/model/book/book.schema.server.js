@@ -6,10 +6,10 @@ module.exports = function(model) {
         author: String,
         ISBN: String,
         imgsrc:String,
-        currentlyWith: String,
+        currentlyWith: {type:mongoose.Schema.Types.ObjectId,ref:'userModel'},
         rating: String,
         price: Number,
-        status:String,//available,shared,pending
+        status:String,//available,shared,requested
         dateCreated: {type: Date, default: Date.now}
     }, {collection: 'project.mongo.books'});
 
