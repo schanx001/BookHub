@@ -1,0 +1,77 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid bg-primary">
+        <a href="#/register">
+            <div class="navbar-text pull-right" href="#/register">
+                Register
+            </div>
+        </a>
+        <a href="#login">
+            <div class="navbar-text pull-right">
+                Login
+            </div>
+        </a>
+        <!--<div class="navbar-header">-->
+        <!--<a class="navbar-brand" href="#/user/{{model.user._id}}">Profile</a>-->
+        <!--</div>-->
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="col-xs-12 border">Title in Bolds</div>
+    <div class="col-xs-12 border ">
+        <div class="col-xs-12" style="text-align: center"><strong><p>Requests for Books</p></strong></div>
+        <div ng-show="model.error">{{model.error}}</div>
+        <div id="div_requested_book_listing" ng-repeat="book in model.requestedBooks | orderBy:model.sort:model.reverse" ng-show="model.requestedBooks">
+            <div class="col-xs-3" >
+                <img src="{{book.imgsrc}}" class="listing-image border">
+                <br><br>
+            </div>
+            <div class="col-xs-9">
+                <div class="col-xs-6">
+                    <p>Title: {{book.title}}<br>
+                        Author: {{book.author}}<br>
+                        Price: {{book.price}}
+                    </p>
+                </div>
+                <div class="col-xs-6">
+                    <p>Username: {{book.username}}<br>
+                        Email: {{book.email}}<br>
+                    </p>
+                </div>
+                <div class="col-xs-12">
+                    <button class="btn btn-block btn-success">Accept</button><button class="btn btn-block btn-danger">Reject</button><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12" style="text-align: center"><strong><p>Books requested by you</p></strong></div>
+        <div ng-show="model.error">{{model.error}}</div>
+        <div id="div_requested_for_book_listing" ng-repeat="book in model.requestedForBooks | orderBy:model.sort:model.reverse" ng-show="model.requestedForBooks">
+            <div class="col-xs-3" >
+                <img src="{{book.imgsrc}}" class="listing-image border">
+                <br><br>
+            </div>
+            <div class="col-xs-9">
+                <div class="col-xs-6">
+                    <p>Title: {{book.title}}<br>
+                        Author: {{book.author}}<br>
+                        Price: {{book.price}}
+                    </p>
+                </div>
+                <div class="col-xs-6">
+                    <p>Username: {{book.username}}<br>
+                        Email: {{book.email}}<br>
+                    </p>
+                </div>
+                <div class="col-xs-12 bg-success">
+                    Pending...<br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid bg-primary">
+    </div>
+</nav>
