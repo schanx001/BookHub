@@ -12,15 +12,18 @@
         var userId = $routeParams['uid'];
         vm.requestedBooks=[];
         vm.requestedForBooks=[];
+        vm.booksAvailable=[];
+        vm.booksShared=[];
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
         vm.getBooksRequestedForAndRequested=getBooksRequestedForAndRequested;
+        vm.getUserBooksDetail=getUserBooksDetail;
 
-        function getBooksRequestedForAndRequested(userId) {
+        function getUserBooksDetail(userId) {
             BookService
                 .findBooksOwnedAndBorrowedByUserId(userId)
                 .then(function (response) {
-                    console.log(response);
+                    // console.log(response);
                     var books=response.data;
                     var requestedBooks=[];
                     var requestedForBooks=[];
@@ -37,7 +40,32 @@
                     // console.log("requestedForBooks:"+requestedForBooks);
                     vm.requestedForBooks=requestedForBooks;
                 },function (error) {
-                    console.log("error:"+error);
+                    // console.log("error:"+error);
+                });
+        }
+
+        function getBooksRequestedForAndRequested(userId) {
+            BookService
+                .findBooksOwnedAndBorrowedByUserId(userId)
+                .then(function (response) {
+                    // console.log(response);
+                    var books=response.data;
+                    var requestedBooks=[];
+                    var requestedForBooks=[];
+                    for (var x in books){
+                        if(books[x].owner===userId && books[x].status==="requested"){
+                            requestedBooks.push(books[x]);
+                        }
+                        if(books[x].currentlyWith===userId && books[x].status==="requested"){
+                            requestedForBooks.push(books[x]);
+                        }
+                    }
+                    // console.log("requestedBooks:"+requestedBooks);
+                    vm.requestedBooks=requestedBooks;
+                    // console.log("requestedForBooks:"+requestedForBooks);
+                    vm.requestedForBooks=requestedForBooks;
+                },function (error) {
+                    // console.log("error:"+error);
                 });
         }
         
