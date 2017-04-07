@@ -172,12 +172,10 @@ a.btn-white:hover{
 a.btn-white:hover > span#delete-glyphicon{
     color:white;
 }
-#edit-glyphicon{
+#edit-glyphicon {
 
-<<<<<<< HEAD
-    color:navy;
-=======
-
+    color: navy;
+}
 
      /* Always set the map height explicitly to define the size of the div
       * element that contains the map. */
@@ -261,5 +259,4 @@ a.btn-white:hover > span#delete-glyphicon{
 }
 #target {
     width: 345px;
->>>>>>> b1521eca376f03a74b0ec9860b82b1ed7fa88eb5
 }
