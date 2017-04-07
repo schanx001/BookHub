@@ -1,0 +1,112 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid navbar-color">
+
+        <a href="#/admin" ng-click="showDiv = true; model.message=''">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-user" ></span> Manage Users
+            </div>
+
+        </a>
+
+        <a href="#/admin/manageSellers">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-star"></span> Manage Sellers
+            </div>
+        </a>
+
+
+        <a href="#/admin/manageEvents">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-bell"></span> Manage Events
+            </div>
+        </a>
+
+        <a href="#/admin/handleRequests">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-stats"></span> Handle Requests
+            </div>
+        </a>
+        <a href="#/admin/manageBooks" ng-click="showDiv = true; model.message=''">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-user" ></span> Manage Books
+            </div>
+
+        </a>
+
+        <a href="#/admin/create" class="btn btn-success pull-right">
+            <div class="navbar-text">
+                <span id="add-glyphicon" class="glyphicon glyphicon-plus"> </span> Create Role
+            </div>  </a>
+    </div>
+</nav>
+
+
+
+
+<div class="container padding-top blurred-back">
+    <!--<div class="text-center">-->
+    <!--<img src="../../../images/icons/book.png" class="img-thumbnail">-->
+    <!--</div>-->
+    <h1>Create Role</h1>
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user "></span></div>
+
+        <input  ng-model="model.user.username"
+                type="text"
+                class="form-control divTransparent text-color"
+                placeholder="user name"/></div>
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user "></span></div>
+        <input ng-model="model.user.firstName"
+               type="text"
+               class="form-control divTransparent text-color"
+               placeholder="first name"></div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon divTransparent "><span class="glyphicon glyphicon-user "></span></div>
+        <input ng-model="model.user.lastName"
+               type="text"
+               class="form-control divTransparent text-color"
+               placeholder="last name"></div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-lock "></span></div>
+
+        <input ng-model="model.user.password"
+               type="password"
+               class="form-control divTransparent text-color"
+               placeholder="password"/></div>
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-lock "></span></div>
+
+        <input type="password"
+               class="form-control divTransparent text-color"
+               placeholder="verify password"/></div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-envelope "></span></div>
+        <input ng-model="model.user.email"
+               type="email"
+               class="form-control divTransparent text-color"
+               placeholder="email ID"></div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-earphone "></span></div>
+        <input ng-model="model.user.phone"
+               type="text"
+               class="form-control divTransparent text-color"
+               placeholder="phone number"></div>
+
+    <a class="btn btn-success btn-block btn-style-create"
+       ng-click="model.register(model.user)">Create User</a>
+
+</div>

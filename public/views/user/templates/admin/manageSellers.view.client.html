@@ -1,0 +1,46 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid navbar-color">
+
+        <a href="#/admin" ng-click="showDiv = true; model.message=''">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-user" ></span> Manage Users
+            </div>
+
+        </a>
+
+        <a href="#/admin/manageSellers">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-star"></span> Manage Sellers
+            </div>
+        </a>
+
+
+        <a href="#/admin/manageEvents">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-bell"></span> Manage Events
+            </div>
+        </a>
+
+        <a href="#/admin/handleRequests">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-stats"></span> Handle Requests
+            </div>
+        </a>
+        <a href="#/admin/manageBooks" ng-click="showDiv = true; model.message=''">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon-user" ></span> Manage Books
+            </div>
+
+        </a>
+
+        <a href="#/admin/create" class="btn btn-success pull-right">
+            <div class="navbar-text">
+                <span id="add-glyphicon" class="glyphicon glyphicon-plus"> </span> Create Role
+            </div>  </a>
+    </div>
+</nav>

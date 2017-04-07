@@ -46,9 +46,38 @@
                 controllerAs: 'model'
             })
             .when("/admin",{
-                templateUrl: 'views/user/templates/admin.view.client.html',
+                templateUrl: 'views/user/templates/admin/admin.view.client.html',
                 controller: 'adminController',
-                comtrollerAs: 'mode'
+                comtrollerAs: 'model'
+            })
+            .when("/admin/create",{
+                templateUrl: 'views/user/templates/admin/createUser.view.client.html',
+                controller: 'adminController',
+                comtrollerAs: 'model'
+            })
+
+            .when("/admin/manageBooks",{
+                templateUrl: 'views/user/templates/admin/manageBooks.view.client.html',
+                controller: 'adminController',
+                comtrollerAs: 'model'
+            })
+
+            .when("/admin/manageEvents",{
+                templateUrl: 'views/user/templates/admin/manageEvents.view.client.html',
+                controller: 'adminController',
+                comtrollerAs: 'model'
+            })
+
+            .when("/admin/manageSellers",{
+                templateUrl: 'views/user/templates/admin/manageSellers.view.client.html',
+                controller: 'adminController',
+                comtrollerAs: 'model'
+            })
+
+            .when("/admin/handleRequests",{
+                templateUrl: 'views/user/templates/admin/handleRequests.view.client.html',
+                controller: 'adminController',
+                comtrollerAs: 'model'
             })
     }
 

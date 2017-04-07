@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid navbar-color">
 
-        <a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">
+        <a href="#/admin" ng-click="showDiv = true; model.message=''">
             <div class="navbar-text pull-right btn navbar-color">
 
                 <span class="glyphicon glyphicon-user" ></span> Manage Users
@@ -9,7 +9,7 @@
 
         </a>
 
-        <a href="#/reviews{{model.user._id}}">
+        <a href="#/admin/manageSellers">
             <div class="navbar-text pull-right btn navbar-color">
 
                 <span class="glyphicon glyphicon-star"></span> Manage Sellers
@@ -17,29 +17,34 @@
         </a>
 
 
-        <a href="#/alerts/{{model.user._id}}">
+        <a href="#/admin/manageEvents">
             <div class="navbar-text pull-right btn navbar-color">
 
                 <span class="glyphicon glyphicon-bell"></span> Manage Events
             </div>
         </a>
 
-        <a href="#/stats/{{model.user._id}}">
+        <a href="#/admin/handleRequests">
             <div class="navbar-text pull-right btn navbar-color">
 
                 <span class="glyphicon glyphicon-stats"></span> Handle Requests
             </div>
         </a>
-        <a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">
-            <div class="navbar-text pull-right btn navbar-color">
+        <a href="#/admin/manageBooks" class="btn pull-right" ng-click="showDiv = true; model.message=''">
+            <div class="navbar-text navbar-color">
 
                 <span class="glyphicon glyphicon-user" ></span> Manage Books
             </div>
 
         </a>
+        <a href="#/admin/create" class="btn btn-success pull-right">
+            <div class="navbar-text">
+                <span id="add-glyphicon" class="glyphicon glyphicon-plus"> </span> Create Role
+            </div>  </a>
     </div>
 </nav>
 <div class="container padding-top ">
+    <h1>All Users of BookHub</h1>
     <div class="card hidden-xs">
         <ul class="list-group list-group-flush">
             <li class="list-group-item active">
@@ -157,9 +162,15 @@
                             <p class="card-text">Shantanu</p>
                         </div>
                     </div>
-                    <div class="row">
 
-                    <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-block btn-white-edit"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
+                        </div>
+
                     </div>
                 </li>
 
@@ -181,19 +192,25 @@
                             <p class="card-text">Shantanu</p>
                         </div>
                     </div>
-                    <div class="row">
 
-                    <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-block btn-white-edit"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
+                        </div>
+
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-xs-6 text-primary">
-                            <p class="card-text">Shantanu</p>
+                            <p class="card-text">Username</p>
                         </div>
                         <div class="col-xs-6">
-                            <p class="card-text">Shantanu</p>
+                            <p class="card-text">Firstname</p>
                         </div>
                     </div>
                     <div class="row">
@@ -206,8 +223,13 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-block btn-white-edit"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
+                        </div>
 
-                    <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
                     </div>
                 </li>
             </ul>
