@@ -13,7 +13,8 @@ module.exports = function(){
         "findUserByUsername": findUserByUsername,
         "deleteUser":deleteUser,
         "setModel":setModel,
-        "getModel":getModel
+        "getModel":getModel,
+        "getEmailIFromUserIds":getEmailIFromUserIds
     };
     return api;
 
@@ -23,6 +24,11 @@ module.exports = function(){
     function createUser(user){
         return userModel.create(user);
     }
+
+    function getEmailIFromUserIds(userIds){
+        return userModel.find({_id:{$in:userIds}},{username:1,email:1});
+    }
+
     function findUserById(userId){
         return userModel.findById(userId);
     }
