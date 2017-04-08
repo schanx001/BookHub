@@ -83,7 +83,7 @@
 
         // initAutocomplete();
         $scope.$on('$viewContentLoaded', function(){
-
+            alert("ajhsgdjagsdjag");
 
             var imported = document.createElement('script');
             imported.src = '../../../js/maps.js';
