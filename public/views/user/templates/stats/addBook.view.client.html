@@ -17,7 +17,17 @@
 </nav>
 
 <div class="container-fluid">
-    <div class="col-xs-12 border">Title in Bolds</div>
+    <div class="col-xs-12 border">
+        <div class="col-xs-12">
+            <input type="number" ng-model="model.bookNumber"><button ng-click="model.addBook()">Add book</button>
+        </div>
+        <div class="col-xs-7">
+            <input ng-model="model.searchText" type="text" class="pull-right">
+        </div>
+        <div class="col-xs-5">
+            <button class="btn btn-primary" ng-click="model.searchBook()">Search Book</button>
+        </div>
+    </div>
     <div class="col-xs-12 border ">
         <div class="col-xs-12" style="text-align: center"><strong><p>Available Books</p></strong></div>
         <div ng-show="model.error">{{model.error}}</div>
