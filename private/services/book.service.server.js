@@ -41,7 +41,7 @@ module.exports=function (app,model) {
             bookModel
                 .findBooksOwnedAndBorrowedByUserId(userId)
                 .then(function (response) {
-                    // console.log(response);
+                    /// / console.log(response);
                     // console.log("before:   "+response);
                     // console.log("after:   "+response.toArray());
                     var newUserIds=[];

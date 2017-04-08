@@ -25,6 +25,15 @@
                 controller: 'loginController',
                 controllerAs: 'model'
             })
+<<<<<<< Updated upstream
+=======
+            // .when("/user/:uid", {
+            //     templateUrl: 'views/user/templates/profileEdit.view.client.html',
+            //     controller: 'profileController',
+            //     controllerAs: 'model'
+            // })
+            //.when("/user/:uid/myStats",{
+>>>>>>> Stashed changes
             .when("/user/:uid", {
                 templateUrl: 'views/user/templates/profileEdit.view.client.html',
                 controller: 'profileController',
