@@ -302,3 +302,10 @@ a.btn-white-edit:hover > span#edit-glyphicon{
     -webkit-filter: drop-shadow(4px 4px 3px darkcyan); /* Safari */
     filter: drop-shadow(4px 4px 3px dark);
 }
+
+
+/*addBook Page Css*/
+.searchInputWidth{
+    width:145px;
+}
+/*addBook Page Css end*/

@@ -56,7 +56,7 @@
             })
             .when("/user/:uid/addbook",{
                 templateUrl:'views/user/templates/stats/addBook.view.client.html',
-                controller:'profileController',
+                controller:'addBookController',
                 controllerAs:'model'
             })
             .when("/organizer", {

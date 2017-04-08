@@ -83,8 +83,8 @@ module.exports=function (app,model) {
                                     }
                                     // console.log(oldUser.owner+"   "+newUser.id);
                                     // oldUser.set("blah","xfgdfg");
-                                    oldUser.blah="asdas";
-                                    oldUser.price=1000;
+                                    // oldUser.blah="asdas";
+                                    // oldUser.price=1000;
                                     // console.log(oldUser.blah);
                                     finalResponse.push(oldUser);
                                 }
