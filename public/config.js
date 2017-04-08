@@ -45,17 +45,17 @@
                 controllerAs: 'model'
             })
             .when("/user/:uid/myalerts",{
-                templateUrl:'views/user/templates/stats/myAlerts.view.client.html',
+                templateUrl:'views/user/templates/customer/stats/myAlerts.view.client.html',
                 controller:'profileController',
                 controllerAs:'model'
             })
             .when("/user/:uid/mystats",{
-                templateUrl:'views/user/templates/stats/myStats.view.client.html',
+                templateUrl:'views/user/templates/customer/stats/myStats.view.client.html',
                 controller:'profileController',
                 controllerAs:'model'
             })
             .when("/user/:uid/addbook",{
-                templateUrl:'views/user/templates/stats/addBook.view.client.html',
+                templateUrl:'views/user/templates/customer/stats/addBook.view.client.html',
                 controller:'addBookController',
                 controllerAs:'model'
             })
