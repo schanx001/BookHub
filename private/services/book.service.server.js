@@ -62,6 +62,9 @@ module.exports=function (app,model) {
                         .then(function (responseNew) {
                             // console.log(responseNew);
                             var finalResponse=[];
+                            if(responseNew.length){
+                                finalResponse=response;
+                            }
                             for(var x in responseNew){
                                 var newUser=responseNew[x];
                                 for(var y in response){
