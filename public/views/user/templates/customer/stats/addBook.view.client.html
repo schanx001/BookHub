@@ -45,6 +45,8 @@
                     <p>Title: {{book.volumeInfo.title}}<br>
                         Author: {{book.volumeInfo.authors[0]}}<br>
                         Add Price: <input type="number" ng-model="model.bookPrice" required>
+                        Add Description:<br>
+                        <textarea ng-model="model.bookDescription" placeholder="Add notes here"></textarea>
                     </p>
                 </div>
                 <div class="col-xs-12">

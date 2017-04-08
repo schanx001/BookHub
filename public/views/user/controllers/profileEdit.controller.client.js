@@ -15,10 +15,76 @@
         vm.booksAvailable=[];
         vm.booksShared=[];
         vm.updateUser = updateUser;
+        vm.deleteBook=deleteBook;
         vm.deleteUser = deleteUser;
+        vm.editBook=editBook;
+        vm.updateBook=updateBook;
         // vm.getBooksRequestedForAndRequested=getBooksRequestedForAndRequested;
         // vm.getUserBooksStats="";
         vm.booksForUserId=null;
+        
+        function editBook(bookId) {
+            document.getElementById('bookEditDiv'+bookId).classList.toggle('hidden');
+            document.getElementById('bookUpdateDiv'+bookId).classList.toggle('hidden');
+            document.getElementById('bookEditButtonDiv'+bookId).classList.toggle('hidden');
+            document.getElementById('bookUpdateButtonDiv'+bookId).classList.toggle('hidden');
+        }
+        
+        function updateBook(book) {
+            BookService
+                .updateBookService(book,userId)
+                .then(function (response) {
+                    document.getElementById('bookEditDiv'+book._id).classList.toggle('hidden');
+                    document.getElementById('bookUpdateDiv'+book._id).classList.toggle('hidden');
+                    document.getElementById('bookEditButtonDiv'+book._id).classList.toggle('hidden');
+                    document.getElementById('bookUpdateButtonDiv'+book._id).classList.toggle('hidden');
+                },function (error) {
+
+                });
+        }
+        
+        function deleteBook(bookId) {
+            // alert(bookId);
+            BookService
+                .deleteBookService(bookId,userId)
+                .then(function (response) {
+                    // getBooksForUserId(userId);
+                    var books=response.data;
+                    var requestedBooks=[];
+                    var requestedForBooks=[];
+                    for (var x in books){
+                        if(books[x].owner===userId && books[x].status==="requested"){
+                            requestedBooks.push(books[x]);
+                        }
+                        if(books[x].currentlyWith===userId && books[x].status==="requested"){
+                            requestedForBooks.push(books[x]);
+                        }
+                    }
+                    // console.log("requestedBooks:"+requestedBooks);
+                    vm.requestedBooks=requestedBooks;
+                    // console.log("requestedForBooks:"+requestedForBooks);
+                    vm.requestedForBooks=requestedForBooks;
+
+                    var booksAvailable=[];
+                    var booksShared=[];
+                    for (var x in books){
+                        if(books[x].owner===userId && books[x].status==="available"){
+                            booksAvailable.push(books[x]);
+                        }
+                        if(books[x].currentlyWith===userId && books[x].status==="shared"){
+                            booksShared.push(books[x]);
+                        }
+                    }
+                    // console.log("requestedBooks:"+requestedBooks);
+                    vm.booksAvailable=booksAvailable;
+                    // console.log("requestedForBooks:"+requestedForBooks);
+                    vm.booksShared=booksShared;
+                    // getBooksRequestedForAndRequested(userId);
+                    // getUserBooksStats(userId);
+                },function (error) {
+                    vm.error="Unable to delete";
+                });
+        }
 
         function getBooksForUserId(userId) {
             BookService
