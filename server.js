@@ -25,6 +25,8 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+require("./private/app.js")(app,smtpTransport);
+
 //require ("./test/app.js")(app);
 
 //require("./private/app.js")(app);
@@ -45,7 +47,6 @@ var smtpTransport = nodemailer.createTransport({
 
 /*------------------Routing Started ------------------------*/
 
-require("./private/app.js")(app,smtpTransport);
 var port = process.env.PORT || 3001;
 
 app.listen(port);
