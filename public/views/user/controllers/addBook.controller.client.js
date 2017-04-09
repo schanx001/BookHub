@@ -11,6 +11,7 @@
         vm.userId=$routeParams['uid'];
         vm.bookPrice=0;
         vm.bookTitle="";
+        vm.bookDescription="";
 
         function addBook(bookToAdd) {
             // alert("book");
@@ -20,6 +21,7 @@
                     title:bookToAdd.volumeInfo.title,
                     author:bookToAdd.volumeInfo.authors[0],
                     price:vm.bookPrice,
+                    description:vm.bookDescription,
                     imgsrc:"link"+vm.bookNumber,
                     currentlyWith:vm.userId,
                     status:"available"})

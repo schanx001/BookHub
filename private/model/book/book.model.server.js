@@ -12,9 +12,15 @@ module.exports = function(){
         "updateABook":updateABook,
         "findAllAvBooks":findAllAvBooks,
         "findBooksByName":findBooksByName,
+        "deleteBookFromDb":deleteBookFromDb,
+        "updateBookInDb":updateBookInDb,
         "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId
     };
     return api;
+
+    function updateBookInDb(book) {
+        return bookModel.update({_id:book._id},{$set:book});
+    }
 
     function getModel() {
         return bookModel;
@@ -24,6 +30,10 @@ module.exports = function(){
         model=_model;
         bookSchema = require("./book.schema.server")(model);
         bookModel = mongoose.model("bookModel", bookSchema);
+    }
+
+    function deleteBookFromDb(bookId) {
+        return bookModel.remove({_id:bookId});
     }
 
     function createABook(book) {

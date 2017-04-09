@@ -6,6 +6,7 @@ module.exports = function(model) {
         author: String,
         ISBN: String,
         imgsrc:String,
+        description:String,
         currentlyWith: {type:mongoose.Schema.Types.ObjectId,ref:'userModel'},
         rating: String,
         price: Number,

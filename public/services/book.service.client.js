@@ -8,9 +8,24 @@
             "findAllAvBooks":findAllAvBooks,
             "findBooksByName":findBooksByName,
             "createBook":createBook,
-            "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId
+            "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId,
+            "deleteBookService":deleteBookService,
+            "updateBookService":updateBookService,
+            "acceptRequestService":acceptRequestService
         };
         return api;
+
+        function acceptRequestService(book,request) {
+            return $http.put("/api/book?acceptRequest="+request,book);
+        }
+
+        function updateBookService(book,userId) {
+            return $http.put("/api/book?userId="+userId,book);
+        }
+
+        function deleteBookService(bookId,userId) {
+            return $http.delete("/api/book?bookId="+bookId+"&userId="+userId);
+        }
 
         function createBook(book) {
             return $http.post("/api/book",book);

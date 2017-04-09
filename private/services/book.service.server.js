@@ -1,25 +1,104 @@
-module.exports=function (app,model) {
+module.exports=function (app,smtpTransport,model) {
     app.get("/api/book",findBooks);
     app.post("/api/book",createBook);
+    app.delete("/api/book",deleteBook);
+    app.put("/api/book",updateBook);
+
 
     var bookModel = model.bookModel;
     var userModel = model.userModel;
 
+
+    function sendMailToUser(book,status){
+        var subjectText="";
+        var bodyText="";
+        if(status){
+            subjectText="BookHub: Book request accepted";
+            bodyText="Your request for book named "+book.title+" has been accepted\n\nRegards,\nTeam BookHub";
+        }else{
+            subjectText="BookHub: Book request rejected";
+            bodyText='Your request for book named "'+book.title+'" has been rejected\n\nRegards,\nTeam BookHub';
+        }
+        var mailOptions={
+            to : book.email,
+            subject : subjectText,
+            text : bodyText
+        };
+        console.log(mailOptions);
+        smtpTransport.sendMail(mailOptions, function(error, response){
+            if(error){
+                // console.log(error);
+                // res.end("error");
+            }else{
+                // console.log("Message sent: " + response.message);
+                // res.end("sent");
+            }
+        });
+    };
+
+
+
+
+
+    function updateBook(req,res) {
+        var book=req.body;
+        var userId=req.query.userId;
+        if(userId!=null || userId!=undefined){
+            // console.log(userId);
+            bookModel
+                .updateBookInDb(book)
+                .then(function (response) {
+                    res.sendStatus(200);
+                },function (error) {
+                    res.status(404).send();
+                });
+        }else{
+            var acceptRequest=req.query.acceptRequest;
+            // console.log(acceptRequest);
+            if(acceptRequest==="1"){
+                // console.log("Inside");
+                book.status="shared";
+                // console.log("accept"+book);
+                bookModel
+                    .updateBookInDb(book)
+                    .then(function (response) {
+                        sendMailToUser(book,true);
+                        res.sendStatus(200);
+                    },function (error) {
+                        res.status(404).send();
+                    });
+            }else{
+                book.status="available";
+                book.currentlyWith=book.owner;
+                // console.log(book);
+                bookModel
+                    .updateBookInDb(book)
+                    .then(function (response) {
+                        sendMailToUser(book,false);
+                        res.sendStatus(200);
+                    },function (error) {
+                        res.status(404).send();
+                    });
+            }
+        }
+    }
+
+    function deleteBook(req,res) {
+        var bookId=req.query.bookId;
+        bookModel
+            .deleteBookFromDb(bookId)
+            .then(function (response) {
+                findBooks(req,res);
+            },function (error) {
+                res.status(404).send();
+            });
+    }
+
     function createBook(req,res) {
-        // console.log("inside create");
         var book=req.body;
         bookModel
             .createABook(book)
             .then(function (response) {
-                // console.log(response);
-                // response.currentlyWith=response._id;
-                // bookModel
-                //     .updateABook(response)
-                //     .then(function (response) {
-                //         res.send(response);
-                //     },function (error) {
-                //         res.status(404).send();
-                //     });
                 res.send(response);
             },function (error) {
                 res.status(404).send();
@@ -41,13 +120,8 @@ module.exports=function (app,model) {
             bookModel
                 .findBooksOwnedAndBorrowedByUserId(userId)
                 .then(function (response) {
-                    // console.log(response);
-                    // console.log("before:   "+response);
-                    // console.log("after:   "+response.toArray());
                     var newUserIds=[];
                     for(var x in response){
-                        // console.log("before:   "+response[x]);
-                        // console.log("after:   "+response[x].toJSON());
                         var userobj=response[x];
                         if(userobj.currentlyWith!=userId){
                             newUserIds.push(userobj.currentlyWith);
@@ -56,45 +130,28 @@ module.exports=function (app,model) {
                             newUserIds.push(userobj.owner);
                         }
                     }
-                    // console.log("newUserIds="+newUserIds);
                     userModel
                         .getEmailIFromUserIds(newUserIds)
                         .then(function (responseNew) {
-                            // console.log(responseNew);
                             var finalResponse=[];
+                            if(!responseNew.length){
+                                finalResponse=response;
+                            }
                             for(var x in responseNew){
                                 var newUser=responseNew[x];
                                 for(var y in response){
                                     var oldUser=response[y].toObject();
-                                    // oldUser.blah="sdsada";
-                                    // oldUser.set("blah","safdas");
-                                    // console.log("book:"+oldUser);
-                                    // console.log("oldUser.owner="+oldUser.owner+" newUser._id="+newUser._id+" oldUser.currentlyWith="+oldUser.currentlyWith);
-                                    // if(oldUser.owner==newUser._id){
-                                    //     console.log("inside");
-                                    // }
-                                    // if(oldUser.currentlyWith.toString()==newUser._id){
-                                    //     console.log("inside");
-                                    // }
                                     if(oldUser.owner.toString()===newUser._id.toString() || oldUser.currentlyWith.toString()===newUser._id.toString()){
-                                        // console.log("inside");
                                         oldUser.username=newUser.username;
                                         oldUser.email=newUser.email;
                                     }
-                                    // console.log(oldUser.owner+"   "+newUser.id);
-                                    // oldUser.set("blah","xfgdfg");
-                                    // oldUser.blah="asdas";
-                                    // oldUser.price=1000;
-                                    // console.log(oldUser.blah);
                                     finalResponse.push(oldUser);
                                 }
                             }
-                            // console.log("response:"+finalResponse[0].price);
                             res.send(finalResponse);
                         },function (error) {
                             res.status(404).send();
                         });
-                    // res.send(response);
                 },function (error) {
                     res.status(404).send();
                 });

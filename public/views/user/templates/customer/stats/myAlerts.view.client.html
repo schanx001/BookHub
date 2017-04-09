@@ -36,10 +36,12 @@
                 <div class="col-xs-6">
                     <p>Username: {{book.username}}<br>
                         Email: {{book.email}}<br>
+                        Description:{{book.description}}
                     </p>
                 </div>
                 <div class="col-xs-12">
-                    <button class="btn btn-block btn-success">Accept</button><button class="btn btn-block btn-danger">Reject</button><br><br>
+                    <button class="btn btn-block btn-success" ng-click="model.updateRequest(book,1)">Accept</button>
+                    <button class="btn btn-block btn-danger" ng-click="model.updateRequest(book,0)">Reject</button><br><br>
                 </div>
             </div>
         </div>
@@ -60,6 +62,7 @@
                 <div class="col-xs-6">
                     <p>Username: {{book.username}}<br>
                         Email: {{book.email}}<br>
+                        Description:{{book.description}}
                     </p>
                 </div>
                 <div class="col-xs-12 bg-success">
@@ -68,7 +71,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

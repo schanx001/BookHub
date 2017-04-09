@@ -29,12 +29,17 @@
             <div class="col-xs-9">
                 <div class="col-xs-12">
                     <p>Title: {{book.title}}<br>
-                        Author: {{book.author}}<br>
-                        Price: {{book.price}}
+                        Author: {{book.author}}
                     </p>
+                    <div id="bookEditDiv{{book._id}}">Price: {{book.price}}<br>
+                        Description:{{book.description}}</div>
+                    <div id="bookUpdateDiv{{book._id}}" class="hidden">Price:<input type="number" ng-model="book.price"><br>
+                        Description:<textarea ng-model="book.description"></textarea></div>
                 </div>
                 <div class="col-xs-12">
-                    <button class="btn btn-block btn-success">Edit</button><button class="btn btn-block btn-danger">Delete</button><br><br>
+                    <div id="bookEditButtonDiv{{book._id}}" class=""><button class="btn btn-block btn-success" ng-click="model.editBook(book._id)">Edit</button></div>
+                    <div id="bookUpdateButtonDiv{{book._id}}" class="hidden"><button class="btn btn-block btn-success" ng-click="model.updateBook(book)">Update</button></div>
+                    <button class="btn btn-block btn-danger" ng-click="model.deleteBook(book._id)">Delete</button><br><br>
                 </div>
             </div>
         </div>
@@ -55,6 +60,7 @@
                 <div class="col-xs-6">
                     <p>Username: {{book.username}}<br>
                         Email: {{book.email}}<br>
+                        Description:{{book.description}}
                     </p>
                 </div>
             </div>
