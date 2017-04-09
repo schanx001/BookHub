@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab465b18-0e3b-4089-a5eb-f993b9526631" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/private/app.js" afterPath="$PROJECT_DIR$/private/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/private/model/book/book.model.server.js" afterPath="$PROJECT_DIR$/private/model/book/book.model.server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/private/services/book.service.server.js" afterPath="$PROJECT_DIR$/private/services/book.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/private/services/user.service.server.js" afterPath="$PROJECT_DIR$/private/services/user.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/config.js" afterPath="$PROJECT_DIR$/public/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/services/book.service.client.js" afterPath="$PROJECT_DIR$/public/services/book.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/user/controllers/profileEdit.controller.client.js" afterPath="$PROJECT_DIR$/public/views/user/controllers/profileEdit.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/user/templates/customer/stats/myAlerts.view.client.html" afterPath="$PROJECT_DIR$/public/views/user/templates/customer/stats/myAlerts.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/user/templates/mail/index.html" afterPath="$PROJECT_DIR$/public/views/user/templates/mail/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -63,8 +53,8 @@
       <file leaf-file-name="book.service.server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/private/services/book.service.server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-500">
-              <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+            <state relative-caret-position="317">
+              <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -739,12 +729,12 @@
       <workItem from="1491614690691" duration="495000" />
       <workItem from="1491671834570" duration="4618000" />
       <workItem from="1491682638101" duration="2668000" />
-      <workItem from="1491693034642" duration="6100000" />
+      <workItem from="1491693034642" duration="6583000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103711000" />
+    <option name="totallyTimeSpent" value="104194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -1142,8 +1132,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/private/services/book.service.server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-500">
-          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        <state relative-caret-position="317">
+          <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
           <folding />
         </state>
       </provider>

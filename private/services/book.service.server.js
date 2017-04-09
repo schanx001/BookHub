@@ -20,7 +20,7 @@ module.exports=function (app,smtpTransport,model) {
             bodyText='Your request for book named "'+book.title+'" has been rejected\n\nRegards,\nTeam BookHub';
         }
         var mailOptions={
-            to : "shohitdoon@gmail.com",//book.email
+            to : book.email,
             subject : subjectText,
             text : bodyText
         };
