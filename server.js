@@ -27,7 +27,7 @@ app.use(passport.session());
 
 //require ("./test/app.js")(app);
 
-require("./private/app.js")(app);
+//require("./private/app.js")(app);
 
 /*
  Here we are configuring our SMTP Server details.

@@ -13,7 +13,7 @@ module.exports = function (app,smtpTransport) {
     }
 
     var mongoose = require("mongoose");
-    mongoose.connect(connectionString);
+    mongoose.createConnection(connectionString);
 
     var model = require("./model/models.server")();
     require("./services/user.service.server")(app, model);
