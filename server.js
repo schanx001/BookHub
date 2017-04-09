@@ -27,10 +27,8 @@ app.use(passport.session());
 
 //require ("./test/app.js")(app);
 
-<<<<<<< HEAD
 require("./private/app.js")(app);
 
-=======
 /*
  Here we are configuring our SMTP Server details.
  STMP is mail server which is responsible for sending and recieving email.
@@ -48,7 +46,6 @@ var smtpTransport = nodemailer.createTransport({
 /*------------------Routing Started ------------------------*/
 
 require("./private/app.js")(app,smtpTransport);
->>>>>>> 13902d96c21a07c9077fa5806c753fe7acae7d95
 var port = process.env.PORT || 3001;
 
 app.listen(port);

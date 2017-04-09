@@ -36,7 +36,6 @@ module.exports = function (app, model) {
     app.post('/api/register',register);
     app.get ('/api/loggedin', loggedin);
 
-<<<<<<< HEAD
     function loggedin(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
     }
@@ -46,8 +45,6 @@ module.exports = function (app, model) {
     //     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  ,email: "charly@husky.neu.edu"},
     //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi",email: "jose@husky.neu.edu" }
     // ];
-=======
->>>>>>> 13902d96c21a07c9077fa5806c753fe7acae7d95
     var userModel = model.userModel;
 
     passport.use(new LocalStrategy(localStrategy));
