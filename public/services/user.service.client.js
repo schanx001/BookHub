@@ -6,24 +6,39 @@
         .module("BookHubMaker")
         .factory("UserService",UserService);
     function UserService($http) {
-        var api = {
-            "createUser":createUser,
+        var api = {/*
+            "createUser":createUser,*/
             "updateUser": updateUser,
             "findUserByCredentials": findUserByCredentials,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
-            "deleteUser":deleteUser
+            "deleteUser":deleteUser,
+            "login" : login,
+            "logout" : logout,
+            "register":register
         };
         return api;
 
+        function register(user) {
+            return $http.post("/api/register",user);
+        }
+        
+        function logout(user) {
+            return $http.post("/api/logout");
+        }
+        
+        function login(user) {
+            return  $http.post("/api/login",user);
+        }
+        
         function deleteUser(userId) {
             return $http.delete('/api/user/'+userId);
         }
 
-        function createUser(user) {
+        /*function createUser(user) {
             alert("in client"+user);
             return $http.post("/api/user", user);
-        }
+        }*/
 
         function findUserByUsername(username) {
             return $http.get("/api/user?username="+username);

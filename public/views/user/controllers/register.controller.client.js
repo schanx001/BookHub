@@ -6,9 +6,10 @@
         .module("BookHubMaker")
         .controller("registerController", registerController);
 
-    function registerController(UserService,$location) {
+    function registerController(UserService,$location,$rootScope) {
         var vm = this;
         vm.register = register;
+
         function register(user) {
             if(user==null)
             {
@@ -21,14 +22,18 @@
                         vm.error = "sorry that username is taken"
                     })
                     .error(function(){
-                        UserService
+                        /*UserService
                             .createUser(user)
                             .success(function(user){
                                 //alert("welcome");
-                                $location.url('/user/' + user._id);
-                            })
-                            .error(function () {
-                                vm.error = 'sorry could not register';
+                                $location.url('/user/' + user._id);*/
+                        alert("in register controller");
+                        UserService
+                            .register(user)
+                            .then(function (response){
+                                var user=response.data;
+                                $rootScope.currentUser = user;
+                                $location.url("/user/"+user._id);
                             });
                     });
             }}}

@@ -2,12 +2,43 @@
  * Created by schanx on 2/27/17.
  */
 module.exports = function (app, model) {
+
+
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+    var bcrypt = require("bcrypt-nodejs");
+    var FacebookStrategy = require('passport-facebook').Strategy;
+    var facebookConfig = {
+        clientID: 406973029672615, //process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: '7fa1e54f0ec3c9989fe3a4679e108b4c',//process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL: 'http://localhost:3001/auth/facebook/callback',//process.env.FACEBOOK_CALLBACK_URL,
+        profileFields: ['id','displayName','email','name']
+    };
+    
+    passport.serializeUser(serializerUser);
+    passport.deserializeUser(deserializeUser);
+
+    app.get('/auth/facebook',passport.authenticate('facebook',{scope:'email'}));
+    app.get('/auth/facebook/callback',passport.authenticate('facebook',{
+        failureRedirect: '/#/login'
+    }),function (req,res) {
+        console.log(req.user);
+        var url = '/#/user/'+req.user._id.toString();
+        res.redirect(url);
+    });
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserByUserId);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
     app.post("/api/user", createUser);
+    app.post('/api/login',passport.authenticate('local'),login);
+    app.post('/api/logout',logout);
+    app.post('/api/register',register);
+    app.get ('/api/loggedin', loggedin);
 
+    function loggedin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
     // var users = [
     //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder" , email: "alice@husky.neu.edu"  },
     //     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  , email: "bob@husky.neu.edu"},
@@ -15,6 +46,110 @@ module.exports = function (app, model) {
     //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi",email: "jose@husky.neu.edu" }
     // ];
     var userModel = model.userModel;
+
+    passport.use(new LocalStrategy(localStrategy));
+    passport.use(new FacebookStrategy(facebookConfig,facebookStrategy));
+
+    function facebookStrategy(token, refreshToken, profile, done) {
+        userModel
+            .findUserByFacebookId(profile.id)
+            .then(function (user) {
+                if(user){
+                    return done(null,user);
+                }
+                else{
+                    var names=profile.displayName.split(" ");
+                    var faceBookUser = {
+                        firstName: names[0],
+                        lastName: names[1],
+                        facebook:{
+                            id: profile.id,
+                            token: token
+                        },
+                        email: profile.emails[0].value
+                    };
+                    userModel
+                        .createUser(faceBookUser)
+                        .then(function (user) {
+                            done(null,user);
+                        });
+                }
+            },function (err) {
+                if(err) {
+                    return done(err);
+                }
+            });
+    }
+    
+    function register(req, res) {
+        var user = req.body;
+        user.password = bcrypt.hashSync(user.password);
+        userModel
+            .createUser(user)
+            .then(function (User){
+                console.log(User);
+                if(User){
+                    req.login(User, function (err) {
+                        if(err){
+                            res.status(400).send(err);
+                        }
+                        else{
+                            res.json(User);
+                        }
+                    });
+                }
+            });
+    }
+
+    function logout(req, res) {
+        req.logOut();
+        res.sendStatus(200);
+    }
+
+    function login(req, res) {
+
+        console.log("hi");
+
+        var user=req.user;
+        res.json(user);
+    }
+
+    function localStrategy(username, password, done) {
+        userModel
+            //.findUserByCredentials(username, password)
+            .findUserByUsername(username)
+            .then(function (user) {
+
+                console.log(user);
+                console.log(user.password + " "+ bcrypt.hashSync(password));
+                console.log(bcrypt.compareSync(password, user.password));
+                if(user!=null && user.username === username && bcrypt.compareSync(password, user.password)){
+
+                    return done(null,user);
+                }else{
+                    return done(null,false);
+                }
+            },function (err) {
+                if(err){
+                    return done(err);
+                }
+            });
+    }
+
+    function serializerUser(user, done) {
+        done(null,user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel
+            .findUserById(user._id)
+            .then(function (user) {
+                done(null,user);
+            },
+            function (err) {
+                done(err, null);
+            });
+    }
 
     function deleteUser(req, res) {
         var userId = req.params.userId;
@@ -87,29 +222,36 @@ module.exports = function (app, model) {
     }
 
     function findUser(req, res) {
-        console.log("Find User called");
+        //console.log("Find User called");
         var username = req.query['username'];
         var password = req.query['password'];
         if (username && password) {
             findUserByCredentials(req, res);
         } else if (username) {
+            //console.log(username);
             findUserByUsername(req, res);
         }
     }
 
     function findUserByUsername(req, res) {
-        console.log("Find by username called");
+        //console.log("Find by username called");
         var username = req.query.username;
+
         userModel
-            .findUserByUsername(username)
+            .findOneUserByUsername(username)
             .then(function (users) {
                 if (users.length != 0) {
+
+                    console.log(username);
                     res.send(users[0]);
                 }
                 else {
+
+                    console.log(username + '22');
                     res.sendStatus(404);
                 }
             },function (err) {
+                console.log("in find userbyusername");
                 res.sendStatus(404);
             });
     }

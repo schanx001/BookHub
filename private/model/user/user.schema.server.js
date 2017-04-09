@@ -10,8 +10,12 @@ module.exports = function(model) {
         lastName: String,
         email: String,
         phone: String,
-        role: String,
-        dateCreated: {type: Date, default:Date.now}
+        role: {type: String, enum: ['admin','user','seller','eventorganizer'], default: 'user'},
+        dateCreated: {type: Date, default:Date.now},
+        facebook:{
+            id:String,
+            token:String
+        }
     }, {collection: 'project.mongo.users'});
 
     return userSchema;

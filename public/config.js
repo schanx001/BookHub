@@ -3,6 +3,18 @@
         .module("BookHubMaker")
         .config(configuration);
 
+    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
+        return $http.get('/api/loggedin').success(function(user) {
+            $rootScope.errorMessage = null;
+            if (user !== '0') {
+                $rootScope.currentUser = user;
+            } else {
+                $location.url('/login');
+            }
+        });
+    };
+
+
     function configuration($routeProvider) {
         $routeProvider
             .when("/", {
@@ -28,7 +40,10 @@
             .when("/user/:uid", {
                 templateUrl: 'views/user/templates/profileEdit.view.client.html',
                 controller: 'profileController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/user/:uid/myalerts",{
                 templateUrl:'views/user/templates/customer/stats/myAlerts.view.client.html',
@@ -53,8 +68,10 @@
             .when("/admin",{
                 templateUrl: 'views/user/templates/admin.view.client.html',
                 controller: 'adminController',
-                comtrollerAs: 'mode'
+                comtrollerAs: 'model'
             })
     }
+
+
 
 })();
