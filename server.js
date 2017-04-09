@@ -27,28 +27,7 @@ var smtpTransport = nodemailer.createTransport({
 
 /*------------------Routing Started ------------------------*/
 
-app.get('/',function(req,res){
-    res.sendfile('index.html');
-});
-app.get('/send',function(req,res){
-    var mailOptions={
-        to : req.query.to,
-        subject : req.query.subject,
-        text : req.query.text
-    };
-    console.log(mailOptions);
-    smtpTransport.sendMail(mailOptions, function(error, response){
-        if(error){
-            console.log(error);
-            res.end("error");
-        }else{
-            console.log("Message sent: " + response.message);
-            res.end("sent");
-        }
-    });
-});
-
-require("./private/app.js")(app);
+require("./private/app.js")(app,smtpTransport);
 var port = process.env.PORT || 3001;
 
 app.listen(port);

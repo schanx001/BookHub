@@ -19,7 +19,7 @@ module.exports = function(){
     return api;
 
     function updateBookInDb(book) {
-        return bookModel.update({_id:book._id},{$set:{price:book.price,description:book.description}});
+        return bookModel.update({_id:book._id},{$set:book});
     }
 
     function getModel() {

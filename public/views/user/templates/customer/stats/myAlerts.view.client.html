@@ -40,7 +40,8 @@
                     </p>
                 </div>
                 <div class="col-xs-12">
-                    <button class="btn btn-block btn-success">Accept</button><button class="btn btn-block btn-danger">Reject</button><br><br>
+                    <button class="btn btn-block btn-success" ng-click="model.updateRequest(book,1)">Accept</button>
+                    <button class="btn btn-block btn-danger" ng-click="model.updateRequest(book,0)">Reject</button><br><br>
                 </div>
             </div>
         </div>
@@ -71,26 +72,6 @@
         </div>
     </div>
 </div>
-
-<script>// <![CDATA[
-$(document).ready(function(){
-    var from,to,subject,text;
-    $("#send_email").click(function(){
-        //to=$("#to").val();
-        to=model.book;
-        subject=$("#subject").val();
-        text=$("#content").val();
-        $("#message").text("Sending E-mail...Please wait");
-        $.get("http://localhost:3001/send",{to:to,subject:subject,text:text},function(data){
-            if(data=="sent")
-            {
-                $("#message").empty().html("Email is been sent at "+to+" . Please check inbox!");
-            }
-
-        });
-    });
-});
-</script>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid bg-primary">

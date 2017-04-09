@@ -1,23 +1,86 @@
-module.exports=function (app,model) {
+module.exports=function (app,smtpTransport,model) {
     app.get("/api/book",findBooks);
     app.post("/api/book",createBook);
     app.delete("/api/book",deleteBook);
     app.put("/api/book",updateBook);
 
+
     var bookModel = model.bookModel;
     var userModel = model.userModel;
+
+
+    function sendMailToUser(book,status){
+        var subjectText="";
+        var bodyText="";
+        if(status){
+            subjectText="BookHub: Book request accepted";
+            bodyText="Your request for book named "+book.title+" has been accepted\n\nRegards,\nTeam BookHub";
+        }else{
+            subjectText="BookHub: Book request rejected";
+            bodyText='Your request for book named "'+book.title+'" has been rejected\n\nRegards,\nTeam BookHub';
+        }
+        var mailOptions={
+            to : "shohitdoon@gmail.com",//book.email
+            subject : subjectText,
+            text : bodyText
+        };
+        console.log(mailOptions);
+        smtpTransport.sendMail(mailOptions, function(error, response){
+            if(error){
+                // console.log(error);
+                // res.end("error");
+            }else{
+                // console.log("Message sent: " + response.message);
+                // res.end("sent");
+            }
+        });
+    };
+
+
+
+
 
     function updateBook(req,res) {
         var book=req.body;
         var userId=req.query.userId;
-        // console.log(book);
-        bookModel
-            .updateBookInDb(book)
-            .then(function (response) {
-                res.sendStatus(200);
-            },function (error) {
-                res.status(404).send();
-            });
+        if(userId!=null || userId!=undefined){
+            // console.log(userId);
+            bookModel
+                .updateBookInDb(book)
+                .then(function (response) {
+                    res.sendStatus(200);
+                },function (error) {
+                    res.status(404).send();
+                });
+        }else{
+            var acceptRequest=req.query.acceptRequest;
+            // console.log(acceptRequest);
+            if(acceptRequest==="1"){
+                // console.log("Inside");
+                book.status="shared";
+                // console.log("accept"+book);
+                bookModel
+                    .updateBookInDb(book)
+                    .then(function (response) {
+                        sendMailToUser(book,true);
+                        res.sendStatus(200);
+                    },function (error) {
+                        res.status(404).send();
+                    });
+            }else{
+                book.status="available";
+                book.currentlyWith=book.owner;
+                // console.log(book);
+                bookModel
+                    .updateBookInDb(book)
+                    .then(function (response) {
+                        sendMailToUser(book,false);
+                        res.sendStatus(200);
+                    },function (error) {
+                        res.status(404).send();
+                    });
+            }
+        }
     }
 
     function deleteBook(req,res) {

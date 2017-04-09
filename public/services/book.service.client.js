@@ -10,9 +10,14 @@
             "createBook":createBook,
             "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId,
             "deleteBookService":deleteBookService,
-            "updateBookService":updateBookService
+            "updateBookService":updateBookService,
+            "acceptRequestService":acceptRequestService
         };
         return api;
+
+        function acceptRequestService(book,request) {
+            return $http.put("/api/book?acceptRequest="+request,book);
+        }
 
         function updateBookService(book,userId) {
             return $http.put("/api/book?userId="+userId,book);

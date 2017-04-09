@@ -19,10 +19,25 @@
         vm.deleteUser = deleteUser;
         vm.editBook=editBook;
         vm.updateBook=updateBook;
+        vm.updateRequest=updateRequest;
         // vm.getBooksRequestedForAndRequested=getBooksRequestedForAndRequested;
         // vm.getUserBooksStats="";
         vm.booksForUserId=null;
-        
+
+        function updateRequest(book,request) {
+            BookService
+                .acceptRequestService(book,request)
+                .then(function (response) {
+                    for(var x in vm.requestedBooks){
+                        if(vm.requestedBooks[x]===book){
+                            vm.requestedBooks.splice(x,1);
+                            break;
+                        }
+                    }
+                },function (error) {
+
+                });
+        }
         function editBook(bookId) {
             document.getElementById('bookEditDiv'+bookId).classList.toggle('hidden');
             document.getElementById('bookUpdateDiv'+bookId).classList.toggle('hidden');

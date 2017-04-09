@@ -1,7 +1,7 @@
 /**
  * Created by schanx on 2/27/17.
  */
-module.exports = function (app) {
+module.exports = function (app,smtpTransport) {
     var connectionString = 'mongodb://127.0.0.1:27017/bookhub';
 
     if(process.env.MLAB_USERNAME) {
@@ -17,5 +17,5 @@ module.exports = function (app) {
 
     var model = require("./model/models.server")();
     require("./services/user.service.server")(app, model);
-    require("./services/book.service.server")(app, model);
+    require("./services/book.service.server")(app, smtpTransport,model);
 };
