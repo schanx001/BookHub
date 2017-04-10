@@ -21,6 +21,16 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+var smtpTransport = nodemailer.createTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    auth: {
+        user: "webdevproject2017@gmail.com",
+        pass: "webdev123"
+    }
+});
+
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -35,14 +45,6 @@ require("./private/app.js")(app,smtpTransport);
  Here we are configuring our SMTP Server details.
  STMP is mail server which is responsible for sending and recieving email.
  */
-var smtpTransport = nodemailer.createTransport({
-    service: "gmail",
-    host: "smtp.gmail.com",
-    auth: {
-        user: "webdevproject2017@gmail.com",
-        pass: "webdev123"
-    }
-});
 /*------------------SMTP Over-----------------------------*/
 
 /*------------------Routing Started ------------------------*/

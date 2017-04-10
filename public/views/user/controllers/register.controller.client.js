@@ -27,10 +27,10 @@
                             .success(function(user){
                                 //alert("welcome");
                                 $location.url('/user/' + user._id);*/
-                        alert("in register controller");
                         UserService
                             .register(user)
                             .then(function (response){
+                                alert('hello');
                                 var user=response.data;
                                 $rootScope.currentUser = user;
                                 $location.url("/user/"+user._id);

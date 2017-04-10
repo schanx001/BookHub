@@ -234,16 +234,32 @@ module.exports = function (app, model) {
     }
 
     function findUserByUsername(req, res) {
-        //console.log("Find by username called");
         var username = req.query.username;
+/*
+    .then(function (user) {
+            console.log("hi "+user);
+            if (user) {
+
+                res.json(user[0]);
+            }
+            else {
+
+                console.log(username + '22');
+                res.sendStatus(404);
+            }
+        },function (err) {
+            console.log("in find userbyusername");
+            res.sendStatus(404);
+        });
+*/
 
         userModel
             .findOneUserByUsername(username)
-            .then(function (users) {
-                if (users.length != 0) {
+            .then(function (user) {
+                console.log("hi "+user);
+                if (user) {
 
-                    console.log(username);
-                    res.send(users[0]);
+                    res.json(user[0]);
                 }
                 else {
 
@@ -254,6 +270,14 @@ module.exports = function (app, model) {
                 console.log("in find userbyusername");
                 res.sendStatus(404);
             });
+        /* .then(function (user){
+                console.log('i'+user);
+                res.send(user[0]);
+            },function (err) {
+                console.log('i'+err);
+                res.sendStatus(404);
+            });*/
+
     }
 
     function findUserByCredentials(req, res) {
