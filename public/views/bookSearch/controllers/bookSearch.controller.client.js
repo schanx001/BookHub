@@ -7,17 +7,31 @@
         var vm=this;
         vm.sortBy="";
         vm.sortListings=["Price Low-High","Price High-Low","Title A-Z","Title Z-A","Recent"];
-        vm.books=[{title:"Book1",imageSrc:"book1",author:"Author1",price:"price1"},
-            {title:"Book2",imgSrc:"book2",author:"Author2",price:"price2"},
-            {title:"Book3",imgSrc:"book3",author:"Author3",price:"price3"}];
+        vm.books=[];
         vm.bookNumber=0;
         vm.searchText="";
+        vm.userId="";
         vm.getSortedListing=getSortedListing;
-        vm.addBook=addBook;
         vm.getAllAvBooks=getAllAvBooks;
         vm.getSortListingMobile=getSortListingMobile;
         vm.searchBook=searchBook;
-        
+        vm.requestBook=requestBook;
+
+        function requestBook(book) {
+            BookService
+                .requestBookService(book._id,vm.userId)
+                .then(function (response) {
+                    for(var x in vm.books){
+                        if(vm.books[x]===book){
+                            vm.books.splice(x,1);
+                            break;
+                        }
+                    }
+                },function (error) {
+                    // vm.error=error;
+                });
+        }
+
         function searchBook() {
             if(vm.searchText!=""){
                 // console.log(vm.searchText);
@@ -34,12 +48,12 @@
                     })
             }
         }
-        
+
         function getSortListingMobile(opt) {
             vm.sortBy=opt;
             getSortedListing();
         }
-        
+
         function getAllAvBooks() {
             BookService
                 .findAllAvBooks()
@@ -49,7 +63,12 @@
                     console.log(error);
                 });
         }
-        getAllAvBooks();
+
+        function init() {
+            getAllAvBooks();
+        }
+        init();
+
         function getSortedListing() {
             // vm.books=orderBy(vm.books,vm.sortBy,true);
             if(vm.sortBy===""){
@@ -74,31 +93,31 @@
                 }
             }
         }
-        function addBook() {
-            // alert("book");
-            BookService
-                .createBook({
-                    owner:"58e409f17cdcab10d06b398d",
-                    title:"book"+vm.bookNumber,
-                    author:"author"+vm.bookNumber,
-                    price:vm.bookNumber,
-                    imgsrc:"link"+vm.bookNumber,
-                    currentlyWith:"58e409f17cdcab10d06b398d",
-                    status:"available"})
-                    .then(function (response) {
-                        // console.log("addbook="+response.data);
-                        vm.books=[];
-                        if(document.getElementById("div_book_listing")){
-                            document.getElementById("div_book_listing").innerHTML="";
-                        }
-                        if(document.getElementById("div_book_listing_mobile")){
-                            document.getElementById("div_book_listing_mobile").innerHTML="";
-                        }
-                        getAllAvBooks();
-                    },function (error) {
-                        console.log("addbookerror="+error);
-                    })
-        }
+        // function addBook() {
+        //     // alert("book");
+        //     BookService
+        //         .createBook({
+        //             owner:"58e409f17cdcab10d06b398d",
+        //             title:"book"+vm.bookNumber,
+        //             author:"author"+vm.bookNumber,
+        //             price:vm.bookNumber,
+        //             imgsrc:"link"+vm.bookNumber,
+        //             currentlyWith:"58e409f17cdcab10d06b398d",
+        //             status:"available"})
+        //             .then(function (response) {
+        //                 // console.log("addbook="+response.data);
+        //                 vm.books=[];
+        //                 if(document.getElementById("div_book_listing")){
+        //                     document.getElementById("div_book_listing").innerHTML="";
+        //                 }
+        //                 if(document.getElementById("div_book_listing_mobile")){
+        //                     document.getElementById("div_book_listing_mobile").innerHTML="";
+        //                 }
+        //                 getAllAvBooks();
+        //             },function (error) {
+        //                 console.log("addbookerror="+error);
+        //             })
+        // }
 
     }
 

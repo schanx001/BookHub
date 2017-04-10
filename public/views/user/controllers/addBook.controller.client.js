@@ -2,7 +2,7 @@
     angular
         .module("BookHubMaker")
         .controller("addBookController",addBookController)
-    
+
     function addBookController($http,$routeParams,BookService) {
 
         var vm = this;
@@ -22,7 +22,7 @@
                     author:bookToAdd.volumeInfo.authors[0],
                     price:vm.bookPrice,
                     description:vm.bookDescription,
-                    imgsrc:"link"+vm.bookNumber,
+                    imgsrc:bookToAdd.volumeInfo.imageLinks.smallThumbnail,
                     currentlyWith:vm.userId,
                     status:"available"})
                 .then(function (response) {
@@ -64,6 +64,6 @@
 
             });
         }
-        
+
     }
 })();
