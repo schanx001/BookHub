@@ -23,9 +23,7 @@ var smtpTransport = nodemailer.createTransport({
         pass: "webdev123"
     }
 });
-/*------------------SMTP Over-----------------------------*/
 
-/*------------------Routing Started ------------------------*/
 
 require("./private/app.js")(app,smtpTransport);
 var port = process.env.PORT || 3001;

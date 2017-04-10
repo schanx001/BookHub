@@ -9,6 +9,7 @@ module.exports = function(model) {
         description:String,
         currentlyWith: {type:mongoose.Schema.Types.ObjectId,ref:'userModel'},
         rating: String,
+        genre: String,
         price: Number,
         status:String,//available,shared,requested
         dateCreated: {type: Date, default: Date.now}

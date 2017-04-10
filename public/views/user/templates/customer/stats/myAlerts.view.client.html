@@ -1,22 +1,94 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid bg-primary">
-        <a href="#/register">
-            <div class="navbar-text pull-right" href="#/register">
-                Register
+    <div class="row container-fluid navbar-color">
+
+        <div class="col-sm-12 hidden-xs ">
+
+
+            <!--<a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">-->
+                <!--<div class="navbar-text pull-left btn navbar-color">-->
+
+                    <!--<span class="glyphicon glyphicon-user" ></span> Edit Profile-->
+                <!--</div>-->
+
+            <!--</a>-->
+
+            <a href="#/user/{{model.user._id}}/myreviews">
+                <div class="navbar-text pull-left btn navbar-color">
+
+                    <span class="glyphicon glyphicon-star"></span> My Reviews
+                </div>
+            </a>
+
+
+            <a href="#/user/{{model.user._id}}/myalerts">
+                <div class="navbar-text pull-left btn navbar-color">
+
+                    <span class="glyphicon glyphicon-bell"></span> My Alerts
+                </div>
+            </a>
+
+            <a href="#/user/{{model.user._id}}/mystats">
+                <div class="navbar-text pull-left btn navbar-color">
+
+                    <span class="glyphicon glyphicon-stats"></span> My Stats
+                </div>
+            </a>
+
+            <a href="#/login">
+                <div class="navbar-text pull-right btn navbar-color">
+
+                    <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <div class="dropdown pull-right col-sm-4 visible-xs padding-top">
+            <button onclick="myFunction()" class="dropbtn">
+                <span class="dropbtn glyphicon glyphicon-menu-hamburger"></span>
+            </button>
+            <div id="myDropdown" class="dropdown-content navbar-color">
+
+                <!--<a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">-->
+                    <!--<div class="navbar-text pull-left btn navbar-color">-->
+                        <!--<span class="glyphicon glyphicon-user" ></span> Edit Profile-->
+                    <!--</div>-->
+                <!--</a>-->
+
+                <a href="#/user/{{model.user._id}}/myreviews">
+                    <div class="navbar-text pull-left btn navbar-color">
+                        <span class="glyphicon glyphicon-star"></span> My Reviews
+                    </div>
+                </a>
+
+
+                <a href="#/user/{{model.user._id}}/myalerts">
+                    <div class="navbar-text pull-left btn navbar-color">
+                        <span class="glyphicon glyphicon-bell"></span> My Alerts
+                    </div>
+                </a>
+
+                <a href="#/user/{{model.user._id}}/mystats">
+                    <div class="navbar-text pull-left btn navbar-color">
+                        <span class="glyphicon glyphicon-stats"></span> My Stats
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <a href="#/login" class=" visible-xs">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
             </div>
         </a>
-        <a href="#login">
-            <div class="navbar-text pull-right">
-                Login
-            </div>
-        </a>
-        <!--<div class="navbar-header">-->
-        <!--<a class="navbar-brand" href="#/user/{{model.user._id}}">Profile</a>-->
-        <!--</div>-->
     </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid padding-top">
     <div class="col-xs-12 border">Title in Bolds</div>
     <div class="col-xs-12 border ">
         <div class="col-xs-12" style="text-align: center"><strong><p>Requests for Books</p></strong></div>

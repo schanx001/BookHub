@@ -45,9 +45,24 @@
                 controller:'addBookController',
                 controllerAs:'model'
             })
-            .when("/organizer", {
-                templateUrl: 'views/user/templates/organizer.view.client.html',
+            .when("/organizer/:oid", {
+                templateUrl: 'views/user/templates/organizerProfileEdit.view.client.html',
                 controller: 'organizerController',
+                controllerAs: 'model'
+            })
+            .when("/organizer/:oid/addevent", {
+                templateUrl: 'views/user/templates/organizerAddEvent.view.client.html',
+                controller: 'organizerController',
+                controllerAs: 'model'
+            })
+            .when("/seller/:sid", {
+                templateUrl: 'views/user/templates/sellerProfileEdit.view.client.html',
+                controller: 'sellerController',
+                controllerAs: 'model'
+            })
+            .when("/seller/:sid/addbook", {
+                templateUrl: 'views/user/templates/sellerAddBook.view.client.html',
+                controller: 'sellerController',
                 controllerAs: 'model'
             })
             .when("/admin",{

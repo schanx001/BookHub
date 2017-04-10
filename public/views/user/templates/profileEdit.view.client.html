@@ -5,72 +5,87 @@
         <div class="col-sm-12 hidden-xs ">
 
 
-        <a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">
-            <div class="navbar-text pull-right btn navbar-color">
+        <!--<a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">-->
+            <!--<div class="navbar-text pull-left btn navbar-color">-->
 
-                <span class="glyphicon glyphicon-user" ></span> Edit Profile
-            </div>
+                <!--<span class="glyphicon glyphicon-user" ></span> Edit Profile-->
+            <!--</div>-->
 
-        </a>
+        <!--</a>-->
 
-        <a href="#/user/{{model.user._id}}/myReviews">
-            <div class="navbar-text pull-right btn navbar-color">
+        <a href="#/user/{{model.user._id}}/myreviews">
+            <div class="navbar-text pull-left btn navbar-color">
 
                 <span class="glyphicon glyphicon-star"></span> My Reviews
             </div>
         </a>
 
 
-        <a href="#/user/{{model.user._id}}/myAlerts">
-            <div class="navbar-text pull-right btn navbar-color">
+        <a href="#/user/{{model.user._id}}/myalerts">
+            <div class="navbar-text pull-left btn navbar-color">
 
                 <span class="glyphicon glyphicon-bell"></span> My Alerts
             </div>
         </a>
 
-        <a href="#/user/{{model.user._id}}/myStats">
-            <div class="navbar-text pull-right btn navbar-color">
+        <a href="#/user/{{model.user._id}}/mystats">
+            <div class="navbar-text pull-left btn navbar-color">
 
                 <span class="glyphicon glyphicon-stats"></span> My Stats
             </div>
         </a>
 
+            <a href="#/login">
+                <div class="navbar-text pull-right btn navbar-color">
+
+                    <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
+                </div>
+
+            </a>
+
         </div>
 
 
-        <div class="dropdown pull-right col-sm-4 visible-xs">
+        <div class="dropdown pull-right col-sm-4 visible-xs padding-top">
             <button onclick="myFunction()" class="dropbtn">
                 <span class="dropbtn glyphicon glyphicon-menu-hamburger"></span>
             </button>
             <div id="myDropdown" class="dropdown-content navbar-color">
 
-            <a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">
-                <div class="navbar-text pull-right btn navbar-color">
-                    <span class="glyphicon glyphicon-user" ></span> Edit Profile
-                </div>
-            </a>
+            <!--<a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">-->
+                <!--<div class="navbar-text pull-left btn navbar-color">-->
+                    <!--<span class="glyphicon glyphicon-user" ></span> Edit Profile-->
+                <!--</div>-->
+            <!--</a>-->
 
-            <a href="#/reviews/{{model.user._id}}">
-                <div class="navbar-text pull-right btn navbar-color">
+            <a href="#/user/{{model.user._id}}/myreviews">
+                <div class="navbar-text pull-left btn navbar-color">
                     <span class="glyphicon glyphicon-star"></span> My Reviews
                 </div>
             </a>
 
 
-            <a href="#/alerts/{{model.user._id}}">
-                <div class="navbar-text pull-right btn navbar-color">
+            <a href="#/user/{{model.user._id}}/myalerts">
+                <div class="navbar-text pull-left btn navbar-color">
                     <span class="glyphicon glyphicon-bell"></span> My Alerts
                 </div>
             </a>
 
-            <a href="#/stats/{{model.user._id}}">
-                <div class="navbar-text pull-right btn navbar-color">
+            <a href="#/user/{{model.user._id}}/mystats">
+                <div class="navbar-text pull-left btn navbar-color">
                     <span class="glyphicon glyphicon-stats"></span> My Stats
                 </div>
             </a>
             </div>
 
         </div>
+
+        <a href="#/login" class=" visible-xs">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
+            </div>
+        </a>
     </div>
 </nav>
 
@@ -128,7 +143,7 @@
        ng-click="model.deleteUser(model.user._id)">Unregister User</a>
     <a class="btn btn-danger  btn-block"
        href="#/login">Logout</a>
-    <a  ng-click="showDiv=false; model.updateUser(model.user)"class="btn btn-primary  btn-block" ng-show="showDiv"
+    <a  ng-click="showDiv=false; model.updateUser(model.user)"class="btn btn-primary  btn-block"
        href="#/user/{{model.user._id}}">Update</a>
 
 </div>
