@@ -15,7 +15,7 @@
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
         <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-bookmark"></span></div>
-        <input ng-model="event.eventname"
+        <input ng-model="model.event.eventName"
                class="form-control divTransparent text-color"
                placeholder="Event name"/>
     </div>
@@ -23,14 +23,14 @@
     <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
         <div class="input-group-addon divTransparent "><span class="glyphicon glyphicon-list"></span></div>
 
-        <input ng-model="event.description"
+        <input ng-model="model.event.eventDescription"
                   class="form-control divTransparent text-color"
                   placeholder="Describe your event">
     </div>
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
         <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-pushpin"></span></div>
-        <input ng-model="model.event.location"
+        <input
                class="form-control divTransparent controls text-color"
                id="pac-input"
                placeholder="Location of the event"/>
@@ -44,7 +44,7 @@
     <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
         <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-calendar"></span></div>
         <input id="ui-datepicker"
-               ng-model="event.date"
+               ng-model="model.event.eventDate"
                class="form-control divTransparent text-color"
                placeholder="Date of the event"
                class="form-control" />
@@ -52,7 +52,7 @@
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
         <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-time"></span></div>
-        <input ng-model="event.time"
+        <input ng-model="model.event.eventTime"
                class="form-control divTransparent text-color"
                placeholder="Time of the event"/>
     </div>
