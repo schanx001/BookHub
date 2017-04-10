@@ -10,14 +10,19 @@ module.exports = function(){
         "updateUser": updateUser,
         "findUserByCredentials": findUserByCredentials,
         "findUserById": findUserById,
-        "findUserByUsername": findUserByUsername,
+        "findOneUserByUsername": findOneUserByUsername,
         "deleteUser":deleteUser,
         "setModel":setModel,
         "getModel":getModel,
-        "getEmailIFromUserIds":getEmailIFromUserIds
+        "getEmailIFromUserIds":getEmailIFromUserIds,
+        "findUserByFacebookId":findUserByFacebookId
     };
     return api;
 
+    function findUserByFacebookId(facebookId) {
+        return userModel.findOne({'facebook.id':facebookId});
+    }
+    
     function getModel() {
         return userModel;
     }
@@ -32,8 +37,9 @@ module.exports = function(){
     function findUserById(userId){
         return userModel.findById(userId);
     }
-    function findUserByUsername(username){
-        return userModel.find({"username":username});
+    function findOneUserByUsername(username){
+        console.log('bye'+userModel.findOne({"username": username}));
+        return userModel.findOne({"username": username});
     }
     function findUserByCredentials(_username,_password){
         return userModel.find({username:_username,password:_password});

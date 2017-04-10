@@ -79,19 +79,25 @@
     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
         <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
     <!--<div class="btn-group" >-->
-
-        <label class="btn btn-default divTransparent text-color">
-            <input type="radio" name="chooseone" ng-model="model.user.type" > Seller
+        <div class="row container-fluid">
+        <div class="col-md-4 btn btn-default divTransparent">
+        <label class="text-color">
+            <input type="radio" value="seller" name="chooseone" ng-model="model.user.role" > Seller
         </label>
-
-        <label class="btn btn-default divTransparent text-color">
-            <input type="radio" name="chooseone"  ng-model="model.user.type"  > Event-Organizer
+        </div>
+        <div class="col-md-4 btn btn-default divTransparent">
+        <label class=" text-color">
+            <input type="radio" value="eventorganizer" name="chooseone"  ng-model="model.user.role"> Event-Organizer
         </label>
-        <label class="btn btn-default divTransparent text-color">
-            <input type="radio" name="chooseone" ng-model="model.user.type"> User
+        </div>
+        <div class="col-md-4 btn btn-default divTransparent">
+        <label class="text-color">
+            <input type="radio" value="user" name="chooseone" ng-model="model.user.role"> User
         </label>
-
+        </div>
+        </div>
     </div>
+    {{model.user.role}}
     <!--</div>-->
 
 
