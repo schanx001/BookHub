@@ -9,9 +9,9 @@ module.exports = function (app, model) {
     var bcrypt = require("bcrypt-nodejs");
     var FacebookStrategy = require('passport-facebook').Strategy;
     var facebookConfig = {
-        clientID: 406973029672615, //process.env.FACEBOOK_CLIENT_ID,
-        clientSecret: '7fa1e54f0ec3c9989fe3a4679e108b4c',//process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL: 'http://localhost:3001/auth/facebook/callback',//process.env.FACEBOOK_CALLBACK_URL,
+        clientID: process.env.FACEBOOK_CLIENT_ID, //406973029672615, //
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET, //'7fa1e54f0ec3c9989fe3a4679e108b4c',//
+        callbackURL: process.env.FACEBOOK_CALLBACK_URL, //'http://localhost:3001/auth/facebook/callback',//
         profileFields: ['id','displayName','email','name']
     };
     
@@ -21,7 +21,7 @@ module.exports = function (app, model) {
     app.get('/auth/facebook',passport.authenticate('facebook',{scope:'email'}));
     app.get('/auth/facebook/callback',passport.authenticate('facebook',{
         failureRedirect: '/#/login'
-    }),function (req,res) {
+    }),function fb(req,res) {
         console.log(req.user);
         var url = '/#/user/'+req.user._id.toString();
         res.redirect(url);
