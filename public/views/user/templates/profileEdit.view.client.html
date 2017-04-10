@@ -141,14 +141,7 @@
 
     <a class="btn btn-danger btn-block"
        ng-click="model.deleteUser(model.user._id)">Unregister User</a>
-    <a class="btn btn-danger  btn-block"
-<<<<<<< HEAD
-       href="#/login">Logout</a>
-    <a  ng-click="showDiv=false; model.updateUser(model.user)"class="btn btn-primary  btn-block"
-=======
-       ng-click="model.logout()">Logout</a>
-    <a  ng-click="showDiv=false; model.updateUser(model.user)"class="btn btn-primary  btn-block" ng-show="showDiv"
->>>>>>> origin/master
+    <a class="btn btn-danger  btn-block" ng-click="showDiv=false; model.updateUser(model.user)"class="btn btn-primary  btn-block"
        href="#/user/{{model.user._id}}">Update</a>
 
 </div>
