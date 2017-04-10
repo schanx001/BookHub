@@ -6,8 +6,8 @@ module.exports = function(){
     var sellerModel ;//= mongoose.model('userModel',userSchema);
 
     var api = {
-        "Event":createEvent,
-        "updateEvent": updateEvent,
+        "addBook":addBook,
+        "updateBook": updateBook,
         "findEventByEventId": findEventByEventId,
         "deleteEvent":deleteEvent,
         "setModel":setModel,
@@ -16,22 +16,22 @@ module.exports = function(){
     return api;
 
     function getModel() {
-        return organizerModel;
+        return sellerModel;
     }
     function createEvent(event){
-        return organizerModel.create(event);
+        return sellerModel.create(event);
     }
 
-    function findUserByEventId(eventId){
-        return organizerModel.findById(eventId);
+    function findEventByEventId(eventId){
+        return sellerModel.findById(eventId);
     }
 
     function updateEvent(eventId, updatedEvent){
-        return organizerModel.update({_id:userId},{$set:updatedEvent});
+        return sellerModel.update({_id:userId},{$set:updatedEvent});
     }
 
     function deleteEvent(eventId){
-        return organizerModel.findByIdAndRemove(eventId, function (err,event) {
+        return sellerModel.findByIdAndRemove(eventId, function (err,event) {
             if(event!=null){
                 event.remove();
             }
@@ -40,7 +40,7 @@ module.exports = function(){
 
     function  setModel(_model){
         model=_model;
-        organizerSchema = require("./organizer.schema.server")(model);
-        organizerModel = mongoose.model("organizerModel", organizerSchema);
+        sellerSchema = require("./seller.schema.server")(model);
+        sellerModel = mongoose.model("sellerModelModel", sellerSchema);
     }
 };

@@ -22,8 +22,8 @@ module.exports = function(){
         return organizerModel.create(event);
     }
 
-    function findUserByEventId(eventId){
-        return organizerModel.findById(eventId);
+    function findEventByEventId(organizerId){
+        return organizerModel.findById(organizerId);
     }
 
     function updateEvent(eventId, updatedEvent){

@@ -34,7 +34,7 @@ module.exports=function (app,smtpTransport,model) {
                 // res.end("sent");
             }
         });
-    };
+    }
 
 
 

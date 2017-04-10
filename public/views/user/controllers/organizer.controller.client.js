@@ -5,86 +5,113 @@
     angular
         .module("BookHubMaker")
         .controller("organizerController", organizerController);
-    function organizerController($scope){
+    function organizerController($scope, $routeParams, UserService, OrganizerService, $location){
         var vm=this;
-        vm.show=show;
+        vm.userEvents = [];
+        var userId = $routeParams['uid'];
+        vm.updateEvent = updateEvent;
+        vm.deleteEvent=deleteEvent;
+        vm.deleteUser = deleteUser;
+        vm.addEvent = addEvent;
+        vm.getEventsForUserId = getEventsForUserId;
 
-        function show() {
-            alert(vm.event.location);
+
+
+        function addEvent(eventToAdd) {
+            // alert("book");
+            OrganizerService
+                .createEvent({
+                    owner:vm.userId,
+                    eventName: vm.eventName,
+                    eventDescription: vm.eventDescription,
+                    eventLocation: vm.eventLocation,
+                    eventDate: vm.eventDate,
+                    eventTime: vm.eventTime
+                .then(function (response) {
+
+                },function (error) {
+
+                })
+        })
         }
 
-        // function initAutocomplete() {
-        //     alert("In auto");
-        //     var map = new google.maps.Map(document.getElementById('map'), {
-        //         center: {lat: -33.8688, lng: 151.2195},
-        //         zoom: 13,
-        //         mapTypeId: 'roadmap'
-        //     });
-        //
-        //     // Create the search box and link it to the UI element.
-        //     var input = document.getElementById('pac-input');
-        //     var searchBox = new google.maps.places.SearchBox(input);
-        //     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-        //
-        //     // Bias the SearchBox results towards current map's viewport.
-        //     map.addListener('bounds_changed', function() {
-        //         searchBox.setBounds(map.getBounds());
-        //     });
-        //
-        //     var markers = [];
-        //     // Listen for the event fired when the user selects a prediction and retrieve
-        //     // more details for that place.
-        //     searchBox.addListener('places_changed', function() {
-        //         var places = searchBox.getPlaces();
-        //
-        //         if (places.length == 0) {
-        //             return;
-        //         }
-        //
-        //         // Clear out the old markers.
-        //         markers.forEach(function(marker) {
-        //             marker.setMap(null);
-        //         });
-        //         markers = [];
-        //
-        //         // For each place, get the icon, name and location.
-        //         var bounds = new google.maps.LatLngBounds();
-        //         places.forEach(function(place) {
-        //             if (!place.geometry) {
-        //                 console.log("Returned place contains no geometry");
-        //                 return;
-        //             }
-        //             var icon = {
-        //                 url: place.icon,
-        //                 size: new google.maps.Size(71, 71),
-        //                 origin: new google.maps.Point(0, 0),
-        //                 anchor: new google.maps.Point(17, 34),
-        //                 scaledSize: new google.maps.Size(25, 25)
-        //             };
-        //
-        //             // Create a marker for each place.
-        //             markers.push(new google.maps.Marker({
-        //                 map: map,
-        //                 icon: icon,
-        //                 title: place.name,
-        //                 position: place.geometry.location
-        //             }));
-        //
-        //             if (place.geometry.viewport) {
-        //                 // Only geocodes have viewport.
-        //                 bounds.union(place.geometry.viewport);
-        //             } else {
-        //                 bounds.extend(place.geometry.location);
-        //             }
-        //         });
-        //         map.fitBounds(bounds);
-        //     });
-        // }
 
-        // initAutocomplete();
+        function deleteEvent(eventId) {
+            OrganizerService
+                .deleteEventService(eventId,userId)
+                .then(function (response) {
+                    // getBooksForUserId(userId);
+                    var events=response.data;
+                    var userEvents=[];
+                    for (var x in events){
+                        if(events[x].owner===userId){
+                            userEvents.slice(events[x],1);
+                        }
+                    }
+                },function (error) {
+                    vm.error="Unable to delete";
+                });
+        }
+
+        function updateEvent(newEvent) {
+
+            OrganizerService
+                .updateEvent(eventId, newEvent)
+                .success(function (response) {
+
+                    vm.message = "event successfully updated";
+                })
+                .error(function () {
+                    vm.error = "unable to update event";
+                });
+        }
+
+        function deleteUser(userId) {
+            UserService.deleteUser(userId);
+            $location.url("/login");
+        }
+
+        function init() {
+            vm.message="";
+            vm.user = UserService.findUserById(userId)
+                .success(renderUser)
+                .error(function () {
+                    $location.url('/login');
+                });
+            getEventsForUserId(userId);
+        }
+
+        init();
+
+        function renderUser(user) {
+            //console.log("haveli");
+
+            vm.user = user;
+        }
+
+
+        function getEventsForUserId(userId) {
+            OrganizerService
+                .findEventsByUserId(userId)
+                .then(function (response) {
+                    // console.log(response.data);
+                    var events=response.data;
+                    var userEvents;
+                    for (var x in events){
+                        if(events[x].owner===userId){
+                            userEvents.push(events[x]);
+                        }
+                    }
+                    // console.log("requestedBooks:"+requestedBooks);
+                    vm.userEvents=userEvents;
+                    // console.log("requestedForBooks:"+requestedForBooks);
+                },function (error) {
+                    // console.log("error:"+error);
+                });
+        }
+
+
         $scope.$on('$viewContentLoaded', function(){
-            alert("ajhsgdjagsdjag");
-
             var imported = document.createElement('script');
             imported.src = '../../../js/maps.js';
             document.head.appendChild(imported);
@@ -96,6 +123,8 @@
             document.head.appendChild(imported);
 
         });
+
+
 
 
     }

@@ -155,65 +155,6 @@
                     // console.log("error:"+error);
                 });
         }
-
-        // function getUserBooksStats(userId) {
-        //     var books=vm.booksForUserId;
-        //     var booksAvailable=[];
-        //     var booksShared=[];
-        //     for (var x in books){
-        //         if(books[x].owner===userId && books[x].status==="available"){
-        //             booksAvailable.push(books[x]);
-        //         }
-        //         if(books[x].currentlyWith===userId && books[x].status==="shared"){
-        //             booksShared.push(books[x]);
-        //         }
-        //     }
-        //     // console.log("requestedBooks:"+requestedBooks);
-        //     vm.booksAvailable=booksAvailable;
-        //     // console.log("requestedForBooks:"+requestedForBooks);
-        //     vm.booksShared=booksShared;
-        // }
-        //
-        //
-        // function getBooksRequestedForAndRequested(userId) {
-        //     var books=vm.booksForUserId;
-        //     var requestedBooks=[];
-        //     var requestedForBooks=[];
-        //     for (var x in books){
-        //         if(books[x].owner===userId && books[x].status==="requested"){
-        //             requestedBooks.push(books[x]);
-        //         }
-        //         if(books[x].currentlyWith===userId && books[x].status==="requested"){
-        //             requestedForBooks.push(books[x]);
-        //         }
-        //     }
-        //     // console.log("requestedBooks:"+requestedBooks);
-        //     vm.requestedBooks=requestedBooks;
-        //     // console.log("requestedForBooks:"+requestedForBooks);
-        //     vm.requestedForBooks=requestedForBooks;
-        //     // BookService
-        //     //     .findBooksOwnedAndBorrowedByUserId(userId)
-        //     //     .then(function (response) {
-        //     //         // console.log(response);
-        //     //         var books=response.data;
-        //     //         var requestedBooks=[];
-        //     //         var requestedForBooks=[];
-        //     //         for (var x in books){
-        //     //             if(books[x].owner===userId && books[x].status==="requested"){
-        //     //                 requestedBooks.push(books[x]);
-        //     //             }
-        //     //             if(books[x].currentlyWith===userId && books[x].status==="requested"){
-        //     //                 requestedForBooks.push(books[x]);
-        //     //             }
-        //     //         }
-        //     //         // console.log("requestedBooks:"+requestedBooks);
-        //     //         vm.requestedBooks=requestedBooks;
-        //     //         // console.log("requestedForBooks:"+requestedForBooks);
-        //     //         vm.requestedForBooks=requestedForBooks;
-        //     //     },function (error) {
-        //     //         // console.log("error:"+error);
-        //     //     });
-        // }
         
         function init() {
             vm.message="";

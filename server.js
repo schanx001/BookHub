@@ -30,8 +30,7 @@ var smtpTransport = nodemailer.createTransport({
         pass: "webdev123"
     }
 });
-<<<<<<< HEAD
-=======
+
 
 app.use(cookieParser());
 app.use(passport.initialize());
@@ -48,7 +47,6 @@ require("./private/app.js")(app,smtpTransport);
  STMP is mail server which is responsible for sending and recieving email.
  */
 /*------------------SMTP Over-----------------------------*/
->>>>>>> origin/master
 
 
 var port = process.env.PORT || 3001;
