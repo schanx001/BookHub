@@ -17,15 +17,9 @@ module.exports = function (app, model) {
     }
 
     var facebookConfig = {
-<<<<<<< Updated upstream
-        clientID:process.env.FACEBOOK_CLIENT_ID, //406973029672615, //
-        clientSecret:process.env.FACEBOOK_CLIENT_SECRET, //'7fa1e54f0ec3c9989fe3a4679e108b4c',//
-        callbackURL: process.env.FACEBOOK_CALLBACK_URL, //'http://localhost:3001/auth/facebook/callback',//
-=======
         clientID: process.env.FACEBOOK_CLIENT_ID,
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
         callbackURL: process.env.FACEBOOK_CALLBACK_URL,
->>>>>>> Stashed changes
         profileFields: ['id','displayName','email','name']
     };
     
