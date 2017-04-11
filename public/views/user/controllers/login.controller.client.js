@@ -23,8 +23,19 @@
                 promise
                     .then(function (response) {
                         var user = response.data;
-                        $rootScope.currentUser = user;
-                        $location.url("/user/"+user._id);
+                        if(user.role.toString() === 'user') {
+                            $rootScope.currentUser = user;
+                            $location.url("/user/" + user._id);
+                        }
+                        else if(user.role.toString() === 'eventorganizer') {
+                            $rootScope.currentUser = user;
+                            $location.url("/organizer/" + user._id);
+                        }
+                        else if(user.role.toString() === 'seller') {
+                            $rootScope.currentUser = user;
+                            $location.url("/seller/" + user._id);
+                        }
+
                     },function (err) {
                         vm.error = "user/password does not match";
                     });

@@ -82,7 +82,7 @@
         <label  class="label-color" for="email">Email address</label>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-envelope text-color"></span></div>
-            <input ng-model="model.user.email" type="email" class="form-control divTransparent text-color" id="email" value="shohitb@ccs.neu.edu">
+            <input ng-model="model.user.email" type="email" class="form-control divTransparent text-color" id="email">
         </div>
     </div>
 
@@ -90,7 +90,7 @@
         <label class="label-color" for="phone-number">Phone Number</label>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-earphone text-color"></span></div>
-            <input ng-model="model.user.phone" type="text" class="form-control divTransparent text-color" id="phone-number" value="0000000000">
+            <input ng-model="model.user.phone" type="text" class="form-control divTransparent text-color" id="phone-number">
         </div>
     </div>
 
@@ -100,7 +100,7 @@
     <a class="btn btn-danger  btn-block"
        href="#/login">Logout</a>
     <a  ng-click="showDiv=false; model.updateUser(model.user)"class="btn btn-primary  btn-block" ng-show="showDiv"
-        href="#/user/{{model.user._id}}">Update</a>
+        href="#/organizer/{{model.user._id}}">Update</a>
 
 
 
