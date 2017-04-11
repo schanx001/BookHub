@@ -108,7 +108,7 @@ module.exports = function (app, model) {
 
     function login(req, res) {
 
-        console.log("hi");
+        // console.log("hi");
 
         var user=req.user;
         res.json(user);
@@ -117,12 +117,12 @@ module.exports = function (app, model) {
     function localStrategy(username, password, done) {
         userModel
             //.findUserByCredentials(username, password)
-            .findUserByUsername(username)
+            .findOneUserByUsername(username)
             .then(function (user) {
 
-                console.log(user);
-                console.log(user.password + " "+ bcrypt.hashSync(password));
-                console.log(bcrypt.compareSync(password, user.password));
+                // console.log(user);
+                // console.log(user.password + " "+ bcrypt.hashSync(password));
+                // console.log(bcrypt.compareSync(password, user.password));
                 if(user!=null && user.username === username && bcrypt.compareSync(password, user.password)){
 
                     return done(null,user);
@@ -167,7 +167,7 @@ module.exports = function (app, model) {
 
     function createUser(req, res) {
 
-        console.log("Create User called");
+        // console.log("Create User called");
         var user = req.body;
         var newUser = {
             username: user.username,
@@ -256,18 +256,18 @@ module.exports = function (app, model) {
         userModel
             .findOneUserByUsername(username)
             .then(function (user) {
-                console.log("hi "+user);
+                // console.log("hi "+user);
                 if (user) {
 
                     res.json(user[0]);
                 }
                 else {
 
-                    console.log(username + '22');
+                    // console.log(username + '22');
                     res.sendStatus(404);
                 }
             },function (err) {
-                console.log("in find userbyusername");
+                // console.log("in find userbyusername");
                 res.sendStatus(404);
             });
         /* .then(function (user){

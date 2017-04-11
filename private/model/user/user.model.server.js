@@ -14,7 +14,7 @@ module.exports = function(){
         "deleteUser":deleteUser,
         "setModel":setModel,
         "getModel":getModel,
-        "getEmailIFromUserIds":getEmailIFromUserIds,
+        "getEmailIdFromUserIds":getEmailIdFromUserIds,
         "findUserByFacebookId":findUserByFacebookId
     };
     return api;
@@ -30,7 +30,7 @@ module.exports = function(){
         return userModel.create(user);
     }
 
-    function getEmailIFromUserIds(userIds){
+    function getEmailIdFromUserIds(userIds){
         return userModel.find({_id:{$in:userIds}},{username:1,email:1});
     }
 
@@ -38,7 +38,7 @@ module.exports = function(){
         return userModel.findById(userId);
     }
     function findOneUserByUsername(username){
-        console.log('bye'+userModel.findOne({"username": username}));
+        // console.log('bye'+userModel.findOne({"username": username}));
         return userModel.findOne({"username": username});
     }
     function findUserByCredentials(_username,_password){

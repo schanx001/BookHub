@@ -141,7 +141,8 @@
                         if(books[x].owner===userId && books[x].status==="available"){
                             booksAvailable.push(books[x]);
                         }
-                        if(books[x].currentlyWith===userId && books[x].status==="shared"){
+                        // if(books[x].currentlyWith===userId && books[x].status==="shared"){
+                        if(books[x].status==="shared"){
                             booksShared.push(books[x]);
                         }
                     }
