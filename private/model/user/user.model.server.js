@@ -14,11 +14,21 @@ module.exports = function(){
         "deleteUser":deleteUser,
         "setModel":setModel,
         "getModel":getModel,
+<<<<<<< Updated upstream
         "getEmailIdFromUserIds":getEmailIdFromUserIds,
         "findUserByFacebookId":findUserByFacebookId
+=======
+        "getEmailIFromUserIds":getEmailIFromUserIds,
+        "findUserByFacebookId":findUserByFacebookId,
+        "findUserByGoogleId": findUserByGoogleId
+>>>>>>> Stashed changes
     };
     return api;
 
+    function findUserByGoogleId(googleId) {
+        return userModel.findOne({'google.id': googleId});
+    }
+    
     function findUserByFacebookId(facebookId) {
         return userModel.findOne({'facebook.id':facebookId});
     }

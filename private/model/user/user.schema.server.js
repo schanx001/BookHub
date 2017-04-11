@@ -15,6 +15,10 @@ module.exports = function(model) {
         facebook:{
             id:String,
             token:String
+        },
+        google: {
+            id: String,
+            token: String
         }
     }, {collection: 'project.mongo.users'});
 

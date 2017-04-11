@@ -7,7 +7,9 @@ var app = express();
 var passport  = require('passport');
 var cookieParser  = require('cookie-parser');
 var session = require('express-session');
+var dotenv = require('dotenv')
 
+dotenv.load();
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());

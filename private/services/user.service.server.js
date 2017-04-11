@@ -8,15 +8,39 @@ module.exports = function (app, model) {
     var LocalStrategy = require('passport-local').Strategy;
     var bcrypt = require("bcrypt-nodejs");
     var FacebookStrategy = require('passport-facebook').Strategy;
+    var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+    var googleConfig = {
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL
+    }
+
     var facebookConfig = {
+<<<<<<< Updated upstream
         clientID:process.env.FACEBOOK_CLIENT_ID, //406973029672615, //
         clientSecret:process.env.FACEBOOK_CLIENT_SECRET, //'7fa1e54f0ec3c9989fe3a4679e108b4c',//
         callbackURL: process.env.FACEBOOK_CALLBACK_URL, //'http://localhost:3001/auth/facebook/callback',//
+=======
+        clientID: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+>>>>>>> Stashed changes
         profileFields: ['id','displayName','email','name']
     };
     
     passport.serializeUser(serializerUser);
     passport.deserializeUser(deserializeUser);
+
+    // google oauth
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    app.get('/auth/google/callback', passport.authenticate('google', {
+            failureRedirect: '/#/login'
+        }),function (req,res) {
+        console.log("in her!")
+            var url='/#/user/'+req.user._id.toString();
+            res.redirect(url);
+        });
 
     app.get('/auth/facebook',passport.authenticate('facebook',{scope:'email'}));
     app.get('/auth/facebook/callback',passport.authenticate('facebook',{
@@ -47,8 +71,13 @@ module.exports = function (app, model) {
     // ];
     var userModel = model.userModel;
 
+
+    // facebook oauth
+
     passport.use(new LocalStrategy(localStrategy));
     passport.use(new FacebookStrategy(facebookConfig,facebookStrategy));
+    passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
 
     function facebookStrategy(token, refreshToken, profile, done) {
         userModel
@@ -80,7 +109,47 @@ module.exports = function (app, model) {
                 }
             });
     }
-    
+
+    // google oauth
+
+
+
+    function googleStrategy(token, refreshToken, profile, done) {
+        userModel
+            .findUserByGoogleId(profile.id)
+            .then(
+                function(user) {
+                    if (user) {
+                        return done(null, user);
+                    }
+                    else {
+                        var email = profile.emails[0].value;
+                        var emailParts = email.split("@");
+                        var newGoogleUser = {
+                            username: emailParts[0],
+                            firstName: profile.name.givenName,
+                            lastName: profile.name.familyName,
+                            email: email,
+                            google: {
+                                id: profile.id,
+                                token: token
+                            }
+                        };
+                        return userModel.createUser(newGoogleUser);
+                    }
+                },
+            function (err) {
+                if(err){
+                    return done(err);
+                }})
+                .then(function (user) {
+                    return done(null,user);
+                },function (err) {
+                    return done(err);
+                });
+    }
+
+
     function register(req, res) {
         var user = req.body;
         user.password = bcrypt.hashSync(user.password);
