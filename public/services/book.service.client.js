@@ -11,9 +11,14 @@
             "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId,
             "deleteBookService":deleteBookService,
             "updateBookService":updateBookService,
-            "acceptRequestService":acceptRequestService
+            "acceptRequestService":acceptRequestService,
+            "requestBookService":requestBookService
         };
         return api;
+
+        function requestBookService(bookId,userId) {
+            return $http.put("/api/book?requestBook="+bookId+"&requestorId="+userId);
+        }
 
         function acceptRequestService(book,request) {
             return $http.put("/api/book?acceptRequest="+request,book);

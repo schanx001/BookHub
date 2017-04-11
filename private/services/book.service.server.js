@@ -8,23 +8,17 @@ module.exports=function (app,smtpTransport,model) {
     var bookModel = model.bookModel;
     var userModel = model.userModel;
 
-
-    function sendMailToUser(book,status){
+    function sendRequestMailToUser(bookName,emailId){
         var subjectText="";
         var bodyText="";
-        if(status){
-            subjectText="BookHub: Book request accepted";
-            bodyText="Your request for book named "+book.title+" has been accepted\n\nRegards,\nTeam BookHub";
-        }else{
-            subjectText="BookHub: Book request rejected";
-            bodyText='Your request for book named "'+book.title+'" has been rejected\n\nRegards,\nTeam BookHub';
-        }
+            subjectText="BookHub: You have a book share request";
+            bodyText='Your book named "'+bookName+'" has been requested by a BookHub user.\n\nRegards,\nTeam BookHub';
         var mailOptions={
-            to : book.email,
+            to : emailId,
             subject : subjectText,
             text : bodyText
         };
-        console.log(mailOptions);
+        // console.log(mailOptions);
         smtpTransport.sendMail(mailOptions, function(error, response){
             if(error){
                 // console.log(error);
@@ -34,16 +28,69 @@ module.exports=function (app,smtpTransport,model) {
                 // res.end("sent");
             }
         });
-    }
+    };
+
+    function sendAcceptMailToUser(book,status){
+        var subjectText="";
+        var bodyText="";
+        if(status){
+            subjectText="BookHub: Book request accepted";
+            bodyText='Your request for book named "'+book.title+'" has been accepted\n\nRegards,\nTeam BookHub';
+        }else{
+            subjectText="BookHub: Book request rejected";
+            bodyText='Your request for book named "'+book.title+'" has been rejected\n\nRegards,\nTeam BookHub';
+        }
+        var mailOptions={
+            to : book.email,
+            subject : subjectText,
+            text : bodyText
+        };
+        // console.log(mailOptions);
+        smtpTransport.sendMail(mailOptions, function(error, response){
+            if(error){
+                // console.log(error);
+                // res.end("error");
+            }else{
+                // console.log("Message sent: " + response.message);
+                // res.end("sent");
+            }
+        });
+    };
 
 
 
 
 
     function updateBook(req,res) {
+        // console.log("ffe="+req.body);
         var book=req.body;
         var userId=req.query.userId;
-        if(userId!=null || userId!=undefined){
+        var requestBookId=req.query.requestBook;
+        if(requestBookId!=undefined){
+            // console.log("updated="+requestBookId);
+            var requestorId=req.query.requestorId;
+            userModel
+                .getEmailIFromUserIds([requestorId])
+                .then(function (response) {
+                    if(!response.length){
+                        // console.log("response="+response);
+                        res.status(404).send();
+                    }else{
+                        var emailId=response[0].email;
+                        bookModel
+                            .updateBookRequestorInDb(requestBookId,requestorId)
+                            .then(function (responseNew) {
+                                // console.log("updated="+responseNew.title);
+                                sendRequestMailToUser(responseNew.title,emailId);
+                                res.sendStatus(200);
+                            },function (error) {
+                                res.status(404).send();
+                            });
+                    }
+                },function (error) {
+                    res.status(404).send();
+                });
+        }else if((userId!=null && userId!=undefined)){
             // console.log(userId);
             bookModel
                 .updateBookInDb(book)
@@ -62,7 +109,7 @@ module.exports=function (app,smtpTransport,model) {
                 bookModel
                     .updateBookInDb(book)
                     .then(function (response) {
-                        sendMailToUser(book,true);
+                        sendAcceptMailToUser(book,true);
                         res.sendStatus(200);
                     },function (error) {
                         res.status(404).send();

@@ -14,9 +14,14 @@ module.exports = function(){
         "findBooksByName":findBooksByName,
         "deleteBookFromDb":deleteBookFromDb,
         "updateBookInDb":updateBookInDb,
-        "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId
+        "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId,
+        "updateBookRequestorInDb":updateBookRequestorInDb
     };
     return api;
+
+    function updateBookRequestorInDb(bookId,requestorId) {
+        return bookModel.findOneAndUpdate({_id:bookId},{$set:{currentlyWith:requestorId,status:"requested"}});
+    }
 
     function updateBookInDb(book) {
         return bookModel.update({_id:book._id},{$set:book});
@@ -46,7 +51,7 @@ module.exports = function(){
     }
 
     function findAllAvBooks() {
-        return bookModel.find().sort({"dateCreated":-1});
+        return bookModel.find({status:"available"}).sort({"dateCreated":-1});
     }
 
     function findBooksByName(bookName) {
