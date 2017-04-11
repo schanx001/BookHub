@@ -30,10 +30,21 @@
                         UserService
                             .register(user)
                             .then(function (response){
-                                alert('hello');
                                 var user=response.data;
-                                $rootScope.currentUser = user;
-                                $location.url("/user/"+user._id);
+                                if(user.role.toString() === 'user') {
+                                    alert("hell");
+                                    $rootScope.currentUser = user;
+                                    $location.url("/user/" + user._id);
+                                }
+                                else if(user.role.toString() === 'eventorganizer') {
+                                    alert("hell2");
+                                    $rootScope.currentUser = user;
+                                    $location.url("/organizer/" + user._id);
+                                }
+                                else if(user.role.toString() === 'seller') {
+                                    $rootScope.currentUser = user;
+                                    $location.url("/seller/" + user._id);
+                                }
                             });
                     });
             }}}

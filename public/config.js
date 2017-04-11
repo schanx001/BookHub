@@ -70,6 +70,11 @@
                 controller: 'organizerController',
                 controllerAs: 'model'
             })
+            .when("/organizer/:oid/myevents", {
+                templateUrl: 'views/user/templates/organizerMyEvents.view.client.html',
+                controller: 'organizerController',
+                controllerAs: 'model'
+            })
             .when("/seller/:sid", {
                 templateUrl: 'views/user/templates/sellerProfileEdit.view.client.html',
                 controller: 'sellerController',

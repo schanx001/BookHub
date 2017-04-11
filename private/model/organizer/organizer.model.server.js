@@ -9,6 +9,7 @@ module.exports = function(){
         "createEvent":createEvent,
         "updateEvent": updateEvent,
         "findEventByEventId": findEventByEventId,
+        "findEventsByOrganizerId": findEventsByOrganizerId,
         "deleteEvent":deleteEvent,
         "setModel":setModel,
         "getModel":getModel
@@ -24,6 +25,10 @@ module.exports = function(){
 
     function findEventByEventId(organizerId){
         return organizerModel.findById(organizerId);
+    }
+
+    function findEventsByOrganizerId(organizerId){
+        return organizerModel.find({owner:organizerId});
     }
 
     function updateEvent(eventId, updatedEvent){

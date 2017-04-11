@@ -13,6 +13,7 @@
             "findEventByEventId": findEventByEventId,
             //"findUserByUsername": findUserByUsername,
             "deleteEvent":deleteEvent,
+            "findEventsByOrganizerId": findEventsByOrganizerId
             //"login" : login,
             //"logout" : logout,
             //"register":register
@@ -24,7 +25,8 @@
         }
 
         function createEvent(event) {
-            return $http.post("/api/event", event);
+            console.log(event +"yyyyy");
+            return $http.post("/api/event/", event);
         }
 
 
@@ -34,6 +36,10 @@
 
         function findEventByEventId(eid) {
             return $http.get("/api/event/"+eid);
+        }
+
+        function findEventsByOrganizerId(oid) {
+            return $http.get("/api/events/"+oid);
         }
     }
 })();

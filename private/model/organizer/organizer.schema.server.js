@@ -4,7 +4,7 @@
 module.exports = function(model) {
     var mongoose = require('mongoose');
     var organizerSchema = mongoose.Schema({
-        eventOrganizerId:  [{type: mongoose.Schema.Types.ObjectId, ref: 'userModel'}],
+        owner:  [{type: mongoose.Schema.Types.ObjectId, ref: 'userModel'}],
         eventName: String,
         eventDescription: String,
         eventLocation: String,

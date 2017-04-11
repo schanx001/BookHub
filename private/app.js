@@ -18,5 +18,6 @@ module.exports = function (app,smtpTransport) {
 
     var model = require("./model/models.server")();
     require("./services/user.service.server")(app, model);
+    require("./services/organizer.service.server")(app, model);
     require("./services/book.service.server")(app, smtpTransport,model);
 };

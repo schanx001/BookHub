@@ -6,6 +6,8 @@
         </div>
     </div>
 </nav>
+
+
 <div class="container padding-top">
     <!--<div class="text-center">-->
     <!--<img src="../../../images/icons/book.png" class="img-thumbnail">-->
@@ -13,9 +15,17 @@
 
     <h1 class="">Create an Event</h1>
 
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+    <div ng-show="model.message" class="alert alert-success" role="alert">
+        {{model.message}}
+    </div>
+
     <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
         <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-bookmark"></span></div>
-        <input ng-model="model.event.eventName"
+        <input ng-model="model.eventName"
                class="form-control divTransparent text-color"
                placeholder="Event name"/>
     </div>
@@ -23,15 +33,14 @@
     <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
         <div class="input-group-addon divTransparent "><span class="glyphicon glyphicon-list"></span></div>
 
-        <input ng-model="model.event.eventDescription"
+        <input ng-model="model.eventDescription"
                   class="form-control divTransparent text-color"
                   placeholder="Describe your event">
     </div>
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
         <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-pushpin"></span></div>
-        <input
-               class="form-control divTransparent controls text-color"
+        <input class="form-control divTransparent controls text-color"
                id="pac-input"
                placeholder="Location of the event"/>
         <!--<input  placeholder="Search Box" ng-model="model.event.location">-->
@@ -44,7 +53,7 @@
     <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
         <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-calendar"></span></div>
         <input id="ui-datepicker"
-               ng-model="model.event.eventDate"
+               ng-model="model.eventDate"
                class="form-control divTransparent text-color"
                placeholder="Date of the event"
                class="form-control" />
@@ -52,7 +61,7 @@
 
     <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
         <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-time"></span></div>
-        <input ng-model="model.event.eventTime"
+        <input ng-model="model.eventTime"
                class="form-control divTransparent text-color"
                placeholder="Time of the event"/>
     </div>
@@ -65,10 +74,8 @@
     <div class="padding-top">
 
     <a class="btn btn-success btn-block"
-       ng-click="">Create Event</a>
+       ng-click="model.addEvent()">Create Event</a>
 </div>
-
-
 
 
 </div>

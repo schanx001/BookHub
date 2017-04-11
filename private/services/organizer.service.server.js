@@ -4,6 +4,7 @@
 
 module.exports=function (app,model) {
     app.get("/api/event/:eventId", findEventByEventId);
+    app.get("/api/events/:organizerId", findEventsByOrganizerId);
     app.post("/api/event/", createEvent);
     app.delete("/api/event/:eventId", deleteEvent);
     app.put("/api/event/:eventId", updateEvent);
@@ -32,18 +33,19 @@ module.exports=function (app,model) {
 
         //console.log("Create User called");
         var event = req.body;
-        var newEvent = {
-            eventName: event.eventName,
-            eventDescription: event.eventDescription,
-            eventLocation: event.eventLocation,
-            eventDate: event.eventDate,
-            eventTime: event.eventTime
-        };
+        console.log(event);
+        // var newEvent = {
+        //     eventName: event.eventName,
+        //     eventDescription: event.eventDescription,
+        //     eventLocation: event.eventLocation,
+        //     eventDate: event.eventDate,
+        //     eventTime: event.eventTime
+        // };
 
         organizerModel
-            .createEvent(newEvent)
-            .then(function (newEvent) {
-                res.send(newEvent);
+            .createEvent(event)
+            .then(function (event) {
+                res.send(event);
             }, function (err) {
                 res.sendStatus(404).send(err);
             });
@@ -78,6 +80,17 @@ module.exports=function (app,model) {
             .findEventByEventId(eventId)
             .then(function (event) {
                 res.json(event);
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            });
+    }
+
+    function findEventsByOrganizerId(req, res) {
+        var organizerId = req.params['organizerId'];
+        organizerModel
+            .findEventsByOrganizerId(organizerId)
+            .then(function (events) {
+                res.json(events);
             }, function (err) {
                 res.sendStatus(500).send(err);
             });
