@@ -10,20 +10,71 @@
         vm.showUpdateBtn= false;
         vm.organizerEvents = [];
         vm.userId = $routeParams['oid'];
+        vm.event="";
         vm.updateEvent = updateEvent;
         vm.deleteEvent=deleteEvent;
         vm.deleteUser = deleteUser;
         vm.addEvent = addEvent;
         vm.redirect= redirect;
+        vm.editEvent= editEvent;
+        vm.viewEvent= viewEvent;
+        vm.onLoad=onLoad;
         vm.getEventsByOrganizerId = getEventsByOrganizerId;
        // vm.getEventsForUserId = getEventsForUserId;
 
+        function onLoad() {
+            e = jQuery.Event("keypress")
+            e.which = 13 //choose the one you want
+            $("#pac-input").keypress(function(){
+            }).trigger(e)
+        }
 
         function redirect(){
             document.getElementById(test).style.display = 'block';
 
             $location.url("/organizer/"+ vm.userId +"/addevent");
 
+        }
+
+        function editEvent(eventId) {
+            document.getElementById('eventEditDiv'+eventId).classList.toggle('hidden');
+            document.getElementById('eventUpdateDiv'+eventId).classList.toggle('hidden');
+            document.getElementById('eventEditButtonDiv'+eventId).classList.toggle('hidden');
+            document.getElementById('eventUpdateButtonDiv'+eventId).classList.toggle('hidden');
+        }
+
+        // function updateEvent(newEvent) {
+        //
+        //     OrganizerService
+        //         .updateEvent(eventId, newEvent)
+        //         .success(function (response) {
+        //
+        //             vm.message = "event successfully updated";
+        //         })
+        //         .error(function () {
+        //             vm.error = "unable to update event";
+        //         });
+        // }
+
+        function updateEvent(newEvent) {
+            var eventId = newEvent._id;
+            alert(eventId);
+            OrganizerService
+                .updateEvent(vm.userId, newEvent)
+                .then(function (response) {
+                    document.getElementById('eventEditDiv'+eventId).classList.toggle('hidden');
+                    document.getElementById('eventUpdateDiv'+eventId).classList.toggle('hidden');
+                    document.getElementById('eventEditButtonDiv'+eventId).classList.toggle('hidden');
+                    document.getElementById('eventUpdateButtonDiv'+eventId).classList.toggle('hidden');
+                    vm.message = "event successfully updated";
+                },function (error) {
+                    vm.error = "unable to update event";
+
+                });
+        }
+
+        function viewEvent(event) {
+            $location.url("/organizer/" +vm.userId + "/eventdetails/" + event._id);
         }
 
 
@@ -68,18 +119,7 @@
                 });
         }
 
-        function updateEvent(newEvent) {
 
-            OrganizerService
-                .updateEvent(eventId, newEvent)
-                .success(function (response) {
-
-                    vm.message = "event successfully updated";
-                })
-                .error(function () {
-                    vm.error = "unable to update event";
-                });
-        }
 
         function deleteUser(userId) {
             UserService.deleteUser(userId);
@@ -94,7 +134,15 @@
                     $location.url('/login');
                 });
             getEventsByOrganizerId(vm.userId);
-            if(document.URL.indexOf("addevent")>-1){
+            if(document.URL.indexOf("eventdetails")>-1) {
+                var eventId=$routeParams['eid'];
+
+                OrganizerService.findEventByEventId(eventId)
+                    .then(function(response){
+                        vm.event=response.data;
+                    });
+            }
+            if(document.URL.indexOf("addevent")>-1 || document.URL.indexOf("eventdetails")>-1 ){
 
                 console.log("maps error");
 

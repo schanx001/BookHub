@@ -23,16 +23,19 @@ module.exports = function(){
         return organizerModel.create(event);
     }
 
-    function findEventByEventId(organizerId){
-        return organizerModel.findById(organizerId);
+    function findEventByEventId(eventId){
+        return organizerModel.findById(eventId);
     }
 
     function findEventsByOrganizerId(organizerId){
         return organizerModel.find({owner:organizerId});
     }
 
-    function updateEvent(eventId, updatedEvent){
-        return organizerModel.update({_id:userId},{$set:updatedEvent});
+    function updateEvent(updatedEvent){
+        console.log("in model update");
+        //console.log(organizerId);
+        console.log(updatedEvent);
+        return organizerModel.update({_id:updatedEvent._id},{$set:updatedEvent});
     }
 
     function deleteEvent(eventId){

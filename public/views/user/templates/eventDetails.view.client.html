@@ -1,0 +1,89 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid navbar-color">
+        <div>
+            <a class="navbar-brand glyphicon glyphicon-chevron-left" href="#/">
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container padding-top">
+    <!--<div class="text-center">-->
+    <!--<img src="../../../images/icons/book.png" class="img-thumbnail">-->
+    <!--</div>-->
+
+    <h1 class="">Create an Event</h1>
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+    <div ng-show="model.message" class="alert alert-success" role="alert">
+        {{model.message}}
+    </div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-bookmark"></span></div>
+        <input ng-model="model.event.eventName"
+               class="form-control divTransparent text-color"
+               placeholder="Event name"/>
+    </div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+        <div class="input-group-addon divTransparent "><span class="glyphicon glyphicon-list"></span></div>
+
+        <input ng-model="model.event.eventDescription"
+                  class="form-control divTransparent text-color"
+                  placeholder="Describe your event">
+    </div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-pushpin"></span></div>
+        <input ng-model="model.event.eventLocation"
+                class="form-control divTransparent controls text-color"
+               id="pac-input"
+               placeholder="Location of the event"/>
+        <!--<input  placeholder="Search Box" ng-model="model.event.location">-->
+    </div>
+
+<div>
+
+</div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-calendar"></span></div>
+        <input id="ui-datepicker"
+               ng-model="model.event.eventDate"
+               class="form-control divTransparent text-color"
+               placeholder="Date of the event"
+               class="form-control" />
+    </div>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-time"></span></div>
+        <input ng-model="model.event.eventTime"
+               class="form-control divTransparent text-color"
+               placeholder="Time of the event"/>
+    </div>
+
+    <div style="height: 300px;width:inherit" class="padding-top">
+
+        <div id="map"></div>
+    </div>
+
+    <div class="padding-top">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+

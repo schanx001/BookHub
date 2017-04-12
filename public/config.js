@@ -75,6 +75,11 @@
                 controller: 'organizerController',
                 controllerAs: 'model'
             })
+            .when("/organizer/:oid/eventdetails/:eid", {
+                templateUrl: 'views/user/templates/eventDetails.view.client.html',
+                controller: 'organizerController',
+                controllerAs: 'model'
+            })
             .when("/seller/:sid", {
                 templateUrl: 'views/user/templates/sellerProfileEdit.view.client.html',
                 controller: 'sellerController',

@@ -30,8 +30,8 @@
         }
 
 
-        function updateEvent(eventId, newEvent) {
-            return $http.put("/api/event/"+eventId, newEvent);
+        function updateEvent(organizerId, newEvent) {
+            return $http.put("/api/event/"+organizerId, newEvent);
         }
 
         function findEventByEventId(eid) {
