@@ -15,10 +15,15 @@
             "deleteUser":deleteUser,
             "login" : login,
             "logout" : logout,
-            "register":register
+            "register":register,
+            "getAllUsers":getAllUsers
         };
         return api;
 
+        function getAllUsers(){
+            //console.log($http.get("/api/getusers"));
+            return $http.get("/api/getusers");
+        }
         function register(user) {
             return $http.post("/api/register",user);
         }

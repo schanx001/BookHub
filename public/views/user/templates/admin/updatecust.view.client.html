@@ -1,0 +1,63 @@
+<div class="container padding-top ">
+
+    <div class="alert alert-danger" ng-show="model.error" role="alert">
+        {{model.error}}
+    </div>
+
+    <div class="alert alert-success" ng-show="model.message" role="alert">
+        {{model.message}}
+    </div>
+
+    <div class="form-group">
+        <label class="label-color" for="username">Username </label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+            <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
+            <input ng-model="model.editUser.username" type="text" class="form-control divTransparent text-color" id="username" value="shohit">
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="label-color" for="email">Email address</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-envelope text-color"></span></div>
+            <input ng-model="model.editUser.email" type="email" class="form-control divTransparent text-color" id="email" value="shohitb@ccs.neu.edu">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label-color" for="first-name">First Name</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+            <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
+            <input ng-model="model.editUser.firstName" type="text" class="form-control divTransparent text-color" id="first-name" value="shohit">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label-color" for="last-name">Last Name</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
+            <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
+            <input ng-model="model.editUser.lastName" type="text" class="form-control divTransparent text-color" id="last-name" value="bajaj">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label-color" for="phone-number">Phone Number</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-earphone text-color"></span></div>
+            <input ng-model="model.editUser.phone" type="text" class="form-control divTransparent text-color" id="phone-number" value="0000000000">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label-color" for="phone-number">Current Role</label>
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
+            <input ng-model="model.editUser.role" type="text" disabled class="form-control divTransparent text-color" id="role" >
+        </div>
+    </div>
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <label class="label-color" for="phone-number">Change Role</label>
+
+        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
+    <!--<div class="btn-group" >-->
+    </div>
+
+    <a  ng-click="model.updatedUser(model.editUser)" class="btn btn-primary  btn-block"">Update</a>
+
+</div>
+

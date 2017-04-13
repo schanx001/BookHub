@@ -14,15 +14,12 @@ module.exports = function (app, model) {
         clientID     : process.env.GOOGLE_CLIENT_ID,
         clientSecret : process.env.GOOGLE_CLIENT_SECRET,
         callbackURL  : process.env.GOOGLE_CALLBACK_URL
-        // clientID : 613608283482,//-nglr7lo7tmlp7mqmh5g3ff574fv6b452.apps.googleusercontent.com,
-        // clientSecret: 'U4UPQonwDzUZNez9fXJbHxXw',
-        // callbackURL: 'http://localhost:3001/auth/google/callback'
     };
 
     var facebookConfig = {
-        clientID: process.env.FACEBOOK_CLIENT_ID, //406973029672615, //
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET, //'7fa1e54f0ec3c9989fe3a4679e108b4c',//
-        callbackURL: process.env.FACEBOOK_CALLBACK_URL, //'http://localhost:3001/auth/facebook/callback',//
+        clientID: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACK_URL,
         profileFields: ['id','displayName','email','name']
     };
     
@@ -56,6 +53,18 @@ module.exports = function (app, model) {
     app.post('/api/logout',logout);
     app.post('/api/register',register);
     app.get ('/api/loggedin', loggedin);
+    app.get('/api/getusers',findUsers);
+
+    function findUsers(req,res) {
+        userModel
+            .findAllUsers()
+            .then(function (users) {
+                console.log(users);
+                res.json(users);
+            },function (err) {
+                res.sendStatus(404).send(err);
+            })
+    }
 
     function loggedin(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');

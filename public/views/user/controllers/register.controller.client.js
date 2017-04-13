@@ -6,11 +6,12 @@
         .module("BookHubMaker")
         .controller("registerController", registerController);
 
-    function registerController(UserService,$location,$rootScope) {
+    function registerController(UserService,$location,$rootScope,$routeParams) {
         var vm = this;
         vm.register = register;
 
         function register(user) {
+
             if(user==null)
             {
                 vm.error = "input empty! Please fill username and password";
@@ -31,6 +32,12 @@
                             .register(user)
                             .then(function (response){
                                 var user=response.data;
+                                alert(vm.flag);
+                                if(vm.flag==='adminflag'){
+                                    var aid = $routeParams['aid'];
+                                    $location.url("/admin/"+aid);
+                                }
+                                    else{
                                 if(user.role.toString() === 'user') {
                                     alert("hell");
                                     $rootScope.currentUser = user;
@@ -44,7 +51,7 @@
                                 else if(user.role.toString() === 'seller') {
                                     $rootScope.currentUser = user;
                                     $location.url("/seller/" + user._id);
-                                }
+                                }}
                             });
                     });
             }}}

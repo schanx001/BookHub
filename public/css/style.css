@@ -5,8 +5,8 @@ div.input-group {
 body {
     padding-top: 52px;
     padding-bottom: 60px;
-    background-image: url("../images/trial/back.jpg");
-    background-repeat: no-repeat;
+    /*background-image: url("../images/trial/back.jpg");
+    */background-repeat: no-repeat;
     background-size: cover;
     min-height: 680px;
 }
@@ -280,6 +280,7 @@ a.btn-white-edit:hover > span#edit-glyphicon{
     width: 60%;
     box-shadow: 5px 3px 30px black;
     overflow: hidden;
+    color:black;
 }
 
 .blurred-back::before{
@@ -309,3 +310,19 @@ a.btn-white-edit:hover > span#edit-glyphicon{
     width:145px;
 }
 /*addBook Page Css end*/
+
+.jumbotron{
+    background-image:url("http://cdn.wallpapersafari.com/46/91/18kpHm.jpg");
+    background-repeat: no-repeat;
+    width:100%;
+    height:100%;
+    background-size: cover;
+}
+
+.navbar-brand.app-name{
+    color:black;
+}
+.navbar-brand.app-name:hover {
+    color:blue;
+    text-decoration: none;
+}

@@ -1,54 +1,70 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid navbar-color">
+<nav class="navbar navbar-default navbar-fixed-top navbar-toggleable-md ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="navbar-collapse" data-target="#navbarNav">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand app-name"  href>
+                <label>BookHub</label>
 
-        <a href="#/admin" ng-click="showDiv = true; model.message=''">
-            <div class="navbar-text pull-right btn navbar-color">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="navbarNav">
+            <ul class="nav navbar-nav">
+                <li class="nav-item pull-left">
+                    <a href="#/admin/{{model.adminId}}/create" class="text-success bg-success">
+
+                        <span id="add-glyphicon" class="glyphicon glyphicon-plus"> </span> Create Role
+                    </a></li>
+                <li class="nav-item pull-right">
+                    <a href="#/login" >
+
+                <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
+       </a></li>
+                <li class="nav-item">
+        <a href="#/admin/{{model.adminId}}">
 
                 <span class="glyphicon glyphicon-user" ></span> Manage Users
-            </div>
-
-        </a>
-
-        <a href="#/admin/manageSellers">
-            <div class="navbar-text pull-right btn navbar-color">
-
-                <span class="glyphicon glyphicon-star"></span> Manage Sellers
-            </div>
-        </a>
 
 
-        <a href="#/admin/manageEvents">
-            <div class="navbar-text pull-right btn navbar-color">
+        </a></li>
+                <li class="nav-item">
+        <a href="#/admin/{{model.adminId}}/manageSellers">
 
-                <span class="glyphicon glyphicon-bell"></span> Manage Events
-            </div>
-        </a>
+            <span class="glyphicon glyphicon-star"></span> Manage Sellers
+        </a></li>
 
-        <a href="#/admin/handleRequests">
-            <div class="navbar-text pull-right btn navbar-color">
+                <li class="nav-item ">
+        <a href="#/admin/{{model.adminId}}/manageEvents">
+
+    <!--            <span class="glyphicon glyphicon-bell"></span>--> Manage Events
+
+        </a></li>
+                <li class="nav-item">
+        <a href="#/admin/{{model.adminId}}/handleRequests">
 
                 <span class="glyphicon glyphicon-stats"></span> Handle Requests
-            </div>
-        </a>
-        <a href="#/admin/manageBooks" class="btn pull-right" ng-click="showDiv = true; model.message=''">
-            <div class="navbar-text navbar-color">
+
+        </a> </li> <li class="nav-item">
+        <a href="#/admin/{{model.adminId}}/manageBooks" class=" pull-right" ng-click="showDiv = true; model.message=''">
 
                 <span class="glyphicon glyphicon-user" ></span> Manage Books
-            </div>
 
-        </a>
-        <a href="#/admin/create" class="btn btn-success pull-right">
-            <div class="navbar-text">
-                <span id="add-glyphicon" class="glyphicon glyphicon-plus"> </span> Create Role
-            </div>  </a>
+
+        </a></li>  </ul>
+        </div>
+
     </div>
 </nav>
+
 <div class="container padding-top ">
     <h1>All Users of BookHub</h1>
+
     <div class="card hidden-xs">
         <ul class="list-group list-group-flush">
             <li class="list-group-item active">
-
             <div class="row">
                 <div class="col-md-3">
                     <strong>UserName</strong>
@@ -64,63 +80,37 @@
                     <strong>Role</strong>
                 </div>
                 <div class="col-md-1">
-                    <strong>Action</strong>
+                    <strong ng-show="model.allusers">Action</strong>
                 </div>
             </div>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item" ng-repeat="user in model.allusers">
             <div class="row">
             <div class="col-md-3">
-                <label>Shantanu</label>
+                <label>{{user.username}}</label>
             </div>
             <div class="col-md-3">
-                <label>Shantanu</label>
+                <label>{{user.firstName}}</label>
             </div>
             <div class="col-md-3">
-                <label>Kawlekar</label>
+                <label>{{user.lastName}}</label>
             </div>
             <div class="col-md-2">
-                    <label>User</label>
+                    <label>{{user.role}}</label>
             </div>
             <div class="col-md-1">
                 <div class="row">
                     <div class="col-md-6">
-                            <a href="#" class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                            <a ng-click="model.deleteUsers(user._id,user.username)" href class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
                     </div>
                     <div class="col-md-6">
-                        <a href="#" class=""><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
+                        <a ng-click="model.updateUsers(user)" href class=""><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
                     </div>
                 </div>
             </div>
             </div>
             </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label>Shantanu</label>
-                    </div>
-                    <div class="col-md-3">
-                        <label>Shantanu</label>
-                    </div>
-                    <div class="col-md-3">
-                        <label>Kawlekar</label>
-                    </div>
 
-                    <div class="col-md-2">
-                        <label>Seller</label>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="#" class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="#" class=""><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
 
         </ul>
     </div>
@@ -128,103 +118,37 @@
     <div class="card visible-xs text-center">
         <div class="card-block">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-6 text-primary">
-                            <p class="card-text">Shantanu</p>
-                        </div>
-                        <div class="col-xs-6">
-                            <p class="card-text">Shantanu</p>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 text-primary">
-                        <p class="card-text">Shantanu</p>
-                    </div>
-                    <div class="col-xs-6">
-                        <p class="card-text">Shantanu</p>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-6 text-primary">
-                            <p class="card-text ">Shantanu</p>
-                        </div>
-                        <div class="col-xs-6">
-                            <p class="card-text">Shantanu</p>
-                        </div>
-                    </div>
-                    <div class="row">
-
-                    <div class="col-xs-6 text-primary">
-                            <p class="card-text">Shantanu</p>
-                        </div>
-                        <div class="col-xs-6">
-                            <p class="card-text">Shantanu</p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="#" class="btn btn-block btn-white-edit"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
-                        </div>
-
-                    </div>
-                </li>
-
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-6 text-primary">
-                            <p class="card-text">Shantanu</p>
-                        </div>
-                        <div class="col-xs-6">
-                            <p class="card-text">Shantanu</p>
-                        </div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-xs-6 text-primary">
-                            <p class="card-text">Shantanu</p>
-                        </div>
-                        <div class="col-xs-6">
-                            <p class="card-text">Shantanu</p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="#" class="btn btn-block btn-white-edit"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
-                        </div>
-
-                    </div>
-                </li>
-
-                <li class="list-group-item">
+                <li class="list-group-item" ng-repeat="user in model.allusers">
                     <div class="row">
                         <div class="col-xs-6 text-primary">
                             <p class="card-text">Username</p>
                         </div>
                         <div class="col-xs-6">
-                            <p class="card-text">Firstname</p>
+                            <p class="card-text">{{user.username}}</p>
                         </div>
                     </div>
                     <div class="row">
 
                     <div class="col-xs-6 text-primary">
-                            <p class="card-text">Shantanu</p>
-                        </div>
-                        <div class="col-xs-6">
-                            <p class="card-text">Shantanu</p>
-                        </div>
+                        <p class="card-text">Firstname</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="card-text">{{user.firstName}}</p>
+                    </div>
                     </div>
                     <div class="row">
+
+                    <div class="col-xs-6 text-primary">
+                        <p class="card-text">Lastname</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="card-text">{{user.lastName}}</p>
+                    </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-xs-6">
-                            <a href="#" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                            <a ng-click="model.deleteUsers(user._id,user.username)" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
                         </div>
                         <div class="col-xs-6">
                             <a href="#" class="btn btn-block btn-white-edit"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
@@ -238,3 +162,6 @@
     </div>
 
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom navbar-toggleable-md">
+</nav>

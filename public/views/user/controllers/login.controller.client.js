@@ -37,6 +37,12 @@
                             $rootScope.currentUser = user;
                             $location.url("/seller/" + user._id);
                         }
+                        else if(user.role.toString() === 'admin') {
+                            $rootScope.currentUser = user;
+                            $location.url("/admin/" + user._id);
+                        }
+
+
 
                     },function (err) {
                         vm.error = "user/password does not match";

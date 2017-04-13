@@ -16,10 +16,13 @@ module.exports = function(){
         "getModel":getModel,
         "getEmailIdFromUserIds":getEmailIdFromUserIds,
         "findUserByFacebookId":findUserByFacebookId,
-        "findUserByGoogleId": findUserByGoogleId
+        "findUserByGoogleId": findUserByGoogleId,
+        "findAllUsers": findAllUsers
     };
     return api;
-
+    function findAllUsers() {
+        return userModel.find({role:{$nin:['admin']}});
+    }
     function findUserByGoogleId(googleId) {
         return userModel.findOne({'google.id': googleId});
     }

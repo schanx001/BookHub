@@ -15,7 +15,10 @@
     };
 
 
-    function configuration($routeProvider) {
+    function configuration($routeProvider,$httpProvider) {
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+        $httpProvider.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
+
         $routeProvider
             .when("/", {
                 templateUrl: 'views/main/templates/mainPage.view.client.html',
@@ -90,11 +93,42 @@
                 controller: 'sellerController',
                 controllerAs: 'model'
             })
-            .when("/admin",{
-                templateUrl: 'views/user/templates/admin.view.client.html',
+            .when("/admin/:aid",{
+                templateUrl: 'views/user/templates/admin/admin.view.client.html',
                 controller: 'adminController',
-                comtrollerAs: 'model'
+                controllerAs: 'model'
             })
+            .when("/admin/:aid/create",{
+                templateUrl: 'views/user/templates/admin/createUser.view.client.html',
+                controller: 'registerController',
+                controllerAs:'model'
+            })
+            .when("/admin/:aid/manageEvents",{
+                templateUrl: 'views/user/templates/admin/createUser.view.client.html',
+                controller: 'registerController',
+                controllerAs:'model'
+            })
+            .when("/admin/:aid/ManageBooks",{
+                templateUrl: 'views/user/templates/admin/createUser.view.client.html',
+                controller: 'registerController',
+                controllerAs:'model'
+            })
+            .when("/admin/:aid/ManageUsers",{
+                templateUrl: 'views/user/templates/admin/admin.view.client.html',
+                controller: 'registerController',
+                controllerAs:'model'
+            })
+            .when("/admin/:aid/create",{
+                templateUrl: 'views/user/templates/admin/createUser.view.client.html',
+                controller: 'registerController',
+                controllerAs:'model'
+            })
+            .when("/admin/:aid/updatecust/:uid",{
+                templateUrl: 'views/user/templates/admin/updatecust.view.client.html',
+                controller: 'adminController',
+                controllerAs:'model'
+            })
+
     }
 
 
