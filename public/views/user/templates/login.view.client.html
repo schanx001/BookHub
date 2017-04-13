@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid navbar-color">
+    <div class="container-fluid">
         <div>
             <a class="navbar-brand glyphicon glyphicon-chevron-left" href="#/">
             </a>
@@ -7,7 +7,7 @@
     </div>
 </nav>
 
-<div class="container padding-top">
+<div class="container padding-top blurred-back">
         <!--<div class="text-center">-->
             <!--<img src="../../../images/icons/book.png" class="img-thumbnail">-->
         <!--</div>-->
@@ -18,16 +18,16 @@
             {{model.error}}
         </div>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
-            <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
+            <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user "></span></div>
         <input ng-model="user.username"
-           class="form-control divTransparent text-color"
+           class="form-control divTransparent"
            placeholder="username"/>
         </div>
 
         <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
-            <div class="input-group-addon divTransparent "><span class="glyphicon glyphicon-lock text-color"></span></div>
+            <div class="input-group-addon divTransparent "><span class="glyphicon glyphicon-lock "></span></div>
             <input ng-model="user.password"
-                class="form-control divTransparent text-color"
+                class="form-control divTransparent"
                 type="password"
                    placeholder="password"/></div>
 
@@ -48,3 +48,12 @@
         Register
     </a>
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <!--<a href="#/user/{{model.user._id}}">-->
+        <!--<div class="navbar-text pull-right">-->
+        <!--<span class="glyphicon glyphicon-user"></span>-->
+        <!--</div>-->
+        <!--</a>-->
+    </div>
+</nav>

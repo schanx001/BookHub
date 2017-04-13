@@ -7,9 +7,10 @@
         .module("BookHubMaker")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, UserService, BookService, $location, $rootScope) {
+    function profileController($routeParams, UserService, BookService, $location, $rootScope, loggedin) {
         var vm = this;
-        var userId = $routeParams['uid'];
+        var userId = loggedin.data._id;//$routeParams['uid'];
+        //alert(userId);
         vm.requestedBooks=[];
         vm.requestedForBooks=[];
         vm.booksAvailable=[];
@@ -32,7 +33,7 @@
                 .then(
                     function (response) {
                         $rootScope.currentUser = null;
-                        $location.url("/");
+                        $location.url("/login");
                     }
                 )
         }
@@ -158,6 +159,7 @@
         }
         
         function init() {
+            console.log(loggedin.data);
             vm.message="";
             vm.user = UserService.findUserById(userId)
                 .success(renderUser)

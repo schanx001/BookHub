@@ -1,7 +1,10 @@
 div.input-group {
     margin-bottom: 5px;
 }
-
+html,body{
+    height:100%;
+    width:100%
+}
 body {
     padding-top: 52px;
     padding-bottom: 60px;
@@ -12,13 +15,18 @@ body {
 }
 
 .navbar-default .navbar-brand {
-    color: white;
+    color: navy;
 }
 .navbar-default .navbar-text {
+    color: navy;
+}
+
+.navbar-default .navbar-logreg {
     color: white;
 }
+
 .navbar-default .navbar-brand:hover {
-    color: white;
+    color: navy;
     background-color: transparent;
 }
 
@@ -136,6 +144,10 @@ img.same-height{
     max-width: 100%;
     height:30em;
 }
+.card-block.same-height{
+    height:5em;
+}
+
 /*main page search css ends*/
 .navbar-color{
     background-color: dimgray;
@@ -146,7 +158,7 @@ img.same-height{
 }
 
 .text-color{
-    color: white;
+    color: navy;
 }
 
 
@@ -311,12 +323,24 @@ a.btn-white-edit:hover > span#edit-glyphicon{
 }
 /*addBook Page Css end*/
 
-.jumbotron{
-    background-image:url("http://cdn.wallpapersafari.com/46/91/18kpHm.jpg");
+.container-fluid.jumbotron{
+    background-image: url("http://cdn.wallpapersafari.com/77/28/hfG6Nk.jpg");
+    -webkit-background-size:cover;
+    background-size:cover;
     background-repeat: no-repeat;
     width:100%;
-    height:100%;
-    background-size: cover;
+    height:900px;
+    background-attachment: fixed;
+    background-position: center center;
+}
+@media only screen and (max-width: 720px) {
+    .container-fluid.jumbotron{
+        background-size: cover;
+        height: 700px;
+        background-image-x:-200px;
+
+    }
+    }
 }
 
 .navbar-brand.app-name{
@@ -325,4 +349,54 @@ a.btn-white-edit:hover > span#edit-glyphicon{
 .navbar-brand.app-name:hover {
     color:blue;
     text-decoration: none;
+}
+a{
+    text-decoration: none;
+}
+.container.mob-view{
+    margin-bottom: 60px;
+}
+.container-fluid.desk-view{
+    margin-bottom: 40px;
+}
+div#slider {
+    max-width: 100%;
+}
+div#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    text-align: left;
+}
+div#slider figure img {
+    width: 20%;
+    height: auto;
+    float: left;
+}
+@media  only screen and (min-width:700px){
+    div#slider figure img {
+        height: 800px;}
+}
+@keyframes slidy {
+    0%  { left: 0%; }
+    20% { left: 0%; }
+    25% { left: -100%; }
+    45% { left: -100%; }
+    50% { left: -200%; }
+    70% { left: -200%; }
+    75% { left: -300%; }
+    95% { left: -300%; }
+    100% { left: -400%; }
+}
+div#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    left: 0;
+    text-align: left;
+    animation: 30s slidy infinite;
 }

@@ -5,13 +5,14 @@
     angular
         .module("BookHubMaker")
         .controller("adminController", adminController);
-    function adminController($routeParams, UserService, $location, $rootScope,$route){
+    function adminController($routeParams, UserService, $location, $rootScope,$route,loggedin){
         var vm = this;
-        vm.adminId = $routeParams['aid'];
+        vm.adminId = loggedin.data._id;//$routeParams['aid'];
         vm.allusers=null;
         vm.deleteUsers = deleteUsers;
         vm.updateUsers = updateUsers;
         vm.updatedUser = updatedUser;
+        vm.logout = logout;
         function init() {
             UserService
                 .getAllUsers()
@@ -25,11 +26,11 @@
                 function (err) {
                     vm.error = err;
                 });
-
-            vm.userId = $routeParams['uid'];
-            if(vm.userId){
-            vm.editUser = UserService.findUserById(vm.userId)
-                .success(renderUser);}
+            vm.userId = $rootScope.userId;//$routeParams['uid'];
+            if($rootScope.userId){
+            vm.editUser = UserService.findUserById($rootScope.userId)
+                .success(renderUser);
+            }
         }
         init();
         function renderUser(user) {
@@ -50,11 +51,14 @@
                     $location.redirect("/admin/"+vm.adminId);*/
                 });}
                 else{
-                $location.redirect("/admin/"+vm.adminId);
+                $location.redirect("/admin/profile");//+vm.adminId);
             }
         }
         function updateUsers(newUser) {
-            $location.url("/admin/"+vm.adminId+"/updatecust/"+newUser._id);
+            if(newUser){
+                $rootScope.userId = newUser._id;
+            }
+            $location.url("/admin/updatecust/cust");
 /*
             UserService
                 .updateUser(userId, newUser)
@@ -67,14 +71,23 @@
                 });
 */
         }
+        function logout() {
+            UserService
+                .logout()
+                .then(function (response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/login");
+                });
+        }
+
         function updatedUser(newUser) {
-            alert('hello')
+
             var userId = vm.userId;
             UserService
                 .updateUser(userId, newUser)
                 .success(function (response) {
                     vm.message = "user successfully updated";
-                    $location.url("/admin/"+vm.adminId);
+                    $location.url("/admin/profile");//+vm.adminId);
                 })
                 .error(function () {
                     vm.error = "unable to update user";

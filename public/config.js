@@ -38,9 +38,12 @@
             .when("/login", {
                 templateUrl: 'views/user/templates/login.view.client.html',
                 controller: 'loginController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/user/:uid", {
+            .when("/user/profile", {
                 templateUrl: 'views/user/templates/profileEdit.view.client.html',
                 controller: 'profileController',
                 controllerAs: 'model',
@@ -48,85 +51,113 @@
                     loggedin: checkLoggedin
                 }
             })
-            .when("/user/:uid/myalerts",{
+            .when("/user/myalerts",{
                 templateUrl:'views/user/templates/customer/stats/myAlerts.view.client.html',
                 controller:'profileController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/user/:uid/mystats",{
+            .when("/user/mystats",{
                 templateUrl:'views/user/templates/customer/stats/myStats.view.client.html',
                 controller:'profileController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/user/:uid/addbook",{
                 templateUrl:'views/user/templates/customer/stats/addBook.view.client.html',
                 controller:'addBookController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/organizer/:oid", {
+            .when("/organizer/profile", {
                 templateUrl: 'views/user/templates/organizerProfileEdit.view.client.html',
                 controller: 'organizerController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/organizer/:oid/addevent", {
+            .when("/organizer/addevent", {
                 templateUrl: 'views/user/templates/organizerAddEvent.view.client.html',
                 controller: 'organizerController',
                 controllerAs: 'model'
             })
-            .when("/organizer/:oid/myevents", {
+            .when("/organizer/myevents", {
                 templateUrl: 'views/user/templates/organizerMyEvents.view.client.html',
                 controller: 'organizerController',
                 controllerAs: 'model'
             })
-            .when("/organizer/:oid/eventdetails/:eid", {
+            .when("/organizer/eventdetails/event", {
                 templateUrl: 'views/user/templates/eventDetails.view.client.html',
                 controller: 'organizerController',
                 controllerAs: 'model'
             })
-            .when("/seller/:sid", {
+            .when("/seller/", {
                 templateUrl: 'views/user/templates/sellerProfileEdit.view.client.html',
                 controller: 'sellerController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/seller/:sid/addbook", {
+            .when("/seller/addbook", {
                 templateUrl: 'views/user/templates/sellerAddBook.view.client.html',
                 controller: 'sellerController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/admin/:aid",{
+            .when("/admin/profile",{
                 templateUrl: 'views/user/templates/admin/admin.view.client.html',
                 controller: 'adminController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/admin/:aid/create",{
+            .when("/admin/create",{
                 templateUrl: 'views/user/templates/admin/createUser.view.client.html',
                 controller: 'registerController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/admin/:aid/manageEvents",{
+            .when("/admin/manageEvents",{
                 templateUrl: 'views/user/templates/admin/createUser.view.client.html',
                 controller: 'registerController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/admin/:aid/ManageBooks",{
+            .when("/admin/ManageBooks",{
                 templateUrl: 'views/user/templates/admin/createUser.view.client.html',
                 controller: 'registerController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/admin/:aid/ManageUsers",{
+            .when("/admin/ManageUsers",{
                 templateUrl: 'views/user/templates/admin/admin.view.client.html',
                 controller: 'registerController',
                 controllerAs:'model'
             })
-            .when("/admin/:aid/create",{
-                templateUrl: 'views/user/templates/admin/createUser.view.client.html',
-                controller: 'registerController',
-                controllerAs:'model'
-            })
-            .when("/admin/:aid/updatecust/:uid",{
+            .when("/admin/updatecust/cust",{
                 templateUrl: 'views/user/templates/admin/updatecust.view.client.html',
                 controller: 'adminController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
 
     }

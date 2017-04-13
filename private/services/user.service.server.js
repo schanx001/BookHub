@@ -32,7 +32,7 @@ module.exports = function (app, model) {
             failureRedirect: '/#/login'
         }),function (req,res) {
         console.log("in her!");
-            var url='/#/user/'+req.user._id.toString();
+            var url='/#/user/profile';//+req.user._id.toString();
             res.redirect(url);
         });
 
@@ -41,7 +41,7 @@ module.exports = function (app, model) {
         failureRedirect: '/#/login'
     }),function (req,res) {
         console.log(req.user);
-        var url = '/#/user/'+req.user._id.toString();
+        var url = '/#/user/profile';//+req.user._id.toString();
         res.redirect(url);
     });
     app.get("/api/user", findUser);

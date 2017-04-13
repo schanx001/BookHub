@@ -1,64 +1,67 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid navbar-color">
+    <div class="container-fluid bg-inverse">
 
-        <a href="#/register">
-            <div class="navbar-text pull-right btn navbar-color">
+        <div class="navbar-brand text-color navbar-header">
+            <a style="text-decoration:none; color:navy;" href><strong>BookHub</strong></a>
+        </div>
+        <a href="#/register" class="navbar-logreg pull-right btn btn-primary">
+
 
                 <span class="glyphicon glyphicon-plus-sign"></span> Register
-            </div>
-                </a>
 
+        </a>
 
-                <a href="#login">
-                    <div class="navbar-text pull-right btn navbar-color">
+<a href="#login" class="navbar-logreg pull-right btn btn-success">
+
 
                     <span class="glyphicon glyphicon-user"></span>Login
-                    </div>
 
-                </a>
-
-        <!--<div class="navbar-header">-->
+</a>        <!--<div class="navbar-header">-->
             <!--<a class="navbar-brand" href="#/user/{{model.user._id}}">Profile</a>-->
         <!--</div>-->
     </div>
 </nav>
-
-<ul id="slippry-demo">
-    <li>
-        <a href="#slide1"><img src="https://www.w3schools.com/css/trolltunga.jpg" alt="Welcome to Slippry!"></a>
-    </li>
-    <li>
-        <a href="#slide2"><img src="https://www.w3schools.com/css/trolltunga.jpg"  alt="This is an awesome jQuery slider plugin."></a>
-    </li>
-    <li>
-        <a href="#slide3"><img src="https://www.w3schools.com/css/trolltunga.jpg" alt="Check it out, you are going to <span class='red'>♥</span> it :)"></a>
-    </li>
-</ul>
-
-<div class="jumbotron">
-    <img src="../../../images/trial/book-hub.png" class="banner padding-top " style="padding-left: 38%; padding-bottom: 5%">
+<div id="slider">
+    <figure>
+        <img src="https://cdn-images-1.medium.com/max/1200/1*vuVoDNYwI880vUsVR_2r2w.jpeg" alt>
+        <img src="https://yourfirstmillionorg.files.wordpress.com/2016/12/img_0889.jpg?w=1200&h=800&crop=1" alt>
+        <img src="http://e-spaces.eu/wp-content/uploads/2016/03/books.jpg" alt>
+      <img src="  https://cdn0.vox-cdn.com/thumbor/B8k_9oUX-_6Tk0evkCmKcUdPKgQ=/0x0:889x667/1200x800/filters:focal(0x0:889x667)/cdn0.vox-cdn.com/uploads/chorus_image/image/49180355/shutterstock_153076043.0.0.jpg" alt>
+    </figure>
 </div>
+
+<!--
+<div class="container-fluid jumbotron img-fluid">
+
+</div>
+-->
 
 <div class="container-fluid">
 
     <div class="visible-xs">
-        <div class="col-xs-12">
-            <div class="col-xs-3"></div>
-            <div class="col-xs-9">
-                <input type="text" name="search" placeholder="Search.." class="search">
-                <div class="dropdown pull-right">
-                    <button onclick="myFunction()" class="dropbtn">
-                        <span class="dropbtn glyphicon glyphicon-menu-hamburger"></span>
-                    </button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a ng-click="model.getBookListingMobile(opt)" ng-repeat="opt in model.genreListings">{{opt}}</a>
-                    </div>
+        <div class="container-fluid ">
+        <div class="dropdown btn-block btn-primary">
+            <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Category
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a ng-click="model.getBookListingMobile(opt)" ng-repeat="opt in model.genreListings">{{opt}}</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="col-xs-12 panel panel-default" style="text-align: center"><strong><h3>Books Listing</h3></strong></div>
+
+<!--
+        <div class="col-xs-12" style="text-align: center"><strong><p>Books Listing</p></strong></div>
+--> <div class="container mob-view">
+        <div id="div_book_listing_mobile" class="col-xs-12" ng-show="model.books" ng-repeat="book in model.books">
+            <div class="thumbnail">
+                <img class="card-img-top same-height" ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" style="width:100%"/>
+                <div class="card-block">
+                    <h4 class="card-title">{{book.volumeInfo.title}}</h4>
+                    <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-12" style="text-align: center"><strong><p>Books Listing</p></strong></div>
-        <div id="div_book_listing_mobile" class="col-xs-12" ng-show="model.books" ng-repeat="book in model.books">
-            <div class="col-xs-3" >
+            <!--<div class="col-xs-3" >
                 <div class="">
                     <img src="{{book.volumeInfo.imageLinks.smallThumbnail}}" class="listing-image">
                     <br><br>
@@ -69,27 +72,25 @@
                     <p class="p-word-wrap">{{book.volumeInfo.title}}<br>
                         {{book.volumeInfo.authors[0]}}</p>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
+    </div>
     <div class="row hidden-xs">
-        <div class="col col-md-3 border">
+        <div class="col col-md-3">
             <div class="col-md-12">
-                <strong>Categories:</strong>
-                <select ng-options="option for option in model.genreListings" ng-model="model.genre" ng-change="model.getBookListing()">
-                <!--<select id="book-genre" onchange="model.getBookListing(this.selected);">-->
-                    <!--<option value="Science Fiction">Science Fiction</option>-->
-                    <!--<option value="Arts & Photography">Arts & Photography</option>-->
-                    <!--<option value="Biographies">Biographies</option>-->
-                    <!--<option value="Children Books">Children Books</option>-->
-                    <!--<option value="History">History</option>-->
-                    <!--<option value="Literature & Fiction">Literature & Fiction</option>-->
-                    Science Fiction
-                </select>
+
+                <div class="dropdown btn-block btn-primary">
+                    <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Category
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="model.getBookListingMobile(opt)" ng-repeat="opt in model.genreListings">{{opt}}</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="col col-md-9 border">
-            <div class="col-xs-12 label label-danger" style="text-align: center"><strong><h3>Books Listing</h3></strong></div>
+        <div class="col col-md-9">
+            <div class="col-xs-12 panel panel-default" style="text-align: center"><strong><h3>Books Listing</h3></strong></div>
            <!-- <div id="div_book_listing" class="col-xs-12" ng-show="model.books" ng-repeat="book in model.books">
                 <div class="col-xs-3" >
                     <div class="col-xs-12">
@@ -104,11 +105,11 @@
                     </div>
                 </div>
             </div>-->
-            <div class="row container-fluid">
+            <div class="row container-fluid desk-view">
             <div class="col-sm-6 col-md-4" id="div_book_listing" ng-show="model.books" ng-repeat="book in model.books">
                 <div class="thumbnail">
                 <img class="card-img-top same-height" ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" style="width:100%"/>
-                    <div class="card-block">
+                    <div class="card-block same-height">
                         <h4 class="card-title">{{book.volumeInfo.title}}</h4>
                         <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
                     </div>
@@ -120,7 +121,7 @@
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid navbar-color">
+    <div class="container-fluid">
         <!--<a href="#/user/{{model.user._id}}">-->
             <!--<div class="navbar-text pull-right">-->
                 <!--<span class="glyphicon glyphicon-user"></span>-->

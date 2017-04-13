@@ -8,11 +8,13 @@
         .controller("loginController", loginController);
 
 
-    function loginController(UserService, $location, $rootScope) {
+    function loginController(UserService, $location, $rootScope, loggedin) {
         var vm = this;
         vm.login = login;
 
-
+        function init() {
+        }
+        init();
         function login(user) {
             if(user==null)
             {
@@ -26,20 +28,20 @@
                         if(user.role.toString() === 'user') {
                             alert("hell");
                             $rootScope.currentUser = user;
-                            $location.url("/user/" + user._id);
+                            $location.url("/user/");// + user._id);
                         }
                         else if(user.role.toString() === 'eventorganizer') {
                             alert("hell2");
                             $rootScope.currentUser = user;
-                            $location.url("/organizer/" + user._id);
+                            $location.url("/organizer/");// + user._id);
                         }
                         else if(user.role.toString() === 'seller') {
                             $rootScope.currentUser = user;
-                            $location.url("/seller/" + user._id);
+                            $location.url("/seller/");// + user._id);
                         }
                         else if(user.role.toString() === 'admin') {
                             $rootScope.currentUser = user;
-                            $location.url("/admin/" + user._id);
+                            $location.url("/admin/profile");//+ user._id);
                         }
 
 

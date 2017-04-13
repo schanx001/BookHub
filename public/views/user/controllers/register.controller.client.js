@@ -35,22 +35,22 @@
                                 alert(vm.flag);
                                 if(vm.flag==='adminflag'){
                                     var aid = $routeParams['aid'];
-                                    $location.url("/admin/"+aid);
+                                    $location.url("/admin/profile");
                                 }
                                     else{
                                 if(user.role.toString() === 'user') {
                                     alert("hell");
                                     $rootScope.currentUser = user;
-                                    $location.url("/user/" + user._id);
+                                    $location.url("/user/profile");// + user._id);
                                 }
                                 else if(user.role.toString() === 'eventorganizer') {
                                     alert("hell2");
                                     $rootScope.currentUser = user;
-                                    $location.url("/organizer/" + user._id);
+                                    $location.url("/organizer/profile");// + user._id);
                                 }
                                 else if(user.role.toString() === 'seller') {
                                     $rootScope.currentUser = user;
-                                    $location.url("/seller/" + user._id);
+                                    $location.url("/seller/profile");// + user._id);
                                 }}
                             });
                     });

@@ -28,7 +28,7 @@
             return $http.post("/api/register",user);
         }
         
-        function logout(user) {
+        function logout() {
             return $http.post("/api/logout");
         }
         

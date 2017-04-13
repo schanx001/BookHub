@@ -8,6 +8,10 @@
             vm.processImage = processImage;
             vm.genreListings=["Science Fiction","Arts & Photography","Horror","Children Books","History","Literature & Fiction"];
             vm.genre="Horror";
+            function init(){
+
+            }
+            init();
             getBookListing();
             function getBookListingMobile(genre) {
                 // console.log("Inside mobile listing "+genre);
