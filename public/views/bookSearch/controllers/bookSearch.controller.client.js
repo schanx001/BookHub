@@ -3,11 +3,12 @@
         .module("BookHubMaker")
         .controller("bookSearchController",bookSearchController);
 
-    function bookSearchController(BookService){
+    function bookSearchController(BookService, SellerBooksService){
         var vm=this;
         vm.sortBy="";
         vm.sortListings=["Price Low-High","Price High-Low","Title A-Z","Title Z-A","Recent"];
         vm.books=[];
+        vm.sellerBooks=[];
         vm.bookNumber=0;
         vm.searchText="";
         vm.userId="";
@@ -16,6 +17,16 @@
         vm.getSortListingMobile=getSortListingMobile;
         vm.searchBook=searchBook;
         vm.requestBook=requestBook;
+        vm.getAllSellerBooks=getAllSellerBooks;
+
+        function getAllSellerBooks() {
+
+            SellerBooksService.findAllBooks()
+                .then(function (response) {
+                    vm.sellerBooks=response.data;
+                })
+
+        }
 
         function requestBook(book) {
             BookService
@@ -66,6 +77,7 @@
 
         function init() {
             getAllAvBooks();
+            getAllSellerBooks();
         }
         init();
 

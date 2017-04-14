@@ -78,6 +78,34 @@ Description:{{book.description}}<br>
             </div>
         </div>
     </div>
+
+
+        <div class="col-xs-9 border">
+            <div class="col-xs-12" style="text-align: center"><strong><p>Seller Books in DB</p></strong></div>
+            <div ng-show="model.error">{{model.error}}</div>
+            <div id="div_sellerBook_listing" ng-repeat="sellerBook in model.sellerBooks | orderBy:model.sort:model.reverse" ng-show="model.sellerBooks">
+                <div class="col-xs-12">
+                    <div class="col-xs-3" >
+                        <img src="{{sellerBook.imgsrc}}" class="listing-image border">
+                        <br><br>
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="col-xs-12">
+                            <p>Title: <a href="#/seller/book/viewbook?sellerBookId={{sellerBook._id}}"> {{sellerBook.title}} </a><br>
+                                Author: {{sellerBook.author}}<br>
+                                Price: {{sellerBook.price}}<br>
+                                Description:{{sellerBook.description}}<br>
+                                Shop Name: {{sellerBook.shopName}}<br>
+                                Shop Location: {{sellerBook.shopLocation}}<br>
+                                Shop Email: {{sellerBook.shopEmail}}<br>
+                                Shop Phone: {{sellerBook.shopPhone}}<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </div>
 </div>
 <div class="col-xs-12 border visible-xs">

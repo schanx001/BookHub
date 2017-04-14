@@ -21,7 +21,7 @@ module.exports = function(){
 
     function findShopBySellerIdInDb(sid) {
         console.log(sid +"hellooo");
-        return sellerModel.find({owner : sid});
+        return sellerModel.findOne({owner : sid});
     }
     function getModel() {
         return sellerModel;

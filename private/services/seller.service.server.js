@@ -44,6 +44,7 @@ module.exports=function (app,model) {
     function createShopDetails(req, res) {
         var sellerId = req.params['sellerId'];
         var newShop = req.body;
+        console.log(newShop.shopEmail + " helloserver  " + newShop.shopPhone );
         sellerModel
             .createShopDetailsInDb(newShop)
             .then(function (response) {

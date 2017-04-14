@@ -10,10 +10,15 @@
             "createBook":createBook,
             "findBooksByUserId":findBooksByUserId,
             "deleteBookService":deleteBookService,
-            "updateBookService":updateBookService
+            "updateBookService":updateBookService,
+            "findSellerAndBookDetails":findSellerAndBookDetails
         };
         return api;
 
+
+        function findSellerAndBookDetails(sellerBookId) {
+            return $http.get("/api/sellerbook?sellerBookId="+sellerBookId)
+        }
 
         function updateBookService(book,userId) {
             return $http.put("/api/sellerbook?userId="+userId,book);
