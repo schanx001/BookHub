@@ -1,85 +1,27 @@
-module.exports=function (app,smtpTransport,model) {
-    app.get("/api/book",findBooks);
-    app.post("/api/book",createBook);
-    app.delete("/api/book",deleteBook);
-    app.put("/api/book",updateBook);
+/**
+ * Created by shohitbajaj on 12/04/17.
+ */
+
+module.exports=function (app,model) {
+    app.get("/api/sellerbook",findBooks);
+    app.post("/api/sellerbook",createBook);
+    app.delete("/api/sellerbook",deleteBook);
+    app.put("/api/sellerbook",updateBook);
 
 
-    var bookModel = model.bookModel;
+    var sellerBooksModel = model.sellerBooksModel;
     var userModel = model.userModel;
-
-    function sendRequestMailToUser(bookName,emailId){
-        var subjectText="";
-        var bodyText="";
-            subjectText="BookHub: You have a book share request";
-            bodyText='Greetings! User,\n\nYour book named "'+bookName+'" has been requested by a BookHub user.\n\nRegards,\nTeam BookHub';
-        var mailOptions={
-            to : emailId,
-            subject : subjectText,
-            text : bodyText
-        };
-        // console.log(mailOptions);
-        smtpTransport.sendMail(mailOptions, function(error, response){
-            if(error){
-                // console.log(error);
-                // res.end("error");
-            }else{
-                // console.log("Message sent: " + response.message);
-                // res.end("sent");
-            }
-        });
-    };
-
-    function sendAcceptMailToUser(book,status){
-        var subjectText="";
-        var bodyText="";
-        if(status){
-            subjectText="BookHub: Book request accepted";
-            bodyText='Greetings! User,\n\nYour request for book named "'+book.title+'" has been accepted\n\nRegards,\nTeam BookHub';
-        }else{
-            subjectText="BookHub: Book request rejected";
-            bodyText='Greetings! User,\n\nYour request for book named "'+book.title+'" has been rejected\n\nRegards,\nTeam BookHub';
-        }
-        var mailOptions={
-            to : book.email,
-            subject : subjectText,
-            text : bodyText
-        };
-        // console.log(mailOptions);
-        smtpTransport.sendMail(mailOptions, function(error, response){
-            if(error){
-                // console.log(error);
-                // res.end("error");
-            }else{
-                // console.log("Message sent: " + response.message);
-                // res.end("sent");
-            }
-        });
-    };
-
-
-
-
+    
 
     function updateBook(req,res) {
         // console.log("ffe="+req.body);
         var book=req.body;
         var userId=req.query.userId;
         var requestBookId=req.query.requestBook;
-        var bookReturned=req.query.bookReturned;
-        if(bookReturned!=undefined){
-            var book=req.body;
-            bookModel
-                .updateBookReturnStatus(book)
-                .then(function (response) {
-                    res.sendStatus(200);
-                },function () {
-                    res.status(404).send();
-                });
-        }else if(requestBookId!=undefined){
+        if(requestBookId!=undefined){
             // console.log("updated="+requestBookId);
             var requestorId=req.query.requestorId;
-            bookModel
+            sellerBooksModel
                 .updateBookRequestorInDb(requestBookId,requestorId)
                 .then(function (responseNew) {
                     // console.log("updated="+responseNew.title);
@@ -96,7 +38,7 @@ module.exports=function (app,smtpTransport,model) {
                 });
         }else if((userId!=null && userId!=undefined)){
             // console.log(userId);
-            bookModel
+            sellerBooksModel
                 .updateBookInDb(book)
                 .then(function (response) {
                     res.sendStatus(200);
@@ -110,7 +52,7 @@ module.exports=function (app,smtpTransport,model) {
                 // console.log("Inside");
                 book.status="shared";
                 // console.log("accept"+book);
-                bookModel
+                sellerBooksModel
                     .updateBookInDb(book)
                     .then(function (response) {
                         sendAcceptMailToUser(book,true);
@@ -122,7 +64,7 @@ module.exports=function (app,smtpTransport,model) {
                 book.status="available";
                 book.currentlyWith=book.owner;
                 // console.log(book);
-                bookModel
+                sellerBooksModel
                     .updateBookInDb(book)
                     .then(function (response) {
                         sendAcceptMailToUser(book,false);
@@ -136,7 +78,7 @@ module.exports=function (app,smtpTransport,model) {
 
     function deleteBook(req,res) {
         var bookId=req.query.bookId;
-        bookModel
+        sellerBooksModel
             .deleteBookFromDb(bookId)
             .then(function (response) {
                 findBooks(req,res);
@@ -147,7 +89,7 @@ module.exports=function (app,smtpTransport,model) {
 
     function createBook(req,res) {
         var book=req.body;
-        bookModel
+        sellerBooksModel
             .createABook(book)
             .then(function (response) {
                 res.send(response);
@@ -155,21 +97,12 @@ module.exports=function (app,smtpTransport,model) {
                 res.status(404).send();
             })
     }
-    
+
     function findBooks(req,res) {
         var bookName=req.query.bookName;
         var userId=req.query.userId;
-        var bookId=req.query.bookId;
-        if(bookId!=undefined){
-            bookModel
-                .findBookByIdInDb(bookId)
-                .then(function (response) {
-                    res.send(response);
-                },function (error) {
-                    res.status(404).send();
-                });
-        }else if(bookName){
-            bookModel
+        if(bookName){
+            sellerBooksModel
                 .findBooksByName(bookName)
                 .then(function (response) {
                     res.send(response);
@@ -177,7 +110,7 @@ module.exports=function (app,smtpTransport,model) {
                     res.status(404).send();
                 })
         }else if(userId){
-            bookModel
+            sellerBooksModel
                 .findBooksOwnedAndBorrowedByUserId(userId)
                 .then(function (response) {
                     var newUserIds=[];
@@ -217,8 +150,8 @@ module.exports=function (app,smtpTransport,model) {
                 });
         }
         else{
-            bookModel
-                .findAllAvBooks()
+            sellerBooksModel
+                .findAllBooks()
                 .then(function (response) {
                     res.send(response);
                 },function (error) {

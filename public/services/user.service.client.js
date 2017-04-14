@@ -16,7 +16,9 @@
             "login" : login,
             "logout" : logout,
             "register":register,
-            "getAllUsers":getAllUsers
+            "getAllUsers":getAllUsers,
+	     "getUserRatingService":getUserRatingService,
+             "setUserRating":setUserRating
         };
         return api;
 
@@ -24,6 +26,15 @@
             //console.log($http.get("/api/getusers"));
             return $http.get("/api/getusers");
         }
+
+function setUserRating(userId,bookId,newRating) {
+            return $http.put("/api/user/"+userId+"?bookId="+bookId+"&rating="+newRating);
+        }
+
+        function getUserRatingService(userId,bookId) {
+            return $http.get("/api/user?userId="+userId+"&bookId="+bookId);
+        }
+
         function register(user) {
             return $http.post("/api/register",user);
         }

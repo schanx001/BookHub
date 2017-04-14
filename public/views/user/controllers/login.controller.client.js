@@ -33,7 +33,7 @@
                         else if(user.role.toString() === 'eventorganizer') {
                             alert("hell2");
                             $rootScope.currentUser = user;
-                            $location.url("/organizer/");// + user._id);
+                            $location.url("/organizer/profile");// + user._id);
                         }
                         else if(user.role.toString() === 'seller') {
                             $rootScope.currentUser = user;

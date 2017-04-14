@@ -17,9 +17,15 @@ module.exports = function(){
         "getEmailIdFromUserIds":getEmailIdFromUserIds,
         "findUserByFacebookId":findUserByFacebookId,
         "findUserByGoogleId": findUserByGoogleId,
-        "findAllUsers": findAllUsers
+        "findAllUsers": findAllUsers,
+"updateUserRatingInDb":updateUserRatingInDb
     };
     return api;
+
+
+    function updateUserRatingInDb(userId,bookId,rating) {
+        return userModel.update({_id:userId},{$addToSet:{booksRated:{bookId:bookId,rating:rating}}});
+    }
     function findAllUsers() {
         return userModel.find({role:{$nin:['admin']}});
     }

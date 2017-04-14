@@ -28,3 +28,21 @@ $(function() {
     });
 });
 */
+
+// function checkFunc(e) {
+//     alert("Its working");
+// }
+// // initAutocomplete();
+// // alert(document.getElementById('pac-input').value);
+//
+// $(
+//     function () {
+//         alert("Inside");
+//         var e = $.Event( "keypress", { which: 13 } );
+//         $('#pac-input').trigger(e);
+//
+//
+//
+// }
+//
+// );

@@ -1,34 +1,28 @@
 (function () {
     angular
         .module("BookHubMaker")
-        .controller("addBookController",addBookController)
+        .controller("sellerAddBookController",sellerAddBookController);
 
-    function addBookController($http,$routeParams,BookService) {
+    function sellerAddBookController($http,$routeParams,SellerBooksService) {
 
         var vm = this;
         vm.searchBook=searchBook;
         vm.addBook=addBook;
-        vm.userId=$routeParams['uid'];
+        vm.userId=$routeParams['sid'];
         vm.bookPrice=0;
         vm.bookTitle="";
-        vm.bookNotes="";
+        vm.bookDescription="";
 
         function addBook(bookToAdd) {
             // alert("book");
-            BookService
+            SellerBooksService
                 .createBook({
                     owner:vm.userId,
                     title:bookToAdd.volumeInfo.title,
                     author:bookToAdd.volumeInfo.authors[0],
                     price:vm.bookPrice,
-                    notes:vm.bookNotes,
-                    averageRating:0.0,
-                    ratingCount:0,
-                    description:bookToAdd.volumeInfo.description,
-                    imgsrc:bookToAdd.volumeInfo.imageLinks.smallThumbnail,
-                    imglrgsrc:bookToAdd.volumeInfo.imageLinks.thumbnail,//add
-                    currentlyWith:vm.userId,
-                    status:"available"})
+                    description:vm.bookDescription,
+                    imgsrc:bookToAdd.volumeInfo.imageLinks.smallThumbnail})
                 .then(function (response) {
                     // console.log("addbook="+response.data);
                     // vm.books=[];

@@ -12,9 +12,18 @@
             "deleteBookService":deleteBookService,
             "updateBookService":updateBookService,
             "acceptRequestService":acceptRequestService,
-            "requestBookService":requestBookService
+            "requestBookService":requestBookService,
+            "bookReturnedService":bookReturnedService
         };
         return api;
+
+        function findBookById(bookId) {
+            return $http.get("/api/book?bookId="+bookId);
+        }
+
+        function bookReturnedService(book) {
+            return $http.put("/api/book?bookReturned="+book._id,book);
+        }
 
         function requestBookService(bookId,userId) {
             return $http.put("/api/book?requestBook="+bookId+"&requestorId="+userId);

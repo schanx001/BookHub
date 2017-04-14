@@ -17,7 +17,10 @@ module.exports = function (app,smtpTransport) {
     mongoose.connect(connectionString);
 
     var model = require("./model/models.server")();
+    require("./services/review.service.server")(app,model);
     require("./services/user.service.server")(app, model);
     require("./services/organizer.service.server")(app, model);
+    require("./services/seller.service.server")(app, model);
+    require("./services/sellerBooks.service.server")(app, model);
     require("./services/book.service.server")(app, smtpTransport,model);
 };

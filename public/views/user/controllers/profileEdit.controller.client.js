@@ -9,8 +9,7 @@
 
     function profileController($routeParams, UserService, BookService, $location, $rootScope, loggedin) {
         var vm = this;
-        var userId = loggedin.data._id;//$routeParams['uid'];
-        //alert(userId);
+        var userId = $routeParams['uid'];
         vm.requestedBooks=[];
         vm.requestedForBooks=[];
         vm.booksAvailable=[];
@@ -21,12 +20,28 @@
         vm.editBook=editBook;
         vm.updateBook=updateBook;
         vm.updateRequest=updateRequest;
+        vm.bookReturned=bookReturned;
         // vm.getBooksRequestedForAndRequested=getBooksRequestedForAndRequested;
         // vm.getUserBooksStats="";
         vm.booksForUserId=null;
         vm.logout = logout;
+        
+        function bookReturned(book) {
+            BookService
+                .bookReturnedService(book)
+                .then(function (response) {
+                    for(var x in vm.booksShared){
+                        if(vm.booksShared[x]===book){
+                            vm.booksShared.splice(x,1);
+                            break;
+                        }
+                    }
+                    vm.booksAvailable.push(book);
+                },function (error) {
 
-
+                });
+        }
+        
         function logout(){
             UserService
                 .logout()
@@ -144,6 +159,9 @@
                         }
                         // if(books[x].currentlyWith===userId && books[x].status==="shared"){
                         if(books[x].status==="shared"){
+                            if(userId===books[x].owner){
+                                books[x].returnField=1;
+                            }
                             booksShared.push(books[x]);
                         }
                     }
@@ -161,6 +179,9 @@
         function init() {
             console.log(loggedin.data);
             vm.message="";
+            if(userId){
+                vm.userId=userId;
+            }
             vm.user = UserService.findUserById(userId)
                 .success(renderUser)
                 .error(function () {

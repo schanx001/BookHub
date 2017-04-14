@@ -1,46 +1,74 @@
-// module.exports = function(){
-//
-//     var model = null;
-//     var mongoose = require("mongoose");
-//     var sellerSchema ;//= require('./user.schema.server.js')();
-//     var sellerModel ;//= mongoose.model('userModel',userSchema);
-//
-//     // var api = {
-//     //     "addBook":addBook,
-//     //     "updateBook": updateBook,
-//     //     "findEventByEventId": findEventByEventId,
-//     //     "deleteEvent":deleteEvent,
-//     //     "setModel":setModel,
-//     //     "getModel":getModel
-//     // };
-//     // return api;
-//     //
-//     // function getModel() {
-//     //     return sellerModel;
-//     // }
-//     // function createEvent(event){
-//     //     return sellerModel.create(event);
-//     // }
-//     //
-//     // function findEventByEventId(eventId){
-//     //     return sellerModel.findById(eventId);
-//     // }
-//     //
-//     // function updateEvent(eventId, updatedEvent){
-//     //     return sellerModel.update({_id:userId},{$set:updatedEvent});
-//     // }
-//     //
-//     // function deleteEvent(eventId){
-//     //     return sellerModel.findByIdAndRemove(eventId, function (err,event) {
-//     //         if(event!=null){
-//     //             event.remove();
-//     //         }
-//     //     });
-//     // }
-//     //
-//     // function  setModel(_model){
-//     //     model=_model;
-//     //     sellerSchema = require("./seller.schema.server")(model);
-//     //     sellerModel = mongoose.model("sellerModelModel", sellerSchema);
-//     // }
-// };
+module.exports = function(){
+
+    var model = null;
+    var mongoose = require("mongoose");
+    var sellerSchema ;//= require('./user.schema.server.js')();
+    var sellerModel ;//= mongoose.model('userModel',userSchema);
+
+    var api = {
+        "addBook":addBook,
+        "updateBook": updateBook,
+        "findBookByBookId": findBookByBookId,
+        "findBooksBySellerId": findBooksBySellerId,
+        "deleteBook":deleteBook,
+        "setModel":setModel,
+        "getModel":getModel,
+        "findShopBySellerIdInDb": findShopBySellerIdInDb,
+        "updateShopDetails": updateShopDetails,
+        "createShopDetailsInDb": createShopDetailsInDb
+    };
+    return api;
+
+    function findShopBySellerIdInDb(sid) {
+        console.log(sid +"hellooo");
+        return sellerModel.find({owner : sid});
+    }
+    function getModel() {
+        return sellerModel;
+    }
+    function addBook(book){
+        return sellerModel.add(book);
+    }
+
+    function findBookByBookId(bookId){
+        return sellerModel.findById(bookId);
+    }
+
+    function findBooksBySellerId(sellerId){
+        return sellerModel.find({owner:sellerId});
+    }
+
+    function updateBook(updatedBook){
+        return sellerModel.update({_id:updatedBook._id},{$set:updatedBook});
+    }
+
+    function updateShopDetails(sid, newShop){
+        //console.log(sid);
+        console.log(newShop.owner);
+        console.log("hqehdoqdh");
+
+        return sellerModel.update({owner:sid},{$set:newShop});
+        //return sellerModel.create(newShop);
+    }
+
+    function createShopDetailsInDb(newShop){
+        //console.log(sid)
+
+        return sellerModel.create(newShop);
+        //return sellerModel.create(newShop);
+    }
+
+    function deleteBook(bookId){
+        return sellerModel.findByIdAndRemove(bookId, function (err,book) {
+            if(book!=null){
+                book.remove();
+            }
+        });
+    }
+
+    function  setModel(_model){
+        model=_model;
+        sellerSchema = require("./seller.schema.server")(model);
+        sellerModel = mongoose.model("sellerModel", sellerSchema);
+    }
+};

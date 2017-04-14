@@ -1,0 +1,135 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid navbar-color">
+
+        <div class="col-sm-12 hidden-xs ">
+
+
+            <!--<a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">-->
+            <!--<div class="navbar-text pull-left btn navbar-color">-->
+
+            <!--<span class="glyphicon glyphicon-user" ></span> Edit Profile-->
+            <!--</div>-->
+
+            <!--</a>-->
+
+            <a href="#/user/{{model.user._id}}/myreviews">
+                <div class="navbar-text pull-left btn navbar-color">
+
+                    <span class="glyphicon glyphicon-star"></span> My Reviews
+                </div>
+            </a>
+
+
+            <a href="#/user/{{model.user._id}}/myalerts">
+                <div class="navbar-text pull-left btn navbar-color">
+
+                    <span class="glyphicon glyphicon-bell"></span> My Alerts
+                </div>
+            </a>
+
+            <a href="#/user/{{model.user._id}}/mystats">
+                <div class="navbar-text pull-left btn navbar-color">
+
+                    <span class="glyphicon glyphicon-stats"></span> My Stats
+                </div>
+            </a>
+
+            <a href="#/login">
+                <div class="navbar-text pull-right btn navbar-color">
+
+                    <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <div class="dropdown pull-right col-sm-4 visible-xs padding-top">
+            <div id="myDropdown" class="dropdown-content navbar-color">
+
+                <!--<a href="#/user/{{model.user._id}}" ng-click="showDiv = true; model.message=''">-->
+                <!--<div class="navbar-text pull-left btn navbar-color">-->
+                <!--<span class="glyphicon glyphicon-user" ></span> Edit Profile-->
+                <!--</div>-->
+                <!--</a>-->
+
+                <a href="#/user/{{model.user._id}}/myreviews">
+                    <div class="navbar-text pull-left btn navbar-color">
+                        <span class="glyphicon glyphicon-star"></span> My Reviews
+                    </div>
+                </a>
+
+
+                <a href="#/user/{{model.user._id}}/myalerts">
+                    <div class="navbar-text pull-left btn navbar-color">
+                        <span class="glyphicon glyphicon-bell"></span> My Alerts
+                    </div>
+                </a>
+
+                <a href="#/user/{{model.user._id}}/mystats">
+                    <div class="navbar-text pull-left btn navbar-color">
+                        <span class="glyphicon glyphicon-stats"></span> My Stats
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <a href="#/login" class=" visible-xs">
+            <div class="navbar-text pull-right btn navbar-color">
+
+                <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
+            </div>
+        </a>
+    </div>
+</nav>
+
+<div class="container-fluid padding-top">
+    <div class="col-xs-12 border">Title in Bolds</div>
+    <div class="col-xs-12 border ">
+        <div class="col-xs-12" style="text-align: center"><strong><p>{{model.book.title}}</p></strong></div>
+        <div ng-show="model.error">{{model.error}}</div>
+        <div>
+            <div class="col-xs-12">
+                <div class="col-xs-12" >
+                    <img src="{{model.book.imglrgsrc}}" class="listing-image border">
+                    <br><br>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-12">
+                        <p>Title: {{model.book.title}}<br>
+                            Author: {{model.book.author}}<br>
+                            Price: {{model.book.price}}<br>
+                            Description:{{model.book.description}}<br>
+                            Notes:{{model.book.notes}}<br>
+                        <div ng-show="model.userRating>-1">Your Rating:{{model.userRating}}<br></div>
+                        <div ng-show="model.userRating==-1">Provide Rating(0 to 5):<input type="number" min="0" max="5" ng-model="model.newRating"><button ng-click="model.setUserRating(model.book._id)">Rate</button><br></div>
+                            Book Rating:{{model.book.averageRating}}<br>
+                            Book Rated by:{{model.book.ratingCount}} Users
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xs-12" ng-show="model.reviews">
+                    <strong>Reviews:</strong><br>
+                    <textarea ng-model="model.comment"></textarea><br>
+                    <button ng-click="model.postReview()">Post</button><br>
+                    <div ng-repeat="review in model.reviews">
+                        <div><strong>{{review.commentor}}</strong></div>
+                        <div>{{review.comment}}<br>{{review.dateCreated}}</div>
+                    </div>
+                </div>
+                <!--<div class="col-xs-12" ng-hide="model.reviews">Be the first to review:<br>-->
+                    <!--<textarea ng-model="model.comment"></textarea><br>-->
+                    <!--<button ng-click="model.postReview()">Post</button>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid bg-primary">
+    </div>
+</nav>

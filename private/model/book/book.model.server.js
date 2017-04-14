@@ -15,9 +15,19 @@ module.exports = function(){
         "deleteBookFromDb":deleteBookFromDb,
         "updateBookInDb":updateBookInDb,
         "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId,
-        "updateBookRequestorInDb":updateBookRequestorInDb
+        "updateBookRequestorInDb":updateBookRequestorInDb,
+        "updateBookReturnStatus":updateBookReturnStatus,
+        "findBookByIdInDb":findBookByIdInDb
     };
     return api;
+
+    function findBookByIdInDb(bookId) {
+        return bookModel.findById({_id:bookId});
+    }
+
+    function updateBookReturnStatus(book) {
+        return bookModel.update({_id:book._id},{$set:{currentlyWith:book.owner,status:"available"}});
+    }
 
     function updateBookRequestorInDb(bookId,requestorId) {
         return bookModel.findOneAndUpdate({_id:bookId},{$set:{currentlyWith:requestorId,status:"requested"}});

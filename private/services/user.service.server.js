@@ -76,6 +76,7 @@ module.exports = function (app, model) {
     //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi",email: "jose@husky.neu.edu" }
     // ];
     var userModel = model.userModel;
+    var bookModel=model.bookModel;
 
 
     // facebook oauth
@@ -264,25 +265,57 @@ module.exports = function (app, model) {
 
     function updateUser(req, res) {
         var userId = req.params['userId'];
-        var newUser = req.body;
-        userModel
-            .updateUser(userId, newUser)
-            .then(function (response) {
-                if (response.nModified === 1) {
-                    userModel
-                        .findUserById(userId)
-                        .then(function (response) {
-                            res.json(response);
-                        }, function () {
-                            res.sendStatus(404);
-                        })
-                }
-                else {
+        var rating=req.query.rating;
+        if(rating!=undefined){
+            var bookId=req.query.bookId;
+            // console.log(userId+" "+bookId+" "+rating);
+            userModel
+                .updateUserRatingInDb(userId,bookId,rating)
+                .then(function (response) {
+                    // console.log("1"+response);
+                    bookModel
+                        .findBookByIdInDb(bookId)
+                        .then(function (responseNew) {
+                            // console.log("responseNew.averageRating="+responseNew.averageRating);
+                            // console.log("responseNew.ratingCount="+responseNew.ratingCount);
+                            // console.log(responseNew.averageRating*responseNew.ratingCount);
+                            // console.log("2"+((responseNew.averageRating*responseNew.ratingCount)+rating));
+                            responseNew.averageRating=(((responseNew.averageRating*responseNew.ratingCount)+ parseInt(rating))/(responseNew.ratingCount+1));
+                            responseNew.ratingCount=responseNew.ratingCount+1;
+                            // console.log("3"+responseNew);
+                            bookModel
+                                .updateBookInDb(responseNew)
+                                .then(function (book) {
+                                    // console.log("4"+book);
+                                    res.send({averageRating:responseNew.averageRating,ratingCount:responseNew.ratingCount});
+                                },function (error) {
+                                    res.sendStatus(404);
+                                });
+                        });
+                },function (error) {
+                    res.send(404);
+                });
+        }else{
+            var newUser = req.body;
+            userModel
+                .updateUser(userId, newUser)
+                .then(function (response) {
+                    if (response.nModified === 1) {
+                        userModel
+                            .findUserById(userId)
+                            .then(function (response) {
+                                res.json(response);
+                            }, function () {
+                                res.sendStatus(404);
+                            })
+                    }
+                    else {
+                        res.sendStatus(404);
+                    }
+                }, function () {
                     res.sendStatus(404);
-                }
-            }, function () {
-                res.sendStatus(404);
-            });
+                });
+        }
     }
 
     function findUserByUserId(req, res) {
@@ -299,13 +332,33 @@ module.exports = function (app, model) {
 
     function findUser(req, res) {
         //console.log("Find User called");
-        var username = req.query['username'];
-        var password = req.query['password'];
-        if (username && password) {
-            findUserByCredentials(req, res);
-        } else if (username) {
-            //console.log(username);
-            findUserByUsername(req, res);
+        var userId=req.query.userId;
+        var bookId=req.query.bookId;
+        if(userId!=undefined && bookId!=undefined){
+            userModel
+                .findUserById(userId)
+                .then(function (user) {
+                    var booksRated=user.booksRated;
+                    for(var x in booksRated){
+                        if(booksRated[x].bookId==bookId){
+                            bookModel
+                            res.send(booksRated[x].rating.toString());
+                            return;
+                        }
+                    }
+                    res.send("-1");
+                },function (error) {
+                    res.sendStatus(404);
+                });
+        }else{
+            var username = req.query['username'];
+            var password = req.query['password'];
+            if (username && password) {
+                findUserByCredentials(req, res);
+            } else if (username) {
+                //console.log(username);
+                findUserByUsername(req, res);
+            }   
         }
     }
 

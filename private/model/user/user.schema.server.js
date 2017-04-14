@@ -10,6 +10,7 @@ module.exports = function(model) {
         lastName: String,
         email: String,
         phone: String,
+        booksRated:[{_id:false,bookId:{type:mongoose.Schema.Types.ObjectId,ref:'bookModel'},rating:Number}],
         role: {type: String, enum: ['admin','user','seller','eventorganizer'], default: 'user'},
         dateCreated: {type: Date, default:Date.now},
         facebook:{
