@@ -32,7 +32,7 @@
                             .register(user)
                             .then(function (response){
                                 var user=response.data;
-                                alert(vm.flag);
+                                //alert(vm.flag);
                                 if(vm.flag==='adminflag'){
                                     var aid = $routeParams['aid'];
                                     $location.url("/admin/profile");

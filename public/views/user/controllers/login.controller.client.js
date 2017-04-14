@@ -37,7 +37,7 @@
                         }
                         else if(user.role.toString() === 'seller') {
                             $rootScope.currentUser = user;
-                            $location.url("/seller/");// + user._id);
+                            $location.url("/seller/profile");// + user._id);
                         }
                         else if(user.role.toString() === 'admin') {
                             $rootScope.currentUser = user;

@@ -5,11 +5,11 @@
     angular
         .module("BookHubMaker")
         .controller("organizerController", organizerController);
-    function organizerController($scope, $routeParams, UserService, OrganizerService, $location){
+    function organizerController($scope, $routeParams, UserService, OrganizerService, $location, loggedin){
         var vm=this;
         vm.showUpdateBtn= false;
         vm.organizerEvents = [];
-        vm.userId = $routeParams['oid'];
+        vm.userId = loggedin.data._id;//$routeParams['oid'];
         vm.event="";
         vm.updateEvent = updateEvent;
         vm.deleteEvent=deleteEvent;
@@ -32,7 +32,7 @@
         function redirect(){
             document.getElementById(test).style.display = 'block';
 
-            $location.url("/organizer/"+ vm.userId +"/addevent");
+            $location.url("/organizer/addevent");
 
         }
 
@@ -74,7 +74,7 @@
         }
 
         function viewEvent(event) {
-            $location.url("/organizer/" +vm.userId + "/eventdetails/" + event._id);
+            $location.url("/organizer/eventdetails/event");
         }
 
 
@@ -166,7 +166,7 @@
 
         function renderUser(user) {
             //console.log("haveli");
-
+alert(user);
             vm.user = user;
         }
 

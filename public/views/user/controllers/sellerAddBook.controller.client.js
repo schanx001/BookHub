@@ -3,12 +3,12 @@
         .module("BookHubMaker")
         .controller("sellerAddBookController",sellerAddBookController);
 
-    function sellerAddBookController($http,$routeParams,SellerBooksService) {
+    function sellerAddBookController($http,$routeParams,SellerBooksService,loggedin) {
 
         var vm = this;
         vm.searchBook=searchBook;
         vm.addBook=addBook;
-        vm.userId=$routeParams['sid'];
+        vm.userId=loggedin.data._id;//$routeParams['sid'];
         vm.bookPrice=0;
         vm.bookTitle="";
         vm.bookDescription="";
@@ -35,7 +35,7 @@
                     // getAllAvBooks();
                 },function (error) {
                     // console.log("addbookerror="+error);
-                })
+                });
         }
 
         function searchBook() {

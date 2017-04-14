@@ -2,10 +2,10 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid navbar-color">
 
-        <div class="col-sm-12 hidden-xs ">
+        <div class="col-sm-12">
 
 
-            <a href="#/seller/{{model.userId}}" ng-click="showDiv = true; model.message=''">
+            <a href="#/seller/profile" ng-click="showDiv = true; model.message=''">
                 <div class="navbar-text pull-right btn navbar-color">
 
                     <span class="glyphicon glyphicon-user" ></span> Edit Profile
@@ -13,46 +13,19 @@
 
             </a>
 
-            <a href="#/seller/{{model.userId}}/addbook">
+            <a href="#/seller/addbook">
                 <div class="navbar-text pull-right btn navbar-color">
                     <span class="glyphicon glyphicon-plus"></span> Add Book
                 </div>
             </a>
 
-            <a href="#/seller/{{model.userId}}/myinventory">
+            <a href="#/seller/myinventory">
                 <div class="navbar-text pull-right btn navbar-color">
                     <span class="glyphicon glyphicon-book"></span> My Inventory
                 </div>
             </a>
 
         </div>
-
-
-        <div class="dropdown pull-right col-sm-4 visible-xs">
-            <button onclick="myFunction()" class="dropbtn">
-                <span class="dropbtn glyphicon glyphicon-menu-hamburger"></span>
-            </button>
-            <div id="myDropdown" class="dropdown-content navbar-color">
-
-                <a href="#/seller/{{model.userId}}" ng-click="showDiv = true; model.message=''">
-                    <div class="navbar-text pull-right btn navbar-color">
-                        <span class="glyphicon glyphicon-user" ></span> Edit Profile
-                    </div>
-                </a>
-
-                <a href="#/seller/{{model.userId}}/addbook">
-                    <div class="navbar-text pull-right btn navbar-color">
-                        <span class="glyphicon glyphicon-plus"></span> Add Book
-                    </div>
-                </a>
-
-                <a href="#/seller/{{model.userId}}/inventory">
-                    <div class="navbar-text pull-right btn navbar-color">
-                        <span class="glyphicon glyphicon-book"></span> My Inventory
-                    </div>
-                </a>
-
-            </div>
 
         </div>
     </div>

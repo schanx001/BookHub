@@ -5,16 +5,16 @@
     angular
         .module("BookHubMaker")
         .controller("sellerController", sellerController);
-    function sellerController($http,$scope, $routeParams, UserService, SellerService, $location, $timeout){
+    function sellerController($http,$scope, $routeParams, UserService, SellerService, $location, $timeout,loggedin,$rootScope){
         var vm=this;
         vm.showUpdateBtn= false;
         vm.sellerBooks = [];
         vm.shop="";
         //vm.shop.owner=$routeParams['sid'];
-        vm.userId = $routeParams['sid'];
+        vm.userId = loggedin.data._id;//$routeParams['sid'];
          vm.shop = {
              shopLocation: 'Mumbai, Maharashtra, India',
-            owner: $routeParams['sid']
+            owner: vm.userId//$routeParams['sid']
         };
          // var outer=null;
 
@@ -124,7 +124,7 @@ function enter() {
         function redirect(){
             document.getElementById(test).style.display = 'block';
 
-            $location.url("/seller/"+ vm.userId +"/addbook");
+            $location.url("/seller/addbook");
 
         }
 
@@ -149,7 +149,7 @@ function enter() {
         // }
 
         function updateBook(newBook) {
-            vm.shop.owner=$routeParams['sid'];
+            vm.shop.owner=loggedin.data._id;//$routeParams['sid'];
             var bookId = newBook._id;
             alert(bookId);
             SellerService
@@ -167,7 +167,8 @@ function enter() {
         }
 
         function viewBook(book) {
-            $location.url("/seller/" +vm.userId + "/bookdetails/" + book._id);
+            $rootScope.bookId = book._id;
+            $location.url("/seller/bookdetails/book");
         }
 
 

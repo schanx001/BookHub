@@ -67,7 +67,7 @@
                     loggedin: checkLoggedin
                 }
             })
-            .when("/user/:uid/addbook",{
+            .when("/user/addbook",{
                 templateUrl:'views/user/templates/customer/stats/addBook.view.client.html',
                 controller:'addBookController',
                 controllerAs:'model',
@@ -86,19 +86,28 @@
             .when("/organizer/addevent", {
                 templateUrl: 'views/user/templates/organizerAddEvent.view.client.html',
                 controller: 'organizerController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/organizer/myevents", {
                 templateUrl: 'views/user/templates/organizerMyEvents.view.client.html',
                 controller: 'organizerController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/organizer/eventdetails/event", {
                 templateUrl: 'views/user/templates/eventDetails.view.client.html',
                 controller: 'organizerController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/seller/", {
+            .when("/seller/profile", {
                 templateUrl: 'views/user/templates/sellerProfileEdit.view.client.html',
                 controller: 'sellerController',
                 controllerAs: 'model',
@@ -109,9 +118,13 @@
             .when("/seller/addbook", {
                 templateUrl: 'views/user/templates/sellerAddBook.view.client.html',
 		        controller: 'sellerAddBookController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+
            	})
-        	.when("/seller/:sid/myinventory", {
+        	.when("/seller/myinventory", {
                 templateUrl: 'views/user/templates/sellerMyInventory.view.client.html',          
                 controller: 'sellerController',
                 controllerAs: 'model',
@@ -162,7 +175,10 @@
             .when("/admin/ManageUsers",{
                 templateUrl: 'views/user/templates/admin/admin.view.client.html',
                 controller: 'registerController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/admin/updatecust/cust",{
                 templateUrl: 'views/user/templates/admin/updatecust.view.client.html',
@@ -172,12 +188,7 @@
                     loggedin: checkLoggedin
                 }
             })
-            .when("/admin/:aid/create",{
-                templateUrl: 'views/user/templates/admin/createUser.view.client.html',
-                controller: 'registerController',
-                controllerAs:'model'
-            })
-            .when("/user/:uid/bookdetails/:bid",{
+            .when("/user/bookdetails/book",{
                 templateUrl:'views/bookSearch/templates/bookDetails.view.client.html',
                 controller:'bookDetailsController',
                 controllerAs:'model'

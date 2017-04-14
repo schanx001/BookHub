@@ -2,10 +2,10 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid navbar-color">
 
-        <div class="col-sm-12 hidden-xs ">
+        <div class="col-sm-12">
 
 
-            <a href="#/organizer/{{model.user._id}}" ng-click="showDiv = true; model.message=''">
+            <a href="#/organizer/profile" ng-click="showDiv = true; model.message=''">
                 <div class="navbar-text pull-right btn navbar-color">
 
                     <span class="glyphicon glyphicon-user" ></span> Edit Profile
@@ -13,13 +13,13 @@
 
             </a>
 
-            <a href="#/organizer/{{model.user._id}}/addevent">
+            <a href="#/organizer/addevent">
                 <div class="navbar-text pull-right btn navbar-color">
                     <span class="glyphicon glyphicon-plus"></span> Add Event
                 </div>
             </a>
 
-            <a href="#/organizer/{{model.user._id}}/myevents">
+            <a href="#/organizer/myevents">
                 <div class="navbar-text pull-right btn navbar-color">
                     <span class="glyphicon glyphicon-bookmark"></span> My Events
                 </div>
@@ -28,35 +28,6 @@
         </div>
 
 
-        <div class="dropdown pull-right col-sm-4 visible-xs">
-            <button onclick="myFunction()" class="dropbtn">
-                <span class="dropbtn glyphicon glyphicon-menu-hamburger"></span>
-            </button>
-            <div id="myDropdown" class="dropdown-content navbar-color">
-
-                <a href="#/organizer/{{model.user._id}}" ng-click="showDiv = true; model.message=''">
-                    <div class="navbar-text pull-right btn navbar-color">
-
-                        <span class="glyphicon glyphicon-user" ></span> Edit Profile
-                    </div>
-
-                </a>
-
-                <a href="#/organizer/{{model.user._id}}/addevent">
-                    <div class="navbar-text pull-right btn navbar-color">
-                        <span class="glyphicon glyphicon-plus"></span> Add Event
-                    </div>
-                </a>
-
-                <a href="#/organizer/{{model.user._id}}/myevents">
-                    <div class="navbar-text pull-right btn navbar-color">
-                        <span class="glyphicon glyphicon-bookmark"></span> My Events
-                    </div>
-                </a>
-
-            </div>
-
-        </div>
     </div>
 </nav>
 
@@ -100,7 +71,7 @@
     <a class="btn btn-danger  btn-block"
        href="#/login">Logout</a>
     <a  ng-click="showDiv=false; model.updateUser(model.user)"class="btn btn-primary  btn-block" ng-show="showDiv"
-        href="#/organizer/{{model.user._id}}">Update</a>
+        href="#/organizer/profile">Update</a>
 
 
 
