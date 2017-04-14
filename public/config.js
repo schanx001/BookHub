@@ -138,7 +138,15 @@
                     loggedin: checkLoggedin
                 }
             })
-            .when("/admin/ManageBooks",{
+            .when("/admin/manageSellers",{
+                templateUrl: 'views/user/templates/admin/manageSellers.view.client.html',
+                controller: 'registerController',
+                controllerAs:'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
+            .when("/admin/manageBooks",{
                 templateUrl: 'views/user/templates/admin/createUser.view.client.html',
                 controller: 'registerController',
                 controllerAs:'model',

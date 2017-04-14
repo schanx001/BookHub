@@ -26,6 +26,9 @@
                 function (err) {
                     vm.error = err;
                 });
+
+
+
             vm.userId = $rootScope.userId;//$routeParams['uid'];
             if($rootScope.userId){
             vm.editUser = UserService.findUserById($rootScope.userId)
