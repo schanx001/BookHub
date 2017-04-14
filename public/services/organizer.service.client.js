@@ -13,7 +13,8 @@
             "findEventByEventId": findEventByEventId,
             //"findUserByUsername": findUserByUsername,
             "deleteEvent":deleteEvent,
-            "findEventsByOrganizerId": findEventsByOrganizerId
+            "findEventsByOrganizerId": findEventsByOrganizerId,
+            "getAllEvents": getAllEvents
             //"login" : login,
             //"logout" : logout,
             //"register":register
@@ -40,6 +41,10 @@
 
         function findEventsByOrganizerId(oid) {
             return $http.get("/api/events/"+oid);
+        }
+
+        function getAllEvents() {
+            return $http.get("/api/allEvents/");
         }
     }
 })();

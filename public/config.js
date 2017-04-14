@@ -201,6 +201,11 @@
                 controller:'bookDetailsController',
                 controllerAs:'model'
             })
+            .when("/allEvents",{
+                templateUrl: 'views/main/templates/allEvents.view.client.html',
+                controller: 'mainPageController',
+                controllerAs: 'model'
+            })
     }
 
 

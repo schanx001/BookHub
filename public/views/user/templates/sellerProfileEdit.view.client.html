@@ -2,38 +2,22 @@
 <!--<nav class="navbar navbar-default navbar-fixed-top">-->
     <!--<div class="row container-fluid navbar-color">-->
 
-<<<<<<< Updated upstream
-        <div class="col-sm-12">
 
-
-            <a href="#/seller/profile" ng-click="showDiv = true; model.message=''">
-                <div class="navbar-text pull-right btn navbar-color">
-=======
         <!--<div class="col-sm-12 hidden-xs ">-->
 
 
             <!--<a href="#/seller/{{model.userId}}" ng-click="showDiv = true; model.message=''">-->
                 <!--<div class="navbar-text pull-right btn navbar-color">-->
->>>>>>> Stashed changes
+
 
                     <!--<span class="glyphicon glyphicon-user" ></span> Edit Profile-->
                 <!--</div>-->
 
             <!--</a>-->
 
-<<<<<<< Updated upstream
-            <a href="#/seller/addbook">
-                <div class="navbar-text pull-right btn navbar-color">
-                    <span class="glyphicon glyphicon-plus"></span> Add Book
-                </div>
-            </a>
 
-            <a href="#/seller/myinventory">
-                <div class="navbar-text pull-right btn navbar-color">
-                    <span class="glyphicon glyphicon-book"></span> My Inventory
-                </div>
-            </a>
-=======
+
+
             <!--<a href="#/seller/{{model.userId}}/addbook">-->
                 <!--<div class="navbar-text pull-right btn navbar-color">-->
                     <!--<span class="glyphicon glyphicon-plus"></span> Add Book-->
@@ -45,7 +29,7 @@
                     <!--<span class="glyphicon glyphicon-book"></span> My Inventory-->
                 <!--</div>-->
             <!--</a>-->
->>>>>>> Stashed changes
+
 
         <!--</div>-->
 
@@ -80,8 +64,7 @@
     <!--</div>-->
 <!--</nav>-->
 
-<<<<<<< Updated upstream
-=======
+
 
 <nav class="navbar navbar-default navbar-fixed-top navbar-toggleable-md ">
     <div class="container-fluid">
@@ -92,28 +75,28 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="navbar-brand" href="#">BookHub</a>
         </div>
         <div class="collapse navbar-collapse navbar-right" id="navbarNav">
             <ul class="nav navbar-nav">
                 <li class="nav-item ">
-                    <a href="#/seller/{{model.userId}}">
+                    <a href="#/seller/profile">
 
-                        <span class="glyphicon glyphicon-star"></span> Edit Profile
+                        <span class="glyphicon glyphicon-user"></span> Edit Profile
 
 
                     </a></li>
 
                 <li class="nav-item">
-                    <a href="#/seller/{{model.userId}}/addbook">
+                    <a href="#/seller/addbook">
 
-                        <span class="glyphicon glyphicon-bell"></span> Add Book
+                        <span class="glyphicon glyphicon-plus"></span> Add Book
                     </a></li>
 
                 <li class="nav-item ">
-                    <a href="#/seller/{{model.userId}}/inventory">
+                    <a href="#/seller/myinventory">
 
-                        <span class="glyphicon glyphicon-stats"></span> My Inventory
+                        <span class="glyphicon glyphicon-book"></span> My Inventory
 
                     </a></li>
                 <li class="nav-item">
@@ -121,7 +104,7 @@
 
                         <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
                     </a></li></ul>
->>>>>>> Stashed changes
+
         </div>
 
     </div>
@@ -189,9 +172,9 @@
 
     <a class="btn btn-danger btn-block"
        ng-click="model.deleteUser(model.user._id)">Unregister User</a>
-    <a class="btn btn-danger  btn-block"
-       href="#/login">Logout</a>
-    <a  ng-click="showDiv=false; model.updateShopDetails(model.shop)"class="btn btn-primary  btn-block" ng-show="showDiv"
+    <!--<a class="btn btn-danger  btn-block"-->
+       <!--href="#/login">Logout</a>-->
+    <a  ng-click="showDiv=false; model.updateShopDetails(model.shop)"class="btn btn-primary  btn-block"
         href="#/seller/{{model.user._id}}">Update</a>
 
 

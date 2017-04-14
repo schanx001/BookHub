@@ -12,12 +12,17 @@ module.exports = function(){
         "findEventsByOrganizerId": findEventsByOrganizerId,
         "deleteEvent":deleteEvent,
         "setModel":setModel,
-        "getModel":getModel
+        "getModel":getModel,
+        "getAllEventsFromDb": getAllEventsFromDb
     };
     return api;
 
     function getModel() {
         return organizerModel;
+    }
+
+    function getAllEventsFromDb() {
+        return organizerModel.find({_id:{$ne: null}});
     }
     function createEvent(event){
         return organizerModel.create(event);
