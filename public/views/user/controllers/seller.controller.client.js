@@ -33,7 +33,7 @@
         //vm.searchBook=searchBook;
         vm.viewBook= viewBook;
         vm.enter= enter;
-       // vm.onLoad=onLoad;
+        vm.logout=logout;
         vm.getBooksBySellerId = getBooksBySellerId;
         // vm.checkFunc=checkFunc;
         // vm.getBooksForUserId = getBooksForUserId;
@@ -320,6 +320,14 @@ function enter() {
         }
 
 
+        function logout() {
+            UserService
+                .logout()
+                .then(function (response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/login");
+                });
+        }
 
         // document.getElementById('pac-input').onmouseout = function () {
         //
