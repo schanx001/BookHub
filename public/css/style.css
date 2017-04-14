@@ -400,3 +400,6 @@ div#slider figure {
     text-align: left;
     animation: 30s slidy infinite;
 }
+.margin-fix{
+    margin-bottom: 60px;
+}

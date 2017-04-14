@@ -42,6 +42,8 @@
         }
 
         function createBook(book) {
+
+            alert("in book client");
             return $http.post("/api/book",book);
         }
 

@@ -9,7 +9,7 @@
 
     function profileController($routeParams, UserService, BookService, $location, $rootScope, loggedin) {
         var vm = this;
-        var userId = $routeParams['uid'];
+        var userId = loggedin.data._id;
         vm.requestedBooks=[];
         vm.requestedForBooks=[];
         vm.booksAvailable=[];
@@ -131,6 +131,7 @@
         }
 
         function getBooksForUserId(userId) {
+            alert(userId);
             BookService
                 .findBooksOwnedAndBorrowedByUserId(userId)
                 .then(function (response) {

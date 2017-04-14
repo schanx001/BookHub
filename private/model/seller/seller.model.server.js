@@ -27,7 +27,7 @@ module.exports = function(){
         return sellerModel;
     }
     function addBook(book){
-        return sellerModel.add(book);
+        return sellerModel.create(book);
     }
 
     function findBookByBookId(bookId){

@@ -3,15 +3,26 @@
         .module("BookHubMaker")
         .controller("addBookController",addBookController)
 
-    function addBookController($http,$routeParams,BookService) {
+    function addBookController($http,$routeParams,BookService,loggedin,UserService,$rootScope,$location) {
 
         var vm = this;
         vm.searchBook=searchBook;
         vm.addBook=addBook;
-        vm.userId=$routeParams['uid'];
+        vm.userId=loggedin.data._id;//$routeParams['uid'];
         vm.bookPrice=0;
         vm.bookTitle="";
         vm.bookNotes="";
+        vm.logout = logout;
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
+        }
 
         function addBook(bookToAdd) {
             // alert("book");
@@ -30,6 +41,7 @@
                     currentlyWith:vm.userId,
                     status:"available"})
                 .then(function (response) {
+                    alert("your book has been added/shared");
                     // console.log("addbook="+response.data);
                     // vm.books=[];
                     // if(document.getElementById("div_book_listing")){

@@ -89,6 +89,7 @@ module.exports=function (app,model) {
 
     function createBook(req,res) {
         var book=req.body;
+        console.log("jkjkljlkjkljlkjkljlkjskljskldjaslkdjlaskdjlaksjdsklajdaskljdaklsjdaklsjdaklsdj");
         sellerBooksModel
             .createABook(book)
             .then(function (response) {

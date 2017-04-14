@@ -52,7 +52,7 @@ module.exports = function(){
     }
 
     function createABook(book) {
-        // console.log(book);
+        console.log(book);
         return bookModel.create(book);
     }
 

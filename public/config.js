@@ -51,6 +51,14 @@
                     loggedin: checkLoggedin
                 }
             })
+            .when("/user/myreviews", {
+                templateUrl: 'views/user/templates/customer/stats/myReviews.view.client.html',
+                controller: 'profileController',
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
             .when("/user/myalerts",{
                 templateUrl:'views/user/templates/customer/stats/myAlerts.view.client.html',
                 controller:'profileController',
