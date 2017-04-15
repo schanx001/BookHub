@@ -143,6 +143,15 @@
                     loggedin: checkLoggedin
                 }
             })
+            .when("/seller/book/viewbook", {
+                templateUrl: 'views/bookSearch/templates/sellerBookDetails.view.client.html',
+                controller: 'sellerBookDetailsController',
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+
+            })
             .when("/admin/profile",{
                 templateUrl: 'views/user/templates/admin/admin.view.client.html',
                 controller: 'adminController',
@@ -206,6 +215,11 @@
                 resolve:{
                     loggedin: checkLoggedin
                 }
+            })
+            .when("/allEvents",{
+                templateUrl: 'views/main/templates/allEvents.view.client.html',
+                controller: 'mainPageController',
+                controllerAs: 'model'
             })
     }
 

@@ -12,10 +12,10 @@
         vm.shop="";
         //vm.shop.owner=$routeParams['sid'];
         vm.userId = loggedin.data._id;//$routeParams['sid'];
-         vm.shop = {
-             shopLocation: 'Mumbai, Maharashtra, India',
-            owner: vm.userId//$routeParams['sid']
-        };
+        //  vm.shop = {
+        //      shopLocation: 'Mumbai, Maharashtra, India',
+        //     owner: vm.userId//$routeParams['sid']
+        // };
          // var outer=null;
 
 
@@ -70,6 +70,7 @@ function enter() {
 
 
         function updateShopDetails(updatedShop) {
+            updatedShop.owner=vm.userId;
             alert(updatedShop.owner);
             SellerService.findShopBySellerId(updatedShop.owner)
                 .success(function (response) {
@@ -91,6 +92,8 @@ function enter() {
 
                         console.log("create wala"+getOuter());
                         updatedShop.mapPlace=getOuter();
+                        console.log(updatedShop.shopPhone);
+                        console.log(updatedShop.shopEmail);
 
                         SellerService
                             .createShopDetails(vm.userId,updatedShop)
@@ -309,11 +312,23 @@ function enter() {
                 .findShopBySellerId(sellerId)
                 .then(function (response) {
                     vm.shop=response.data;
-                    alert(response.data);
+                    //alert(response.data);
                     // console.log(response.data);
                     // console.log("requestedBooks:"+requestedBooks);
 
                     // console.log("requestedForBooks:"+requestedForBooks);
+
+                    if(vm.shop==undefined) {
+                        SellerService
+                            .createShopDetails(vm.userId, {owner: vm.userId})
+                            .success(function () {
+                                vm.message= "shop details update !!"
+                            })
+                            .error(function () {
+                                vm.error= "unable to update";
+                            })
+                    }
+
                 }, function (error) {
                     // console.log("error:"+error);
                 });

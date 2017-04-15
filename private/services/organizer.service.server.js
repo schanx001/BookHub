@@ -8,6 +8,7 @@ module.exports=function (app,model) {
     app.post("/api/event/", createEvent);
     app.delete("/api/event/:eventId", deleteEvent);
     app.put("/api/event/:organizerId", updateEvent);
+    app.get("/api/allEvents/", getAllEvents);
 
 
     //var bookModel = model.bookModel;
@@ -27,6 +28,15 @@ module.exports=function (app,model) {
                     res.sendStatus(400).send(error);
                 }
             );
+    }
+
+
+    function getAllEvents(req,res) {
+        organizerModel.getAllEventsFromDb().then(function (allEvents) {
+            res.json(allEvents);
+        },function (err) {
+
+        })
     }
 
     function createEvent(req, res) {

@@ -19,6 +19,13 @@
 </a>        <!--<div class="navbar-header">-->
             <!--<a class="navbar-brand" href="#/user/{{model.user._id}}">Profile</a>-->
         <!--</div>-->
+
+        <!--<a href="#/allEvents" class="navbar-logreg pull-right btn btn-primary">-->
+
+
+            <!--<span class="glyphicon glyphicon-bookmark"></span> All Events-->
+
+        <!--</a>-->
     </div>
 </nav>
 <div id="slider">
@@ -48,6 +55,10 @@
                 <li><a ng-click="model.getBookListingMobile(opt)" ng-repeat="opt in model.genreListings">{{opt}}</a></li>
             </ul>
         </div>
+            <div class="container-fluid btn btn-primary btn-block">
+                <a  type="button" href="#/allEvents">Events Near You
+                    </a>
+            </div>
         </div>
         <div class="col-xs-12 panel panel-default" style="text-align: center"><strong><h3>Books Listing</h3></strong></div>
 
@@ -88,6 +99,10 @@
                         <li><a ng-click="model.getBookListingMobile(opt)" ng-repeat="opt in model.genreListings">{{opt}}</a></li>
                     </ul>
                 </div>
+                <a  class="btn btn-block btn-primary" href="#/allEvents">Events Near You
+
+                </a>
+
             </div>
         </div>
         <div class="col col-md-9">

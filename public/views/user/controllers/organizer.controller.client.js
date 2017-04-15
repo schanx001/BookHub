@@ -5,12 +5,13 @@
     angular
         .module("BookHubMaker")
         .controller("organizerController", organizerController);
-    function organizerController($scope, $routeParams, UserService, OrganizerService, $location, loggedin){
+    function organizerController($scope, $routeParams, UserService, OrganizerService, $location, loggedin, $rootScope){
         var vm=this;
         vm.showUpdateBtn= false;
         vm.organizerEvents = [];
         vm.userId = loggedin.data._id;//$routeParams['oid'];
         vm.event="";
+        vm.eventId="";
         vm.updateEvent = updateEvent;
         vm.deleteEvent=deleteEvent;
         vm.deleteUser = deleteUser;
@@ -19,6 +20,8 @@
         vm.editEvent= editEvent;
         vm.viewEvent= viewEvent;
         vm.onLoad=onLoad;
+        vm.logout= logout;
+        vm.updateUser = updateUser;
         vm.getEventsByOrganizerId = getEventsByOrganizerId;
        // vm.getEventsForUserId = getEventsForUserId;
 
@@ -27,6 +30,20 @@
             e.which = 13 //choose the one you want
             $("#pac-input").keypress(function(){
             }).trigger(e)
+        }
+
+
+        function updateUser(newUser) {
+
+            UserService
+                .updateUser(vm.userId, newUser)
+                .success(function (response) {
+
+                    vm.message = "user successfully updated";
+                })
+                .error(function () {
+                    vm.error = "unable to update user";
+                });
         }
 
         function redirect(){
@@ -74,6 +91,7 @@
         }
 
         function viewEvent(event) {
+            $rootScope.eventId=event._id;
             $location.url("/organizer/eventdetails/event");
         }
 
@@ -128,6 +146,7 @@
 
         function init() {
             vm.message="";
+
             vm.user = UserService.findUserById(vm.userId)
                 .success(renderUser)
                 .error(function () {
@@ -135,9 +154,9 @@
                 });
             getEventsByOrganizerId(vm.userId);
             if(document.URL.indexOf("eventdetails")>-1) {
-                var eventId=$routeParams['eid'];
+                vm.eventId=$rootScope.eventId;
 
-                OrganizerService.findEventByEventId(eventId)
+                OrganizerService.findEventByEventId(vm.eventId)
                     .then(function(response){
                         vm.event=response.data;
                     });
@@ -191,5 +210,13 @@ alert(user);
 
 
 
+        function logout() {
+            UserService
+                .logout()
+                .then(function (response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/login");
+                });
+        }
     }
 })();

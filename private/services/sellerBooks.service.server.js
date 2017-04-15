@@ -11,7 +11,12 @@ module.exports=function (app,model) {
 
     var sellerBooksModel = model.sellerBooksModel;
     var userModel = model.userModel;
+<<<<<<< HEAD
     console.log("SELLER BOOK SRVC");
+=======
+    var sellerModel= model.sellerModel;
+    
+>>>>>>> f29d2cd46aeaa67fcc5a532aab123b8771e1eca7
 
     function updateBook(req,res) {
         // console.log("ffe="+req.body);
@@ -100,9 +105,31 @@ module.exports=function (app,model) {
     }
 
     function findBooks(req,res) {
+        var sellerBookId=req.query.sellerBookId;
         var bookName=req.query.bookName;
         var userId=req.query.userId;
-        if(bookName){
+        if(sellerBookId != undefined){
+            sellerBooksModel.findSellerBookById(sellerBookId)
+                .then(function (response) {
+                    sellerModel.findShopBySellerIdInDb(response.owner)
+                        .then(function (responseNew) {
+                            console.log("responseNew="+ responseNew);
+                            console.log("responseNewloc="+ responseNew.shopPhone);
+                            var output=response.toObject();
+                            output.shopName=responseNew.shopName;
+                            output.shopLocation=responseNew.shopLocation;
+                            output.shopEmail=responseNew.shopEmail;
+                            output.shopPhone=responseNew.shopPhone;
+                            console.log("-------"+ res.shopPhone);
+                            res.send(output);
+                        },function (err) {
+                            res.sendStatus(404);
+                        })
+                },function (err) {
+                    res.sendStatus(404);
+                })
+        }
+        else if(bookName){
             sellerBooksModel
                 .findBooksByName(bookName)
                 .then(function (response) {

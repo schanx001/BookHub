@@ -1,15 +1,17 @@
 (function () {
     angular
         .module("BookHubMaker")
-        .controller("mainPageController", function ($http) {
+        .controller("mainPageController", function ($http, $scope, $routeParams, UserService, OrganizerService, $location, $rootScope) {
             var vm = this;
             vm.getBookListing=getBookListing;
             vm.getBookListingMobile=getBookListingMobile;
             vm.processImage = processImage;
+            vm.getAllEvents= getAllEvents;
             vm.genreListings=["Science Fiction","Arts & Photography","Horror","Children Books","History","Literature & Fiction"];
             vm.genre="Horror";
+            vm.allEvents="";
             function init(){
-
+                getAllEvents();
             }
             init();
             getBookListing();
@@ -45,6 +47,17 @@
                     // console.log(response);
 
                 });
+
+            }
+            function getAllEvents(){
+                OrganizerService.getAllEvents()
+                    .then(function (allEvents){
+                        console.log( allEvents);
+                        vm.allEvents=allEvents;
+                },function (err) {
+
+                    });
+
             }
 
         });

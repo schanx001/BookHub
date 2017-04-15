@@ -34,32 +34,12 @@
             <a class="navbar-brand" href="#">BookHub</a>
         </div>
         <div class="collapse navbar-collapse navbar-right" id="navbarNav">
-            <ul class="nav navbar-nav">
-                <li class="nav-item ">
-                    <a href="#/organizer/profile">
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li class="nav-item">-->
+                    <!--<a ng-click="model.logout()" >-->
 
-                        <span class="glyphicon glyphicon-user"></span> Edit Profile
-
-
-                    </a></li>
-
-                <li class="nav-item">
-                    <a href="#/organizer/addevent">
-
-                        <span class="glyphicon glyphicon-plus"></span> Add Event
-                    </a></li>
-
-                <li class="nav-item ">
-                    <a href="#/organizer/myevents">
-
-                        <span class="glyphicon glyphicon-bookmark"></span> My Events
-
-                    </a></li>
-                <li class="nav-item">
-                    <a ng-click="model.logout()" >
-
-                        <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
-                    </a></li></ul>
+                        <!--<span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout-->
+                    <!--</a></li></ul>-->
 
         </div>
 
@@ -72,7 +52,7 @@
     <div class="col-xs-12 border ">
         <div class="col-xs-12" style="text-align: center"><strong><p>Events</p></strong></div>
         <div ng-show="model.error">{{model.error}}</div>
-        <div id="div_requested_event_listing" ng-repeat="event in model.organizerEvents" ng-show="model.organizerEvents">
+        <div id="div_requested_event_listing" ng-repeat="event in model.allEvents" ng-show="model.allEvents">
             <div class="col-xs-9">
                 <div class="col-xs-12">
                     <!--<p>eventName: {{event.eventName}}<br>-->
@@ -92,24 +72,15 @@
 
                     <div class="col-xs-9">
                         <div class="col-xs-12">
-                            <div id="eventEditDiv{{event._id}}">Event Name: {{event.eventName}}<br>
+                            <div >Event Name: {{event.eventName}}<br>
                                 Event Description:{{event.eventDescription}}<br>
                                 Event Time: {{event.eventTime}}<br>
                                 Event Location: {{event.eventLocation}}<br>
                                 Event Date: {{event.eventDate}}<br>
 
                             </div>
-                            <div id="eventUpdateDiv{{event._id}}" class="hidden">Event Name:<input type="text" ng-model="event.eventName"><br>
-                                Event Description:<textarea ng-model="event.eventDescription"></textarea> <br>
-                                Event Time:<input type="time" ng-model="event.eventTime"><br>
-                                Event Location:<input type="text" ng-model="event.eventLocation"><br>
-                                Event Date:<input type="date" ng-model="event.eventDate"><br>
-                            </div>
                         </div>
                         <div class="col-xs-12">
-                            <div id="eventEditButtonDiv{{event._id}}" class=""><button class="btn btn-block btn-success" ng-click="model.editEvent(event._id)">Edit</button></div>
-                            <div id="eventUpdateButtonDiv{{event._id}}" class="hidden"><button class="btn btn-block btn-success" ng-click="model.updateEvent(event)">Update</button></div>
-                            <button class="btn btn-block btn-danger" ng-click="model.deleteEvent(event)">Delete</button><br><br>
                             <button class="btn btn-block btn-primary" ng-click="model.viewEvent(event)">View Event</button><br><br>
                         </div>
                     </div>
