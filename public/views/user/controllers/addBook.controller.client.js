@@ -33,7 +33,7 @@
         }
 
         function addBook(bookToAdd) {
-            // alert("book");
+            alert(document.getElementById('bookprice'+bookToAdd.id).value);
             BookService
                 .createBook({
                     owner:vm.userId,

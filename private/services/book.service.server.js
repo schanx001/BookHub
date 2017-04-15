@@ -163,6 +163,7 @@ module.exports=function (app,smtpTransport,model) {
 
     function createBook(req,res) {
         var book=req.body;
+        console.log("heeelooo world "+book);
         bookModel
             .createABook(book)
             .then(function (response) {

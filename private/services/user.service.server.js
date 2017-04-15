@@ -70,7 +70,7 @@ module.exports = function (app, model) {
         userModel
             .findAllUsers()
             .then(function (users) {
-                console.log(users);
+                //console.log(users);
                 res.json(users);
             },function (err) {
                 res.sendStatus(404).send(err);

@@ -67,7 +67,6 @@
         }
 
         function init() {
-
  //vm.userId=$routeParams.uid;
    //         var bookId=$routeParams.bid;
             vm.userId=loggedin.data._id;
