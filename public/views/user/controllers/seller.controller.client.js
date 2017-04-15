@@ -71,7 +71,7 @@ function enter() {
 
         function updateShopDetails(updatedShop) {
             updatedShop.owner=vm.userId;
-            alert(updatedShop.owner);
+            //alert(updatedShop.owner);
             SellerService.findShopBySellerId(updatedShop.owner)
                 .success(function (response) {
                     console.log("1st="+response);
@@ -88,12 +88,12 @@ function enter() {
                                 vm.error = "unable to update";
                             })
                     }else{
-                        alert("create");
+                   //     alert("create");
 
-                        console.log("create wala"+getOuter());
+                        //console.log("create wala"+getOuter());
                         updatedShop.mapPlace=getOuter();
-                        console.log(updatedShop.shopPhone);
-                        console.log(updatedShop.shopEmail);
+                        //console.log(updatedShop.shopPhone);
+                        //console.log(updatedShop.shopEmail);
 
                         SellerService
                             .createShopDetails(vm.userId,updatedShop)

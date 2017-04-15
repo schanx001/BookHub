@@ -58,7 +58,7 @@
         }
 
         function createShopDetails(sellerId, newShop) {
-            alert(newShop.shopEmail + " hello  " + newShop.shopPhone );
+           // alert(newShop.shopEmail + " hello  " + newShop.shopPhone );
             return $http.post("/api/shop/"+sellerId, newShop);
         }
     }
