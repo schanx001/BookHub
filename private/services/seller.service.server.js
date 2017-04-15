@@ -24,11 +24,11 @@ module.exports=function (app,model) {
         var sellerId = req.params['sellerId'];
         var newShop = req.body;
         sellerModel
-            .updateShopDetails(sellerId,newShop)
+            .updateShopDetailsInDb(sellerId,newShop)
             .then(function (response) {
 
                 sellerModel
-                    .findShopBySellerId(sellerId)
+                    .findShopBySellerIdInDb(sellerId)
                     .then(function (response) {
                         res.json(response);
                     }, function () {

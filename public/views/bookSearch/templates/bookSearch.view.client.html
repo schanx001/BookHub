@@ -30,10 +30,6 @@
                         <span class="glyphicon glyphicon-gift"></span> BookRepo
                     </a></li>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6f5294af465cdd3e3c2ddca9c33048e6c052d11f
                 <li class="nav-item">
                     <a href="#/user/myalerts">
 
@@ -47,7 +43,7 @@
 
                     </a></li>
                 <li class="nav-item">
-                    <a ng-click="model.logout()" >
+                    <a href="" ng-click="model.logout()" >
 
                         <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
                     </a></li></ul>
@@ -55,11 +51,7 @@
 
     </div>
 </nav>
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 6f5294af465cdd3e3c2ddca9c33048e6c052d11f
 <div class="container-fluid">
     <div class="col-sm-12 hidden-xs">
         <div class="col-xs-12">
@@ -108,7 +100,7 @@
                 </div>
                 <div class="col-xs-9">
                     <div class="col-xs-12">
-                        <p>Title: {{book.title}}<br>
+                        <a href ng-click="model.viewDetails(book._id)" ></a><p>Title: {{book.title}}<br>
                             Author: {{book.author}}<br>
                             Price: {{book.price}}
 Description:{{book.description}}<br>

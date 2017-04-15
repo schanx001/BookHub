@@ -14,7 +14,8 @@ module.exports = function(){
         "setModel":setModel,
         "getModel":getModel,
         "findShopBySellerIdInDb": findShopBySellerIdInDb,
-        "updateShopDetails": updateShopDetails,
+        //"updateShopDetails": updateShopDetails,
+        "updateShopDetailsInDb": updateShopDetailsInDb,
         "createShopDetailsInDb": createShopDetailsInDb
     };
     return api;
@@ -42,7 +43,7 @@ module.exports = function(){
         return sellerModel.update({_id:updatedBook._id},{$set:updatedBook});
     }
 
-    function updateShopDetails(sid, newShop){
+    function updateShopDetailsInDb(sid, newShop){
         //console.log(sid);
       //  console.log(newShop.owner);
       //  console.log("hqehdoqdh");

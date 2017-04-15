@@ -3,7 +3,7 @@
         .module("BookHubMaker")
         .controller("bookSearchController",bookSearchController);
 
-    function bookSearchController(BookService, loggedin,SellerBooksService){
+    function bookSearchController(BookService, loggedin,SellerBooksService, UserService, $rootScope , $location){
         var vm=this;
         vm.sortBy="";
         vm.sortListings=["Price Low-High","Price High-Low","Title A-Z","Title Z-A","Recent"];
@@ -18,6 +18,25 @@
         vm.searchBook=searchBook;
         vm.requestBook=requestBook;
         vm.getAllSellerBooks=getAllSellerBooks;
+        vm.logout=logout;
+        vm.viewDetails=viewDetails;
+
+
+        function viewDetails(bookId) {
+            $rootScope.bookId = bookId;
+            $location.url('/user/bookdetails/book?bookId='+bookId);
+        }
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
+        }
 
         function getAllSellerBooks() {
 

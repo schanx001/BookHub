@@ -10,6 +10,8 @@
         vm.showUpdateBtn= false;
         vm.sellerBooks = [];
         vm.shop="";
+        vm.error="";
+        vm.message="";
         //vm.shop.owner=$routeParams['sid'];
         vm.userId = loggedin.data._id;//$routeParams['sid'];
         //  vm.shop = {
@@ -318,10 +320,10 @@ function enter() {
                         SellerService
                             .createShopDetails(vm.userId, {owner: vm.userId})
                             .success(function () {
-                                vm.message= "shop details update !!"
+                               // vm.message= "shop details update !!"
                             })
                             .error(function () {
-                                vm.error= "unable to update";
+                              //  vm.error= "unable to update";
                             })
                     }
 
