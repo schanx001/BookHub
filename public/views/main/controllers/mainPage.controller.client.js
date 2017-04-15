@@ -14,7 +14,12 @@
             vm.genreListings=["Science Fiction","Arts & Photography","Horror","Children Books","History","Literature & Fiction"];
             vm.genre="Horror";
             vm.allEvents="";
+            vm.viewDetails=viewDetails;
 
+            function viewDetails(bookId) {
+                $rootScope.bookId = bookId;
+                $location.url('/user/bookdetails/book?bookId='+bookId);
+            }
 
             function rsvpEvent(event) {
                 // alert("in");

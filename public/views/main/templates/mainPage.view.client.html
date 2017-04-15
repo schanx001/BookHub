@@ -1,8 +1,8 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid bg-inverse">
 
-        <div class="navbar-brand text-color navbar-header">
-            <a style="text-decoration:none; color:navy;" href><strong>BookHub</strong></a>
+        <div class="navbar-brand text-color navbar-header font-brand">
+            <a style="text-decoration:none; color:navy;"  href><strong>BookHub</strong></a>
         </div>
         <a href="#/register" class="navbar-logreg pull-right btn btn-primary">
 
@@ -28,6 +28,7 @@
         <!--</a>-->
     </div>
 </nav>
+
 <div id="slider">
     <figure>
         <img src="https://cdn-images-1.medium.com/max/1200/1*vuVoDNYwI880vUsVR_2r2w.jpeg" alt>
@@ -38,12 +39,13 @@
     </figure>
 </div>
 
+
 <form class="col-sm-12" id="searchForm">
     <div class="form-group col-sm-4 col-sm-offset-4">
         <div class="input-group input-group-lg ">
             <input class="form-control" placeholder="Search" type="text">
             <span class="input-group-btn">
-                <a ng-click="model.searchPhotos(searchText)" class="btn btn-default" type="button">
+                <a ng-click="" class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
             </a></span>
         </div>
@@ -55,11 +57,10 @@
 </div>
 -->
 
-<div class="container-fluid">
-
+<div class="container-fluid main-page-div">
     <div class="visible-xs">
         <div class="container-fluid ">
-        <div class="dropdown btn-block btn-primary">
+        <div class="dropdown btn-block btn-primary margin-fix-main">
             <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Category
                 <span class="caret"></span></button>
             <ul class="dropdown-menu">
@@ -71,7 +72,7 @@
                     </a>
             </div>
         </div>
-        <div class="col-xs-12 panel panel-default" style="text-align: center"><strong><h3>Books Listing</h3></strong></div>
+        <div class="col-xs-12 panel panel-default margin-fix-main" style="text-align: center"><strong><h3>Books Listing</h3></strong></div>
 
 <!--
         <div class="col-xs-12" style="text-align: center"><strong><p>Books Listing</p></strong></div>
@@ -100,7 +101,7 @@
     </div>
     </div>
     <div class="row hidden-xs">
-        <div class="col col-md-3">
+        <div class="col col-md-3 margin-fix-main">
             <div class="col-md-12">
 
                 <div class="dropdown btn-block btn-primary">
@@ -116,7 +117,7 @@
 
             </div>
         </div>
-        <div class="col col-md-9">
+        <div class="col col-md-9 margin-fix-main">
             <div class="col-xs-12 panel panel-default" style="text-align: center"><strong><h3>Books Listing</h3></strong></div>
            <!-- <div id="div_book_listing" class="col-xs-12" ng-show="model.books" ng-repeat="book in model.books">
                 <div class="col-xs-3" >
@@ -132,19 +133,34 @@
                     </div>
                 </div>
             </div>-->
+            <div class="col-xs-12 alert alert-info" style="text-align: center" ng-show="model.books"><strong>Books from Shared Books Repository</strong></div>
+
             <div class="row container-fluid desk-view">
             <div class="col-sm-6 col-md-4" id="div_book_listing" ng-show="model.books" ng-repeat="book in model.books">
                 <div class="thumbnail">
                 <img class="card-img-top same-height" ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" style="width:100%"/>
                     <div class="card-block same-height">
-                        <h4 class="card-title">{{book.volumeInfo.title}}</h4>
+                        <a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.volumeInfo.title}}</h4>
                         <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
                     </div>
                 </div>
             </div>
-            </div>
         </div>
+            <div class="col-xs-12 alert alert-info" style="text-align: center" ng-show="model.books"><strong>Books from Sellers Books Repository</strong></div>
+
+            <div class="row container-fluid desk-view">
+                <div class="col-sm-6 col-md-4" id="div_book_listing" ng-show="model.books" ng-repeat="book in model.books">
+                    <div class="thumbnail">
+                        <img class="card-img-top same-height" ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" style="width:100%"/>
+                        <div class="card-block same-height">
+                            <a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.volumeInfo.title}}</h4></a>
+                            <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
+</div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

@@ -453,3 +453,26 @@ div.eve-css{
     position:absolute;
     top:30%;
 }
+.margin-fix-main{
+    margin-top: 20px;
+}
+.margin-fix-main > strong{
+    margin-top: 5px;
+}
+.main-page-div {
+    margin-bottom: 50px
+}
+.font-brand{
+    font-family: 'Rock Salt', cursive;
+}
+
+.font-size-header {
+    position:absolute;
+    top:15%;
+    text-align: center;
+}
+h1.font-color-header{
+    font-family: 'Rock Salt', cursive;
+    color:white;
+    font-size: 60px;
+}
