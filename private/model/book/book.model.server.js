@@ -18,12 +18,9 @@ module.exports = function(){
         "updateBookRequestorInDb":updateBookRequestorInDb,
         "updateBookReturnStatus":updateBookReturnStatus,
         "findBookByIdInDb":findBookByIdInDb,
-<<<<<<< HEAD
         "deleteBooksForUserId":deleteBooksForUserId,
-	"findAllBooks":findAllBooks
-=======
-        "findAllBooks":findAllBooks
->>>>>>> 6f5294af465cdd3e3c2ddca9c33048e6c052d11f
+	    "findAllBooks":findAllBooks
+
     };
     return api;
 
@@ -32,14 +29,13 @@ module.exports = function(){
         return bookModel.find({_id:{$ne:null}});
     }
 
-<<<<<<< HEAD
+
     function deleteBooksForUserId(userId) {
         console.log(userId);
         return bookModel.remove({owner:userId});
     }
 
-=======
->>>>>>> 6f5294af465cdd3e3c2ddca9c33048e6c052d11f
+
     function findBookByIdInDb(bookId) {
         return bookModel.findById({_id:bookId});
     }
