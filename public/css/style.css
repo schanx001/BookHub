@@ -449,3 +449,7 @@ div .events-css{
 div.eve-css{
     padding: 5px;
 }
+#searchForm {
+    position:absolute;
+    top:40%;
+}
