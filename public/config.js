@@ -170,7 +170,7 @@
             })
             .when("/admin/manageEvents",{
                 templateUrl: 'views/user/templates/admin/manageEvents.view.client.html',
-                controller: 'registerController',
+                controller: 'adminController',
                 controllerAs:'model',
                 resolve: {
                     loggedin: checkLoggedin

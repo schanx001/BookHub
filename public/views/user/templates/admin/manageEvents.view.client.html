@@ -74,7 +74,7 @@
                     </div>
                 </div>
             </li>
-            <li class="list-group-item" ng-repeat="user in model.allusers">
+            <li class="list-group-item" ng-repeat="event in model.allevents">
                 <div class="row">
                     <div class="col-md-3">
                         <label>{{event.eventName}}</label>
@@ -91,7 +91,7 @@
                     <div class="col-md-1">
                         <div class="row">
                             <div class="col-md-12">
-                                <a ng-click="model.deleteUsers(user._id,user.username)" href class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                                <a ng-click="model.deleteEvent(event)" href class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
 <div class="card visible-xs text-center">
     <div class="card-block">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" ng-repeat="user in model.allusers">
+            <li class="list-group-item" ng-repeat="event in model.allevents">
                 <div class="row">
                     <div class="col-xs-6 text-primary">
                         <p class="card-text">Event Name</p>
@@ -145,7 +145,7 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <a ng-click="model.deleteUsers(user._id,user.username)" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                        <a ng-click="model.deleteEvent(event)" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
                     </div>
 
                 </div>

@@ -273,13 +273,11 @@ function enter() {
                 // }, 1000);
 
 
-                }}else{
+                });
+            }else{
                 $rootScope.currentUser=null;
                 $location.url('/login');
             }
-
-
-            );
             //$('#pac-input').trigger(jQuery.Event('keypress', { keycode: 13 }));
         }
 

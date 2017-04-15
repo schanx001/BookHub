@@ -436,8 +436,16 @@ img.same-height-books{
 }
 .thumbnail{
     margin-top: 70px;
-<<<<<<< HEAD
 }
-=======
+
+.panel-edit{
+    margin:2px;
+    height:auto;
+    text-justify: inter-word;
 }
->>>>>>> f29d2cd46aeaa67fcc5a532aab123b8771e1eca7
+div .events-css{
+    margin-bottom: 50px;
+}
+div.eve-css{
+    padding: 5px;
+}

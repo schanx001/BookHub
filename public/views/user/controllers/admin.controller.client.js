@@ -5,7 +5,7 @@
     angular
         .module("BookHubMaker")
         .controller("adminController", adminController);
-    function adminController($routeParams, UserService, BookService, $location, $rootScope,$route,loggedin){
+    function adminController($routeParams, UserService, BookService, $location, $rootScope,$route,loggedin,OrganizerService){
         var vm = this;
         vm.adminId = loggedin.data._id;//$routeParams['aid'];
         vm.allusers=null;
@@ -15,6 +15,8 @@
         vm.logout = logout;
         vm.getBooksHelper=getBooksHelper;
         vm.deleteBook = deleteBook;
+        vm.deleteEvent = deleteEvent;
+        vm.allevents = null;
         vm.allbooks=null;
         function init() {
             if($rootScope.currentUser.role==='admin') {
@@ -31,6 +33,7 @@
                             vm.error = err;
                         });
                 getBooksHelper();
+                getEventsHelper();
                 vm.userId = $rootScope.userId;//$routeParams['uid'];
                 if ($rootScope.userId) {
                     vm.editUser = UserService.findUserById($rootScope.userId)
@@ -43,6 +46,16 @@
         }
 
         init();
+
+        function getEventsHelper() {
+            OrganizerService
+                .getAllEvents()
+                .then(function (events) {
+                    vm.allevents=events.data;
+                },function (err) {
+                    vm.error = err;
+                });
+        }
 
         function getBooksHelper() {
 
@@ -65,6 +78,19 @@
                     function (err) {
                         vm.error = err;
                     });
+        }
+
+        function deleteEvent(event) {
+            OrganizerService
+                .deleteEvent(event._id)
+                .then(function () {
+                    for(x in vm.allevents){
+                        if(vm.allevents[x]._id==event._id){
+                            vm.allevents.splice(x,1);
+                        }
+                        break;
+                    }
+                });
         }
 
         function deleteBook(book) {
