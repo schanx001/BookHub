@@ -11,7 +11,6 @@ module.exports=function (app,smtpTransport,model) {
 
 
     function getAllBooks(req,res) {
-        console.log("heee");
         bookModel
             .findAllBooks()
             .then(function (books) {
@@ -23,7 +22,6 @@ module.exports=function (app,smtpTransport,model) {
     }
 
 
-    console.log("BOOK SRVC");
     function sendRequestMailToUser(bookName,emailId){
         var subjectText="";
         var bodyText="";
@@ -163,7 +161,6 @@ module.exports=function (app,smtpTransport,model) {
 
     function createBook(req,res) {
         var book=req.body;
-        console.log("heeelooo world "+book);
         bookModel
             .createABook(book)
             .then(function (response) {

@@ -54,7 +54,6 @@
                             vm.error="Book not available";
                         }
                     },function (error) {
-                        console.log(error);
                         vm.error="Book not available";
                     })
             }
@@ -71,7 +70,6 @@
                 .then(function (response) {
                     vm.books=response.data;
                 },function (error) {
-                    console.log(error);
                 });
         }
 

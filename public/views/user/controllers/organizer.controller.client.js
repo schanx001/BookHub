@@ -173,7 +173,6 @@
             }
             if(document.URL.indexOf("addevent")>-1 || document.URL.indexOf("eventdetails")>-1 ){
 
-                console.log("maps error");
 
                 $scope.$on('$viewContentLoaded', function () {
                     var imported = document.createElement('script');

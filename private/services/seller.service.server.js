@@ -44,7 +44,6 @@ module.exports=function (app,model) {
     function createShopDetails(req, res) {
         var sellerId = req.params['sellerId'];
         var newShop = req.body;
-        console.log(newShop.shopEmail + " helloserver  " + newShop.shopPhone );
         sellerModel
             .createShopDetailsInDb(newShop)
             .then(function (response) {
@@ -100,7 +99,7 @@ module.exports=function (app,model) {
     }*/
 
     function updateBook(req, res) {
-        console.log("in update");
+
         var sellerId = req.params['sellerId'];
         var newBook = req.body;
         sellerModel
@@ -122,11 +121,9 @@ module.exports=function (app,model) {
 
     function findBookByBookId(req, res) {
         var bookId = req.params['bookId'];
-        console.log(bookId + "helloooooo");
         sellerModel
             .findBookByBookId(bookId)
             .then(function (book) {
-                console.log(book + "ppppppppp");
                 res.send(book);
             }, function (err) {
                 res.sendStatus(500).send(err);

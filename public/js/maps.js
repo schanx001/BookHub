@@ -9,7 +9,6 @@
 var outer=null;
 
 function getOuter() {
-    console.log(outer);
     return outer;
 }
 
@@ -134,7 +133,6 @@ function initAutocomplete() {
                 position: place.geometry.location
             }));
 
-            console.log(place.geometry.location +"qwerty");
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
                 bounds.union(place.geometry.viewport);

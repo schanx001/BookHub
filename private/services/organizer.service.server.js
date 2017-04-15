@@ -43,7 +43,7 @@ module.exports=function (app,model) {
 
         //console.log("Create User called");
         var event = req.body;
-        console.log(event);
+
         // var newEvent = {
         //     eventName: event.eventName,
         //     eventDescription: event.eventDescription,
@@ -62,7 +62,6 @@ module.exports=function (app,model) {
     }
 
     function updateEvent(req, res) {
-        console.log("in update");
         var organizerId = req.params['organizerId'];
         var newEvent = req.body;
         organizerModel
@@ -121,11 +120,9 @@ module.exports=function (app,model) {
 
                 });
         }else{
-            console.log(eventId + "helloooooo");
             organizerModel
                 .findEventByEventId(eventId)
                 .then(function (event) {
-                    console.log(event + "ppppppppp");
                     res.send(event);
                 }, function (err) {
                     res.sendStatus(500).send(err);

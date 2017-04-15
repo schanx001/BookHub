@@ -32,7 +32,6 @@
         }
 
         function addBook(book) {
-            console.log(book +"yyyyy");
             return $http.post("/api/book/", book);
         }
 

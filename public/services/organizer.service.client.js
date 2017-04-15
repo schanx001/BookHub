@@ -31,7 +31,6 @@
         }
 
         function createEvent(event) {
-            console.log(event +"yyyyy");
             return $http.post("/api/event/", event);
         }
 

@@ -12,7 +12,6 @@ module.exports=function (app,model) {
     var sellerBooksModel = model.sellerBooksModel;
     var userModel = model.userModel;
 
-    console.log("SELLER BOOK SRVC");
     var sellerModel= model.sellerModel;
     
 
@@ -92,7 +91,6 @@ module.exports=function (app,model) {
 
     function createBook(req,res) {
         var book=req.body;
-        console.log("jkjkljlkjkljlkjkljlkjskljskldjaslkdjlaskdjlaksjdsklajdaskljdaklsjdaklsjdaklsdj");
         sellerBooksModel
             .createABook(book)
             .then(function (response) {
@@ -111,14 +109,11 @@ module.exports=function (app,model) {
                 .then(function (response) {
                     sellerModel.findShopBySellerIdInDb(response.owner)
                         .then(function (responseNew) {
-                            console.log("responseNew="+ responseNew);
-                            console.log("responseNewloc="+ responseNew.shopPhone);
                             var output=response.toObject();
                             output.shopName=responseNew.shopName;
                             output.shopLocation=responseNew.shopLocation;
                             output.shopEmail=responseNew.shopEmail;
                             output.shopPhone=responseNew.shopPhone;
-                            console.log("-------"+ res.shopPhone);
                             res.send(output);
                         },function (err) {
                             res.sendStatus(404);

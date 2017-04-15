@@ -50,7 +50,7 @@ function enter() {
     // //document.getElementById("pac-input").trigger(jQuery.Event('keypress', { keycode: 13 }));
     // $('#pac-input').trigger(jQuery.Event('keypress', { keycode: 13 }));
     //  $('#pac-input').blur();
-     console.log("llllllllllllllll");
+
     //google.maps.event.trigger(searchBox, 'place_changed');
 
         // var input = document.getElementById('pac-input');
@@ -74,7 +74,6 @@ function enter() {
             //alert(updatedShop.owner);
             SellerService.findShopBySellerId(updatedShop.owner)
                 .success(function (response) {
-                    console.log("1st="+response);
 
                     if(response.length!=0){
                         SellerService
@@ -242,7 +241,6 @@ function enter() {
             }
             // if(document.URL.indexOf("addbook")>-1 || document.URL.indexOf("bookdetails")>-1 ){
 
-            console.log("maps error");
 
             $scope.$on('$viewContentLoaded', function () {
                     var imported = document.createElement('script');

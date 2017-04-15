@@ -31,7 +31,6 @@ module.exports = function (app, model) {
     app.get('/auth/google/callback', passport.authenticate('google', {
             failureRedirect: '/#/login'
         }),function (req,res) {
-        console.log("in her!");
             var url='/#/user/profile';//+req.user._id.toString();
             res.redirect(url);
         });
@@ -40,7 +39,6 @@ module.exports = function (app, model) {
     app.get('/auth/facebook/callback',passport.authenticate('facebook',{
         failureRedirect: '/#/login'
     }),function (req,res) {
-        console.log(req.user);
         var url = '/#/user/profile';//+req.user._id.toString();
         res.redirect(url);
     });
@@ -175,7 +173,6 @@ module.exports = function (app, model) {
         userModel
             .createUser(user)
             .then(function (User){
-                console.log(User);
                 if(User){
                     req.login(User, function (err) {
                         if(err){
@@ -327,18 +324,18 @@ module.exports = function (app, model) {
             userModel
                 .updateUser(userId, newUser)
                 .then(function (response) {
-                    if (response.nModified === 1) {
+                    //if (response.nModified === 1) {
                         userModel
                             .findUserById(userId)
                             .then(function (response) {
                                 res.json(response);
                             }, function () {
                                 res.sendStatus(404);
-                            })
-                    }
-                    else {
-                        res.sendStatus(404);
-                    }
+                            });
+                   // }
+                   //  else {
+                   //      res.sendStatus(404);
+                   //  }
                 }, function () {
                     res.sendStatus(404);
                 });
@@ -350,7 +347,6 @@ module.exports = function (app, model) {
         userModel
             .findUserById(userId)
             .then(function (user) {
-                console.log("success user"+ user);
                 res.json(user);
             }, function (err) {
                 res.sendStatus(500).send(err);

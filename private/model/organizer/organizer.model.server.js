@@ -37,9 +37,6 @@ module.exports = function(){
     }
 
     function updateEvent(updatedEvent){
-        console.log("in model update");
-        //console.log(organizerId);
-        console.log(updatedEvent);
         return organizerModel.update({_id:updatedEvent._id},{$set:updatedEvent});
     }
 

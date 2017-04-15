@@ -43,7 +43,6 @@
                     .then(function (response) {
                         vm.books=response.data;
                     },function (error) {
-                        console.log(error);
                     });
             }
 
@@ -67,7 +66,6 @@
                                 vm.error="Book not available";
                             }
                         },function (error) {
-                            console.log(error);
                             vm.error="Book not available";
                         })
                 }
@@ -118,7 +116,6 @@
             function getAllEvents(){
                 OrganizerService.getAllEvents()
                     .then(function (allEvents){
-                        console.log( allEvents);
                         vm.allEvents=allEvents.data;
                 },function (err) {
 

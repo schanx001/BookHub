@@ -190,7 +190,6 @@
         
         function init() {
             if($rootScope.currentUser.role==='user'){
-            console.log(loggedin.data);
             vm.message="";
             if(userId){
                 vm.userId=userId;
@@ -217,6 +216,8 @@
 
         function updateUser(newUser) {
 
+            vm.message="";
+            vm.error="";
             UserService
                 .updateUser(userId, newUser)
                 .success(function (response) {

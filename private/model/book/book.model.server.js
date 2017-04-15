@@ -25,13 +25,11 @@ module.exports = function(){
     return api;
 
     function findAllBooks() {
-        console.log("fff");
         return bookModel.find({_id:{$ne:null}});
     }
 
 
     function deleteBooksForUserId(userId) {
-        console.log(userId);
         return bookModel.remove({owner:userId});
     }
 
@@ -67,7 +65,6 @@ module.exports = function(){
     }
 
     function createABook(book) {
-        console.log(book);
         return bookModel.create(book);
     }
 
