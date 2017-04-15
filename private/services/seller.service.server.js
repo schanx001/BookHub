@@ -49,7 +49,7 @@ module.exports=function (app,model) {
             .then(function (response) {
 
                 sellerModel
-                    .findShopBySellerId(sellerId)
+                    .findShopBySellerIdInDb(sellerId)
                     .then(function (response) {
                         res.json(response);
                     }, function () {
