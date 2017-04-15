@@ -97,15 +97,25 @@
 
 
         function addEvent() {
-            alert("book");
+            var date="";
+            var Time="";
+            // alert(new Date(vm.eventTime).getHours());
+            // alert(new Date(vm.eventTime).getMinutes());
+            // alert(new Date(vm.eventTime).getSeconds());
+            //alert(vm.eventDate.toDateString());
+            date= (new Date(vm.eventDate).getDate()).toString() + '/' + (new Date(vm.eventDate).getMonth() + 1).toString() + '/' + (new Date(vm.eventDate).getYear() + 1900).toString();
+            Time= (new Date(vm.eventTime).getHours()).toString() + ':' + (new Date(vm.eventTime).getMinutes()).toString();
+            // alert(Time);
             OrganizerService
                 .createEvent({
                     owner:vm.userId,
                     eventName: vm.eventName,
                     eventDescription: vm.eventDescription,
                     eventLocation: document.getElementById('pac-input').value.toString(),
-                    eventDate: vm.eventDate,
-                    eventTime: vm.eventTime})
+                    //eventDate: vm.eventDate,
+                    eventDate : date,
+                    //eventTime: vm.eventTime
+                    eventTime: Time})
                         .then(function (response) {
                            // location.reload();
                             vm.message="Event created !!";
@@ -178,6 +188,7 @@
 
                 });
 
+
             }
         }
 
@@ -198,8 +209,8 @@ alert(user);
                     var events = response.data;
                     var organizerEvents= [];
                     for (var x in events) {
-                            organizerEvents.push(events[x]);
-                        }
+                        organizerEvents.push(events[x]);
+                    }
                     // console.log("requestedBooks:"+requestedBooks);
                     vm.organizerEvents = organizerEvents;
                     // console.log("requestedForBooks:"+requestedForBooks);

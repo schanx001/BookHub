@@ -80,8 +80,11 @@
 
                             </div>
                         </div>
-                        <div class="col-xs-12">
-                            <button class="btn btn-block btn-primary" ng-click="model.viewEvent(event)">View Event</button><br><br>
+                        <div class="col-xs-12 hidden" id="available{{event._id}}">
+                            You have RSVP for this event
+                        </div>
+                        <div class="col-xs-12" id="rsvpButton{{event._id}}" >
+                            <button class="btn btn-block btn-primary" ng-click="model.rsvpEvent(event)">RSVP</button><br><br>
                         </div>
                     </div>
                 </div>

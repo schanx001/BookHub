@@ -99,39 +99,45 @@
             BookService
                 .deleteBookService(bookId,userId)
                 .then(function (response) {
+                    for(x in vm.booksAvailable){
+                        if(bookId==vm.booksAvailable[x]._id){
+                            vm.booksAvailable.splice(x,1);
+                        }
+                        break;
+                    }
                     // getBooksForUserId(userId);
-                    var books=response.data;
-                    var requestedBooks=[];
-                    var requestedForBooks=[];
-                    for (var x in books){
-                        if(books[x].owner===userId && books[x].status==="requested"){
-                            requestedBooks.push(books[x]);
-                        }
-                        if(books[x].currentlyWith===userId && books[x].status==="requested"){
-                            requestedForBooks.push(books[x]);
-                        }
-                    }
-                    // console.log("requestedBooks:"+requestedBooks);
-                    vm.requestedBooks=requestedBooks;
-                    // console.log("requestedForBooks:"+requestedForBooks);
-                    vm.requestedForBooks=requestedForBooks;
-
-                    var booksAvailable=[];
-                    var booksShared=[];
-                    for (var x in books){
-                        if(books[x].owner===userId && books[x].status==="available"){
-                            booksAvailable.push(books[x]);
-                        }
-                        if(books[x].currentlyWith===userId && books[x].status==="shared"){
-                            booksShared.push(books[x]);
-                        }
-                    }
-                    // console.log("requestedBooks:"+requestedBooks);
-                    vm.booksAvailable=booksAvailable;
-                    // console.log("requestedForBooks:"+requestedForBooks);
-                    vm.booksShared=booksShared;
-                    // getBooksRequestedForAndRequested(userId);
-                    // getUserBooksStats(userId);
+                    // var books=response.data;
+                    // var requestedBooks=[];
+                    // var requestedForBooks=[];
+                    // for (var x in books){
+                    //     if(books[x].owner===userId && books[x].status==="requested"){
+                    //         requestedBooks.push(books[x]);
+                    //     }
+                    //     if(books[x].currentlyWith===userId && books[x].status==="requested"){
+                    //         requestedForBooks.push(books[x]);
+                    //     }
+                    // }
+                    // // console.log("requestedBooks:"+requestedBooks);
+                    // vm.requestedBooks=requestedBooks;
+                    // // console.log("requestedForBooks:"+requestedForBooks);
+                    // vm.requestedForBooks=requestedForBooks;
+                    //
+                    // var booksAvailable=[];
+                    // var booksShared=[];
+                    // for (var x in books){
+                    //     if(books[x].owner===userId && books[x].status==="available"){
+                    //         booksAvailable.push(books[x]);
+                    //     }
+                    //     if(books[x].currentlyWith===userId && books[x].status==="shared"){
+                    //         booksShared.push(books[x]);
+                    //     }
+                    // }
+                    // // console.log("requestedBooks:"+requestedBooks);
+                    // vm.booksAvailable=booksAvailable;
+                    // // console.log("requestedForBooks:"+requestedForBooks);
+                    // vm.booksShared=booksShared;
+                    // // getBooksRequestedForAndRequested(userId);
+                    // // getUserBooksStats(userId);
                 },function (error) {
                     vm.error="Unable to delete";
                 });
@@ -185,6 +191,7 @@
         }
         
         function init() {
+            if($rootScope.currentUser.role==='user'){
             console.log(loggedin.data);
             vm.message="";
             if(userId){
@@ -195,7 +202,11 @@
                 .error(function () {
                     $location.url('/login');
                 });
-            getBooksForUserId(userId);
+            getBooksForUserId(userId);}
+            else{
+                $rootScope.currentUser=null;
+                $location.url('/login');
+            }
         }
 
         init();

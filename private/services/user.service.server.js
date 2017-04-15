@@ -49,11 +49,22 @@ module.exports = function (app, model) {
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
     app.post("/api/user", createUser);
+    app.post("/api/users",getAllUsernames);
     app.post('/api/login',passport.authenticate('local'),login);
     app.post('/api/logout',logout);
     app.post('/api/register',register);
     app.get ('/api/loggedin', loggedin);
     app.get('/api/getusers',findUsers);
+
+    function getAllUsernames(req,res) {
+        userModel
+            .getEmailIdFromUserIds(req.body)
+            .then(function (response) {
+                res.send(response);
+            },function (error) {
+                res.sendStatus(404);
+            });
+    }
 
     function findUsers(req,res) {
         userModel
@@ -77,6 +88,7 @@ module.exports = function (app, model) {
     // ];
     var userModel = model.userModel;
     var bookModel=model.bookModel;
+    var sellerBooksModel=model.sellerBooksModel;
 
 
     // facebook oauth
@@ -229,16 +241,31 @@ module.exports = function (app, model) {
 
     function deleteUser(req, res) {
         var userId = req.params.userId;
-        userModel
-            .deleteUser(userId)
-            .then(
-                function (status) {
-                    res.sendStatus(200);
-                },
-                function (error) {
-                    res.sendStatus(400).send(error);
-                }
-            );
+        bookModel
+            .deleteBooksForUserId(userId)
+            .then(function (response) {
+
+                sellerBooksModel
+                    .deleteSellerBooksForUserId(userId)
+                    .then(function (response) {
+                        userModel
+                            .deleteUser(userId)
+                            .then(
+                                function (status) {
+                                    res.sendStatus(200);
+                                },
+                                function (error) {
+                                    res.sendStatus(400).send(error);
+                                }
+                            );
+                    },function (error) {
+                        res.sendStatus(404);
+                    });
+
+
+            },function (error) {
+                res.sendStatus(404);
+            });
     }
 
     function createUser(req, res) {

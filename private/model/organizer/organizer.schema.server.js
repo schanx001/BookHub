@@ -10,6 +10,7 @@ module.exports = function(model) {
         eventLocation: String,
         eventDate: Date,
         eventTime: String,
+        eventRSVP:[{type: mongoose.Schema.Types.ObjectId, ref: 'userModel'}],
         dateCreated: {type: Date, default:Date.now}
     }, {collection: 'project.mongo.event'});
 

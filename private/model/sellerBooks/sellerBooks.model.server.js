@@ -15,10 +15,15 @@ module.exports = function(){
         "deleteBookFromDb":deleteBookFromDb,
         "updateBookInDb":updateBookInDb,
         "findBooksBySellerId":findBooksBySellerId,
-        "findSellerBookById":findSellerBookById
+        "findSellerBookById":findSellerBookById,
+        "deleteSellerBooksForUserId":deleteSellerBooksForUserId
         //"updateBookRequestorInDb":updateBookRequestorInDb
     };
     return api;
+
+    function deleteSellerBooksForUserId(sellerIds) {
+        return sellerBooksModel.remove({owner:sellerIds});
+    }
 
     // function updateBookRequestorInDb(bookId,requestorId) {
     //     return bookModel.findOneAndUpdate({_id:bookId},{$set:{currentlyWith:requestorId,status:"requested"}});

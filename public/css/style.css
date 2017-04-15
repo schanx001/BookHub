@@ -342,7 +342,7 @@ a.btn-white-edit:hover > span#edit-glyphicon{
 
     }
     }
-}
+
 
 .navbar-brand.app-name{
     color:black;
@@ -436,4 +436,16 @@ img.same-height-books{
 }
 .thumbnail{
     margin-top: 70px;
+}
+
+.panel-edit{
+    margin:2px;
+    height:auto;
+    text-justify: inter-word;
+}
+div .events-css{
+    margin-bottom: 50px;
+}
+div.eve-css{
+    padding: 5px;
 }

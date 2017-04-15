@@ -9,6 +9,16 @@
     function registerController(UserService,$location,$rootScope,$routeParams) {
         var vm = this;
         vm.register = register;
+        vm.logout = logout;
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function (response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/login");
+                });
+        }
 
         function register(user) {
 

@@ -3,7 +3,7 @@
         .module("BookHubMaker")
         .controller("bookDetailsController",bookDetailsController)
     
-    function bookDetailsController(UserService,BookService,ReviewService,$routeParams) {
+    function bookDetailsController(UserService,BookService,ReviewService,$routeParams,$rootScope,loggedin) {
         var vm=this;
         vm.book=null;
         vm.comment=null;

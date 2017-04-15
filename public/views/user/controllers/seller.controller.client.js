@@ -226,6 +226,7 @@ function enter() {
 
         function init() {
             //vm.shop.owner=$routeParams['sid'];
+            if($rootScope.currentUser.role==='seller'){
             vm.message = "";
             vm.user = UserService.findUserById(vm.userId)
                 .success(renderUser)
@@ -272,10 +273,11 @@ function enter() {
                 // }, 1000);
 
 
-                }
-
-
-            );
+                });
+            }else{
+                $rootScope.currentUser=null;
+                $location.url('/login');
+            }
             //$('#pac-input').trigger(jQuery.Event('keypress', { keycode: 13 }));
         }
 

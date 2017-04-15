@@ -20,8 +20,8 @@
                     owner:vm.userId,
                     title:bookToAdd.volumeInfo.title,
                     author:bookToAdd.volumeInfo.authors[0],
-                    price:vm.bookPrice,
-                    description:vm.bookDescription,
+                    price:document.getElementById('sellerbookprice'+bookToAdd.id).value,//vm.bookPrice,
+                    description:document.getElementById('sellerbookdesc'+bookToAdd.id).value,
                     imgsrc:bookToAdd.volumeInfo.imageLinks.smallThumbnail})
                 .then(function (response) {
                     // console.log("addbook="+response.data);

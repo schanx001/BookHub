@@ -24,11 +24,6 @@
 
                     </a></li>
 
-                <li class="nav-item">
-                    <a href="#/admin/manageSellers">
-
-                        <span class="glyphicon glyphicon-star"></span> Manage Sellers
-                    </a></li>
 
                 <li class="nav-item ">
                     <a href="#/admin/manageEvents">
@@ -37,11 +32,6 @@
 
                     </a></li>
                 <li class="nav-item">
-                    <a href="#/admin/handleRequests">
-
-                        <span class="glyphicon glyphicon-stats"></span> Handle Requests
-
-                    </a> </li> <li class="nav-item">
                 <a href="#/admin/manageBooks" ng-click="showDiv = true; model.message=''">
 
                     <span class="glyphicon glyphicon-user" ></span> Manage Books
@@ -50,7 +40,7 @@
                 </a></li>
 
                 <li class="nav-item">
-                    <a ng-click="model.logout()" >
+                    <a ng-click="model.logout()" href >
 
                         <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
                     </a></li></ul>
@@ -67,44 +57,41 @@
             <li class="list-group-item active">
                 <div class="row">
                     <div class="col-md-3">
-                        <strong>UserName</strong>
+                        <strong>Event Name</strong>
                     </div>
                     <div class="col-md-3">
-                        <strong>FirstName</strong>
+                        <strong>Location</strong>
                     </div>
-                    <div class="col-md-3">
-                        <strong>LastName</strong>
+                    <div class="col-md-2">
+                        <strong>Date</strong>
                     </div>
 
-                    <div class="col-md-2">
-                        <strong>Role</strong>
+                    <div class="col-md-3">
+                        <strong>Time</strong>
                     </div>
                     <div class="col-md-1">
-                        <strong ng-show="model.allusers">Action</strong>
+                        <strong>Action</strong>
                     </div>
                 </div>
             </li>
-            <li class="list-group-item" ng-repeat="user in model.allusers">
+            <li class="list-group-item" ng-repeat="event in model.allevents">
                 <div class="row">
                     <div class="col-md-3">
-                        <label>{{user.username}}</label>
+                        <label>{{event.eventName}}</label>
                     </div>
                     <div class="col-md-3">
-                        <label>{{user.firstName}}</label>
+                        <label>{{event.eventLocation}}</label>
                     </div>
                     <div class="col-md-3">
-                        <label>{{user.lastName}}</label>
+                        <label>{{event.eventDate}}</label>
                     </div>
                     <div class="col-md-2">
-                        <label>{{user.role}}</label>
+                        <label>{{event.eventTime}}</label>
                     </div>
                     <div class="col-md-1">
                         <div class="row">
-                            <div class="col-md-6">
-                                <a ng-click="model.deleteUsers(user._id,user.username)" href class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
-                            </div>
-                            <div class="col-md-6">
-                                <a ng-click="model.updateUsers(user)" href class=""><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
+                            <div class="col-md-12">
+                                <a ng-click="model.deleteEvent(event)" href class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
                             </div>
                         </div>
                     </div>
@@ -118,40 +105,47 @@
 <div class="card visible-xs text-center">
     <div class="card-block">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" ng-repeat="user in model.allusers">
+            <li class="list-group-item" ng-repeat="event in model.allevents">
                 <div class="row">
                     <div class="col-xs-6 text-primary">
-                        <p class="card-text">Username</p>
+                        <p class="card-text">Event Name</p>
                     </div>
                     <div class="col-xs-6">
-                        <p class="card-text">{{user.username}}</p>
+                        <p class="card-text">{{event.eventName}}</p>
                     </div>
                 </div>
                 <div class="row">
 
                     <div class="col-xs-6 text-primary">
-                        <p class="card-text">Firstname</p>
+                        <p class="card-text">Event Location</p>
                     </div>
                     <div class="col-xs-6">
-                        <p class="card-text">{{user.firstName}}</p>
+                        <p class="card-text">{{event.eventLocation}}</p>
                     </div>
                 </div>
                 <div class="row">
 
                     <div class="col-xs-6 text-primary">
-                        <p class="card-text">Lastname</p>
+                        <p class="card-text">Event Date</p>
                     </div>
                     <div class="col-xs-6">
-                        <p class="card-text">{{user.lastName}}</p>
+                        <p class="card-text">{{event.eventDate}}</p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-6">
-                        <a ng-click="model.deleteUsers(user._id,user.username)" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+
+                    <div class="col-xs-6 text-primary">
+                        <p class="card-text">Event Time</p>
                     </div>
                     <div class="col-xs-6">
-                        <a href="#" class="btn btn-block btn-white-edit"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
+                        <p class="card-text">{{event.eventTime}}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a ng-click="model.deleteEvent(event)" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
                     </div>
 
                 </div>
