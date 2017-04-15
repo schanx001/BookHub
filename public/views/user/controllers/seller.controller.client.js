@@ -76,6 +76,7 @@ function enter() {
                 .success(function (response) {
 
                     if(response.length!=0){
+                        updatedShop.shopLocation=document.getElementById('pac-input').value;
                         SellerService
                             .updateShopDetails(vm.userId, updatedShop)
                             .success(function (response) {
