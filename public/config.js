@@ -30,10 +30,13 @@
                 controller: 'registerController',
                 controllerAs:'model'
             })
-            .when("/booksearch", {
+            .when("/user/booksearch", {
                 templateUrl: 'views/bookSearch/templates/bookSearch.view.client.html',
                 controller: 'bookSearchController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/login", {
                 templateUrl: 'views/user/templates/login.view.client.html',
@@ -199,7 +202,10 @@
             .when("/user/bookdetails/book",{
                 templateUrl:'views/bookSearch/templates/bookDetails.view.client.html',
                 controller:'bookDetailsController',
-                controllerAs:'model'
+                controllerAs:'model',
+                resolve:{
+                    loggedin: checkLoggedin
+                }
             })
     }
 

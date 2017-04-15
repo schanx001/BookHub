@@ -10,6 +10,7 @@
     function profileController($routeParams, UserService, BookService, $location, $rootScope, loggedin) {
         var vm = this;
         var userId = loggedin.data._id;
+        alert(userId);
         vm.requestedBooks=[];
         vm.requestedForBooks=[];
         vm.booksAvailable=[];
@@ -21,10 +22,17 @@
         vm.updateBook=updateBook;
         vm.updateRequest=updateRequest;
         vm.bookReturned=bookReturned;
+        vm.viewDetails = viewDetails;
         // vm.getBooksRequestedForAndRequested=getBooksRequestedForAndRequested;
         // vm.getUserBooksStats="";
         vm.booksForUserId=null;
         vm.logout = logout;
+
+        function viewDetails(bookId) {
+            $rootScope.bookId = bookId;
+            alert('hi');
+            $location.url('/user/bookdetails/book?bookId='+bookId);
+        }
         
         function bookReturned(book) {
             BookService

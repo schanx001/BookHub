@@ -11,7 +11,7 @@ module.exports=function (app,model) {
 
     var sellerBooksModel = model.sellerBooksModel;
     var userModel = model.userModel;
-    
+    console.log("SELLER BOOK SRVC");
 
     function updateBook(req,res) {
         // console.log("ffe="+req.body);

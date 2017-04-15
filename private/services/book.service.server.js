@@ -8,6 +8,7 @@ module.exports=function (app,smtpTransport,model) {
     var bookModel = model.bookModel;
     var userModel = model.userModel;
 
+    console.log("BOOK SRVC");
     function sendRequestMailToUser(bookName,emailId){
         var subjectText="";
         var bodyText="";
@@ -147,6 +148,7 @@ module.exports=function (app,smtpTransport,model) {
 
     function createBook(req,res) {
         var book=req.body;
+        console.log("heeelooo world "+book);
         bookModel
             .createABook(book)
             .then(function (response) {
