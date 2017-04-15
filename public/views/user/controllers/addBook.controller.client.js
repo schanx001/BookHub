@@ -33,14 +33,14 @@
         }
 
         function addBook(bookToAdd) {
-            // alert("book");
+            alert(document.getElementById('bookprice'+bookToAdd.id).value);
             BookService
                 .createBook({
                     owner:vm.userId,
                     title:bookToAdd.volumeInfo.title,
                     author:bookToAdd.volumeInfo.authors[0],
-                    price:vm.bookPrice,
-                    notes:vm.bookNotes,
+                    price:document.getElementById('bookprice'+bookToAdd.id).value,
+                    notes:document.getElementById('bookdesc'+bookToAdd.id).value,
                     averageRating:0.0,
                     ratingCount:0,
                     description:bookToAdd.volumeInfo.description,

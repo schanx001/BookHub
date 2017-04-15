@@ -14,9 +14,14 @@
             "acceptRequestService":acceptRequestService,
             "requestBookService":requestBookService,
             "bookReturnedService":bookReturnedService,
-            "findBookById": findBookById
+            "findBookById": findBookById,
+            "getAllBooks" : getAllBooks
         };
         return api;
+
+        function getAllBooks() {
+            return $http.get("/api/getbooks");
+        }
 
         function findBookById(bookId) {
             return $http.get("/api/book?bookId="+bookId);

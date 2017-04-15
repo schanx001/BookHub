@@ -11,12 +11,10 @@ module.exports=function (app,model) {
 
     var sellerBooksModel = model.sellerBooksModel;
     var userModel = model.userModel;
-<<<<<<< HEAD
+
     console.log("SELLER BOOK SRVC");
-=======
     var sellerModel= model.sellerModel;
     
->>>>>>> f29d2cd46aeaa67fcc5a532aab123b8771e1eca7
 
     function updateBook(req,res) {
         // console.log("ffe="+req.body);

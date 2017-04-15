@@ -18,7 +18,7 @@ module.exports = function(){
         "findUserByFacebookId":findUserByFacebookId,
         "findUserByGoogleId": findUserByGoogleId,
         "findAllUsers": findAllUsers,
-"updateUserRatingInDb":updateUserRatingInDb
+        "updateUserRatingInDb":updateUserRatingInDb
     };
     return api;
 

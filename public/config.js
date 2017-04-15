@@ -169,7 +169,7 @@
                 }
             })
             .when("/admin/manageEvents",{
-                templateUrl: 'views/user/templates/admin/createUser.view.client.html',
+                templateUrl: 'views/user/templates/admin/manageEvents.view.client.html',
                 controller: 'registerController',
                 controllerAs:'model',
                 resolve: {
@@ -185,8 +185,8 @@
                 }
             })
             .when("/admin/manageBooks",{
-                templateUrl: 'views/user/templates/admin/createUser.view.client.html',
-                controller: 'registerController',
+                templateUrl: 'views/user/templates/admin/manageBooks.view.client.html',
+                controller: 'adminController',
                 controllerAs:'model',
                 resolve: {
                     loggedin: checkLoggedin
@@ -194,7 +194,7 @@
             })
             .when("/admin/ManageUsers",{
                 templateUrl: 'views/user/templates/admin/admin.view.client.html',
-                controller: 'registerController',
+                controller: 'adminController',
                 controllerAs:'model',
                 resolve: {
                     loggedin: checkLoggedin

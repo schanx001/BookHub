@@ -24,11 +24,6 @@
 
                     </a></li>
 
-                <li class="nav-item">
-                    <a href="#/admin/manageSellers">
-
-                        <span class="glyphicon glyphicon-star"></span> Manage Sellers
-                    </a></li>
 
                 <li class="nav-item ">
                     <a href="#/admin/manageEvents">
@@ -37,11 +32,6 @@
 
                     </a></li>
                 <li class="nav-item">
-                    <a href="#/admin/handleRequests">
-
-                        <span class="glyphicon glyphicon-stats"></span> Handle Requests
-
-                    </a> </li> <li class="nav-item">
                 <a href="#/admin/manageBooks" ng-click="showDiv = true; model.message=''">
 
                     <span class="glyphicon glyphicon-user" ></span> Manage Books
@@ -60,51 +50,42 @@
 </nav>
 
 <div class="container padding-top ">
-    <h1>All Users of BookHub</h1>
+    <h1>All Books</h1>
 
     <div class="card hidden-xs">
         <ul class="list-group list-group-flush">
             <li class="list-group-item active">
                 <div class="row">
-                    <div class="col-md-3">
-                        <strong>UserName</strong>
+                    <div class="col-md-5">
+                        <strong>Book Title</strong>
                     </div>
                     <div class="col-md-3">
-                        <strong>FirstName</strong>
+                        <strong>Book Author</strong>
                     </div>
                     <div class="col-md-3">
-                        <strong>LastName</strong>
+                        <strong>Status</strong>
                     </div>
 
-                    <div class="col-md-2">
-                        <strong>Role</strong>
-                    </div>
                     <div class="col-md-1">
                         <strong ng-show="model.allusers">Action</strong>
                     </div>
                 </div>
             </li>
-            <li class="list-group-item" ng-repeat="user in model.allusers">
+            <li class="list-group-item" ng-repeat="book in model.allbooks">
                 <div class="row">
-                    <div class="col-md-3">
-                        <label>{{user.username}}</label>
+                    <div class="col-md-5 ">
+                        <label>{{book.title}}</label>
                     </div>
                     <div class="col-md-3">
-                        <label>{{user.firstName}}</label>
+                        <label>{{book.author}}</label>
                     </div>
                     <div class="col-md-3">
-                        <label>{{user.lastName}}</label>
-                    </div>
-                    <div class="col-md-2">
-                        <label>{{user.role}}</label>
+                        <label>{{book.status}}</label>
                     </div>
                     <div class="col-md-1">
                         <div class="row">
-                            <div class="col-md-6">
-                                <a ng-click="model.deleteUsers(user._id,user.username)" href class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
-                            </div>
-                            <div class="col-md-6">
-                                <a ng-click="model.updateUsers(user)" href class=""><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
+                            <div class="col-md-12">
+                                <a ng-click="model.deleteBook(book)" href class=""><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
                             </div>
                         </div>
                     </div>
@@ -121,39 +102,35 @@
             <li class="list-group-item" ng-repeat="user in model.allusers">
                 <div class="row">
                     <div class="col-xs-6 text-primary">
-                        <p class="card-text">Username</p>
+                        <p class="card-text">Book Title</p>
                     </div>
                     <div class="col-xs-6">
-                        <p class="card-text">{{user.username}}</p>
+                        <p class="card-text">{{book.title}}</p>
                     </div>
                 </div>
                 <div class="row">
 
                     <div class="col-xs-6 text-primary">
-                        <p class="card-text">Firstname</p>
+                        <p class="card-text">Book Author</p>
                     </div>
                     <div class="col-xs-6">
-                        <p class="card-text">{{user.firstName}}</p>
+                        <p class="card-text">{{book.author}}</p>
                     </div>
                 </div>
                 <div class="row">
 
                     <div class="col-xs-6 text-primary">
-                        <p class="card-text">Lastname</p>
+                        <p class="card-text">Book Status</p>
                     </div>
                     <div class="col-xs-6">
-                        <p class="card-text">{{user.lastName}}</p>
+                        <p class="card-text">{{book.status}}</p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-6">
-                        <a ng-click="model.deleteUsers(user._id,user.username)" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
+                    <div class="col-xs-12">
+                        <a ng-click="model.deleteBook(book._id,book)" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
                     </div>
-                    <div class="col-xs-6">
-                        <a href="#" class="btn btn-block btn-white-edit"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
-                    </div>
-
                 </div>
             </li>
         </ul>

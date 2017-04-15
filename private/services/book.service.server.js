@@ -3,10 +3,25 @@ module.exports=function (app,smtpTransport,model) {
     app.post("/api/book",createBook);
     app.delete("/api/book",deleteBook);
     app.put("/api/book",updateBook);
+    app.get("/api/getbooks",getAllBooks);
 
 
     var bookModel = model.bookModel;
     var userModel = model.userModel;
+
+
+    function getAllBooks(req,res) {
+        console.log("heee");
+        bookModel
+            .findAllBooks()
+            .then(function (books) {
+
+                res.json(books);
+            },function (err) {
+                res.sendStatus(404).send(err);
+            })
+    }
+
 
     console.log("BOOK SRVC");
     function sendRequestMailToUser(bookName,emailId){

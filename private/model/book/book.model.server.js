@@ -17,9 +17,15 @@ module.exports = function(){
         "findBooksOwnedAndBorrowedByUserId":findBooksOwnedAndBorrowedByUserId,
         "updateBookRequestorInDb":updateBookRequestorInDb,
         "updateBookReturnStatus":updateBookReturnStatus,
-        "findBookByIdInDb":findBookByIdInDb
+        "findBookByIdInDb":findBookByIdInDb,
+        "findAllBooks":findAllBooks
     };
     return api;
+
+    function findAllBooks() {
+        console.log("fff");
+        return bookModel.find({_id:{$ne:null}});
+    }
 
     function findBookByIdInDb(bookId) {
         return bookModel.findById({_id:bookId});

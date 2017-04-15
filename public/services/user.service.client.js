@@ -18,16 +18,21 @@
             "register":register,
             "getAllUsers":getAllUsers,
 	     "getUserRatingService":getUserRatingService,
-             "setUserRating":setUserRating
+             "setUserRating":setUserRating,
+            "findAllUserNames":findAllUserNames
         };
         return api;
+
+        function findAllUserNames(userIds) {
+            return $http.post("/api/users",userIds);
+        }
 
         function getAllUsers(){
             //console.log($http.get("/api/getusers"));
             return $http.get("/api/getusers");
         }
 
-function setUserRating(userId,bookId,newRating) {
+        function setUserRating(userId,bookId,newRating) {
             return $http.put("/api/user/"+userId+"?bookId="+bookId+"&rating="+newRating);
         }
 

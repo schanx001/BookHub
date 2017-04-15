@@ -53,7 +53,7 @@
                 OrganizerService.getAllEvents()
                     .then(function (allEvents){
                         console.log( allEvents);
-                        vm.allEvents=allEvents;
+                        vm.allEvents=allEvents.data;
                 },function (err) {
 
                     });

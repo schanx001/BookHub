@@ -24,25 +24,16 @@
 
                     </a></li>
 
-                <li class="nav-item">
-        <a href="#/admin/manageSellers">
-
-            <span class="glyphicon glyphicon-star"></span> Manage Sellers
-        </a></li>
 
                 <li class="nav-item ">
-        <a href="#/admin/manageEvents">
+            <a href="#/admin/manageEvents">
 
                 <span class="glyphicon glyphicon-bell"></span> Manage Events
 
-        </a></li>
+            </a>
+                </li>
                 <li class="nav-item">
-        <a href="#/admin/handleRequests">
-
-                <span class="glyphicon glyphicon-stats"></span> Handle Requests
-
-        </a> </li> <li class="nav-item">
-        <a href="#/admin/manageBooks" ng-click="showDiv = true; model.message=''">
+        <a href="#/admin/manageBooks">
 
                 <span class="glyphicon glyphicon-user" ></span> Manage Books
 
@@ -147,11 +138,21 @@
                     </div>
 
                     <div class="row">
+
+                        <div class="col-xs-6 text-primary">
+                            <p class="card-text">Role</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p class="card-text">{{user.role}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-xs-6">
                             <a ng-click="model.deleteUsers(user._id,user.username)" class="btn btn-block btn-white"><span id="delete-glyphicon" class="glyphicon glyphicon-trash"></span></a>
                         </div>
                         <div class="col-xs-6">
-                            <a href="#" class="btn btn-block btn-white-edit"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
+                            <a ng-click="model.updateUsers(user)" class="btn btn-block btn-white-edit"><span id="edit-glyphicon" class="glyphicon glyphicon-pencil"></span></a>
                         </div>
 
                     </div>

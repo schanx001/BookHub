@@ -226,6 +226,7 @@ function enter() {
 
         function init() {
             //vm.shop.owner=$routeParams['sid'];
+            if($rootScope.currentUser.role==='seller'){
             vm.message = "";
             vm.user = UserService.findUserById(vm.userId)
                 .success(renderUser)
@@ -272,7 +273,10 @@ function enter() {
                 // }, 1000);
 
 
-                }
+                }}else{
+                $rootScope.currentUser=null;
+                $location.url('/login');
+            }
 
 
             );
