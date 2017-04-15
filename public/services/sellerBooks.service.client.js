@@ -29,7 +29,7 @@
         }
 
         function createBook(book) {
-            alert("in seller");
+
             return $http.post("/api/sellerbook",book);
         }
 

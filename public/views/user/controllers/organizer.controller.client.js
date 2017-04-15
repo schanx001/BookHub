@@ -75,7 +75,7 @@
 
         function updateEvent(newEvent) {
             var eventId = newEvent._id;
-            alert(eventId);
+
             OrganizerService
                 .updateEvent(vm.userId, newEvent)
                 .then(function (response) {
@@ -128,7 +128,7 @@
 
 
         function deleteEvent(event) {
-            alert(event);
+
             var eventId= event._id;
             OrganizerService
                 .deleteEvent(eventId)
@@ -196,7 +196,6 @@
 
         function renderUser(user) {
             //console.log("haveli");
-alert(user);
             vm.user = user;
         }
 

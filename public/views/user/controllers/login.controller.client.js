@@ -26,12 +26,12 @@
                     .then(function (response) {
                         var user = response.data;
                         if(user.role.toString() === 'user') {
-                            alert("hell");
+
                             $rootScope.currentUser = user;
                             $location.url("/user/profile");// + user._id);
                         }
                         else if(user.role.toString() === 'eventorganizer') {
-                            alert("hell2");
+
                             $rootScope.currentUser = user;
                             $location.url("/organizer/profile");// + user._id);
                         }

@@ -15,7 +15,7 @@
         function init() {
             // vm.userId=$routeParams.uid;
             var sid=$routeParams['sellerBookId'];
-            alert("sid"+sid);
+
             if(sid){
                 // getBook(bookId);
                 // getReviews(bookId);
