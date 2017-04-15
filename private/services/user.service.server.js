@@ -88,6 +88,7 @@ module.exports = function (app, model) {
     // ];
     var userModel = model.userModel;
     var bookModel=model.bookModel;
+    var sellerBooksModel=model.sellerBooksModel;
 
 
     // facebook oauth
@@ -240,16 +241,31 @@ module.exports = function (app, model) {
 
     function deleteUser(req, res) {
         var userId = req.params.userId;
-        userModel
-            .deleteUser(userId)
-            .then(
-                function (status) {
-                    res.sendStatus(200);
-                },
-                function (error) {
-                    res.sendStatus(400).send(error);
-                }
-            );
+        bookModel
+            .deleteBooksForUserId(userId)
+            .then(function (response) {
+
+                sellerBooksModel
+                    .deleteSellerBooksForUserId(userId)
+                    .then(function (response) {
+                        userModel
+                            .deleteUser(userId)
+                            .then(
+                                function (status) {
+                                    res.sendStatus(200);
+                                },
+                                function (error) {
+                                    res.sendStatus(400).send(error);
+                                }
+                            );
+                    },function (error) {
+                        res.sendStatus(404);
+                    });
+
+
+            },function (error) {
+                res.sendStatus(404);
+            });
     }
 
     function createUser(req, res) {

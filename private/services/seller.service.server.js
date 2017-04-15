@@ -149,7 +149,7 @@ module.exports=function (app,model) {
         sellerModel
             .findShopBySellerIdInDb(sellerId)
             .then(function (shop) {
-                console.log("shop="+shop);
+               // console.log("shop="+shop);
                     res.json(shop);
 
             }, function (err) {

@@ -33,7 +33,7 @@
         }
 
         function addBook(bookToAdd) {
-            alert(document.getElementById('bookprice'+bookToAdd.id).value);
+
             BookService
                 .createBook({
                     owner:vm.userId,
@@ -49,7 +49,7 @@
                     currentlyWith:vm.userId,
                     status:"available"})
                 .then(function (response) {
-                    alert("your book has been added/shared");
+
                     // console.log("addbook="+response.data);
                     // vm.books=[];
                     // if(document.getElementById("div_book_listing")){

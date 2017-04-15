@@ -61,7 +61,7 @@ function enter() {
         // });
 }
         function scan() {
-            alert('hello');
+
         }
 
 
@@ -71,13 +71,12 @@ function enter() {
 
         function updateShopDetails(updatedShop) {
             updatedShop.owner=vm.userId;
-            alert(updatedShop.owner);
+            //alert(updatedShop.owner);
             SellerService.findShopBySellerId(updatedShop.owner)
                 .success(function (response) {
                     console.log("1st="+response);
 
                     if(response.length!=0){
-                        alert("update");
                         SellerService
                             .updateShopDetails(vm.userId, updatedShop)
                             .success(function (response) {
@@ -88,12 +87,12 @@ function enter() {
                                 vm.error = "unable to update";
                             })
                     }else{
-                        alert("create");
+                   //     alert("create");
 
-                        console.log("create wala"+getOuter());
+                        //console.log("create wala"+getOuter());
                         updatedShop.mapPlace=getOuter();
-                        console.log(updatedShop.shopPhone);
-                        console.log(updatedShop.shopEmail);
+                        //console.log(updatedShop.shopPhone);
+                        //console.log(updatedShop.shopEmail);
 
                         SellerService
                             .createShopDetails(vm.userId,updatedShop)
@@ -108,7 +107,6 @@ function enter() {
 
 
                     }).error(function () {
-                alert("create");
 
                 });
 
@@ -154,7 +152,6 @@ function enter() {
         function updateBook(newBook) {
             vm.shop.owner=loggedin.data._id;//$routeParams['sid'];
             var bookId = newBook._id;
-            alert(bookId);
             SellerService
                 .updateBook(vm.userId, newBook)
                 .then(function (response) {
@@ -198,7 +195,6 @@ function enter() {
 
 
         function deleteBook(book) {
-            alert(book);
             var bookId= book._id;
             SellerService
                 .deleteBook(bookId)
@@ -309,7 +305,6 @@ function enter() {
         }
 
         function getShopBySellerId(sellerId) {
-            alert(sellerId);
             SellerService
                 .findShopBySellerId(sellerId)
                 .then(function (response) {

@@ -263,7 +263,7 @@ a.btn-white-edit:hover > span#edit-glyphicon{
     margin-left: 0px;
     /*padding: 0 11px 0 13px;*/
     /*text-overflow: ellipsis;*/
-    width: 1100px;
+    width: 100%;
     background-color: transparent;
 }
 
@@ -342,7 +342,7 @@ a.btn-white-edit:hover > span#edit-glyphicon{
 
     }
     }
-}
+
 
 .navbar-brand.app-name{
     color:black;
@@ -448,8 +448,16 @@ div .events-css{
 }
 div.eve-css{
     padding: 5px;
+<<<<<<< HEAD
 }
 #searchForm {
     position:absolute;
     top:40%;
 }
+=======
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> 6f5294af465cdd3e3c2ddca9c33048e6c052d11f
+>>>>>>> 7f8bb0d02445477b4072db5e58b6292e2f7f80db

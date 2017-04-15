@@ -20,7 +20,7 @@ module.exports = function(){
     return api;
 
     function findShopBySellerIdInDb(sid) {
-        console.log(sid +"hellooo");
+        //console.log(sid +"hellooo");
         return sellerModel.findOne({owner : sid});
     }
     function getModel() {
@@ -44,8 +44,8 @@ module.exports = function(){
 
     function updateShopDetails(sid, newShop){
         //console.log(sid);
-        console.log(newShop.owner);
-        console.log("hqehdoqdh");
+      //  console.log(newShop.owner);
+      //  console.log("hqehdoqdh");
 
         return sellerModel.update({owner:sid},{$set:newShop});
         //return sellerModel.create(newShop);

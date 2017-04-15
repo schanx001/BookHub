@@ -82,17 +82,55 @@ module.exports=function (app,model) {
             });
     }
 
+    // function findEventByEventId(req, res) {
+    //     var eventId = req.params['eventId'];
+    //     console.log(eventId + "helloooooo");
+    //     organizerModel
+    //         .findEventByEventId(eventId)
+    //         .then(function (event) {
+    //             console.log(event + "ppppppppp");
+    //             res.send(event);
+    //         }, function (err) {
+    //             res.sendStatus(500).send(err);
+    //         });
+    // }
+
+
     function findEventByEventId(req, res) {
+        var userId=req.query.userId;
         var eventId = req.params['eventId'];
-        console.log(eventId + "helloooooo");
-        organizerModel
-            .findEventByEventId(eventId)
-            .then(function (event) {
-                console.log(event + "ppppppppp");
-                res.send(event);
-            }, function (err) {
-                res.sendStatus(500).send(err);
-            });
+        if(userId!=undefined){
+            organizerModel
+                .findEventByEventId(eventId)
+                .then(function (response) {
+                    var rsvpArr=response.eventRSVP;
+                    for(x in rsvpArr){
+                        if(rsvpArr[x].toString()==userId.toString()){
+                            res.send("Already Registered");
+                        }
+                    }
+                    response.eventRSVP=rsvpArr.push(userId);
+                    organizerModel
+                        .updateEvent(response)
+                        .then(function (responseNew) {
+                            res.send("Added");
+                        },function (error) {
+                            res.sendStatus(404);
+                        });
+                },function (error) {
+
+                });
+        }else{
+            console.log(eventId + "helloooooo");
+            organizerModel
+                .findEventByEventId(eventId)
+                .then(function (event) {
+                    console.log(event + "ppppppppp");
+                    res.send(event);
+                }, function (err) {
+                    res.sendStatus(500).send(err);
+                });
+        }
     }
 
     function findEventsByOrganizerId(req, res) {
