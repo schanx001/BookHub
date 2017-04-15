@@ -18,9 +18,9 @@
                     </a></li>
 
                 <li class="nav-item">
-                    <a href="#/user/addbook">
+                    <a href="#/user/booksearch">
 
-                        <span class="glyphicon glyphicon-bell"></span> Share/Add Books
+                        <span class="glyphicon glyphicon-gift"></span> BookRepo
                     </a></li>
 
                 <li class="nav-item ">
@@ -55,11 +55,11 @@
 
 
 <div class="container-fluid padding-top">
-    <div class="col-xs-12 border">Title in Bolds</div>
-    <div class="col-xs-12 border ">
-        <div class="col-xs-12" style="text-align: center"><strong><p>Requests for Books</p></strong></div>
+    <div class="col-xs-12 well "><h3>Pending Requests/Books Requested</h3></div>
+    <div class="col-xs-12  ">
+        <div class="col-xs-12 alert alert-info" style="text-align: center"><strong><h4>Requests for Books</h4></strong></div>
         <div ng-show="model.error">{{model.error}}</div>
-        <div id="div_requested_book_listing" ng-repeat="book in model.requestedBooks | orderBy:model.sort:model.reverse" ng-show="model.requestedBooks">
+ <!--       <div id="div_requested_book_listing" ng-repeat="book in model.requestedBooks | orderBy:model.sort:model.reverse" ng-show="model.requestedBooks">
             <div class="col-xs-3" >
                 <img src="{{book.imgsrc}}" class="listing-image border">
                 <br><br>
@@ -82,10 +82,57 @@
                     <button class="btn btn-block btn-danger" ng-click="model.updateRequest(book,0)">Reject</button><br><br>
                 </div>
             </div>
+        </div> -->
+        <div class="row container-fluid desk-view">
+            <div class="col-sm-4 col-md-3" id="div_book_listing"ng-repeat="book in model.requestedBooks | orderBy:model.sort:model.reverse" ng-show="model.requestedBooks">
+                <div class="thumbnail">
+                    <img class="card-img-top same-height" src="{{book.imglrgsrc}}" style="width:100%"/>
+                    <div class="card-block same-height-books-requests">
+                        <h4 class="card-title">{{book.title}}</h4>
+                        <p class="card-text">Author: {{book.author}}</p>
+                        <p class="card-text">Price: {{book.price}}</p>
+                        <div class="height-fix-requested">
+                            <div class="form-group">
+                                <p class="card-text">Username: {{book.username}}</p>
+                                <p class="card-text">Email: {{book.email}}</p>
+                                <p class="card-text">Description: {{book.description}}</p>
+                                <div class="col-xs-12">
+                                    <button class="btn btn-block btn-success" ng-click="model.updateRequest(book,1)">Accept</button>
+                                    <button class="btn btn-block btn-danger" ng-click="model.updateRequest(book,0)">Reject</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-xs-12" style="text-align: center"><strong><p>Books requested by you</p></strong></div>
+        <div class="col-xs-12 alert alert-info" style="text-align: center"><strong><h4>Books requested by you</h4></strong></div>
         <div ng-show="model.error">{{model.error}}</div>
-        <div id="div_requested_for_book_listing" ng-repeat="book in model.requestedForBooks | orderBy:model.sort:model.reverse" ng-show="model.requestedForBooks">
+        <div class="row container-fluid desk-view">
+            <div class="col-sm-4 col-md-3" id="div_book_listing"ng-repeat="book in model.requestedForBooks | orderBy:model.sort:model.reverse" ng-show="model.requestedForBooks">
+                <div class="thumbnail">
+                    <img class="card-img-top same-height" src="{{book.imglrgsrc}}" style="width:100%"/>
+                    <div class="card-block same-height-books-requested">
+                        <h4 class="card-title">{{book.title}}</h4>
+                        <p class="card-text">Author: {{book.author}}</p>
+                        <p class="card-text">Price: {{book.price}}</p>
+
+                        <div class="height-fix-requested">
+                            <div class="form-group">
+                                <p class="card-text">Username: {{book.username}}</p>
+                                <p class="card-text">Email: {{book.email}}</p>
+                                <p class="card-text">Description: {{book.description}}</p>
+
+                            </div>
+                            <div class="col-xs-12 badge badge-primary">
+                                <strong>Pending</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <!-- <div id="div_requested_for_book_listing" ng-repeat="book in model.requestedForBooks | orderBy:model.sort:model.reverse" ng-show="model.requestedForBooks">
             <div class="col-xs-3" >
                 <img src="{{book.imgsrc}}" class="listing-image border">
                 <br><br>

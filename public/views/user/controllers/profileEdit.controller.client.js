@@ -21,10 +21,17 @@
         vm.updateBook=updateBook;
         vm.updateRequest=updateRequest;
         vm.bookReturned=bookReturned;
+        vm.viewDetails = viewDetails;
         // vm.getBooksRequestedForAndRequested=getBooksRequestedForAndRequested;
         // vm.getUserBooksStats="";
         vm.booksForUserId=null;
         vm.logout = logout;
+
+        function viewDetails(bookId) {
+            $rootScope.bookId = bookId;
+            alert('hi');
+            $location.url('/user/bookdetails/book?bookId='+bookId);
+        }
         
         function bookReturned(book) {
             BookService

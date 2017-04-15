@@ -143,6 +143,7 @@ img.same-height{
     display: block;
     max-width: 100%;
     height:30em;
+    width:100%;
 }
 .card-block.same-height{
     height:5em;
@@ -402,4 +403,37 @@ div#slider figure {
 }
 .margin-fix{
     margin-bottom: 60px;
+}
+img.same-height-books{
+    display: block;
+    max-width: 100%;
+    height:40em;
+}
+.card-block.same-height-books{
+    height:15em;
+}
+.card-block.height-fix{
+    margin-top:50px;
+}
+.card-block.same-height-books-shared{
+    height:17em;
+}
+.card-block.same-height-books-requested{
+    height: auto;
+    margin-bottom: 50px;
+}
+.card-block.same-height-books-requests{
+    height: auto;
+    margin-bottom: 100px;
+}
+
+.badge{
+    background-color:red;
+}
+.card-block.height-fix-requested{
+    height: auto;
+    margin-bottom: 50px;
+}
+.thumbnail{
+    margin-top: 70px;
 }

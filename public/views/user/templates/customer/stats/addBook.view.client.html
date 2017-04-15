@@ -23,6 +23,12 @@
                         <span class="glyphicon glyphicon-bell"></span> Share/Add Books
                     </a></li>
 
+                <li class="nav-item">
+                    <a href="#/user/booksearch">
+
+                        <span class="glyphicon glyphicon-gift"></span> BookRepo
+                    </a></li>
+
                 <li class="nav-item ">
                     <a href="#/user/myreviews">
 
@@ -55,29 +61,28 @@
 
 
 <div class="container-fluid">
-    <div class="col-xs-12 border">
         <!--<div class="col-xs-12">-->
         <!--<input type="text" ng-model="model.bookTitle"><button ng-click="model.searchBook()">Search book</button>-->
         <!--</div>-->
-        <div class="col-xs-7 hidden-xs">
-            <input ng-model="model.bookTitle" type="text" class="pull-right">
+
+        <div class="input-group container">
+            <input ng-model="model.bookTitle" type="text" class="form-control">
+            <span class="input-group-btn">
+            <a ng-click="model.searchBook()" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+            </a>
+            </span>
         </div>
-        <div class="col-xs-5 hidden-xs">
-            <button class="btn btn-primary" ng-click="model.searchBook()">Search Book</button>
-        </div>
-        <div class="visible-xs">
-            <input ng-model="model.bookTitle" type="text" class="searchInputWidth">
-            <button class="btn btn-primary" ng-click="model.searchBook()">Search Book</button>
-        </div>
-    </div>
-    <div class="col-xs-12 border  margin-fix ">
-        <div class="col-xs-12" style="text-align: center"><strong><p>Available Books</p></strong></div>
+
+<div class="col-xs-12">
+    <div class="col-xs-12 margin-fix ">
+        <div class="col-xs-12 well" style="text-align: center" ng-show="model.books"><strong>Available Books</strong></div>
         <div ng-show="model.error">{{model.error}}</div>
-        <div id="div_book_listing" ng-repeat="book in model.books | orderBy:model.sort:model.reverse" ng-show="model.books">
+        <!--<div id="div_book_listing" ng-repeat="book in model.books | orderBy:model.sort:model.reverse" ng-show="model.books">
             <div class="col-xs-12">
                 <div class="col-xs-3" >
-                    <img src="{{book.volumeInfo.imageLinks.smallThumbnail}}" class="listing-image">
-                    <!--<img src="{{book.imgsrc}}" class="listing-image border">-->
+                    <img ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" class="listing-image">
+                    &lt;!&ndash;<img src="{{book.imgsrc}}" class="listing-image border">&ndash;&gt;
                     <br><br>
                 </div>
                 <div class="col-xs-9">
@@ -94,8 +99,29 @@
                     </div>
                 </div>
             </div>
+        </div>-->
+        <div class="row container-fluid desk-view">
+            <div class="col-sm-4 col-md-3" id="div_book_listing" ng-show="model.books" ng-repeat="book in model.books">
+                <div class="thumbnail">
+                    <img class="card-img-top same-height" ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" style="width:100%"/>
+                    <div class="card-block same-height-books">
+                        <h4 class="card-title">{{book.volumeInfo.title}}</h4>
+                        <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
+                    <div class="height-fix">
+                    <div class="form-group">
+                            <input type="number" class="col-xs-12" placeholder="enter price" ng-model="model.bookPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="col-xs-12" ng-model="model.bookDescription" placeholder="Add description here"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button ng-click="model.addBook(book)" class="btn btn-block btn-success">Add book</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-xs-12" style="text-align: center"><strong><p>Shared Books</p></strong></div>
         <div ng-show="model.error">{{model.error}}</div>
     </div>
 </div>

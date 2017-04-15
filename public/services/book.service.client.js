@@ -13,7 +13,8 @@
             "updateBookService":updateBookService,
             "acceptRequestService":acceptRequestService,
             "requestBookService":requestBookService,
-            "bookReturnedService":bookReturnedService
+            "bookReturnedService":bookReturnedService,
+            "findBookById": findBookById
         };
         return api;
 

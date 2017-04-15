@@ -13,6 +13,14 @@
         vm.bookTitle="";
         vm.bookNotes="";
         vm.logout = logout;
+        vm.processImage= processImage;
+
+
+        function processImage(url) {
+            var temp;
+            return url.replace("zoom=1","zoom=0").replace("edge=curl&","");
+        }
+
         function logout(){
             UserService
                 .logout()
@@ -37,7 +45,7 @@
                     ratingCount:0,
                     description:bookToAdd.volumeInfo.description,
                     imgsrc:bookToAdd.volumeInfo.imageLinks.smallThumbnail,
-                    imglrgsrc:bookToAdd.volumeInfo.imageLinks.thumbnail,//add
+                    imglrgsrc:processImage(bookToAdd.volumeInfo.imageLinks.thumbnail),//add
                     currentlyWith:vm.userId,
                     status:"available"})
                 .then(function (response) {

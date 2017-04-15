@@ -5,8 +5,8 @@
 module.exports=function (app,model) {
     app.get("/api/book/:bookId", findBookByBookId);
     app.get("/api/books/:sellerId", findBooksBySellerId);
-    app.post("/api/book/", addBook);
-    app.delete("/api/book/:bookId", deleteBook);
+    /*app.post("/api/sellerbook/", addBook);
+    */app.delete("/api/book/:bookId", deleteBook);
     app.put("/api/book/:sellerId", updateBook);
     app.get("/api/shop/:sellerId", findShopBySellerId);
     app.put("/api/shop/:sellerId", updateShopDetails);
@@ -77,7 +77,7 @@ module.exports=function (app,model) {
             );
     }
 
-    function addBook(req, res) {
+    /*function addBook(req, res) {
 
         //console.log("Create User called");
         var book = req.body;
@@ -97,7 +97,7 @@ module.exports=function (app,model) {
             }, function (err) {
                 res.sendStatus(404).send(err);
             });
-    }
+    }*/
 
     function updateBook(req, res) {
         console.log("in update");
