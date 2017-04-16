@@ -522,8 +522,12 @@ div.margin-bot-fix{
 
 .admin-desk{
     margin-bottom:55px;
-<<<<<<< HEAD
 }
-=======
+.list-group{
+    margin-bottom: 55px;
 }
->>>>>>> a31b87900b94c03db475eef12a93452bea7f63b5
+div.scroller-admin{
+    max-height: 44em;
+    overflow-y:scroll;
+    height:auto;
+}

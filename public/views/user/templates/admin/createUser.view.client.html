@@ -162,17 +162,17 @@
         <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
         <!--<div class="btn-group" >-->
         <div class="row container-fluid">
-            <div class="col-md-4 btn btn-default divTransparent">
+            <div class="col-md-4 btn col-xs-12 col-sm-4 btn-default divTransparent">
                 <label class="">
                     <input type="radio" value="seller" name="chooseone" ng-model="model.user.role" > Seller
                 </label>
             </div>
-            <div class="col-md-4 btn btn-default divTransparent">
+            <div class="col-md-4 btn col-xs-12 col-sm-4  btn-default divTransparent">
                 <label class=" ">
                     <input type="radio" value="eventorganizer" name="chooseone"  ng-model="model.user.role"> Event-Organizer
                 </label>
             </div>
-            <div class="col-md-4 btn btn-default divTransparent">
+            <div class="col-md-4 col-xs-12 col-sm-4  btn btn-default divTransparent">
                 <label class="">
                     <input type="radio" value="user" name="chooseone" ng-model="model.user.role"> User
                 </label>
@@ -182,7 +182,6 @@
     <input  style="display: none" ng-init="model.flag='adminflag';" ng-value="model.flag"/>
     <input  style="display: none" ng-init="model.flag='adminflag';" ng-value="model.flag"/>
 
-    {{model.flag}}
     <a class="btn btn-success btn-block btn-style-create"
        ng-click="model.register(model.user)">Create User</a>
 
