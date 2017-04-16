@@ -383,12 +383,8 @@ module.exports = function (app, model) {
             } else if (username) {
                 //console.log(username);
                 findUserByUsername(req, res);
-<<<<<<< HEAD
             } else{
-=======
-            }else{
->>>>>>> 570abc6717b0c06c1cbb62c0c83f53c52a6be298
-                res.json(req.user);
+                    res.json(req.user);
             }
         }
     }

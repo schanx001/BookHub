@@ -211,7 +211,10 @@
             .when("/user/bookdetails/book",{
                 templateUrl:'views/bookSearch/templates/bookDetails.view.client.html',
                 controller:'bookDetailsController',
-                controllerAs:'model'
+                controllerAs:'model'/*,
+                resolve: {
+                    loggedin: checkLoggedin
+                }*/
             })
             .when("/allEvents",{
                 templateUrl: 'views/main/templates/allEvents.view.client.html',

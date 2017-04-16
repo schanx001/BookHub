@@ -89,14 +89,16 @@
                 <div class="thumbnail">
                     <img class="card-img-top same-height" src="{{book.imglrgsrc}}" style="width:100%"/>
                     <div class="card-block same-height-books-requests">
-                        <a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a>
+                        <div class="scroller"><a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a></div>
                         <p class="card-text">Author: {{book.author}}</p>
                         <p class="card-text">Price: {{book.price}}</p>
                         <div class="height-fix-requested">
                             <div class="form-group">
                                 <p class="card-text">Username: {{book.username}}</p>
                                 <p class="card-text">Email: {{book.email}}</p>
+<!--
                                 <p class="card-text">Description: {{book.description}}</p>
+-->
                                 <div class="col-xs-12">
                                     <button class="btn btn-block btn-success" ng-click="model.updateRequest(book,1)">Accept</button>
                                     <button class="btn btn-block btn-danger" ng-click="model.updateRequest(book,0)">Reject</button>
@@ -114,7 +116,7 @@
                 <div class="thumbnail">
                     <img class="card-img-top same-height" src="{{book.imglrgsrc}}" style="width:100%"/>
                     <div class="card-block same-height-books-requested">
-                        <h4 class="card-title">{{book.title}}</h4>
+                        <div class="scroller"><a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a></div>
                         <p class="card-text">Author: {{book.author}}</p>
                         <p class="card-text">Price: {{book.price}}</p>
 
@@ -122,8 +124,8 @@
                             <div class="form-group">
                                 <p class="card-text">Username: {{book.username}}</p>
                                 <p class="card-text">Email: {{book.email}}</p>
-                                <p class="card-text">Description: {{book.description}}</p>
-
+                              <!--  <p class="card-text">Description: {{book.description}}</p>
+-->
                             </div>
                             <div class="col-xs-12 badge badge-primary">
                                 <strong>Pending</strong>

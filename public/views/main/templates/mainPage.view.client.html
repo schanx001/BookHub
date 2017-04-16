@@ -143,18 +143,18 @@
                         <div class="scroller"><a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a></div>
                         <p class="card-text">{{book.author}}</p>
                         <div class="col-xs-12" ng-if="book.noRequest">
-not allowed
+                            <label class="label label-danger">not allowed</label>
                         </div>
                         <div class="col-xs-12" ng-if="!book.noRequest">
                             <div ng-switch on="book.status">
                                 <div ng-switch-when="available">
-                                    <button class="btn btn-block btn-success" ng-click="model.requestBook(book)">Request Book</button><br><br>
+                                    <button class="btn btn-block btn-primary" ng-click="model.requestBook(book)">Request Book</button><br><br>
                                 </div>
                                 <div ng-switch-when="requested">
-request
+                                    <label class="label label-warning">requested</label>
                                 </div>
                                 <div ng-switch-when="shared">
-shared
+                                    <label class="label label-success">shared</label>
                                 </div>
                             </div>
                         </div>

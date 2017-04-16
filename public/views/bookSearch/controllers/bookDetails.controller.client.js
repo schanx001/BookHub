@@ -3,7 +3,7 @@
         .module("BookHubMaker")
         .controller("bookDetailsController",bookDetailsController)
     
-    function bookDetailsController(UserService,BookService,ReviewService,$routeParams,$rootScope,loggedin,$location) {
+    function bookDetailsController(UserService,BookService,ReviewService,$routeParams,UserService,$rootScope,$location) {
         var vm=this;
         vm.book=null;
         vm.comment=null;
@@ -23,7 +23,8 @@
                 $location.url("/user/profile");
             }
             else{
-                $location.url("/login");
+                alert("dsfkj");
+                $location.url("/");
             }
         }
 
@@ -77,15 +78,24 @@
         }
 
         function init() {
+            alert("hii");
+            UserService
+                .findCurrentUser()
+                .then(function (response) {
+                    vm.userId=response.data._id;
+                    var bookId=$routeParams['bookId'];
+                    if(bookId){
+                        getBook(bookId);
+                        getReviews(bookId);
+                        getUserRating(vm.userId,bookId);
+                    }
+                    alert($rootScope.currentUser.role);
+                });
+
  //vm.userId=$routeParams.uid;
    //         var bookId=$routeParams.bid;
-            vm.userId=loggedin.data._id;
-            var bookId=$routeParams['bookId'];
-            if(bookId){
-                getBook(bookId);
-                getReviews(bookId);
-                getUserRating(vm.userId,bookId);
-            }
+            //vm.userId=loggedin.data._id;
+
         }
         init();
 

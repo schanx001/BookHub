@@ -19,6 +19,7 @@
         vm.allevents = null;
         vm.allbooks=null;
         function init() {
+            alert($rootScope.currentUser.role)
             if($rootScope.currentUser.role==='admin') {
                 UserService
                     .getAllUsers()

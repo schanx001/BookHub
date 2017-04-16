@@ -37,7 +37,7 @@
 
 
             function viewDetails(bookId) {
-                $rootScope.bookId = bookId;
+                //$rootScope.bookId = bookId;
                 $location.url('/user/bookdetails/book?bookId='+bookId);
             }
 
@@ -113,16 +113,18 @@
                                 var bookArray=books.data;
                                 for(x in bookArray){
                                     if(bookArray[x].owner==$rootScope.currentUser._id){
-                                        bookArray.noRequest=true;
+                                        bookArray[x].noRequest=true;
                                     }
                                 }
+                                vm.books = bookArray;
                             }else{
                                 var bookArray=books.data;
                                 for(x in bookArray){
                                     if(bookArray[x].owner==$rootScope.currentUser._id){
-                                        bookArray.noRequest=true;
+                                        bookArray[x].noRequest=true;
                                     }
                                 }
+                                vm.books = bookArray;
                             }
 
 
@@ -138,17 +140,14 @@
 
 
             function init(){
-<<<<<<< HEAD
-                UserService.findCurrentUser()
-                    .then(function (response) {
-                        $rootScope.currentUser = response.data;
-=======
+
                 UserService
                     .findCurrentUser()
                     .then(function (response) {
                         $rootScope.currentUser=response.data;
->>>>>>> 570abc6717b0c06c1cbb62c0c83f53c52a6be298
+                        alert($rootScope.currentUser.role);
                     });
+                alert($rootScope.currentUser);
                 getAllEvents();
                 getAllAvBooks();
                 getAllSellerBooks();
