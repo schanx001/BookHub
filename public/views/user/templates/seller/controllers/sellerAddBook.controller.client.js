@@ -52,7 +52,7 @@
                     owner:vm.userId,
                     title:bookToAdd.volumeInfo.title,
                     author:processAuthor(bookToAdd.volumeInfo.authors),
-                    price:price,//vm.bookPrice,
+                    price: price,//vm.bookPrice,
                     description:document.getElementById('sellerbookdesc'+bookToAdd.id).value,
                     imgsrc:imageRefactor(bookToAdd.volumeInfo.imageLinks.smallThumbnail) ,
                     imglrgsrc : imageRefactor(bookToAdd.volumeInfo.imageLinks.thumbnail)})
