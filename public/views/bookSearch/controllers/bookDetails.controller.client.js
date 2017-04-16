@@ -23,7 +23,7 @@
                 $location.url("/user/profile");
             }
             else{
-                alert("dsfkj");
+
                 $location.url("/");
             }
         }
@@ -78,7 +78,7 @@
         }
 
         function init() {
-            alert("hii");
+
             UserService
                 .findCurrentUser()
                 .then(function (response) {
@@ -90,7 +90,7 @@
                         getReviews(bookId);
                         getUserRating(vm.userId,bookId);
                     }
-                    alert($rootScope.currentUser.role);
+
                 });
 
  //vm.userId=$routeParams.uid;

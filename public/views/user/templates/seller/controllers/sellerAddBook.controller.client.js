@@ -26,7 +26,6 @@
         }
 
         function processAuthor(author) {
-            alert(author);
             if(author==null || author==undefined || author.length==0){
 
                 return "Author not listed";
@@ -43,15 +42,20 @@
 
         function addBook(bookToAdd) {
             //alert(processImage(bookToAdd.volumeInfo.imageLinks.thumbnail));
+            var price=document.getElementById('sellerbookprice'+bookToAdd.id).value
+            if(price==undefined || price==null || price=="" || parseInt(price)<0){
+                price=0;
+
+            }
             SellerBooksService
                 .createBook({
                     owner:vm.userId,
                     title:bookToAdd.volumeInfo.title,
                     author:processAuthor(bookToAdd.volumeInfo.authors),
-                    price:document.getElementById('sellerbookprice'+bookToAdd.id).value,//vm.bookPrice,
+                    price:price,//vm.bookPrice,
                     description:document.getElementById('sellerbookdesc'+bookToAdd.id).value,
-                    imgsrc:bookToAdd.volumeInfo.imageLinks.smallThumbnail ,
-                    imglrgsrc : processImage(bookToAdd.volumeInfo.imageLinks.thumbnail)})
+                    imgsrc:imageRefactor(bookToAdd.volumeInfo.imageLinks.smallThumbnail) ,
+                    imglrgsrc : imageRefactor(bookToAdd.volumeInfo.imageLinks.thumbnail)})
                 .then(function (response) {
                     alert("Your book has been added");
 
@@ -69,6 +73,13 @@
                 });
         }
 
+        function imageRefactor(imgSrc) {
+            if(imgSrc==null || imgSrc==undefined || imgSrc==""){
+                imgSrc="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjF8MjE-anTAhUH6IMKHX0jAdEQjRwIBw&url=http%3A%2F%2Fmain-cast.wikia.com%2Fwiki%2FFile%3ASorry-image-not-available.png&psig=AFQjCNEQATdHcdrKMaqEEnpqQ4RvwZZJPQ&ust=1492465539835856";
+            }
+            return imgSrc;
+        }
+
         function searchBook() {
             // console.log("Inside");
             vm.books=[];
@@ -83,6 +94,11 @@
             gbooks.then(function(response){
                 // console.log(response.data);
                 for( var i=0;i<response.data.items.length;i++){
+                    if(response.data.items[i].volumeInfo.imageLinks==null || response.data.items[i].volumeInfo.imageLinks==undefined || response.data.items[i].volumeInfo.imageLinks==""){
+                        response.data.items[i].volumeInfo.imageLinks={};
+                        response.data.items[i].volumeInfo.imageLinks.smallThumbnail=="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjF8MjE-anTAhUH6IMKHX0jAdEQjRwIBw&url=http%3A%2F%2Fmain-cast.wikia.com%2Fwiki%2FFile%3ASorry-image-not-available.png&psig=AFQjCNEQATdHcdrKMaqEEnpqQ4RvwZZJPQ&ust=1492465539835856";
+                        response.data.items[i].volumeInfo.imageLinks.thumbnail=="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjF8MjE-anTAhUH6IMKHX0jAdEQjRwIBw&url=http%3A%2F%2Fmain-cast.wikia.com%2Fwiki%2FFile%3ASorry-image-not-available.png&psig=AFQjCNEQATdHcdrKMaqEEnpqQ4RvwZZJPQ&ust=1492465539835856";
+                    }
                     vm.books.push(response.data.items[i]);
                 }
                 // console.log(vm.books);

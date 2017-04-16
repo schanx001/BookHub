@@ -92,8 +92,7 @@
                         <p class="card-text">{{book.author}}</p>
                         <div class="height-fix">
                             <div class="form-group">
-                                <div id="bookEditDiv{{book._id}}">{{book.price}}<br>
-                                    {{book.notes}}
+                                <div id="bookEditDiv{{book._id}}">${{book.price}}
                                 </div>
                                 <div id="bookUpdateDiv{{book._id}}" class="hidden">
                                     <input type="number" class="col-xs-12"ng-model="book.price"><br>
@@ -113,7 +112,7 @@
         <div class="col-xs-12 alert alert-info" style="text-align: center" ng-show="model.booksShared"><strong>Shared Books</strong></div>
 
         <div class="row container-fluid desk-view">
-            <div class="col-sm-4 col-md-3" id="div_book_listing" ng-show="model.booksShared" ng-repeat="book in model.booksShared | orderBy:model.sort:model.reverse">
+            <div class="col-sm-4 col-md-3" id="div_book_shared_listing" ng-show="model.booksShared" ng-repeat="book in model.booksShared | orderBy:model.sort:model.reverse">
                 <div class="thumbnail">
                     <img class="card-img-top same-height" src="{{book.imglrgsrc}}" />
                     <div class="card-block same-height-books-shared">
@@ -121,7 +120,7 @@
                         <p class="card-text">{{book.author}}</p>
                         <div class="height-fix">
                             <div class="form-group">
-                                <p class="card-text">Price: {{book.price}}</p>
+                                <p class="card-text">Price: ${{book.price}}</p>
                             </div>
                             <div class="form-group">
                                 <div ng-show="{{book.returnField}}"><strong>Book With</strong></div>

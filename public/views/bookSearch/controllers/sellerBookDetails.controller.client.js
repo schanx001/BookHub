@@ -14,11 +14,11 @@
 
         function init() {
             // vm.userId=$routeParams.uid;
-            alert('in init seller');
+
             var sid=$routeParams['sellerBookId'];
 
             if(sid){
-                alert('hi');
+
                 // getBook(bookId);
                 // getReviews(bookId);
                 // getUserRating(vm.userId,bookId);

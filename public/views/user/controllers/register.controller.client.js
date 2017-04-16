@@ -33,13 +33,13 @@
                 return;
             }
             if(user.email== undefined || user.email== null) {
-                vm.error = "input empty! Please fill email";
+                vm.error = "Please fill email in correct format";
                 return;
 
             }
             if(user.phone.toString().length != 10){
 
-                vm.error = "input empty! Phone number should be 10 digits";
+                vm.error = "Phone number should be 10 digits";
             }
 
             else {

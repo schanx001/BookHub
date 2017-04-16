@@ -95,7 +95,7 @@ function enter() {
             }
             if(evm.shopPhone.toString().length != 10){
 
-                vm.error = "input empty! Phone number should be 10 digits";
+                vm.error = "Phone number should be 10 digits";
                 return;
             }
             var loc = document.getElementById('pac-input').value.toString();
@@ -104,7 +104,7 @@ function enter() {
                 return;
             }
             if (evm.shopName == null || evm.shopName == undefined || evm.shopName == "") {
-                vm.error = "Please fill Shop Location";
+                vm.error = "Please fill Shop Name";
             }
             else {
 
@@ -203,6 +203,10 @@ function enter() {
         function updateBook(newBook) {
             vm.shop.owner=loggedin.data._id;//$routeParams['sid'];
             var bookId = newBook._id;
+            var price=newBook.price;
+            if(price==undefined || price==null || price=="" || parseInt(price)<0){
+                newBook.price=0;
+            }
             SellerService
                 .updateBook(vm.userId, newBook)
                 .then(function (response) {

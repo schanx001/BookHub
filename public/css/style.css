@@ -132,7 +132,7 @@ body {
 }
 
 input::-webkit-input-placeholder {
-    color: white !important;
+    color: black !important;
 }
 
 h1 {
@@ -164,7 +164,7 @@ img.same-height{
 
 
 input::-moz-placeholder{
-    color:white;
+    color:black;
     opacity: 1;
 }
 .label-color{
@@ -523,6 +523,7 @@ div.margin-bot-fix{
 .admin-desk{
     margin-bottom:55px;
 }
+<<<<<<< Updated upstream
 .list-group{
     margin-bottom: 55px;
 }
@@ -530,4 +531,8 @@ div.scroller-admin{
     max-height: 44em;
     overflow-y:scroll;
     height:auto;
+=======
+input::-webkit-input-placeholder{
+
+>>>>>>> Stashed changes
 }
