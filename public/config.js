@@ -47,7 +47,7 @@
                 }
             })
             .when("/user/profile", {
-                templateUrl: 'views/user/templates/profileEdit.view.client.html',
+                templateUrl: 'views/user/templates/customer/stats/profileEdit.view.client.html',
                 controller: 'profileController',
                 controllerAs: 'model',
                 resolve: {
@@ -87,7 +87,7 @@
                 }
             })
             .when("/organizer/profile", {
-                templateUrl: 'views/user/templates/organizerProfileEdit.view.client.html',
+                templateUrl: 'views/user/templates/organizer/organizerProfileEdit.view.client.html',
                 controller: 'organizerController',
                 controllerAs: 'model',
                 resolve: {
@@ -95,7 +95,7 @@
                 }
             })
             .when("/organizer/addevent", {
-                templateUrl: 'views/user/templates/organizerAddEvent.view.client.html',
+                templateUrl: 'views/user/templates/organizer/organizerAddEvent.view.client.html',
                 controller: 'organizerController',
                 controllerAs: 'model',
                 resolve: {
@@ -103,7 +103,7 @@
                 }
             })
             .when("/organizer/myevents", {
-                templateUrl: 'views/user/templates/organizerMyEvents.view.client.html',
+                templateUrl: 'views/user/templates/organizer/organizerMyEvents.view.client.html',
                 controller: 'organizerController',
                 controllerAs: 'model',
                 resolve: {
@@ -111,7 +111,7 @@
                 }
             })
             .when("/organizer/eventdetails/event", {
-                templateUrl: 'views/user/templates/eventDetails.view.client.html',
+                templateUrl: 'views/user/templates/organizer/eventDetails.view.client.html',
                 controller: 'organizerController',
                 controllerAs: 'model',
                 resolve: {
@@ -119,7 +119,7 @@
                 }
             })
             .when("/seller/profile", {
-                templateUrl: 'views/user/templates/sellerProfileEdit.view.client.html',
+                templateUrl: 'views/user/templates/seller/sellerProfileEdit.view.client.html',
                 controller: 'sellerController',
                 controllerAs: 'model',
                 resolve: {
@@ -127,7 +127,7 @@
                 }
             })
             .when("/seller/addbook", {
-                templateUrl: 'views/user/templates/sellerAddBook.view.client.html',
+                templateUrl: 'views/user/templates/seller/sellerAddBook.view.client.html',
 		        controller: 'sellerAddBookController',
                 controllerAs: 'model',
                 resolve: {
@@ -136,7 +136,7 @@
 
            	})
         	.when("/seller/myinventory", {
-                templateUrl: 'views/user/templates/sellerMyInventory.view.client.html',          
+                templateUrl: 'views/user/templates/seller/sellerMyInventory.view.client.html',
                 controller: 'sellerController',
                 controllerAs: 'model',
                 resolve: {
@@ -211,10 +211,7 @@
             .when("/user/bookdetails/book",{
                 templateUrl:'views/bookSearch/templates/bookDetails.view.client.html',
                 controller:'bookDetailsController',
-                controllerAs:'model',
-                resolve:{
-                    loggedin: checkLoggedin
-                }
+                controllerAs:'model'
             })
             .when("/allEvents",{
                 templateUrl: 'views/main/templates/allEvents.view.client.html',

@@ -476,6 +476,7 @@ h1.font-color-header{
     color:white;
     font-size: 60px;
 }
+<<<<<<< HEAD
 img.same-height-details{
     display: block;
     max-width: 50%;
@@ -507,4 +508,12 @@ img.same-height-details{
 .text-align-all{
     text-justify: inter-word;
     text-align: justify;
+=======
+div.custom{
+    height: 38em;
+}
+div.scroller{
+    height:50px;
+    overflow-y:scroll;
+>>>>>>> 570abc6717b0c06c1cbb62c0c83f53c52a6be298
 }

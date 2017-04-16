@@ -1,3 +1,37 @@
+
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="row container-fluid navbar-color">-->
+
+        <!--<div class="col-sm-12">-->
+
+
+            <!--<a href="#/organizer/profile" ng-click="showDiv = true; model.message=''">-->
+                <!--<div class="navbar-text pull-right btn navbar-color">-->
+
+                    <!--<span class="glyphicon glyphicon-user" ></span> Edit Profile-->
+                <!--</div>-->
+
+            <!--</a>-->
+
+            <!--<a href="#/organizer/addevent">-->
+                <!--<div class="navbar-text pull-right btn navbar-color">-->
+                    <!--<span class="glyphicon glyphicon-plus"></span> Add Event-->
+                <!--</div>-->
+            <!--</a>-->
+
+            <!--<a href="#/organizer/myevents">-->
+                <!--<div class="navbar-text pull-right btn navbar-color">-->
+                    <!--<span class="glyphicon glyphicon-bookmark"></span> My Events-->
+                <!--</div>-->
+            <!--</a>-->
+
+        <!--</div>-->
+
+
+    <!--</div>-->
+<!--</nav>-->
+
+
 <nav class="navbar navbar-default navbar-fixed-top navbar-toggleable-md ">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -13,43 +47,38 @@
         </div>
         <div class="collapse navbar-collapse navbar-right" id="navbarNav">
             <ul class="nav navbar-nav">
+                <li class="nav-item ">
+                    <a href="#/organizer/profile">
+
+                        <span class="glyphicon glyphicon-user"></span> Edit Profile
+
+
+                    </a></li>
+
                 <li class="nav-item">
-                    <a href="#/admin/create" class="text-success bg-success">
+                    <a href="#/organizer/addevent">
 
-                        <span id="add-glyphicon" class="glyphicon glyphicon-plus"> </span> Create Role
+                        <span class="glyphicon glyphicon-plus"></span> Add Event
                     </a></li>
-                <li class="nav-item ">
-                    <a href="#/admin/profile">
-
-                        <span class="glyphicon glyphicon-user" ></span> Manage Users
-
-
-                    </a></li>
-
 
                 <li class="nav-item ">
-                    <a href="#/admin/manageEvents">
+                    <a href="#/organizer/myevents">
 
-                        <span class="glyphicon glyphicon-bell"></span> Manage Events
+                        <span class="glyphicon glyphicon-bookmark"></span> My Events
 
                     </a></li>
-               <li class="nav-item">
-                <a href="#/admin/manageBooks" ng-click="showDiv = true; model.message=''">
-
-                    <span class="glyphicon glyphicon-user" ></span> Manage Books
-
-
-                </a></li>
-
                 <li class="nav-item">
                     <a href="" ng-click="model.logout()" >
 
                         <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
                     </a></li></ul>
+
         </div>
 
     </div>
 </nav>
+
+
 <div class="container padding-top ">
 
     <div class="alert alert-danger" ng-show="model.error" role="alert">
@@ -61,49 +90,53 @@
     </div>
 
     <div class="form-group">
-        <label class="label-color" for="username">Username </label>
+        <label class="label-color" for="username">Username</label>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
             <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
-            <input ng-model="model.editUser.username" type="text" class="form-control divTransparent text-color" id="username" value="shohit">
+            <input ng-model="model.user.username" type="text" class="form-control divTransparent text-color" id="username" value="shohit">
         </div>
     </div>
     <div class="form-group">
         <label  class="label-color" for="email">Email address</label>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-envelope text-color"></span></div>
-            <input ng-model="model.editUser.email" type="email" class="form-control divTransparent text-color" id="email" value="shohitb@ccs.neu.edu">
+            <input ng-model="model.user.email" type="email" class="form-control divTransparent text-color" id="email">
         </div>
     </div>
+
     <div class="form-group">
         <label class="label-color" for="first-name">First Name</label>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
             <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
-            <input ng-model="model.editUser.firstName" type="text" class="form-control divTransparent text-color" id="first-name" value="shohit">
+            <input ng-model="model.user.firstName" type="text" class="form-control divTransparent text-color" id="first-name" value="shohit">
         </div>
     </div>
     <div class="form-group">
         <label class="label-color" for="last-name">Last Name</label>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0 slideanim">
             <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
-            <input ng-model="model.editUser.lastName" type="text" class="form-control divTransparent text-color" id="last-name" value="bajaj">
+            <input ng-model="model.user.lastName" type="text" class="form-control divTransparent text-color" id="last-name" value="bajaj">
         </div>
     </div>
+
     <div class="form-group">
         <label class="label-color" for="phone-number">Phone Number</label>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-earphone text-color"></span></div>
-            <input ng-model="model.editUser.phone" type="text" class="form-control divTransparent text-color" id="phone-number" value="0000000000">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="label-color" for="phone-number">Current Role</label>
-        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
-            <input ng-model="model.editUser.role" type="text" disabled class="form-control divTransparent text-color" id="role" >
+            <input ng-model="model.user.phone" type="text" class="form-control divTransparent text-color" id="phone-number">
         </div>
     </div>
 
-    <a  ng-click="model.updatedUser(model.editUser)" class="btn btn-primary  btn-block"">Update</a>
 
-</div>
+    <a class="btn btn-danger btn-block"
+       ng-click="model.deleteUser(model.user._id)">Unregister User</a>
+    <!--<a class="btn btn-danger  btn-block"-->
+       <!--href="#/login">Logout</a>-->
+    <a  ng-click="showDiv=false; model.updateUser(model.user)"class="btn btn-primary  btn-block"
+        href="#/organizer/profile">Update</a>
 
+
+
+
+
+    </div>
