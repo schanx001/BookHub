@@ -59,7 +59,7 @@
         <!--</div>-->
 
         <div class="input-group container">
-            <input ng-model="model.bookTitle" type="text" class="form-control">
+            <input ng-model="model.bookTitle" placeholder="enter book title here..." type="text" class="form-control">
             <span class="input-group-btn">
             <a ng-click="model.searchBook()" class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
@@ -70,7 +70,7 @@
 <div class="col-xs-12">
     <div class="col-xs-12 margin-fix ">
         <div class="col-xs-12 well" style="text-align: center" ng-show="model.books"><strong>Available Books</strong></div>
-        <div ng-show="model.error">{{model.error}}</div>
+        <div ng-show="model.error"> {{model.error}}</div>
         <!--<div id="div_book_listing" ng-repeat="book in model.books | orderBy:model.sort:model.reverse" ng-show="model.books">
             <div class="col-xs-12">
                 <div class="col-xs-3" >

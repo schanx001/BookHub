@@ -100,30 +100,6 @@
             <input ng-model="model.editUser.role" type="text" disabled class="form-control divTransparent text-color" id="role" >
         </div>
     </div>
-    <label class="label-color" for="phone-number">Change Role</label>
-
-    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-
-        <div class="input-group-addon divTransparent"><span class="glyphicon glyphicon-user text-color"></span></div>
-    <!--<div class="btn-group" >-->
-        <div class="row container-fluid">
-            <div class="col-md-4 btn btn-default divTransparent">
-                <label class="">
-                    <input type="radio" value="seller" name="chooseone" ng-model="model.user.role" > Seller
-                </label>
-            </div>
-            <div class="col-md-4 btn btn-default divTransparent">
-                <label class=" ">
-                    <input type="radio" value="eventorganizer" name="chooseone"  ng-model="model.user.role"> Event-Organizer
-                </label>
-            </div>
-            <div class="col-md-4 btn btn-default divTransparent">
-                <label class="">
-                    <input type="radio" value="user" name="chooseone" ng-model="model.user.role"> User
-                </label>
-            </div>
-        </div>
-    </div>
 
     <a  ng-click="model.updatedUser(model.editUser)" class="btn btn-primary  btn-block"">Update</a>
 

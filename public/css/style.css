@@ -476,3 +476,35 @@ h1.font-color-header{
     color:white;
     font-size: 60px;
 }
+img.same-height-details{
+    display: block;
+    max-width: 50%;
+    height:40em;
+    width:50%;
+}
+.details-page{
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+.details-list{
+    text-justify: inter-word;
+    margin:0px;
+    list-style: none;
+    margin-left:-0.5rem;
+    margin-right:1rem;
+}
+.details-list > li{
+
+}
+.btn-details{
+    margin-top:5px;
+}
+.cool-fonts{
+    font-family: 'Gochi Hand', cursive;
+    font-size:20px;
+}
+
+.text-align-all{
+    text-justify: inter-word;
+    text-align: justify;
+}

@@ -19,9 +19,14 @@
             "getAllUsers":getAllUsers,
 	     "getUserRatingService":getUserRatingService,
              "setUserRating":setUserRating,
-            "findAllUserNames":findAllUserNames
+            "findAllUserNames":findAllUserNames,
+            "findCurrentUser":findCurrentUser
         };
         return api;
+
+        function findCurrentUser() {
+            return $http.get("/api/user");
+        }
 
         function findAllUserNames(userIds) {
             return $http.post("/api/users",userIds);

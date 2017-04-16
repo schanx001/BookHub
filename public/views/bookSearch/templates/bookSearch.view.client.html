@@ -53,6 +53,14 @@
 </nav>
 
 <div class="container-fluid">
+    <div class="input-group container">
+        <input ng-model="model.bookTitle" placeholder="enter book title here..." type="text" class="form-control">
+        <span class="input-group-btn">
+            <a ng-click="model.searchBook()" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+            </a>
+            </span>
+    </div><!--
     <div class="col-sm-12 hidden-xs">
         <div class="col-xs-12">
             <input type="text" ng-model="model.userId">UserId
@@ -63,9 +71,17 @@
         <div class="col-xs-5">
             <button class="btn btn-primary" ng-click="model.searchBook()">Search Book</button>
         </div>
+    </div>-->
+    <div class="dropdown btn-block btn-primary margin-fix-main">
+        <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Category
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a ng-click="model.getBookListingMobile(opt)" ng-repeat="opt in model.genreListings">{{opt}}</a></li>
+        </ul>
     </div>
     <div class="visible-xs">
         <div class="col-xs-12">
+
             <input ng-model="model.searchText" type="text" class="" style="width:160px;">
             <div class="dropdown pull-right" style="padding-left: 5px; top:2px;">
                 <button onclick="myFunction()" class="dropbtn">
@@ -86,7 +102,7 @@
     <div class="col-xs-12 border hidden-xs">
         <div class="col-xs-3 border">
             <strong>Sort By:</strong><br>
-            <select ng-options="option for option in model.sortListings" ng-model="model.sortBy" ng-change="model.getSortedListing()">
+            <select  ng-options="option for option in model.sortListings" ng-model="model.sortBy" ng-change="model.getSortedListing()">
             </select>
         </div>
         <div class="col-xs-9 border">

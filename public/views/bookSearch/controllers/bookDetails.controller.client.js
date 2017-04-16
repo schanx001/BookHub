@@ -3,7 +3,7 @@
         .module("BookHubMaker")
         .controller("bookDetailsController",bookDetailsController)
     
-    function bookDetailsController(UserService,BookService,ReviewService,$routeParams,$rootScope,loggedin) {
+    function bookDetailsController(UserService,BookService,ReviewService,$routeParams,$rootScope,loggedin,$location) {
         var vm=this;
         vm.book=null;
         vm.comment=null;
@@ -16,6 +16,16 @@
         vm.postReview=postReview;
         vm.getUserRating=getUserRating;
         vm.setUserRating=setUserRating;
+        vm.checkUser = checkUser;
+        
+        function checkUser() {
+            if(loggedin){
+                $location.url("/user/profile");
+            }
+            else{
+                $location.url("/login");
+            }
+        }
 
         function setUserRating(bookId) {
             if(vm.newRating){

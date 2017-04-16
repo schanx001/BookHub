@@ -54,6 +54,8 @@ module.exports = function (app, model) {
     app.get ('/api/loggedin', loggedin);
     app.get('/api/getusers',findUsers);
 
+
+
     function getAllUsernames(req,res) {
         userModel
             .getEmailIdFromUserIds(req.body)
@@ -381,7 +383,9 @@ module.exports = function (app, model) {
             } else if (username) {
                 //console.log(username);
                 findUserByUsername(req, res);
-            }   
+            } else{
+                res.json(req.user);
+            }
         }
     }
 

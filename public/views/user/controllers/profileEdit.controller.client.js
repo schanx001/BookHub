@@ -210,7 +210,7 @@
 
         function renderUser(user) {
             //console.log("haveli");
-
+alert('jsjdaj');
             vm.user = user;
         }
 

@@ -16,6 +16,7 @@
             vm.allEvents="";
             vm.viewDetails=viewDetails;
 
+
             function viewDetails(bookId) {
                 $rootScope.bookId = bookId;
                 $location.url('/user/bookdetails/book?bookId='+bookId);
@@ -78,6 +79,10 @@
 
 
             function init(){
+                UserService.findCurrentUser()
+                    .then(function (response) {
+                        $rootScope.currentUser = response.data;
+                    });
                 getAllEvents();
                 getAllAvBooks();
                 getAllSellerBooks();
