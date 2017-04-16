@@ -21,11 +21,27 @@
         }
 
         function register(user) {
-
-            if(user==null)
-            {
-                vm.error = "input empty! Please fill username and password";
+            vm.error="";
+            vm.message="";
+            if(user.username==null) {
+                vm.error = "input empty! Please fill username";
+                return;
             }
+            if(user.password==null)
+            {
+                vm.error = "input empty! Please fill password";
+                return;
+            }
+            if(user.email== undefined || user.email== null) {
+                vm.error = "input empty! Please fill email";
+                return;
+
+            }
+            if(user.phone.toString().length != 10){
+
+                vm.error = "input empty! Phone number should be 10 digits";
+            }
+
             else {
                 UserService
                     .findUserByUsername(user.username)

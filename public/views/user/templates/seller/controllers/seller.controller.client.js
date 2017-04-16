@@ -86,48 +86,72 @@ function enter() {
 
 
         function updateShopDetails(updatedShop) {
-            updatedShop.owner=vm.userId;
-            //alert(updatedShop.owner);
-            SellerService.findShopBySellerId(updatedShop.owner)
-                .success(function (response) {
+            var evm = updatedShop;
+            vm.error = "";
+            vm.message = "";
+            if (evm.shopEmail == null || evm.shopEmail == undefined || evm.shopEmail == "") {
+                vm.error = "Please fill email address in correct format";
+                return;
+            }
+            if(evm.shopPhone.toString().length != 10){
 
-                    if(response.length!=0){
-                        // alert(document.getElementById('pac-input').value);
+                vm.error = "input empty! Phone number should be 10 digits";
+                return;
+            }
+            var loc = document.getElementById('pac-input').value.toString();
+            if (loc == null || loc == undefined || loc == "") {
+                vm.error = "Please fill shop Location";
+                return;
+            }
+            if (evm.shopName == null || evm.shopName == undefined || evm.shopName == "") {
+                vm.error = "Please fill Shop Location";
+            }
+            else {
 
-                        updatedShop.mapPlace=getOuter();
-                        updatedShop.shopLocation=document.getElementById('pac-input').value;
-                        SellerService
-                            .updateShopDetails(vm.userId, updatedShop)
-                            .success(function (response) {
 
-                                vm.message = "shop details successfully updated";
-                            })
-                            .error(function () {
-                                vm.error = "unable to update";
-                            })
-                    }else{
-                   //     alert("create");
+                updatedShop.owner = vm.userId;
+                //alert(updatedShop.owner);
+                SellerService.findShopBySellerId(updatedShop.owner)
+                    .success(function (response) {
 
-                        //console.log("create wala"+getOuter());
-                        //console.log(updatedShop.shopPhone);
-                        //console.log(updatedShop.shopEmail);
+                        if (response.length != 0) {
+                            // alert(document.getElementById('pac-input').value);
 
-                        SellerService
-                            .createShopDetails(vm.userId,updatedShop)
-                            .success(function (response) {
+                            updatedShop.mapPlace = getOuter();
+                            updatedShop.shopLocation = document.getElementById('pac-input').value;
+                            SellerService
+                                .updateShopDetails(vm.userId, updatedShop)
+                                .success(function (response) {
 
-                                vm.message = "shop details successfully updated";
-                            })
-                            .error(function () {
-                                vm.error = "unable to update";
-                            });
-                    }
+                                    vm.message = "shop details successfully updated";
+                                })
+                                .error(function () {
+                                    vm.error = "unable to update";
+                                })
+                        } else {
+                            //     alert("create");
+
+                            //console.log("create wala"+getOuter());
+                            //console.log(updatedShop.shopPhone);
+                            //console.log(updatedShop.shopEmail);
+
+                            SellerService
+                                .createShopDetails(vm.userId, updatedShop)
+                                .success(function (response) {
+
+                                    vm.message = "shop details successfully updated";
+                                })
+                                .error(function () {
+                                    vm.error = "unable to update";
+                                });
+                        }
 
 
                     }).error(function () {
 
                 });
 
+            }
         }
 
 

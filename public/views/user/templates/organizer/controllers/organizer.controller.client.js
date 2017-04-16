@@ -34,16 +34,39 @@
 
 
         function updateUser(newUser) {
+            vm.error="";
+            vm.message="";
+            var user = newUser;
+            if (user.username == null || user.username == undefined || user.username == "") {
+                vm.error = "input empty! Please fill username";
+                return;
+            }
+            // if(user.password==null)
+            // {
+            //     vm.error = "input empty! Please fill password";
+            // }
+            if (user.email == undefined || user.email == null) {
+                vm.error = "input empty! Please fill email";
+                return;
 
-            UserService
-                .updateUser(vm.userId, newUser)
-                .success(function (response) {
+            }
+            if (user.phone.toString().length < 10) {
 
-                    vm.message = "user successfully updated";
-                })
-                .error(function () {
-                    vm.error = "unable to update user";
-                });
+                vm.error = "input empty! Phone number should be 10 digits";
+                return;
+            }
+            else {
+
+                UserService
+                    .updateUser(vm.userId, newUser)
+                    .success(function (response) {
+
+                        vm.message = "user successfully updated";
+                    })
+                    .error(function () {
+                        vm.error = "unable to update user";
+                    });
+            }
         }
 
         function redirect(){
@@ -74,20 +97,45 @@
         // }
 
         function updateEvent(newEvent) {
-            var eventId = newEvent._id;
+            vm.error="";
+            vm.message="";
+            var evm = newEvent;
+            vm.error = "";
+            vm.message = "";
+            if (evm.eventName == null || evm.eventName == undefined || evm.eventName == "") {
+                vm.error = "input empty! Please fill event name";
+                return;
+            }
+            if (evm.eventDate == null || evm.eventDate == undefined || evm.eventDate == "") {
+                vm.error = "input empty! Please fill event date";
+                return;
+            }
+            if (evm.eventTime == null || evm.eventTime == undefined || evm.eventTime == "") {
+                vm.error = "input empty! Please fill event time";
+                return;
+            }
+            if (evm.eventLocation == null || evm.eventLocation == undefined || evm.eventLocation == "") {
+                vm.error = "input empty! Please fill event Location";
+            }
+            else {
+                var date="";
+                date = (new Date(evm.eventDate).getDate()).toString() + '/' + (new Date(evm.eventDate).getMonth() + 1).toString() + '/' + (new Date(evm.eventDate).getYear() + 1900).toString();
+                newEvent.eventDate= date;
+                var eventId = newEvent._id;
 
-            OrganizerService
-                .updateEvent(vm.userId, newEvent)
-                .then(function (response) {
-                    document.getElementById('eventEditDiv'+eventId).classList.toggle('hidden');
-                    document.getElementById('eventUpdateDiv'+eventId).classList.toggle('hidden');
-                    document.getElementById('eventEditButtonDiv'+eventId).classList.toggle('hidden');
-                    document.getElementById('eventUpdateButtonDiv'+eventId).classList.toggle('hidden');
-                    vm.message = "event successfully updated";
-                },function (error) {
-                    vm.error = "unable to update event";
+                OrganizerService
+                    .updateEvent(vm.userId, newEvent)
+                    .then(function (response) {
+                        document.getElementById('eventEditDiv' + eventId).classList.toggle('hidden');
+                        document.getElementById('eventUpdateDiv' + eventId).classList.toggle('hidden');
+                        document.getElementById('eventEditButtonDiv' + eventId).classList.toggle('hidden');
+                        document.getElementById('eventUpdateButtonDiv' + eventId).classList.toggle('hidden');
+                        vm.message = "event successfully updated";
+                    }, function (error) {
+                        vm.error = "unable to update event";
 
-                });
+                    });
+            }
         }
 
         function viewEvent(event) {
@@ -97,52 +145,76 @@
 
 
         function addEvent() {
-            var date="";
-            var Time="";
-            var hours= "";
-            var mins= "";
-             // alert(new Date(vm.eventTime).getHours());
-             // alert(new Date(vm.eventTime).getMinutes());
-             // alert(new Date(vm.eventTime).getSeconds());
-            //alert(vm.eventDate.toDateString());
-            date= (new Date(vm.eventDate).getDate()).toString() + '/' + (new Date(vm.eventDate).getMonth() + 1).toString() + '/' + (new Date(vm.eventDate).getYear() + 1900).toString();
 
-            if (parseInt((new Date(vm.eventTime).getHours())) < 10){
-               hours= '0' +     (new Date(vm.eventTime).getHours()).toString();
+            vm.error = "";
+            vm.message = "";
+            if (vm.eventName == null || vm.eventName == undefined || vm.eventName == "") {
+                vm.error = "input empty! Please fill event name";
+                return;
             }
-            else{
-                hours= (new Date(vm.eventTime).getHours()).toString();
+            if (vm.eventDate == null || vm.eventDate == undefined || vm.eventDate == "") {
+                vm.error = "input empty! Please fill event date";
+                return;
             }
-
-            if (parseInt((new Date(vm.eventTime).getMinutes())) < 10){
-                mins= '0' +     (new Date(vm.eventTime).getMinutes()).toString();
-            }
-            else{
-                mins= (new Date(vm.eventTime).getMinutes()).toString();
+            if (vm.eventTime == null || vm.eventTime == undefined || vm.eventTime == "") {
+                vm.error = "input empty! Please fill event time";
+                return;
             }
 
-            Time= hours + ':' + mins;
+            var loc = document.getElementById('pac-input').value.toString();
+            if (loc == null || loc == undefined || loc == "") {
+                vm.error = "input empty! Please fill event Location";
+            }
+            else {
 
-              //  .toString() + ':' + (new Date(vm.eventTime).getMinutes()).toString();
-            //alert(Time);
-            OrganizerService
-                .createEvent({
-                    owner:vm.userId,
-                    eventName: vm.eventName,
-                    eventDescription: vm.eventDescription,
-                    eventLocation: document.getElementById('pac-input').value.toString(),
-                    //eventDate: vm.eventDate,
-                    eventDate : date,
-                    //eventTime: vm.eventTime
-                    eventTime: Time})
-                        .then(function (response) {
-                           // location.reload();
-                            vm.message="Event created !!";
+                var date = "";
+                var Time = "";
+                var hours = "";
+                var mins = "";
+                // alert(new Date(vm.eventTime).getHours());
+                // alert(new Date(vm.eventTime).getMinutes());
+                // alert(new Date(vm.eventTime).getSeconds());
+                //alert(vm.eventDate.toDateString());
+                date = (new Date(vm.eventDate).getDate()).toString() + '/' + (new Date(vm.eventDate).getMonth() + 1).toString() + '/' + (new Date(vm.eventDate).getYear() + 1900).toString();
 
-                        },function (error) {
-                            vm.error= "Failed to add event !!";
+                if (parseInt((new Date(vm.eventTime).getHours())) < 10) {
+                    hours = '0' + (new Date(vm.eventTime).getHours()).toString();
+                }
+                else {
+                    hours = (new Date(vm.eventTime).getHours()).toString();
+                }
 
-                        })
+                if (parseInt((new Date(vm.eventTime).getMinutes())) < 10) {
+                    mins = '0' + (new Date(vm.eventTime).getMinutes()).toString();
+                }
+                else {
+                    mins = (new Date(vm.eventTime).getMinutes()).toString();
+                }
+
+                Time = hours + ':' + mins;
+
+                //  .toString() + ':' + (new Date(vm.eventTime).getMinutes()).toString();
+                //alert(Time);
+                OrganizerService
+                    .createEvent({
+                        owner: vm.userId,
+                        eventName: vm.eventName,
+                        eventDescription: vm.eventDescription,
+                        eventLocation: document.getElementById('pac-input').value.toString(),
+                        //eventDate: vm.eventDate,
+                        eventDate: date,
+                        //eventTime: vm.eventTime
+                        eventTime: Time
+                    })
+                    .then(function (response) {
+                        // location.reload();
+                        vm.message = "Event created !!";
+
+                    }, function (error) {
+                        vm.error = "Failed to add event !!";
+
+                    })
+            }
         }
 
 

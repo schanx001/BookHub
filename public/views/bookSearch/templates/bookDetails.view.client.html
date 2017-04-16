@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
         <div class="navbar-brand">
-        <a href><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a href="#/"><span class="glyphicon glyphicon-chevron-left"></span></a>
         </div></div></div>
 </nav>
 
@@ -54,7 +54,7 @@
                 </ul></div>
             <div class="card-block alert-warning details-page">
 
-                <div class="col-xs-12" ng-show="model.userRating==-1"><label>Provide Rating(0 to 5)</label>
+                <div class="col-xs-12" ng-show="model.userRating==-1" ng-if="model.user.role=='user'"><label>Provide Rating(0 to 5)</label>
 
                     <input class="form-control" type="number" min="0" max="5" ng-model="model.newRating">
 
@@ -71,16 +71,24 @@
                         Book Rated by: {{model.book.ratingCount}} Users</label></div>
                 <div class="col-xs-12" ng-show="model.reviews">
                     <div ng-show="model.userRating>-1">
-                    <label class="text-primary">
+                    <label class="text-primary" ng-if="model.user.role=='user'"> <!--ng-show="model.userId"-->
                         <span class="text-info glyphicon glyphicon-star">
 
                     </span>
                         You rated this book a {{model.userRating}} of 5</label>
                     </div>
-
+                <div ng-if="model.user.role=='user'"><!--ng-show="model.userId"-->
                     <strong>Reviews | Comments:</strong><br>
                     <textarea class="form-control" rows="2"  ng-model="model.comment"></textarea>
                     <button ng-click="model.postReview()" class="form-control btn-details btn btn-block btn-success">Post</button><br>
+                </div>
+
+                    <div ng-if="model.user.role!='user'"><!--ng-hide="model.userId" -->
+                        <strong>Reviews | Comments:</strong><br>
+                        <textarea placeholder="please log in" class="form-control" rows="2"  ng-model="model.comment"></textarea>
+                        <button disabled ng-click="model.postReview()" class="form-control btn-details btn btn-block btn-danger">Please login to post</button><br>
+                    </div>
+
 
                     <div ng-repeat="review in model.reviews">
                         <div class="well alert alert-default">

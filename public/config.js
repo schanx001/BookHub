@@ -146,11 +146,10 @@
             .when("/seller/book/viewbook", {
                 templateUrl: 'views/bookSearch/templates/sellerBookDetails.view.client.html',
                 controller: 'sellerBookDetailsController',
-                controllerAs: 'model',
+                controllerAs: 'model'/*,
                 resolve: {
                     loggedin: checkLoggedin
-                }
-
+                }*/
             })
             .when("/admin/profile",{
                 templateUrl: 'views/user/templates/admin/admin.view.client.html',
