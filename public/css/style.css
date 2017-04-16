@@ -523,16 +523,11 @@ div.margin-bot-fix{
 .admin-desk{
     margin-bottom:55px;
 }
-<<<<<<< Updated upstream
 .list-group{
     margin-bottom: 55px;
 }
-div.scroller-admin{
+div.scroller-admin {
     max-height: 44em;
-    overflow-y:scroll;
-    height:auto;
-=======
-input::-webkit-input-placeholder{
-
->>>>>>> Stashed changes
+    overflow-y: scroll;
+    height: auto;
 }
