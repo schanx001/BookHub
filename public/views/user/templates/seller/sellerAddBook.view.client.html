@@ -172,7 +172,7 @@
 
     <div class="col-xs-12">
         <div class="col-xs-12 margin-fix ">
-            <div class="col-xs-12 well" style="text-align: center" ng-show="model.books"><strong>Available Books</strong></div>
+            <div class="col-xs-12 well" style="text-align: center" ng-show="model.books"><strong>Add Books</strong></div>
             <div ng-show="model.error"> {{model.error}}</div>
             <div class="row container-fluid desk-view">
                 <div class="col-sm-4 col-md-3" id="div_book_listing" ng-show="model.books" ng-repeat="book in model.books">
@@ -183,10 +183,10 @@
                             <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
                             <div class="height-fix">
                                 <div class="form-group">
-                                    <input type="number" class="col-xs-12" placeholder="enter price" id="bookprice{{book.id}}" required>
+                                    <input type="number" class="col-xs-12" placeholder="enter price" id="sellerbookprice{{book.id}}" required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="col-xs-12" id="bookdesc{{book.id}}" placeholder="Add description here"></textarea>
+                                    <textarea class="col-xs-12" id="sellerbookdesc{{book.id}}" placeholder="Add description here"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <button ng-click="model.addBook(book)" class="btn btn-block btn-success">Add book</button>

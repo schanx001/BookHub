@@ -24,7 +24,7 @@
             vm.searchText="";
 
             function viewSellerDetails(bookId) {
-                alert('in sell');
+
                 $location.url('/seller/book/viewbook?sellerBookId='+bookId);
             }
 
@@ -115,7 +115,7 @@
                         if(!$rootScope.currentUser.role || $rootScope.currentUser.role==undefined){
 
                             vm.books = books.data;
-                            alert('jhihds');
+
                         }else if($rootScope.currentUser.role!="user"){
                             var bookArray=books.data;
                             for(x in bookArray){
@@ -195,12 +195,12 @@
                     .then(function (response) {
                         vm.user = response.data;
                         $rootScope.currentUser=response.data;
-                        alert($rootScope.currentUser.role+"inside");
+
                         getAllAvBooks();
                         getAllSellerBooks();
                         getAllEvents();
                     });
-                alert($rootScope.currentUser+'in init');
+
 
             }
             init();

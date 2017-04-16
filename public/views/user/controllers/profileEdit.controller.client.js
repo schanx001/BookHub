@@ -81,6 +81,11 @@
         }
         
         function updateBook(book) {
+            var price=book.price;
+            if(price==undefined || price==null || price=="" || parseInt(price)<0){
+                book.price=0;
+
+            }
             BookService
                 .updateBookService(book,userId)
                 .then(function (response) {
@@ -211,7 +216,6 @@
 
         function renderUser(user) {
             //console.log("haveli");
-alert('jsjdaj');
             vm.user = user;
         }
 

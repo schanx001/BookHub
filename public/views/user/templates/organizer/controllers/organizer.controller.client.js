@@ -153,11 +153,11 @@
                 return;
             }
             if (vm.eventDate == null || vm.eventDate == undefined || vm.eventDate == "") {
-                vm.error = "input empty! Please fill event date";
+                vm.error = "Please fill event date in correct format";
                 return;
             }
             if (vm.eventTime == null || vm.eventTime == undefined || vm.eventTime == "") {
-                vm.error = "input empty! Please fill event time";
+                vm.error = "Please fill event time in correct format";
                 return;
             }
 
