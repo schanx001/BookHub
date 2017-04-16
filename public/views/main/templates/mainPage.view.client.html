@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" ng-hide="model.user">
     <div class="container-fluid bg-inverse">
 
         <div class="navbar-brand text-color navbar-header font-brand">
@@ -28,6 +28,208 @@
         <!--</a>-->
     </div>
 </nav>
+<nav class="navbar navbar-default navbar-fixed-top navbar-toggleable-md " ng-if="model.user.role=='admin'">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand text-color navbar-header font-brand">
+                <a style="text-decoration:none; color:navy;"  href="#/"><strong>BookHub</strong></a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="navbarNav">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a href="#/admin/create" class="text-success bg-success">
+
+                        <span id="add-glyphicon" class="glyphicon glyphicon-plus"> </span> Create Role
+                    </a></li>
+                <li class="nav-item ">
+                    <a href="#/admin/profile">
+
+                        <span class="glyphicon glyphicon-user" ></span> Manage Users
+
+
+                    </a></li>
+
+
+                <li class="nav-item ">
+                    <a href="#/admin/manageEvents">
+
+                        <span class="glyphicon glyphicon-bell"></span> Manage Events
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/admin/manageBooks">
+
+                        <span class="glyphicon glyphicon-user" ></span> Manage Books
+
+
+                    </a></li>
+
+                <li class="nav-item">
+                    <a href="" ng-click="model.logout()" >
+
+                        <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
+                    </a></li></ul>
+        </div>
+
+    </div>
+</nav>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-toggleable-md" ng-if="model.user.role=='seller'">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand text-color navbar-header font-brand">
+                <a style="text-decoration:none; color:navy;"  href="#/"><strong>BookHub</strong></a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="navbarNav">
+            <ul class="nav navbar-nav">
+                <li class="nav-item ">
+                    <a href="#/seller/profile">
+
+                        <span class="glyphicon glyphicon-user"></span> Edit Profile
+
+
+                    </a></li>
+
+                <li class="nav-item">
+                    <a href="#/seller/addbook">
+
+                        <span class="glyphicon glyphicon-plus"></span> Add Book
+                    </a></li>
+
+                <li class="nav-item ">
+                    <a href="#/seller/myinventory">
+
+                        <span class="glyphicon glyphicon-book"></span> My Inventory
+
+                    </a></li>
+                <li class="nav-item">
+                    <a href="" ng-click="model.logout()" >
+
+                        <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
+                    </a></li></ul>
+
+        </div>
+
+    </div>
+</nav>
+<nav class="navbar navbar-default navbar-fixed-top navbar-toggleable-md " ng-if="model.user.role=='eventorganizer'">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand text-color navbar-header font-brand">
+                <a style="text-decoration:none; color:navy;"  href="#/"><strong>BookHub</strong></a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="navbarNav">
+            <ul class="nav navbar-nav">
+                <li class="nav-item ">
+                    <a href="#/organizer/profile">
+
+                        <span class="glyphicon glyphicon-user"></span> Edit Profile
+
+
+                    </a></li>
+
+                <li class="nav-item">
+                    <a href="#/organizer/addevent">
+
+                        <span class="glyphicon glyphicon-plus"></span> Add Event
+                    </a></li>
+
+                <li class="nav-item ">
+                    <a href="#/organizer/myevents">
+
+                        <span class="glyphicon glyphicon-bookmark"></span> My Events
+
+                    </a></li>
+                <li class="nav-item">
+                    <a href="" ng-click="model.logout()" >
+
+                        <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
+                    </a></li></ul>
+
+        </div>
+
+    </div>
+</nav>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-toggleable-md " ng-if="model.user.role=='user'">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand text-color navbar-header font-brand">
+                <a style="text-decoration:none; color:navy;"  href="#/"><strong>BookHub</strong></a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="navbarNav">
+            <ul class="nav navbar-nav">
+
+                <li class="nav-item">
+                    <a href="#/user/profile">
+
+                        <span class="glyphicon glyphicon-user"></span> My Profile
+                    </a></li>
+
+                <li class="nav-item">
+                    <a href="#/user/addbook">
+
+                        <span class="glyphicon glyphicon-bell"></span> Share/Add Books
+                    </a></li>
+
+                <li class="nav-item">
+                    <a href="#/user/booksearch">
+
+                        <span class="glyphicon glyphicon-gift"></span> BookRepo
+                    </a></li>
+
+
+                <li class="nav-item">
+                    <a href="#/user/myalerts">
+
+                        <span class="glyphicon glyphicon-bell"></span> My Alerts
+                    </a></li>
+
+                <li class="nav-item ">
+                    <a href="#/user/mystats">
+
+                        <span class="glyphicon glyphicon-stats"></span> My Stats
+
+                    </a></li>
+                <li class="nav-item">
+                    <a href="" ng-click="model.logout()" >
+
+                        <span class="glyphicon glyphicon glyphicon-log-out" ></span> Logout
+                    </a></li></ul>
+        </div>
+
+    </div>
+</nav>
+
 
 <div id="slider">
     <figure>
@@ -43,9 +245,9 @@
 <form class="col-sm-12" id="searchForm">
     <div class="form-group col-sm-4 col-sm-offset-4">
         <div class="input-group input-group-lg ">
-            <input class="form-control" placeholder="Search" type="text">
+            <input class="form-control" ng-model="model.searchText" placeholder="Search" type="text">
             <span class="input-group-btn">
-                <a ng-click="" class="btn btn-default" type="button">
+                <a ng-click="model.searchBook()" class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
             </a></span>
         </div>
@@ -58,9 +260,9 @@
 -->
 
 <div class="container-fluid main-page-div">
-    <div class="visible-xs">
+    <!--<div class="visible-xs">
         <div class="container-fluid ">
-        <div class="dropdown btn-block btn-primary margin-fix-main">
+        &lt;!&ndash;<div class="dropdown btn-block btn-primary margin-fix-main">
             <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Category
                 <span class="caret"></span></button>
             <ul class="dropdown-menu">
@@ -70,13 +272,27 @@
             <div class="container-fluid btn btn-primary btn-block">
                 <a  type="button" href="#/allEvents">Events Near You
                     </a>
+            </div>&ndash;&gt;
+            <div class="margin-fix-main">
+            <strong>Sort By:</strong>
+            <select  class="btn-block btn-primary "  ng-options="option for option in model.sortListings" ng-model="model.sortBy" ng-change="model.getSortedListing()">
+            </select>
             </div>
+            &lt;!&ndash;<button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Category
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a ng-click="model.getBookListingMobile(opt)" ng-repeat="opt in model.genreListings">{{opt}}</a></li>
+            </ul>&ndash;&gt;
+            <a  class="btn btn-block btn-primary" href="#/allEvents">Checkout Events Near You
+
+            </a>
+
         </div>
         <div class="col-xs-12 panel panel-default margin-fix-main" style="text-align: center"><strong><h3>Books Listing</h3></strong></div>
 
-<!--
+&lt;!&ndash;
         <div class="col-xs-12" style="text-align: center"><strong><p>Books Listing</p></strong></div>
---> <div class="container mob-view">
+&ndash;&gt; <div class="container mob-view">
         <div id="div_book_listing_mobile" class="col-xs-12" ng-show="model.books" ng-repeat="book in model.books">
             <div class="thumbnail">
                 <img class="card-img-top same-height" ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" style="width:100%"/>
@@ -85,7 +301,7 @@
                     <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
                 </div>
             </div>
-            <!--<div class="col-xs-3" >
+            &lt;!&ndash;<div class="col-xs-3" >
                 <div class="">
                     <img src="{{book.volumeInfo.imageLinks.smallThumbnail}}" class="listing-image">
                     <br><br>
@@ -96,22 +312,23 @@
                     <p class="p-word-wrap">{{book.volumeInfo.title}}<br>
                         {{book.volumeInfo.authors[0]}}</p>
                 </div>
-            </div>-->
+            </div>&ndash;&gt;
         </div>
     </div>
-    </div>
-    <div class="row hidden-xs">
+    </div>-->
+    <div class="row ">
         <div class="col col-md-3 margin-fix-main">
             <div class="col-md-12">
 
-                <div class="dropdown btn-block btn-primary">
-                    <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Category
+                <strong>Sort By:</strong>
+                    <select  class="btn-block btn-primary"  ng-options="option for option in model.sortListings" ng-model="model.sortBy" ng-change="model.getSortedListing()">
+                    </select>
+                    <!--<button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Category
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a ng-click="model.getBookListingMobile(opt)" ng-repeat="opt in model.genreListings">{{opt}}</a></li>
-                    </ul>
-                </div>
-                <a  class="btn btn-block btn-primary" href="#/allEvents">Events Near You
+                    </ul>-->
+                <a  class="btn btn-block btn-primary" href="#/allEvents">Checkout Events Near You
 
                 </a>
 
@@ -133,17 +350,19 @@
                     </div>
                 </div>
             </div>-->
-            <div class="col-xs-12 alert alert-info" style="text-align: center" ng-show="model.books"><strong>Books from Shared Books Repository</strong></div>
+            <div class=" alert alert-info margin-fix-main" style="text-align: center" ng-show="model.books"><strong>Books from Shared Books Repository</strong></div>
 
-            <div class="row container-fluid desk-view">
-            <div class="col-sm-6 col-md-4" id="div_book_listing" ng-show="model.books" ng-repeat="book in model.books">
+            <div class="row container-fluid desk-view ">
+            <div class="col-sm-6 col-md-4" id="div_book_listing" ng-show="model.books" ng-repeat="book in model.books | orderBy:model.sort:model.reverse">
                 <div class="thumbnail custom">
                 <img class="card-img-top same-height" ng-src="{{model.processImage(book.imgsrc)}}" style="width:100%"/>
                     <div class="card-block same-height">
                         <div class="scroller"><a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a></div>
                         <p class="card-text">{{book.author}}</p>
+                        <p class="card-text"><span class="glyphicon glyphicon-usd"></span>{{book.price}}</p>
+
                         <div class="col-xs-12" ng-if="book.noRequest">
-                            <label class="label label-danger">not allowed</label>
+                            <label class="label label-danger col-xs-12">not allowed </label>
                         </div>
                         <div class="col-xs-12" ng-if="!book.noRequest">
                             <div ng-switch on="book.status">
@@ -151,10 +370,10 @@
                                     <button class="btn btn-block btn-primary" ng-click="model.requestBook(book)">Request Book</button><br><br>
                                 </div>
                                 <div ng-switch-when="requested">
-                                    <label class="label label-warning">requested</label>
+                                    <label class="label label-warning col-xs-12">requested</label>
                                 </div>
                                 <div ng-switch-when="shared">
-                                    <label class="label label-success">shared</label>
+                                    <label class="label label-success col-xs-12">shared</label>
                                 </div>
                             </div>
                         </div>
@@ -165,13 +384,14 @@
             <div class="col-xs-12 alert alert-info" style="text-align: center" ng-show="model.books"><strong>Books from Sellers Books Repository</strong></div>
 
             <div class="row container-fluid desk-view">
-                <div class="col-sm-6 col-md-4" id="div_seller_book_listing" ng-show="model.books" ng-repeat="book in model.sellerBooks">
-                    <div class="thumbnail">
+                <div class="col-sm-6 col-md-4" id="div_seller_book_listing" ng-show="model.books" ng-repeat="book in model.sellerBooks | orderBy:model.sort:model.reverse">
+                    <div class="thumbnail custom">
                         <img class="card-img-top same-height" ng-src="{{model.processImage(book.imgsrc)}}" style="width:100%"/>
                         <div class="card-block same-height">
-                            <div class="scroller">    <a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a>
+                            <div class="scroller">    <a href ng-click="model.viewSellerDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a>
                             </div>
-                                <p class="card-text">{{book.author}}</p>
+                            <p class="card-text">{{book.author}}</p>
+                            <p class="card-text"><span class="glyphicon glyphicon-usd"></span> {{sellerBook.price}}</p>
 
                         </div>
                     </div>

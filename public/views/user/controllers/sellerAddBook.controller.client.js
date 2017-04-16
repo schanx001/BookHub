@@ -14,7 +14,7 @@
         vm.bookDescription="";
 
         function addBook(bookToAdd) {
-            // alert("book");
+            alert("book");
             SellerBooksService
                 .createBook({
                     owner:vm.userId,

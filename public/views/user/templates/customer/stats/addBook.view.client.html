@@ -27,7 +27,7 @@
                     </a></li>
 
                 <li class="nav-item">
-                    <a href="#/user/booksearch">
+                    <a href="#/">
 
                         <span class="glyphicon glyphicon-gift"></span> BookRepo
                     </a></li>
@@ -100,7 +100,7 @@
                 <div class="thumbnail">
                     <img class="card-img-top same-height" ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" style="width:100%"/>
                     <div class="card-block same-height-books">
-                        <a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.volumeInfo.title}}</h4></a>
+                        <div class="scroller"><h4 class="card-title">{{book.volumeInfo.title}}</h4></div>
                         <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
                     <div class="height-fix">
                     <div class="form-group">

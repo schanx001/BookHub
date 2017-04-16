@@ -10,12 +10,58 @@
             vm.rsvpEvent=rsvpEvent;
             vm.searchBook=searchBook;
             vm.getAllAvBooks=getAllAvBooks;
+            vm.sortListings=["Price Low-High","Price High-Low","Title A-Z","Title Z-A","Recent"];
             vm.getAllSellerBooks=getAllSellerBooks;
             vm.genreListings=["Science Fiction","Arts & Photography","Horror","Children Books","History","Literature & Fiction"];
             vm.genre="Horror";
             vm.allEvents="";
             vm.viewDetails=viewDetails;
+            vm.viewSellerDetails = viewSellerDetails;
             vm.requestBook=requestBook;
+            vm.getSortedListing=getSortedListing;
+            vm.user=null;
+            vm.logout = logout;
+            vm.searchText="";
+
+            function viewSellerDetails(bookId) {
+                alert('in sell');
+                $location.url('/seller/book/viewbook?sellerBookId='+bookId);
+            }
+
+            function logout(){
+                UserService
+                    .logout()
+                    .then(
+                        function (response) {
+                            $rootScope.currentUser = null;
+                            $location.url("/login");
+                        }
+                    )
+            }
+            function getSortedListing() {
+                // vm.books=orderBy(vm.books,vm.sortBy,true);
+                if(vm.sortBy===""){
+                    vm.sort="";
+                    vm.reverse=true;
+                }else{
+                    if(vm.sortBy==="Price Low-High"){
+                        vm.sort="price";
+                        vm.reverse=false;
+                    }else if(vm.sortBy==="Price High-Low"){
+                        vm.sort="price";
+                        vm.reverse=true;
+                    }else if(vm.sortBy==="Title A-Z"){
+                        vm.sort="title";
+                        vm.reverse=false;
+                    }else if(vm.sortBy==="Title Z-A"){
+                        vm.sort="title";
+                        vm.reverse=true;
+                    }else{
+                        vm.sort="dateCreated";
+                        vm.reverse=true;
+                    }
+                }
+            }
 
             function requestBook(book) {
                 if($rootScope.currentUser==undefined || $rootScope.currentUser.role!="user"){
@@ -63,12 +109,13 @@
             }
 
             function getAllAvBooks() {
-
                 BookService
                     .getAllBooks()
                     .then(function (books){
-                        if($rootScope.currentUser==undefined){
+                        if(!$rootScope.currentUser.role || $rootScope.currentUser.role==undefined){
+
                             vm.books = books.data;
+                            alert('jhihds');
                         }else if($rootScope.currentUser.role!="user"){
                             var bookArray=books.data;
                             for(x in bookArray){
@@ -135,6 +182,8 @@
                         },function (error) {
                             vm.error="Book not available";
                         })
+                }else{
+                    getAllAvBooks();
                 }
             }
 
@@ -144,13 +193,15 @@
                 UserService
                     .findCurrentUser()
                     .then(function (response) {
+                        vm.user = response.data;
                         $rootScope.currentUser=response.data;
-                        alert($rootScope.currentUser.role);
+                        alert($rootScope.currentUser.role+"inside");
+                        getAllAvBooks();
+                        getAllSellerBooks();
+                        getAllEvents();
                     });
-                alert($rootScope.currentUser);
-                getAllEvents();
-                getAllAvBooks();
-                getAllSellerBooks();
+                alert($rootScope.currentUser+'in init');
+
             }
             init();
             // getBookListing();

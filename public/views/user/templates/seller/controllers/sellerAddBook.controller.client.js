@@ -14,6 +14,7 @@
         vm.bookDescription="";
         vm.processImage= processImage;
         vm.logout=logout;
+        vm.processAuthor=processAuthor;
 
         function logout() {
             UserService
@@ -24,7 +25,17 @@
                 });
         }
 
+        function processAuthor(author) {
+            alert(author);
+            if(author==null || author==undefined || author.length==0){
 
+                return "Author not listed";
+
+            }
+            else{
+                return author;
+            }
+        }
         function processImage(url) {
             var temp;
             return url.replace("edge=curl&","");
@@ -36,12 +47,14 @@
                 .createBook({
                     owner:vm.userId,
                     title:bookToAdd.volumeInfo.title,
-                    author:bookToAdd.volumeInfo.authors[0],
+                    author:processAuthor(bookToAdd.volumeInfo.authors),
                     price:document.getElementById('sellerbookprice'+bookToAdd.id).value,//vm.bookPrice,
                     description:document.getElementById('sellerbookdesc'+bookToAdd.id).value,
                     imgsrc:bookToAdd.volumeInfo.imageLinks.smallThumbnail ,
                     imglrgsrc : processImage(bookToAdd.volumeInfo.imageLinks.thumbnail)})
                 .then(function (response) {
+                    alert("Your book has been added");
+
                     // console.log("addbook="+response.data);
                     // vm.books=[];
                     // if(document.getElementById("div_book_listing")){

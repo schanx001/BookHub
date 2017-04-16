@@ -17,7 +17,7 @@
         vm.getUserRating=getUserRating;
         vm.setUserRating=setUserRating;
         vm.checkUser = checkUser;
-        
+        vm.user = null;
         function checkUser() {
             if(loggedin){
                 $location.url("/user/profile");
@@ -82,6 +82,7 @@
             UserService
                 .findCurrentUser()
                 .then(function (response) {
+                    vm.user = response.data;
                     vm.userId=response.data._id;
                     var bookId=$routeParams['bookId'];
                     if(bookId){

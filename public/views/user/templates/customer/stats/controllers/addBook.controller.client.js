@@ -14,11 +14,23 @@
         vm.bookNotes="";
         vm.logout = logout;
         vm.processImage= processImage;
+        vm.processAuthor = processAuthor;
 
 
+        function processAuthor(author) {
+            alert(author);
+            if(author==null || author==undefined || author.length==0){
+
+                return "Author not listed";
+
+            }
+            else{
+                return author;
+            }
+        }
         function processImage(url) {
             var temp;
-            return url.replace("zoom=1","zoom=0").replace("edge=curl&","");
+            return url.replace("edge=curl&","");/*("zoom=1","zoom=0").*/
         }
 
         function logout(){
@@ -38,17 +50,18 @@
                 .createBook({
                     owner:vm.userId,
                     title:bookToAdd.volumeInfo.title,
-                    author:bookToAdd.volumeInfo.authors[0],
+                    author:processAuthor(bookToAdd.volumeInfo.authors),
                     price:document.getElementById('bookprice'+bookToAdd.id).value,
                     notes:document.getElementById('bookdesc'+bookToAdd.id).value,
                     averageRating:0.0,
                     ratingCount:0,
                     description:bookToAdd.volumeInfo.description,
                     imgsrc:bookToAdd.volumeInfo.imageLinks.smallThumbnail,
-                    imglrgsrc:processImage(bookToAdd.volumeInfo.imageLinks.thumbnail),//add
+                    imglrgsrc:bookToAdd.volumeInfo.imageLinks.thumbnail,/*processImage(bookToAdd.volumeInfo.imageLinks.thumbnail),*///add
                     currentlyWith:vm.userId,
                     status:"available"})
                 .then(function (response) {
+                    alert("Your book has been added");
 
                     // console.log("addbook="+response.data);
                     // vm.books=[];
@@ -60,6 +73,8 @@
                     // }
                     // getAllAvBooks();
                 },function (error) {
+                    alert("Your book has not been added");
+
                     // console.log("addbookerror="+error);
                 })
         }

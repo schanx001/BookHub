@@ -7,7 +7,7 @@
 
         var vm = this;
         vm.searchBook=searchBook;
-        vm.addBook=addBook;
+        vm.addUserBook=addUserBook;
         vm.userId=loggedin.data._id;//$routeParams['uid'];
         vm.bookPrice=0;
         vm.bookTitle="";
@@ -18,7 +18,7 @@
 
         function processImage(url) {
             var temp;
-            return url.replace("zoom=1","zoom=0").replace("edge=curl&","");
+            return url.replace("edge=curl&","");/*replace("zoom=1","zoom=0").*/
         }
 
         function logout(){
@@ -32,8 +32,9 @@
                 )
         }
 
-        function addBook(bookToAdd) {
+        function addUserBook(bookToAdd) {
 
+            console.log("lllooo");
             BookService
                 .createBook({
                     owner:vm.userId,
@@ -49,7 +50,7 @@
                     currentlyWith:vm.userId,
                     status:"available"})
                 .then(function (response) {
-
+                    alert("Your book has been added");
                     // console.log("addbook="+response.data);
                     // vm.books=[];
                     // if(document.getElementById("div_book_listing")){
@@ -60,6 +61,8 @@
                     // }
                     // getAllAvBooks();
                 },function (error) {
+                    alert("Your book has not been added");
+
                     // console.log("addbookerror="+error);
                 })
         }
