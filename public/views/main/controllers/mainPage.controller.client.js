@@ -15,6 +15,25 @@
             vm.genre="Horror";
             vm.allEvents="";
             vm.viewDetails=viewDetails;
+            vm.requestBook=requestBook;
+
+            function requestBook(book) {
+                if($rootScope.currentUser==undefined || $rootScope.currentUser.role!="user"){
+                    $location.url("/login");
+                }
+                BookService
+                    .requestBookService(book._id,$rootScope.currentUser._id)
+                    .then(function (response) {
+                        for(var x in vm.books){
+                            if(vm.books[x]===book){
+                                vm.books[x].status="requested";
+                                break;
+                            }
+                        }
+                    },function (error) {
+                        // vm.error=error;
+                    });
+            }
 
             function viewDetails(bookId) {
                 $rootScope.bookId = bookId;
@@ -43,11 +62,32 @@
             }
 
             function getAllAvBooks() {
+
                 BookService
-                    .findAllAvBooks()
-                    .then(function (response) {
-                        vm.books=response.data;
-                    },function (error) {
+                    .getAllBooks()
+                    .then(function (books){
+                        if($rootScope.currentUser==undefined){
+                            vm.books = books.data;
+                        }else if($rootScope.currentUser.role!="user"){
+                            var bookArray=books.data;
+                            for(x in bookArray){
+
+                                    bookArray[x].noRequest=true;
+
+                            }
+                            vm.books = bookArray;
+                        }else{
+                            var bookArray=books.data;
+                            for(x in bookArray){
+                                if(bookArray[x].owner==$rootScope.currentUser._id){
+                                    bookArray[x].noRequest=true;
+                                }
+                            }
+                            vm.books = bookArray;
+                        }
+
+                    }, function (err) {
+                            vm.error = err;
                     });
             }
 
@@ -65,11 +105,30 @@
                     // console.log(vm.searchText);
                     BookService
                         .findBooksByName(vm.searchText)
-                        .then(function (response) {
-                            vm.books=response.data;
-                            if(response.data.length===0){
-                                vm.error="Book not available";
+                        .then(function (books) {
+                            if($rootScope.currentUser==undefined){
+                                vm.books = books.data;
+                            }else if($rootScope.currentUser.role!="user"){
+                                var bookArray=books.data;
+                                for(x in bookArray){
+                                    if(bookArray[x].owner==$rootScope.currentUser._id){
+                                        bookArray.noRequest=true;
+                                    }
+                                }
+                            }else{
+                                var bookArray=books.data;
+                                for(x in bookArray){
+                                    if(bookArray[x].owner==$rootScope.currentUser._id){
+                                        bookArray.noRequest=true;
+                                    }
+                                }
                             }
+
+
+                            // vm.books=response.data;
+                            // if(response.data.length===0){
+                            //     vm.error="Book not available";
+                            // }
                         },function (error) {
                             vm.error="Book not available";
                         })
@@ -78,6 +137,11 @@
 
 
             function init(){
+                UserService
+                    .findCurrentUser()
+                    .then(function (response) {
+                        $rootScope.currentUser=response.data;
+                    });
                 getAllEvents();
                 getAllAvBooks();
                 getAllSellerBooks();

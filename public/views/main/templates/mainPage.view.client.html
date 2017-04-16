@@ -137,11 +137,27 @@
 
             <div class="row container-fluid desk-view">
             <div class="col-sm-6 col-md-4" id="div_book_listing" ng-show="model.books" ng-repeat="book in model.books">
-                <div class="thumbnail">
-                <img class="card-img-top same-height" ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" style="width:100%"/>
+                <div class="thumbnail custom">
+                <img class="card-img-top same-height" ng-src="{{model.processImage(book.imgsrc)}}" style="width:100%"/>
                     <div class="card-block same-height">
-                        <a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.volumeInfo.title}}</h4>
-                        <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
+                        <div class="scroller"><a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a></div>
+                        <p class="card-text">{{book.author}}</p>
+                        <div class="col-xs-12" ng-if="book.noRequest">
+not allowed
+                        </div>
+                        <div class="col-xs-12" ng-if="!book.noRequest">
+                            <div ng-switch on="book.status">
+                                <div ng-switch-when="available">
+                                    <button class="btn btn-block btn-success" ng-click="model.requestBook(book)">Request Book</button><br><br>
+                                </div>
+                                <div ng-switch-when="requested">
+request
+                                </div>
+                                <div ng-switch-when="shared">
+shared
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -149,12 +165,14 @@
             <div class="col-xs-12 alert alert-info" style="text-align: center" ng-show="model.books"><strong>Books from Sellers Books Repository</strong></div>
 
             <div class="row container-fluid desk-view">
-                <div class="col-sm-6 col-md-4" id="div_book_listing" ng-show="model.books" ng-repeat="book in model.books">
+                <div class="col-sm-6 col-md-4" id="div_seller_book_listing" ng-show="model.books" ng-repeat="book in model.sellerBooks">
                     <div class="thumbnail">
-                        <img class="card-img-top same-height" ng-src="{{model.processImage(book.volumeInfo.imageLinks.thumbnail)}}" style="width:100%"/>
+                        <img class="card-img-top same-height" ng-src="{{model.processImage(book.imgsrc)}}" style="width:100%"/>
                         <div class="card-block same-height">
-                            <a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.volumeInfo.title}}</h4></a>
-                            <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
+                            <div class="scroller">    <a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a>
+                            </div>
+                                <p class="card-text">{{book.author}}</p>
+
                         </div>
                     </div>
                 </div>

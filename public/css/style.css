@@ -476,3 +476,10 @@ h1.font-color-header{
     color:white;
     font-size: 60px;
 }
+div.custom{
+    height: 38em;
+}
+div.scroller{
+    height:50px;
+    overflow-y:scroll;
+}

@@ -46,3 +46,7 @@ $(function() {
 // }
 //
 // );
+// alert("Hi I am here");
+var newPlaces=null;
+var imported=null;
+// var loaded=false;

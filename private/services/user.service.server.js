@@ -381,7 +381,9 @@ module.exports = function (app, model) {
             } else if (username) {
                 //console.log(username);
                 findUserByUsername(req, res);
-            }   
+            }else{
+                res.json(req.user);
+            }
         }
     }
 

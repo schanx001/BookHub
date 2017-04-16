@@ -6,6 +6,7 @@ module.exports = function(model) {
         author: String,
         ISBN: String,
         imgsrc:String,
+        imglrgsrc:String,
         description:String,
         rating: String,
         genre: String,

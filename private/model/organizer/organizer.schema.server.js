@@ -8,7 +8,7 @@ module.exports = function(model) {
         eventName: String,
         eventDescription: String,
         eventLocation: String,
-        eventDate: Date,
+        eventDate: String,
         eventTime: String,
         eventRSVP:[{type: mongoose.Schema.Types.ObjectId, ref: 'userModel'}],
         dateCreated: {type: Date, default:Date.now}

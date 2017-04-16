@@ -7,7 +7,7 @@
         .module("BookHubMaker")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, UserService, BookService, $location, $rootScope, loggedin) {
+    function profileController($routeParams, UserService, BookService, $location, $rootScope, loggedin, $route) {
         var vm = this;
         var userId = loggedin.data._id;
         vm.requestedBooks=[];
@@ -104,6 +104,7 @@
                         }
                         break;
                     }
+                    $route.reload();
                     // getBooksForUserId(userId);
                     // var books=response.data;
                     // var requestedBooks=[];
