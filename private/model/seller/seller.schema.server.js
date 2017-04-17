@@ -9,7 +9,7 @@ module.exports = function(model) {
         shopLocation: String,
         mapPlace:Object,
         shopEmail: String,
-        shopPhone: String
+        shopPhone: String,
     }, {collection: 'project.mongo.seller'});
 
     return sellerSchema;
