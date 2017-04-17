@@ -358,7 +358,8 @@
                 <img class="card-img-top same-height" ng-src="{{model.processImage(book.imgsrc)}}" style="width:100%"/>
                     <div class="card-block same-height">
                         <div class="scroller"><a href ng-click="model.viewDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a></div>
-                        <p class="card-text">{{book.author}}</p>
+                        <div class="scroller">
+                            <p class="card-text">{{book.author}}</p></div>
                         <p class="card-text"><span class="glyphicon glyphicon-usd"></span>{{book.price}}</p>
 
                         <div class="col-xs-12" ng-if="book.noRequest">
@@ -390,8 +391,9 @@
                         <div class="card-block same-height">
                             <div class="scroller">    <a href ng-click="model.viewSellerDetails(book._id)"><h4 class="card-title">{{book.title}}</h4></a>
                             </div>
-                            <p class="card-text">{{book.author}}</p>
-                            <p class="card-text"><span class="glyphicon glyphicon-usd"></span> {{sellerBook.price}}</p>
+                            <div class="scroller">
+                                <p class="card-text">{{book.author}}</p></div>
+                            <p class="card-text"><span class="glyphicon glyphicon-usd"></span> {{book.price}}</p>
 
                         </div>
                     </div>

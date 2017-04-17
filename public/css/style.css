@@ -520,12 +520,14 @@ div.margin-bot-fix{
     margin-bottom:20px;
 }
 
-.admin-desk{
-    margin-bottom:55px;
-}
-.list-group{
+.admin-desk {
     margin-bottom: 55px;
 }
+.list-group {
+    margin-bottom: 55px;
+}
+
+
 div.scroller-admin {
     max-height: 44em;
     overflow-y: scroll;

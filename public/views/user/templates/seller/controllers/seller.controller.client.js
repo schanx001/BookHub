@@ -376,10 +376,10 @@ function enter() {
                         SellerService
                             .createShopDetails(vm.userId, {owner: vm.userId})
                             .success(function () {
-                                vm.message= "shop details update !!"
+                                //vm.message= "shop details update !!"
                             })
                             .error(function () {
-                                vm.error= "unable to update";
+                               // vm.error= "unable to update";
                             })
                     }
 
