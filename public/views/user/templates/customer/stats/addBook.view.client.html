@@ -101,7 +101,7 @@
                     <img class="card-img-top same-height" ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" style="width:100%"/>
                     <div class="card-block same-height-books">
                         <div class="scroller"><h4 class="card-title">{{book.volumeInfo.title}}</h4></div>
-                        <p class="card-text">{{book.volumeInfo.authors[0]}}</p>
+                        <div class="scroller"><p class="card-text">{{book.volumeInfo.authors[0]}}</p></div>
                     <div class="height-fix">
                     <div class="form-group">
                             <input type="number" class="col-xs-12" placeholder="enter price" id="bookprice{{book.id}}" required>
