@@ -223,6 +223,23 @@
 
             vm.message="";
             vm.error="";
+
+            if(newUser.username==undefined || newUser.username==null) {
+                vm.error = "input empty! Please fill username";
+                return;
+            }
+            if(newUser.email== undefined || newUser.email== null) {
+                vm.error = "Please fill email in correct format";
+                return;
+
+            }
+            if(newUser.phone==undefined || newUser.phone.toString().length != 10){
+
+                vm.error = "Phone number should be 10 digits";
+                return;
+            }
+
+
             UserService
                 .updateUser(userId, newUser)
                 .success(function (response) {

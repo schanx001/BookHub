@@ -159,14 +159,14 @@
                     loggedin: checkLoggedin
                 }
             })
-            .when("/admin/create",{
-                templateUrl: 'views/user/templates/admin/createUser.view.client.html',
-                controller: 'registerController',
-                controllerAs:'model',
-                resolve: {
-                    loggedin: checkLoggedin
-                }
-            })
+            // .when("/admin/create",{
+            //     templateUrl: 'views/user/templates/admin/createUser.view.client.html',
+            //     controller: 'registerController',
+            //     controllerAs:'model',
+            //     resolve: {
+            //         loggedin: checkLoggedin
+            //     }
+            // })
             .when("/admin/manageEvents",{
                 templateUrl: 'views/user/templates/admin/manageEvents.view.client.html',
                 controller: 'adminController',

@@ -514,7 +514,7 @@ div.custom{
 }
 div.scroller{
     height:50px;
-    overflow-y:scroll;
+    overflow-y:auto;
 }
 div.margin-bot-fix{
     margin-bottom:20px;

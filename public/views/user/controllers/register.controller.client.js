@@ -23,7 +23,7 @@
         function register(user) {
             vm.error="";
             vm.message="";
-            if(user.username==null) {
+            if(user.username==undefined || user.username==null) {
                 vm.error = "input empty! Please fill username";
                 return;
             }
@@ -37,16 +37,19 @@
                 return;
 
             }
-            if(user.phone.toString().length != 10){
+            if(user.phone==undefined || user.phone.toString().length != 10){
 
                 vm.error = "Phone number should be 10 digits";
+
+                return;
             }
 
             else {
                 UserService
                     .findUserByUsername(user.username)
                     .success(function (user) {
-                        vm.error = "sorry that username is taken"
+                        vm.error = "sorry that username is taken";
+                        return;
                     })
                     .error(function(){
                         /*UserService
